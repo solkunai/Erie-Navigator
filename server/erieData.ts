@@ -13,7 +13,8 @@ export const restaurants: Restaurant[] = [
     priceRange: "$$",
     rating: 4.5,
     hours: "11:00 AM - 9:00 PM",
-    features: ["Dine-in", "Takeout", "Delivery"]
+    features: ["Dine-in", "Takeout", "Delivery"],
+    imageUrl: "/assets/el-canelo.png"
   },
   {
     id: "2",
@@ -27,7 +28,8 @@ export const restaurants: Restaurant[] = [
     priceRange: "$$",
     rating: 4.7,
     hours: "11:00 AM - 9:00 PM",
-    features: ["Dine-in", "Takeout", "Pet Friendly", "Outdoor Seating"]
+    features: ["Dine-in", "Takeout", "Pet Friendly", "Outdoor Seating"],
+    imageUrl: "/assets/federal-hill.jpg"
   },
   {
     id: "3",
@@ -337,7 +339,8 @@ export const restaurants: Restaurant[] = [
     priceRange: "$$$",
     rating: 4.6,
     hours: "4:30 PM - 9:30 PM",
-    features: ["Dine-in", "Reservations", "Wine List", "Seafood"]
+    features: ["Dine-in", "Reservations", "Wine List", "Seafood"],
+    imageUrl: "/assets/serafinis.jpg"
   }
 ];
 
