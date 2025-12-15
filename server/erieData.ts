@@ -271,6 +271,72 @@ export const restaurants: Restaurant[] = [
     rating: 4.3,
     hours: "11:00 AM - 8:00 PM",
     features: ["Dine-in", "Multiple Vendors", "Family Friendly"]
+  },
+  {
+    id: "21",
+    name: "Roma's Italian Restaurant",
+    category: "Italian",
+    categories: ["Italian", "Pizza"],
+    address: "2624 W 12th St, Erie, PA 16505",
+    phone: "(814) 838-5130",
+    description: "Family-owned Italian restaurant serving homemade pasta, pizza, and classic Italian dishes in a warm, welcoming atmosphere since 1978.",
+    priceRange: "$$",
+    rating: 4.5,
+    hours: "11:00 AM - 10:00 PM",
+    features: ["Dine-in", "Takeout", "Family Owned", "Homemade Pasta"]
+  },
+  {
+    id: "22",
+    name: "Colao's Ristorante",
+    category: "Italian",
+    categories: ["Italian", "Fine Dining"],
+    address: "2826 Plum St, Erie, PA 16508",
+    phone: "(814) 866-9621",
+    website: "https://www.colaos.com",
+    description: "Upscale Italian dining featuring traditional recipes passed down through generations. Known for exceptional wine selection and elegant atmosphere.",
+    priceRange: "$$$",
+    rating: 4.7,
+    hours: "4:00 PM - 10:00 PM",
+    features: ["Dine-in", "Reservations", "Wine List", "Fine Dining"]
+  },
+  {
+    id: "23",
+    name: "A. Francisco's",
+    category: "Italian",
+    categories: ["Italian", "Pizza"],
+    address: "1501 State St, Erie, PA 16501",
+    phone: "(814) 455-8700",
+    description: "Downtown Erie Italian favorite serving authentic dishes, wood-fired pizzas, and house-made desserts in a cozy urban setting.",
+    priceRange: "$$",
+    rating: 4.4,
+    hours: "11:00 AM - 9:00 PM",
+    features: ["Dine-in", "Takeout", "Wood-Fired Pizza", "Downtown"]
+  },
+  {
+    id: "24",
+    name: "Falcone's Kitchen",
+    category: "Italian",
+    categories: ["Italian", "Comfort Food"],
+    address: "2643 Myrtle St, Erie, PA 16508",
+    phone: "(814) 459-5855",
+    description: "Neighborhood Italian kitchen known for generous portions, family recipes, and a casual, friendly atmosphere. A local favorite for comfort food.",
+    priceRange: "$$",
+    rating: 4.3,
+    hours: "11:00 AM - 9:00 PM",
+    features: ["Dine-in", "Takeout", "Family Recipes", "Casual Dining"]
+  },
+  {
+    id: "25",
+    name: "Serafini's Trattoria",
+    category: "Italian",
+    categories: ["Italian", "Fine Dining"],
+    address: "2642 W 8th St, Erie, PA 16505",
+    phone: "(814) 833-3333",
+    description: "Elegant trattoria offering refined Italian cuisine with fresh, seasonal ingredients. Features house-made pasta, seafood specialties, and an extensive wine list.",
+    priceRange: "$$$",
+    rating: 4.6,
+    hours: "4:30 PM - 9:30 PM",
+    features: ["Dine-in", "Reservations", "Wine List", "Seafood"]
   }
 ];
 
