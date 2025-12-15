@@ -43,7 +43,8 @@ export const restaurants: Restaurant[] = [
     priceRange: "$$$",
     rating: 4.8,
     hours: "4:00 PM - 10:00 PM",
-    features: ["Dine-in", "Waterfront", "Full Bar", "Reservations"]
+    features: ["Dine-in", "Waterfront", "Full Bar", "Reservations"],
+    imageUrl: "/assets/bay-house.jpg"
   },
   {
     id: "4",
@@ -218,7 +219,8 @@ export const restaurants: Restaurant[] = [
     priceRange: "$",
     rating: 4.4,
     hours: "11:00 AM - 9:00 PM",
-    features: ["Dine-in", "Outdoor Seating", "Craft Beer", "Family Friendly"]
+    features: ["Dine-in", "Outdoor Seating", "Craft Beer", "Family Friendly"],
+    imageUrl: "/assets/lucky-louies.jpg"
   },
   {
     id: "17",
@@ -258,7 +260,8 @@ export const restaurants: Restaurant[] = [
     priceRange: "$$$",
     rating: 4.5,
     hours: "6:30 AM - 10:00 PM",
-    features: ["Dine-in", "Waterfront", "Breakfast", "Reservations"]
+    features: ["Dine-in", "Waterfront", "Breakfast", "Reservations"],
+    imageUrl: "/assets/two45.jpg"
   },
   {
     id: "20",
@@ -341,6 +344,49 @@ export const restaurants: Restaurant[] = [
     hours: "4:30 PM - 9:30 PM",
     features: ["Dine-in", "Reservations", "Wine List", "Seafood"],
     imageUrl: "/assets/serafinis.jpg"
+  },
+  {
+    id: "26",
+    name: "Oliver's Rooftop",
+    category: "American",
+    categories: ["American", "Bar & Grill", "Fine Dining"],
+    address: "301 French St, Erie, PA 16507",
+    phone: "(814) 453-6454",
+    description: "Erie's premier rooftop dining experience with stunning skyline views. Upscale American cuisine, craft cocktails, and an unforgettable atmosphere.",
+    priceRange: "$$$",
+    rating: 4.6,
+    hours: "4:00 PM - 11:00 PM",
+    features: ["Dine-in", "Rooftop", "Full Bar", "Reservations"],
+    imageUrl: "/assets/olivers.jpeg"
+  },
+  {
+    id: "27",
+    name: "McGarrey's Oakwood Cafe",
+    category: "American",
+    categories: ["American", "Irish", "Bar & Grill"],
+    address: "1624 W 38th St, Erie, PA 16508",
+    phone: "(814) 866-0552",
+    website: "https://www.mcgarreys.com",
+    description: "Erie institution since 1978 serving classic American and Irish pub fare. Known for their wings, burgers, and friendly neighborhood atmosphere.",
+    priceRange: "$$",
+    rating: 4.4,
+    hours: "11:00 AM - 2:00 AM",
+    features: ["Dine-in", "Full Bar", "Late Night", "Wings"],
+    imageUrl: "/assets/mcgarreys.png"
+  },
+  {
+    id: "28",
+    name: "Torero's Authentic Mexican",
+    category: "Mexican",
+    categories: ["Mexican"],
+    address: "2620 W 8th St, Erie, PA 16505",
+    phone: "(814) 833-0298",
+    description: "Authentic Mexican cuisine featuring traditional recipes, fresh ingredients, and a festive atmosphere. Known for their sizzling fajitas and margaritas.",
+    priceRange: "$$",
+    rating: 4.3,
+    hours: "11:00 AM - 10:00 PM",
+    features: ["Dine-in", "Takeout", "Full Bar", "Family Friendly"],
+    imageUrl: "/assets/toreros.png"
   }
 ];
 
