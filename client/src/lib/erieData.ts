@@ -297,7 +297,8 @@ export const restaurants: Restaurant[] = [
     priceRange: "$$$",
     rating: 4.7,
     hours: "4:00 PM - 10:00 PM",
-    features: ["Dine-in", "Reservations", "Wine List", "Fine Dining"]
+    features: ["Dine-in", "Reservations", "Wine List", "Fine Dining"],
+    imageUrl: "/assets/colaos.webp"
   },
   {
     id: "23",
