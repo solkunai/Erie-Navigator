@@ -242,12 +242,20 @@ export default function Restaurants() {
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {filteredRestaurants.map((restaurant) => (
                   <Card key={restaurant.id} className="hover-elevate overflow-hidden" data-testid={`card-restaurant-${restaurant.id}`}>
-                    <div className="aspect-video bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-900/20 dark:to-red-900/20 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-background/80 flex items-center justify-center">
-                          <span className="text-2xl font-bold text-primary">{restaurant.name.charAt(0)}</span>
+                    <div className="aspect-video bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-900/20 dark:to-red-900/20 flex items-center justify-center relative">
+                      {restaurant.imageUrl ? (
+                        <img 
+                          src={restaurant.imageUrl} 
+                          alt={restaurant.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="text-center">
+                          <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-background/80 flex items-center justify-center">
+                            <span className="text-2xl font-bold text-primary">{restaurant.name.charAt(0)}</span>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                     <CardContent className="pt-4">
                       <div className="flex items-start justify-between gap-2 mb-2">
