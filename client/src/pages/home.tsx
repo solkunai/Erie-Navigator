@@ -172,9 +172,17 @@ export default function Home({ onOpenAI }: HomeProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredRestaurants.map((restaurant) => (
-              <Card key={restaurant.id} className="hover-elevate" data-testid={`card-restaurant-${restaurant.id}`}>
-                <div className="aspect-video bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center rounded-t-lg">
-                  <UtensilsCrossed className="h-12 w-12 text-muted-foreground/30" />
+              <Card key={restaurant.id} className="hover-elevate overflow-hidden" data-testid={`card-restaurant-${restaurant.id}`}>
+                <div className="aspect-video bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center rounded-t-lg overflow-hidden">
+                  {restaurant.imageUrl ? (
+                    <img 
+                      src={restaurant.imageUrl} 
+                      alt={restaurant.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <UtensilsCrossed className="h-12 w-12 text-muted-foreground/30" />
+                  )}
                 </div>
                 <CardContent className="pt-4">
                   <div className="flex items-start justify-between gap-2 mb-2">
