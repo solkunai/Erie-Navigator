@@ -1,28 +1,59 @@
+import { useState } from "react";
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Header } from "@/components/header";
+import { AIChat } from "@/components/ai-chat";
+import Home from "@/pages/home";
+import Restaurants from "@/pages/restaurants";
+import Events from "@/pages/events";
+import ThingsToDo from "@/pages/things-to-do";
+import AutismPrograms from "@/pages/autism-programs";
+import SocialGroups from "@/pages/social-groups";
 import NotFound from "@/pages/not-found";
 
-function Router() {
+function Router({ onOpenAI }: { onOpenAI: () => void }) {
   return (
     <Switch>
-      {/* Add pages below */}
-      {/* <Route path="/" component={Home}/> */}
-      {/* Fallback to 404 */}
+      <Route path="/" component={() => <Home onOpenAI={onOpenAI} />} />
+      <Route path="/restaurants" component={Restaurants} />
+      <Route path="/events" component={Events} />
+      <Route path="/things-to-do" component={ThingsToDo} />
+      <Route path="/autism-programs" component={AutismPrograms} />
+      <Route path="/social-groups" component={SocialGroups} />
       <Route component={NotFound} />
     </Switch>
   );
 }
 
 function App() {
+  const [isAIChatOpen, setIsAIChatOpen] = useState(false);
+  const [globalSearch, setGlobalSearch] = useState("");
+
+  const openAI = () => setIsAIChatOpen(true);
+  const closeAI = () => setIsAIChatOpen(false);
+
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
+      <ThemeProvider>
+        <TooltipProvider>
+          <div className="min-h-screen bg-background">
+            <Header
+              onOpenAI={openAI}
+              searchQuery={globalSearch}
+              onSearchChange={setGlobalSearch}
+            />
+            <main>
+              <Router onOpenAI={openAI} />
+            </main>
+            <AIChat isOpen={isAIChatOpen} onClose={closeAI} />
+          </div>
+          <Toaster />
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
