@@ -274,10 +274,118 @@ export const restaurants: Restaurant[] = [
   }
 ];
 
-// Sample Erie, PA events data
+// Erie, PA events data - sourced from VisitErie.com
 export const events: Event[] = [
   {
     id: "1",
+    title: "Sensory Time at the expERIEnce Children's Museum",
+    category: "Education",
+    date: "2025-12-15",
+    time: "11:00 AM",
+    endTime: "12:00 PM",
+    venue: "expERIEnce Children's Museum",
+    address: "420 French St, Erie, PA 16507",
+    description: "A special sensory-friendly time at the museum designed for children who benefit from a calmer, quieter environment. Reduced lighting and sound for a comfortable experience.",
+    isFree: false,
+    price: "Museum admission",
+    ticketUrl: "https://www.visiterie.com/events/event/12/15/2025/sensory-time-at-the-experience-childrens-museum-11"
+  },
+  {
+    id: "2",
+    title: "Country Christmas at Port Farms",
+    category: "Holiday",
+    date: "2025-12-17",
+    time: "5:00 PM",
+    endTime: "9:00 PM",
+    venue: "Port Farms",
+    address: "2Portal Rd, Waterford, PA 16441",
+    description: "Experience the magic of the holidays at Port Farms with thousands of lights, horse-drawn wagon rides, visits with Santa, holiday treats, and festive family fun.",
+    isFree: false,
+    price: "Varies",
+    ticketUrl: "https://www.visiterie.com/events/event/12/17/2025/country-christmas-at-port-farms"
+  },
+  {
+    id: "3",
+    title: "Winter Wonderland at Asbury Woods",
+    category: "Outdoor",
+    date: "2025-12-18",
+    time: "5:00 PM",
+    endTime: "8:00 PM",
+    venue: "Asbury Woods",
+    address: "4105 Asbury Rd, Erie, PA 16506",
+    description: "Walk through a winter wonderland with beautiful light displays, hot cocoa, crafts, and nature activities at this beloved Erie nature center.",
+    isFree: false,
+    price: "Varies",
+    ticketUrl: "https://www.visiterie.com/events/event/12/18/2025/winter-wonderland-at-asbury-woods-3"
+  },
+  {
+    id: "4",
+    title: "Blitzen's at The Brewerie: Erie's Only Pop Up Christmas Bar",
+    category: "Nightlife",
+    date: "2025-12-18",
+    time: "4:00 PM",
+    endTime: "10:00 PM",
+    venue: "The Brewerie at Union Station",
+    address: "123 W 14th St, Erie, PA 16501",
+    description: "Erie's only pop-up Christmas bar transforms The Brewerie into a winter wonderland with festive cocktails, holiday decor, and seasonal cheer. 21+ event.",
+    isFree: true,
+    ticketUrl: "https://www.visiterie.com/events/event/12/18/2025/blitzens-at-the-brewerie-eries-only-pop-up-christmas-bar"
+  },
+  {
+    id: "5",
+    title: "Presque Isle Lights 2025",
+    category: "Holiday",
+    date: "2025-12-19",
+    time: "5:00 PM",
+    endTime: "9:00 PM",
+    venue: "Presque Isle State Park",
+    address: "301 Peninsula Dr, Erie, PA 16505",
+    description: "Drive through a spectacular display of over 100 illuminated exhibits and thousands of lights along Presque Isle's scenic roads. A beloved Erie holiday tradition!",
+    isFree: false,
+    price: "$10 per car",
+    ticketUrl: "https://www.visiterie.com/events/event/12/19/2025/presque-isle-lights-2025"
+  },
+  {
+    id: "6",
+    title: "Erie Restaurant Week 2026",
+    category: "Food & Drink",
+    date: "2026-01-22",
+    time: "All Day",
+    venue: "Various Restaurants",
+    address: "Downtown Erie & Surrounding Areas",
+    description: "Erie's biggest culinary celebration! Sample prix-fixe menus and special offerings from dozens of Erie's best restaurants at special prices.",
+    isFree: false,
+    price: "Prix-fixe menus",
+    ticketUrl: "https://www.visiterie.com/events/event/01/22/2026/erie-restaurant-week-2026"
+  },
+  {
+    id: "7",
+    title: "Erie SeaWolves Opening Night",
+    category: "Sports",
+    date: "2026-04-03",
+    time: "6:05 PM",
+    venue: "UPMC Park - Stadium Club",
+    address: "110 E 10th St, Erie, PA 16501",
+    description: "Kick off the baseball season with the Erie SeaWolves! Opening night festivities, fireworks, and family fun at UPMC Park.",
+    isFree: false,
+    price: "$10-$25",
+    ticketUrl: "https://www.visiterie.com/events/event/04/03/2026/erie-seawolves-opening-night"
+  },
+  {
+    id: "8",
+    title: "Erie SeaWolves: Moon Mammoths Night",
+    category: "Sports",
+    date: "2026-05-29",
+    time: "6:05 PM",
+    venue: "UPMC Park",
+    address: "110 E 10th St, Erie, PA 16501",
+    description: "The Erie SeaWolves transform into the Moon Mammoths for this special themed night! Special jerseys, promotions, and fun for all ages.",
+    isFree: false,
+    price: "$10-$25",
+    ticketUrl: "https://www.visiterie.com/events/event/05/29/2026/erie-seawolves-moon-mammoths-night"
+  },
+  {
+    id: "9",
     title: "Erie Philharmonic Winter Concert",
     category: "Music",
     date: "2025-12-20",
@@ -290,19 +398,7 @@ export const events: Event[] = [
     ticketUrl: "https://eriephil.org"
   },
   {
-    id: "2",
-    title: "Holiday Market at the Bayfront",
-    category: "Holiday",
-    date: "2025-12-21",
-    time: "10:00 AM",
-    endTime: "4:00 PM",
-    venue: "Bayfront Convention Center",
-    address: "1 Sassafras Pier, Erie, PA 16507",
-    description: "Browse local artisan crafts, handmade gifts, and seasonal treats at Erie's largest holiday market.",
-    isFree: true
-  },
-  {
-    id: "3",
+    id: "10",
     title: "New Year's Eve Celebration Downtown",
     category: "Festival",
     date: "2025-12-31",
@@ -314,43 +410,7 @@ export const events: Event[] = [
     isFree: true
   },
   {
-    id: "4",
-    title: "Family Skate Night",
-    category: "Family",
-    date: "2025-12-22",
-    time: "6:00 PM",
-    endTime: "9:00 PM",
-    venue: "Erie Insurance Arena",
-    address: "809 French St, Erie, PA 16501",
-    description: "Bring the whole family for a fun evening of ice skating. Skate rentals available.",
-    price: "$8",
-    isFree: false
-  },
-  {
-    id: "5",
-    title: "Winter Hike at Presque Isle",
-    category: "Outdoor",
-    date: "2025-12-23",
-    time: "10:00 AM",
-    venue: "Presque Isle State Park",
-    address: "301 Peninsula Dr, Erie, PA 16505",
-    description: "Guided winter nature hike exploring the beauty of Presque Isle in the winter season. Dress warmly!",
-    isFree: true
-  },
-  {
-    id: "6",
-    title: "Erie Art Museum First Friday",
-    category: "Arts",
-    date: "2026-01-03",
-    time: "7:00 PM",
-    endTime: "10:00 PM",
-    venue: "Erie Art Museum",
-    address: "20 E 5th St, Erie, PA 16507",
-    description: "Monthly celebration of arts and culture with live performances, gallery openings, and refreshments.",
-    isFree: true
-  },
-  {
-    id: "7",
+    id: "11",
     title: "Erie Otters Hockey Game",
     category: "Sports",
     date: "2025-12-27",
@@ -363,7 +423,32 @@ export const events: Event[] = [
     ticketUrl: "https://www.ottershockey.com"
   },
   {
-    id: "8",
+    id: "12",
+    title: "Family Skate Night",
+    category: "Family",
+    date: "2025-12-22",
+    time: "6:00 PM",
+    endTime: "9:00 PM",
+    venue: "Erie Insurance Arena",
+    address: "809 French St, Erie, PA 16501",
+    description: "Bring the whole family for a fun evening of ice skating. Skate rentals available.",
+    price: "$8",
+    isFree: false
+  },
+  {
+    id: "13",
+    title: "Erie Art Museum First Friday",
+    category: "Arts",
+    date: "2026-01-03",
+    time: "7:00 PM",
+    endTime: "10:00 PM",
+    venue: "Erie Art Museum",
+    address: "20 E 5th St, Erie, PA 16507",
+    description: "Monthly celebration of arts and culture with live performances, gallery openings, and refreshments.",
+    isFree: true
+  },
+  {
+    id: "14",
     title: "Comedy Night at Jr's Last Laugh",
     category: "Nightlife",
     date: "2025-12-28",
@@ -375,30 +460,7 @@ export const events: Event[] = [
     isFree: false
   },
   {
-    id: "9",
-    title: "Children's Story Time at Library",
-    category: "Family",
-    date: "2025-12-19",
-    time: "10:30 AM",
-    venue: "Erie County Public Library",
-    address: "160 E Front St, Erie, PA 16507",
-    description: "Free story time for children ages 3-7 with crafts and activities. No registration required.",
-    isFree: true
-  },
-  {
-    id: "10",
-    title: "Live Jazz at Room 33",
-    category: "Music",
-    date: "2025-12-21",
-    time: "8:00 PM",
-    venue: "Room 33",
-    address: "1033 State St, Erie, PA 16501",
-    description: "Enjoy an evening of live jazz in an intimate speakeasy atmosphere. Craft cocktails available.",
-    price: "$10",
-    isFree: false
-  },
-  {
-    id: "11",
+    id: "15",
     title: "Polar Plunge for Special Olympics",
     category: "Community",
     date: "2026-01-01",
@@ -410,7 +472,7 @@ export const events: Event[] = [
     ticketUrl: "https://www.specialolympicspa.org"
   },
   {
-    id: "12",
+    id: "16",
     title: "Winter Wine Festival",
     category: "Food & Drink",
     date: "2026-01-11",
@@ -423,7 +485,7 @@ export const events: Event[] = [
     isFree: false
   },
   {
-    id: "13",
+    id: "17",
     title: "Erie Playhouse: The Lion King Jr.",
     category: "Theater",
     date: "2025-12-29",
@@ -436,28 +498,43 @@ export const events: Event[] = [
     ticketUrl: "https://www.erieplayhouse.org"
   },
   {
-    id: "14",
-    title: "STEM Saturday at ExpERIEnce Children's Museum",
-    category: "Education",
-    date: "2025-12-21",
+    id: "18",
+    title: "Bicentennial Tower Winter Hours",
+    category: "Outdoor",
+    date: "2025-12-20",
     time: "10:00 AM",
-    endTime: "2:00 PM",
-    venue: "ExpERIEnce Children's Museum",
-    address: "420 French St, Erie, PA 16507",
-    description: "Hands-on science experiments and activities for children of all ages. Included with museum admission.",
-    price: "$10",
-    isFree: false
+    endTime: "6:00 PM",
+    venue: "Bicentennial Tower",
+    address: "1 State St, Erie, PA 16507",
+    description: "Erie's best view in every direction! The observation deck offers stunning views of Presque Isle Bay. Open Fri/Sat/Sun. Tower lit in holiday colors throughout December.",
+    isFree: false,
+    price: "$5"
   },
   {
-    id: "15",
-    title: "Sunset Yoga at Presque Isle",
-    category: "Outdoor",
-    date: "2026-01-05",
-    time: "4:30 PM",
-    venue: "Beach 11, Presque Isle State Park",
-    address: "Presque Isle State Park, Erie, PA 16505",
-    description: "All-levels yoga session with stunning sunset views over Lake Erie. Bring your own mat.",
-    isFree: true
+    id: "19",
+    title: "Splash Lagoon Family Fun Day",
+    category: "Family",
+    date: "2025-12-26",
+    time: "10:00 AM",
+    endTime: "8:00 PM",
+    venue: "Splash Lagoon Indoor Water Park",
+    address: "8091 Peach St, Erie, PA 16509",
+    description: "Escape the cold at Splash Lagoon where it's always 84 degrees! Features nine water slides, pools, hot tubs, and a massive arcade. Ranked #2 Best Indoor Water Park in the U.S.",
+    isFree: false,
+    price: "Day passes available",
+    ticketUrl: "https://www.splashlagoon.com"
+  },
+  {
+    id: "20",
+    title: "Live Jazz at Room 33",
+    category: "Music",
+    date: "2025-12-21",
+    time: "8:00 PM",
+    venue: "Room 33",
+    address: "1033 State St, Erie, PA 16501",
+    description: "Enjoy an evening of live jazz in an intimate speakeasy atmosphere. Craft cocktails available.",
+    price: "$10",
+    isFree: false
   }
 ];
 
