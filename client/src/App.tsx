@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import { AIChat } from "@/components/ai-chat";
 import Home from "@/pages/home";
+import Explore from "@/pages/explore";
 import Restaurants from "@/pages/restaurants";
 import Events from "@/pages/events";
 import ThingsToDo from "@/pages/things-to-do";
@@ -19,6 +20,7 @@ function Router({ onOpenAI }: { onOpenAI: () => void }) {
   return (
     <Switch>
       <Route path="/" component={() => <Home onOpenAI={onOpenAI} />} />
+      <Route path="/explore" component={Explore} />
       <Route path="/restaurants" component={Restaurants} />
       <Route path="/events" component={Events} />
       <Route path="/things-to-do" component={ThingsToDo} />

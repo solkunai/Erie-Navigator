@@ -98,7 +98,7 @@ export default function Home({ onOpenAI }: HomeProps) {
                 Ask AI for Recommendations
               </Button>
               
-              <Link href="/restaurants">
+              <Link href="/explore">
                 <Button variant="outline" size="lg" className="gap-2 text-base px-8" data-testid="button-hero-explore">
                   Explore Erie
                   <ArrowRight className="h-4 w-4" />
