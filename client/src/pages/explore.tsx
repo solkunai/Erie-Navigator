@@ -32,8 +32,8 @@ const categories = [
     color: "text-green-500 dark:text-green-400"
   },
   {
-    title: "Autism Programs",
-    description: "Supportive resources, therapies, and programs for the autism community",
+    title: "Community Services",
+    description: "Non-profits, autism programs, support resources, and community organizations",
     icon: Heart,
     href: "/autism-programs",
     color: "text-purple-500 dark:text-purple-400"

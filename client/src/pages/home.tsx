@@ -47,8 +47,8 @@ const categoryCards = [
   },
   {
     icon: Heart,
-    title: "Autism Programs",
-    description: "Resources, services, and sensory-friendly options for individuals and families",
+    title: "Community Services",
+    description: "Non-profits, autism programs, support resources, and community organizations",
     href: "/autism-programs",
     count: "25+",
     gradient: "from-pink-500 to-rose-500",
