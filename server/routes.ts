@@ -5,10 +5,12 @@ import OpenAI from "openai";
 
 // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
 // This is using Replit's AI Integrations service, which provides OpenAI-compatible API access without requiring your own API key.
-const openai = new OpenAI({
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY
-});
+const openai = process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY
+  ? new OpenAI({
+      baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+      apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY
+    })
+  : null;
 
 export async function registerRoutes(
   httpServer: Server,
@@ -242,6 +244,15 @@ export async function registerRoutes(
         return res.status(400).json({ success: false, error: "Query is required" });
       }
 
+      // Check if OpenAI is configured
+      if (!openai) {
+        return res.json({
+          success: true,
+          message: "AI recommendations are not available at the moment. Please browse our directory to find restaurants, businesses, events, and activities in Erie!",
+          recommendations: { restaurants: [], events: [], activities: [], businesses: [] }
+        });
+      }
+
       // Get current date/time in Erie timezone
       const now = new Date();
       const erieTime = now.toLocaleString("en-US", { 
@@ -293,7 +304,7 @@ Respond in JSON format:
   }
 }`;
 
-      const response = await openai.chat.completions.create({
+      const response = await openai!.chat.completions.create({
         model: "gpt-4o",
         messages: [
           { role: "system", content: systemPrompt },
