@@ -15,10 +15,10 @@ import {
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/restaurants", label: "Restaurants" },
+  { href: "/businesses", label: "Businesses" },
   { href: "/events", label: "Events" },
   { href: "/things-to-do", label: "Things to Do" },
-  { href: "/autism-programs", label: "Programs" },
-  { href: "/social-groups", label: "Social Groups" },
+  { href: "/social-groups", label: "Groups" },
 ];
 
 interface HeaderProps {

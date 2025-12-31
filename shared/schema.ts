@@ -38,6 +38,8 @@ export const restaurantCategories = [
   "Gluten-Free",
   "Vegetarian",
   "Vegan",
+  "Comfort Food",
+  "Irish",
 ] as const;
 
 export type RestaurantCategory = typeof restaurantCategories[number];
@@ -159,6 +161,65 @@ export interface SocialGroup {
   membershipFee?: string;
 }
 
+// Business categories
+export const businessCategories = [
+  "Retail",
+  "Health & Wellness",
+  "Beauty & Spa",
+  "Automotive",
+  "Home Services",
+  "Professional Services",
+  "Pet Services",
+  "Fitness",
+  "Education",
+  "Entertainment",
+  "Financial Services",
+  "Real Estate",
+  "Photography",
+  "Florist",
+  "Gifts & Specialty",
+  "Clothing & Fashion",
+  "Electronics",
+  "Hardware & Tools",
+  "Grocery & Market",
+  "Other",
+] as const;
+
+export type BusinessCategory = typeof businessCategories[number];
+
+// Local Business type
+export interface Business {
+  id: string;
+  name: string;
+  category: BusinessCategory;
+  categories: BusinessCategory[];
+  address: string;
+  phone: string;
+  email?: string;
+  website?: string;
+  description: string;
+  imageUrl?: string;
+  hours?: string;
+  features: string[];
+  isFeatured?: boolean; // For future paid placements
+}
+
+// Business submission type (for the form)
+export interface BusinessSubmission {
+  name: string;
+  category: BusinessCategory;
+  address: string;
+  phone: string;
+  email?: string;
+  website?: string;
+  description: string;
+  hours?: string;
+  features: string[];
+  ownerName: string;
+  ownerEmail: string;
+  ownerPhone?: string;
+}
+
 // AI Chat message type
 export interface ChatMessage {
   id: string;
@@ -169,6 +230,7 @@ export interface ChatMessage {
     restaurants?: Restaurant[];
     events?: Event[];
     activities?: Activity[];
+    businesses?: Business[];
   };
 }
 
@@ -198,5 +260,10 @@ export interface EventFilters {
 export interface ActivityFilters {
   categories: ActivityCategory[];
   audience: AudienceType[];
+  search: string;
+}
+
+export interface BusinessFilters {
+  categories: BusinessCategory[];
   search: string;
 }

@@ -176,6 +176,63 @@ export async function registerRoutes(
     }
   });
 
+  // Businesses API
+  app.get("/api/businesses", async (req, res) => {
+    try {
+      const { category, search } = req.query;
+      let businesses;
+      
+      if (search && typeof search === "string") {
+        businesses = await storage.searchBusinesses(search);
+      } else if (category && typeof category === "string") {
+        businesses = await storage.getBusinessesByCategory(category as any);
+      } else {
+        businesses = await storage.getBusinesses();
+      }
+      
+      res.json({ success: true, data: businesses });
+    } catch (error) {
+      res.status(500).json({ success: false, error: "Failed to fetch businesses" });
+    }
+  });
+
+  app.get("/api/businesses/:id", async (req, res) => {
+    try {
+      const business = await storage.getBusinessById(req.params.id);
+      if (!business) {
+        return res.status(404).json({ success: false, error: "Business not found" });
+      }
+      res.json({ success: true, data: business });
+    } catch (error) {
+      res.status(500).json({ success: false, error: "Failed to fetch business" });
+    }
+  });
+
+  // Business Submission API
+  app.post("/api/businesses/submit", async (req, res) => {
+    try {
+      const submission = req.body;
+      
+      // Basic validation
+      if (!submission.name || !submission.category || !submission.address || !submission.phone || !submission.ownerEmail) {
+        return res.status(400).json({ 
+          success: false, 
+          error: "Missing required fields: name, category, address, phone, and owner email are required" 
+        });
+      }
+      
+      await storage.addBusinessSubmission(submission);
+      
+      res.json({ 
+        success: true, 
+        message: "Thank you! Your business has been submitted for review. We'll add it to the directory shortly." 
+      });
+    } catch (error) {
+      console.error("Business submission error:", error);
+      res.status(500).json({ success: false, error: "Failed to submit business" });
+    }
+  });
+
   // AI Recommendation API
   app.post("/api/ai/recommend", async (req, res) => {
     try {
@@ -198,28 +255,32 @@ export async function registerRoutes(
       });
 
       // Get all data for context
-      const [restaurants, events, activities] = await Promise.all([
+      const [restaurants, events, activities, businesses] = await Promise.all([
         storage.getRestaurants(),
         storage.getEvents(),
-        storage.getActivities()
+        storage.getActivities(),
+        storage.getBusinesses()
       ]);
 
-      const systemPrompt = `You are a helpful local guide for Erie, Pennsylvania. Your job is to help visitors and residents discover restaurants, events, and activities in Erie based on their preferences.
+      const systemPrompt = `You are a helpful local guide for Erie, Pennsylvania. Your job is to help visitors and residents discover restaurants, events, activities, and local businesses in Erie based on their preferences.
 
 Current date and time in Erie, PA: ${erieTime}
 
 You have access to the following data about Erie:
 
 RESTAURANTS (${restaurants.length} total):
-${restaurants.map(r => `- ${r.name}: ${r.category} cuisine, ${r.priceRange}, Rating: ${r.rating}/5. ${r.description}`).join('\n')}
+${restaurants.map(r => `- ${r.name} (ID: ${r.id}): ${r.category} cuisine, ${r.priceRange}, Rating: ${r.rating}/5. ${r.description}`).join('\n')}
 
 UPCOMING EVENTS (${events.length} total):
-${events.map(e => `- ${e.title}: ${e.category} on ${e.date} at ${e.time} at ${e.venue}. ${e.isFree ? 'FREE' : e.price || 'Paid'}. ${e.description}`).join('\n')}
+${events.map(e => `- ${e.title} (ID: ${e.id}): ${e.category} on ${e.date} at ${e.time} at ${e.venue}. ${e.isFree ? 'FREE' : e.price || 'Paid'}. ${e.description}`).join('\n')}
 
 ACTIVITIES (${activities.length} total):
-${activities.map(a => `- ${a.name}: ${a.category} for ${a.audience.join(', ')}. ${a.description}`).join('\n')}
+${activities.map(a => `- ${a.name} (ID: ${a.id}): ${a.category} for ${a.audience.join(', ')}. ${a.description}`).join('\n')}
 
-Based on the user's query, provide personalized recommendations. Be friendly, conversational, and specific. If they ask about dining, suggest 2-3 restaurants that match their criteria. If they ask about events, mention relevant upcoming events. Always provide helpful context like hours, prices, and what makes each place special.
+LOCAL BUSINESSES (${businesses.length} total):
+${businesses.map(b => `- ${b.name} (ID: ${b.id}): ${b.category}. ${b.description}`).join('\n')}
+
+Based on the user's query, provide personalized recommendations. Be friendly, conversational, and specific. If they ask about dining, suggest 2-3 restaurants that match their criteria. If they ask about events, mention relevant upcoming events. If they ask about shopping, services, or local businesses, recommend appropriate businesses. Always provide helpful context like hours, prices, and what makes each place special.
 
 Respond in JSON format:
 {
@@ -227,7 +288,8 @@ Respond in JSON format:
   "recommendations": {
     "restaurants": [array of restaurant IDs that match, max 3],
     "events": [array of event IDs that match, max 3],
-    "activities": [array of activity IDs that match, max 3]
+    "activities": [array of activity IDs that match, max 3],
+    "businesses": [array of business IDs that match, max 3]
   }
 }`;
 
@@ -260,6 +322,10 @@ Respond in JSON format:
       const recommendedActivities = parsed.recommendations?.activities
         ? activities.filter(a => parsed.recommendations.activities.includes(a.id))
         : [];
+      
+      const recommendedBusinesses = parsed.recommendations?.businesses
+        ? businesses.filter(b => parsed.recommendations.businesses.includes(b.id))
+        : [];
 
       res.json({
         success: true,
@@ -267,7 +333,8 @@ Respond in JSON format:
         recommendations: {
           restaurants: recommendedRestaurants,
           events: recommendedEvents,
-          activities: recommendedActivities
+          activities: recommendedActivities,
+          businesses: recommendedBusinesses
         }
       });
     } catch (error) {

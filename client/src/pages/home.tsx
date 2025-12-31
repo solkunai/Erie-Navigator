@@ -8,13 +8,15 @@ import {
   ArrowRight,
   Sparkles,
   Star,
-  Clock
+  Clock,
+  Building2,
+  Plus
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { RealTimeClock } from "@/components/real-time-clock";
-import { restaurants, events, activities } from "@/lib/erieData";
+import { restaurants, events, activities, businesses } from "@/lib/erieData";
 
 interface HomeProps {
   onOpenAI: () => void;
@@ -30,6 +32,14 @@ const categoryCards = [
     gradient: "from-orange-500 to-red-500",
   },
   {
+    icon: Building2,
+    title: "Local Businesses",
+    description: "Support local! Find shops, services, and small businesses in the Erie community",
+    href: "/businesses",
+    count: "50+",
+    gradient: "from-emerald-500 to-teal-500",
+  },
+  {
     icon: Calendar,
     title: "Events",
     description: "Find concerts, festivals, sports, and community gatherings happening in Erie",
@@ -43,15 +53,7 @@ const categoryCards = [
     description: "Explore attractions, activities, and experiences for every age and interest",
     href: "/things-to-do",
     count: "75+",
-    gradient: "from-green-500 to-teal-500",
-  },
-  {
-    icon: Heart,
-    title: "Community Services",
-    description: "Non-profits, autism programs, support resources, and community organizations",
-    href: "/autism-programs",
-    count: "25+",
-    gradient: "from-pink-500 to-rose-500",
+    gradient: "from-green-500 to-cyan-500",
   },
   {
     icon: Users,
@@ -61,10 +63,19 @@ const categoryCards = [
     count: "40+",
     gradient: "from-indigo-500 to-violet-500",
   },
+  {
+    icon: Heart,
+    title: "Community Services",
+    description: "Non-profits, autism programs, support resources, and community organizations",
+    href: "/autism-programs",
+    count: "25+",
+    gradient: "from-pink-500 to-rose-500",
+  },
 ];
 
 export default function Home({ onOpenAI }: HomeProps) {
   const featuredRestaurants = restaurants.slice(0, 3);
+  const featuredBusinesses = businesses.slice(0, 3);
   const upcomingEvents = events.slice(0, 4);
   const popularActivities = activities.slice(0, 3);
 
@@ -111,7 +122,10 @@ export default function Home({ onOpenAI }: HomeProps) {
                 <UtensilsCrossed className="h-4 w-4" /> 100+ Restaurants
               </span>
               <span className="flex items-center gap-1">
-                <Calendar className="h-4 w-4" /> 50+ Weekly Events
+                <Building2 className="h-4 w-4" /> 50+ Businesses
+              </span>
+              <span className="flex items-center gap-1">
+                <Calendar className="h-4 w-4" /> 50+ Events
               </span>
               <span className="flex items-center gap-1">
                 <MapPin className="h-4 w-4" /> 75+ Activities
@@ -204,7 +218,71 @@ export default function Home({ onOpenAI }: HomeProps) {
         </div>
       </section>
 
+      {/* Featured Businesses Section */}
       <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+            <div>
+              <h2 className="text-2xl font-bold" data-testid="text-businesses-title">Local Businesses</h2>
+              <p className="text-muted-foreground">Support small businesses in Erie</p>
+            </div>
+            <Link href="/businesses">
+              <Button variant="outline" className="gap-2" data-testid="button-view-businesses">
+                View All
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredBusinesses.map((business) => (
+              <Card key={business.id} className="hover-elevate overflow-hidden" data-testid={`card-business-${business.id}`}>
+                <div className="aspect-video bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-900/20 dark:to-teal-900/20 flex items-center justify-center rounded-t-lg overflow-hidden">
+                  {business.imageUrl ? (
+                    <img 
+                      src={business.imageUrl} 
+                      alt={business.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Building2 className="h-12 w-12 text-emerald-500/40" />
+                  )}
+                </div>
+                <CardContent className="pt-4">
+                  <h3 className="font-semibold text-lg line-clamp-1 mb-2">{business.name}</h3>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                    <Badge variant="outline">{business.category}</Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground line-clamp-2">{business.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Add Your Business CTA */}
+          <div className="mt-8 p-6 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-xl border border-emerald-500/20">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                  <Plus className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg">Own a Business in Erie?</h3>
+                  <p className="text-muted-foreground">Get your business listed for free and reach more customers!</p>
+                </div>
+              </div>
+              <Link href="/add-business">
+                <Button className="gap-2 bg-emerald-600 hover:bg-emerald-700">
+                  <Plus className="h-4 w-4" />
+                  Add Your Business
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
             <div>
@@ -252,7 +330,7 @@ export default function Home({ onOpenAI }: HomeProps) {
         </div>
       </section>
 
-      <section className="py-16 bg-muted/30">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
             <div>
@@ -312,7 +390,7 @@ export default function Home({ onOpenAI }: HomeProps) {
       <footer className="py-8 border-t bg-background">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
           <p>Discover Erie - Your Complete Guide to Erie, PA</p>
-          <p className="mt-2">Helping you explore restaurants, events, activities, and community resources.</p>
+          <p className="mt-2">Helping you explore restaurants, local businesses, events, and community resources.</p>
         </div>
       </footer>
     </div>
