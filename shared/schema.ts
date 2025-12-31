@@ -21,6 +21,7 @@ export type User = typeof users.$inferSelect;
 // Restaurant categories
 export const restaurantCategories = [
   "Mexican",
+  "Latin",
   "BBQ",
   "Seafood",
   "Italian",
@@ -32,7 +33,9 @@ export const restaurantCategories = [
   "Steakhouse",
   "Breakfast",
   "Cafe",
+  "Bakery",
   "Bar & Grill",
+  "Winery & Meadery",
   "Fine Dining",
   "Fast Food",
   "Gluten-Free",

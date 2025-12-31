@@ -387,6 +387,71 @@ export const restaurants: Restaurant[] = [
     hours: "11:00 AM - 10:00 PM",
     features: ["Dine-in", "Takeout", "Full Bar", "Family Friendly"],
     imageUrl: "/assets/toreros.png"
+  },
+  {
+    id: "29",
+    name: "Julius",
+    category: "Mexican",
+    categories: ["Mexican"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://juliuserie.square.site/",
+    description: "Authentic Mexican restaurant serving traditional dishes made with fresh ingredients and family recipes.",
+    priceRange: "$$",
+    rating: 4.5,
+    features: ["Dine-in", "Takeout"]
+  },
+  {
+    id: "30",
+    name: "Empanissah's",
+    category: "Latin",
+    categories: ["Latin"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.facebook.com/profile.php?id=61561961867814",
+    description: "Latin cuisine featuring authentic empanadas and traditional dishes from across Latin America.",
+    priceRange: "$$",
+    rating: 4.5,
+    features: ["Dine-in", "Takeout", "Catering"]
+  },
+  {
+    id: "31",
+    name: "CheesErie",
+    category: "American",
+    categories: ["American", "Cafe"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.facebook.com/groups/1597285337222719/user/100070847396961",
+    description: "Local restaurant specializing in delicious cheese-centric dishes and comfort food favorites.",
+    priceRange: "$$",
+    rating: 4.4,
+    features: ["Dine-in", "Takeout"]
+  },
+  {
+    id: "32",
+    name: "Main Street Cakery Cafe",
+    category: "Cafe",
+    categories: ["Cafe", "Bakery", "Breakfast"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.mainstreetcakery.com/",
+    description: "Charming bakery and cafe offering fresh-baked goods, artisan cakes, pastries, and light cafe fare.",
+    priceRange: "$$",
+    rating: 4.6,
+    features: ["Dine-in", "Takeout", "Custom Cakes", "Catering"]
+  },
+  {
+    id: "33",
+    name: "Iron Stone Meadery",
+    category: "Winery & Meadery",
+    categories: ["Winery & Meadery", "Bar & Grill"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.ironstonemeadery.com/",
+    description: "Craft meadery producing handcrafted meads and honey wines. Tasting room with a cozy atmosphere.",
+    priceRange: "$$",
+    rating: 4.7,
+    features: ["Tasting Room", "Tours", "Local Products"]
   }
 ];
 
@@ -928,6 +993,39 @@ export const autismPrograms: AutismProgram[] = [
     website: "https://www.ymcaerie.org",
     services: ["Private Lessons", "Small Group Classes", "Sensory-Friendly Times", "Trained Instructors"],
     accessibility: ["Pool Accessibility", "Quiet Hours", "Visual Schedules"]
+  },
+  {
+    id: "9",
+    name: "Taylor's Hope",
+    organization: "Taylor's Hope",
+    description: "Non-profit organization dedicated to supporting the Erie community through various charitable programs and initiatives.",
+    address: "Erie, PA",
+    phone: "",
+    website: "https://taylors-hope.org/",
+    services: ["Community Support", "Charitable Programs", "Local Initiatives"],
+    accessibility: []
+  },
+  {
+    id: "10",
+    name: "Heberle's Heartstrings",
+    organization: "Heberle's Heartstrings",
+    description: "Non-profit providing musical instrument lending and music education resources to the Erie community. Making music accessible to all.",
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.heberlesheartstrings.org/",
+    services: ["Instrument Lending", "Music Education", "Community Outreach", "Youth Programs"],
+    accessibility: []
+  },
+  {
+    id: "11",
+    name: "NAMI Erie",
+    organization: "National Alliance on Mental Illness - Erie Chapter",
+    description: "Non-profit organization providing mental health support, education, and advocacy for individuals and families affected by mental illness.",
+    address: "Erie, PA",
+    phone: "",
+    website: "https://namierie.org/",
+    services: ["Mental Health Support", "Education Programs", "Advocacy", "Family Support", "Support Groups"],
+    accessibility: []
   }
 ];
 
@@ -1052,6 +1150,16 @@ export const socialGroups: SocialGroup[] = [
     location: "Frontier Park",
     contactPhone: "(814) 555-1234",
     membershipFee: "$20/year"
+  },
+  {
+    id: "13",
+    name: "Gogh Party Erie",
+    category: "Arts & Creative",
+    description: "Community painting group bringing people together for fun, social painting events. No experience necessary - just come and create!",
+    meetingSchedule: "Regular painting events",
+    location: "Various locations in Erie",
+    website: "https://www.facebook.com/groups/668392443222569/user/100076898271397",
+    membershipFee: "Free"
   }
 ];
 
@@ -1234,5 +1342,82 @@ export const businesses: Business[] = [
     description: "Computer repair, IT services, and custom PC builds. Serving homes and businesses throughout Erie.",
     hours: "Mon-Fri 9:00 AM - 5:00 PM",
     features: ["Computer Repair", "IT Services", "Custom PCs", "Business Support"]
+  },
+  {
+    id: "16",
+    name: "John Gallagher DJ & Entertainment",
+    category: "Entertainment",
+    categories: ["Entertainment", "Professional Services"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.johngallagher.com/",
+    description: "Professional wedding and special event DJ services. Creating memorable experiences with music for your special occasions.",
+    features: ["Wedding DJ", "Event Entertainment", "Special Events", "Professional Sound"]
+  },
+  {
+    id: "17",
+    name: "Metamorphosis Counseling",
+    category: "Health & Wellness",
+    categories: ["Health & Wellness"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.metamorphosiscounseling.net/",
+    description: "Professional mental health counseling services providing compassionate care and support for individuals and families.",
+    features: ["Mental Health", "Counseling", "Therapy", "Individual Sessions"]
+  },
+  {
+    id: "18",
+    name: "KD's Place Local Books & Arts",
+    category: "Entertainment",
+    categories: ["Entertainment", "Retail", "Education"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.facebook.com/kdsplace814/",
+    description: "Community event space featuring local books, arts, and cultural programming. A gathering place for Erie's creative community.",
+    features: ["Event Space", "Local Books", "Arts", "Community Events"]
+  },
+  {
+    id: "19",
+    name: "Sacred Energy Yoga",
+    category: "Fitness",
+    categories: ["Fitness", "Health & Wellness"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.facebook.com/groups/668392443222569/user/61579081396134/",
+    description: "Yoga studio offering classes for all levels. Find your inner peace and physical wellness through guided yoga practice.",
+    features: ["Yoga Classes", "All Levels", "Wellness", "Meditation"]
+  },
+  {
+    id: "20",
+    name: "Carolina - Erie Wedding Ceremonies",
+    category: "Professional Services",
+    categories: ["Professional Services"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.facebook.com/Weddingceremonybykarolina",
+    description: "Professional wedding officiant services for beautiful and personalized wedding ceremonies in the Erie area.",
+    features: ["Wedding Officiant", "Custom Ceremonies", "Personalized Vows"]
+  },
+  {
+    id: "21",
+    name: "Keller Williams Realty Erie",
+    category: "Real Estate",
+    categories: ["Real Estate", "Professional Services"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.kellerwilliamseriepa.com/",
+    description: "Full-service real estate agency helping buyers and sellers navigate the Erie housing market with expertise and care.",
+    features: ["Real Estate", "Home Buying", "Home Selling", "Property Management"]
+  },
+  {
+    id: "22",
+    name: "Calm Creations Jewelry",
+    category: "Retail",
+    categories: ["Retail", "Gifts & Specialty"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://calmpermjewelry.glossgenius.com/",
+    description: "Custom jewelry studio specializing in unique, handcrafted pieces. Permanent jewelry and custom designs available.",
+    features: ["Custom Jewelry", "Handcrafted", "Permanent Jewelry", "Gift Items"]
   }
 ];
