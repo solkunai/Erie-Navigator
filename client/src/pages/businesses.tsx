@@ -1,9 +1,8 @@
 import { useState, useMemo } from "react";
 import { Link } from "wouter";
-import { Search, Filter, MapPin, Clock, Phone, ExternalLink, X, Building2, Plus } from "lucide-react";
+import { Search, Filter, MapPin, Clock, Phone, ExternalLink, X, Building2, Plus, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -56,7 +55,7 @@ export default function Businesses() {
   const FilterContent = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="font-semibold mb-3">Business Type</h3>
+        <h3 className="text-sm font-medium mb-3">Category</h3>
         <div className="space-y-2 max-h-80 overflow-y-auto">
           {businessCategories.map((category) => (
             <div key={category} className="flex items-center space-x-2">
@@ -64,11 +63,10 @@ export default function Businesses() {
                 id={`category-${category}`}
                 checked={selectedCategories.includes(category)}
                 onCheckedChange={() => toggleCategory(category)}
-                data-testid={`checkbox-category-${category.toLowerCase().replace(/\s+/g, "-")}`}
               />
               <Label
                 htmlFor={`category-${category}`}
-                className="text-sm cursor-pointer"
+                className="text-sm cursor-pointer font-normal"
               >
                 {category}
               </Label>
@@ -79,13 +77,12 @@ export default function Businesses() {
 
       {hasActiveFilters && (
         <Button
-          variant="outline"
+          variant="ghost"
           onClick={clearFilters}
-          className="w-full gap-2"
-          data-testid="button-clear-filters"
+          className="w-full text-muted-foreground"
+          size="sm"
         >
-          <X className="h-4 w-4" />
-          Clear All Filters
+          Clear filters
         </Button>
       )}
     </div>
@@ -93,25 +90,29 @@ export default function Businesses() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-            <h1 className="text-3xl md:text-4xl font-bold" data-testid="text-page-title">
-              Local Businesses
-            </h1>
+      {/* Page Header */}
+      <div className="border-b">
+        <div className="container mx-auto px-4 py-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div>
+              <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
+                Directory
+              </p>
+              <h1 className="text-3xl md:text-4xl font-serif">Local Businesses</h1>
+              <p className="text-muted-foreground mt-2 max-w-xl">
+                Support Erie's small businesses, shops, and services.
+              </p>
+            </div>
             <Link href="/add-business">
-              <Button className="gap-2" data-testid="button-add-business">
-                <Plus className="h-4 w-4" />
+              <Button>
+                <Plus className="h-4 w-4 mr-2" />
                 Add Your Business
               </Button>
             </Link>
           </div>
-          <p className="text-muted-foreground mb-6 max-w-2xl">
-            Support local! Discover Erie's small businesses, shops, and services. 
-            From boutiques to auto repair, find trusted local businesses in your community.
-          </p>
           
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* Search Bar */}
+          <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
@@ -120,17 +121,17 @@ export default function Businesses() {
                 className="pl-9"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                data-testid="input-search-businesses"
               />
             </div>
             
+            {/* Mobile Filter Button */}
             <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
               <SheetTrigger asChild>
-                <Button variant="outline" className="lg:hidden gap-2" data-testid="button-mobile-filters">
-                  <Filter className="h-4 w-4" />
+                <Button variant="outline" className="lg:hidden">
+                  <Filter className="h-4 w-4 mr-2" />
                   Filters
-                  {hasActiveFilters && (
-                    <Badge variant="secondary">
+                  {selectedCategories.length > 0 && (
+                    <Badge variant="secondary" className="ml-2">
                       {selectedCategories.length}
                     </Badge>
                   )}
@@ -138,7 +139,7 @@ export default function Businesses() {
               </SheetTrigger>
               <SheetContent side="left" className="w-80">
                 <SheetHeader>
-                  <SheetTitle>Filter Businesses</SheetTitle>
+                  <SheetTitle>Filters</SheetTitle>
                 </SheetHeader>
                 <div className="mt-6">
                   <FilterContent />
@@ -150,34 +151,33 @@ export default function Businesses() {
       </div>
 
       <div className="container mx-auto px-4 py-8">
-        <div className="flex gap-8">
-          <aside className="hidden lg:block w-64 flex-shrink-0">
-            <div className="sticky top-24 bg-card p-4 rounded-lg border">
-              <h2 className="font-semibold mb-4 flex items-center gap-2">
-                <Filter className="h-4 w-4" />
-                Filters
-              </h2>
+        <div className="flex gap-12">
+          {/* Sidebar Filters - Desktop */}
+          <aside className="hidden lg:block w-56 flex-shrink-0">
+            <div className="sticky top-20">
               <FilterContent />
             </div>
           </aside>
 
+          {/* Main Content */}
           <main className="flex-1">
+            {/* Results Count & Active Filters */}
             <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
-              <p className="text-muted-foreground" data-testid="text-results-count">
-                Showing {filteredBusinesses.length} of {businesses.length} businesses
+              <p className="text-sm text-muted-foreground">
+                {filteredBusinesses.length} {filteredBusinesses.length === 1 ? 'business' : 'businesses'}
               </p>
               
-              {hasActiveFilters && (
+              {selectedCategories.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {selectedCategories.map((category) => (
                     <Badge
                       key={category}
                       variant="secondary"
-                      className="cursor-pointer gap-1"
+                      className="cursor-pointer hover:bg-secondary/80"
                       onClick={() => toggleCategory(category)}
                     >
                       {category}
-                      <X className="h-3 w-3" />
+                      <X className="h-3 w-3 ml-1" />
                     </Badge>
                   ))}
                 </div>
@@ -185,102 +185,100 @@ export default function Businesses() {
             </div>
 
             {filteredBusinesses.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
-                  <Search className="h-8 w-8 text-muted-foreground" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2">No businesses found</h3>
-                <p className="text-muted-foreground mb-4">
-                  Try adjusting your filters or search terms.
+              <div className="text-center py-16">
+                <Building2 className="h-12 w-12 mx-auto text-muted-foreground/30 mb-4" />
+                <h3 className="font-medium mb-2">No businesses found</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Try adjusting your search or filters.
                 </p>
                 <Button variant="outline" onClick={clearFilters}>
-                  Clear Filters
+                  Clear filters
                 </Button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid gap-4">
                 {filteredBusinesses.map((business) => (
-                  <Card key={business.id} className="hover-elevate overflow-hidden" data-testid={`card-business-${business.id}`}>
-                    <div className="aspect-video bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-900/20 dark:to-teal-900/20 flex items-center justify-center relative">
+                  <article 
+                    key={business.id} 
+                    className="flex gap-4 p-5 border rounded-lg hover:border-primary/30 transition-colors group"
+                  >
+                    {/* Icon */}
+                    <div className="w-14 h-14 rounded-lg bg-muted flex-shrink-0 flex items-center justify-center">
                       {business.imageUrl ? (
                         <img 
                           src={business.imageUrl} 
                           alt={business.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover rounded-lg"
                         />
                       ) : (
-                        <div className="text-center">
-                          <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-background/80 flex items-center justify-center">
-                            <Building2 className="h-8 w-8 text-primary" />
-                          </div>
-                        </div>
-                      )}
-                      {business.isFeatured && (
-                        <Badge className="absolute top-2 right-2" variant="default">
-                          Featured
-                        </Badge>
+                        <Building2 className="h-6 w-6 text-muted-foreground" />
                       )}
                     </div>
-                    <CardContent className="pt-4">
-                      <div className="flex items-start justify-between gap-2 mb-2">
-                        <h3 className="font-semibold text-lg line-clamp-1">{business.name}</h3>
-                      </div>
-                      
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <Badge variant="outline">{business.category}</Badge>
-                      </div>
-                      
-                      <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
-                        {business.description}
-                      </p>
-                      
-                      <div className="space-y-2 text-sm text-muted-foreground">
-                        <div className="flex items-start gap-2">
-                          <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5" />
-                          <span className="line-clamp-1">{business.address}</span>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
+                            {business.category}
+                          </p>
+                          <h3 className="font-medium group-hover:text-primary transition-colors">
+                            {business.name}
+                          </h3>
                         </div>
-                        
-                        <div className="flex items-center gap-2">
-                          <Phone className="h-4 w-4 flex-shrink-0" />
-                          <span>{business.phone}</span>
-                        </div>
-                        
-                        {business.hours && (
-                          <div className="flex items-center gap-2">
-                            <Clock className="h-4 w-4 flex-shrink-0" />
-                            <span className="line-clamp-1">{business.hours}</span>
-                          </div>
+                        {business.website && (
+                          <a
+                            href={business.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors flex-shrink-0"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
                         )}
                       </div>
                       
+                      <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+                        {business.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <MapPin className="h-3.5 w-3.5" />
+                          <span className="truncate max-w-[200px]">{business.address}</span>
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Phone className="h-3.5 w-3.5" />
+                          {business.phone}
+                        </span>
+                        {business.hours && (
+                          <span className="flex items-center gap-1">
+                            <Clock className="h-3.5 w-3.5" />
+                            <span className="truncate max-w-[150px]">{business.hours}</span>
+                          </span>
+                        )}
+                      </div>
+
                       {business.features.length > 0 && (
-                        <div className="flex flex-wrap gap-1 mt-4 pt-4 border-t">
-                          {business.features.slice(0, 3).map((feature) => (
-                            <Badge key={feature} variant="outline" className="text-xs">
+                        <div className="flex flex-wrap gap-1.5 mt-3">
+                          {business.features.slice(0, 4).map((feature) => (
+                            <span 
+                              key={feature} 
+                              className="text-xs px-2 py-0.5 bg-muted rounded-full text-muted-foreground"
+                            >
                               {feature}
-                            </Badge>
+                            </span>
                           ))}
-                          {business.features.length > 3 && (
-                            <Badge variant="outline" className="text-xs">
-                              +{business.features.length - 3}
-                            </Badge>
+                          {business.features.length > 4 && (
+                            <span className="text-xs px-2 py-0.5 text-muted-foreground">
+                              +{business.features.length - 4} more
+                            </span>
                           )}
                         </div>
                       )}
-                      
-                      {business.website && (
-                        <a
-                          href={business.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-4 flex items-center gap-1 text-sm text-primary hover:underline"
-                        >
-                          Visit Website
-                          <ExternalLink className="h-3 w-3" />
-                        </a>
-                      )}
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </article>
                 ))}
               </div>
             )}

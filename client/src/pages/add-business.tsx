@@ -159,26 +159,23 @@ export default function AddBusiness() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 py-12">
-        <div className="container mx-auto px-4">
+      {/* Page Header */}
+      <div className="border-b">
+        <div className="container mx-auto px-4 py-12">
           <Link href="/businesses">
-            <Button variant="ghost" size="sm" className="gap-2 mb-4">
-              <ArrowLeft className="h-4 w-4" />
+            <Button variant="ghost" size="sm" className="mb-4 -ml-2 text-muted-foreground">
+              <ArrowLeft className="h-4 w-4 mr-1" />
               Back to Businesses
             </Button>
           </Link>
           
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Building2 className="h-6 w-6 text-primary" />
-            </div>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold">Add Your Business</h1>
-              <p className="text-muted-foreground">
-                Get your business listed in Erie's local directory — it's free!
-              </p>
-            </div>
-          </div>
+          <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
+            Free Listing
+          </p>
+          <h1 className="text-3xl md:text-4xl font-serif">Add Your Business</h1>
+          <p className="text-muted-foreground mt-2 max-w-xl">
+            Get your business listed in Erie's local directory and connect with customers.
+          </p>
         </div>
       </div>
 
