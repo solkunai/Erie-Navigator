@@ -27,52 +27,69 @@ export default function Home({ onOpenAI }: HomeProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section - Clean and Minimal */}
-      <section className="relative border-b">
-        <div className="container mx-auto px-4 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
-              Your Local Guide
-            </p>
-            <h1 className="text-4xl md:text-6xl font-serif font-normal tracking-tight mb-6 leading-[1.1]">
-              Discover what makes <br className="hidden md:block" />
-              <span className="italic">Erie, PA</span> special
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
-              Find the best restaurants, local businesses, upcoming events, and hidden gems in Erie and the surrounding area.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link href="/restaurants">
-                <Button size="lg" className="w-full sm:w-auto">
-                  Explore Restaurants
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/businesses">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  Browse Businesses
-                </Button>
-              </Link>
-            </div>
-          </div>
-          
-          {/* Floating Stats */}
-          <div className="mt-16 flex flex-wrap gap-8 text-sm">
+      {/* Hero Section - Split Layout with Image */}
+      <section className="relative border-b overflow-hidden">
+        <div className="container mx-auto px-4 py-16 md:py-24">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text Content */}
             <div>
-              <p className="text-3xl font-serif">{restaurants.length}+</p>
-              <p className="text-muted-foreground">Restaurants</p>
+              <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
+                Your Local Guide
+              </p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-normal tracking-tight mb-6 leading-[1.1]">
+                Discover what makes{" "}
+                <span className="italic">Erie, PA</span> special
+              </h1>
+              <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
+                Find the best restaurants, local businesses, upcoming events, and hidden gems in Erie and the surrounding area.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 mb-12">
+                <Link href="/restaurants">
+                  <Button size="lg" className="w-full sm:w-auto">
+                    Explore Restaurants
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/businesses">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                    Browse Businesses
+                  </Button>
+                </Link>
+              </div>
+              
+              {/* Stats */}
+              <div className="flex flex-wrap gap-8 text-sm">
+                <div>
+                  <p className="text-3xl font-serif">{restaurants.length}+</p>
+                  <p className="text-muted-foreground">Restaurants</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-serif">{businesses.length}+</p>
+                  <p className="text-muted-foreground">Businesses</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-serif">{events.length}+</p>
+                  <p className="text-muted-foreground">Events</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-serif">{activities.length}+</p>
+                  <p className="text-muted-foreground">Activities</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <p className="text-3xl font-serif">{businesses.length}+</p>
-              <p className="text-muted-foreground">Businesses</p>
-            </div>
-            <div>
-              <p className="text-3xl font-serif">{events.length}+</p>
-              <p className="text-muted-foreground">Events</p>
-            </div>
-            <div>
-              <p className="text-3xl font-serif">{activities.length}+</p>
-              <p className="text-muted-foreground">Activities</p>
+
+            {/* Right: Hero Image */}
+            <div className="relative hidden lg:block">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/assets/bayfront.JPG" 
+                  alt="Erie Bayfront"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Decorative element */}
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-primary/10 rounded-full -z-10" />
+              <div className="absolute -top-4 -right-4 w-32 h-32 bg-primary/5 rounded-full -z-10" />
             </div>
           </div>
         </div>
