@@ -1385,7 +1385,8 @@ export const businesses: Business[] = [
     phone: "",
     website: "https://www.facebook.com/groups/668392443222569/user/61579081396134/",
     description: "Yoga studio offering classes for all levels. Find your inner peace and physical wellness through guided yoga practice.",
-    features: ["Yoga Classes", "All Levels", "Wellness", "Meditation"]
+    features: ["Yoga Classes", "All Levels", "Wellness", "Meditation"],
+    imageUrl: "https://i.imgur.com/RvBLppO.jpg"
   },
   {
     id: "20",
