@@ -182,8 +182,16 @@ export default function Home({ onOpenAI }: HomeProps) {
               <div className="grid sm:grid-cols-2 gap-4">
                 {featuredBusinesses.map((business) => (
                   <article key={business.id} className="flex gap-4 p-4 bg-background rounded-lg border hover:border-primary/50 transition-colors cursor-pointer group">
-                    <div className="w-16 h-16 rounded-md bg-muted flex-shrink-0 flex items-center justify-center">
-                      <Building2 className="h-6 w-6 text-muted-foreground" />
+                    <div className="w-16 h-16 rounded-md bg-muted flex-shrink-0 flex items-center justify-center overflow-hidden">
+                      {business.imageUrl ? (
+                        <img 
+                          src={business.imageUrl} 
+                          alt={business.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <Building2 className="h-6 w-6 text-muted-foreground" />
+                      )}
                     </div>
                     <div className="min-w-0">
                       <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{business.category}</p>

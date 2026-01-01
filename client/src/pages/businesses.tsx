@@ -202,16 +202,16 @@ export default function Businesses() {
                     key={business.id} 
                     className="flex gap-4 p-5 border rounded-lg hover:border-primary/30 transition-colors group"
                   >
-                    {/* Icon */}
-                    <div className="w-14 h-14 rounded-lg bg-muted flex-shrink-0 flex items-center justify-center">
+                    {/* Image */}
+                    <div className="w-20 h-20 rounded-lg bg-muted flex-shrink-0 flex items-center justify-center overflow-hidden">
                       {business.imageUrl ? (
                         <img 
                           src={business.imageUrl} 
                           alt={business.name}
-                          className="w-full h-full object-cover rounded-lg"
+                          className="w-full h-full object-cover"
                         />
                       ) : (
-                        <Building2 className="h-6 w-6 text-muted-foreground" />
+                        <Building2 className="h-8 w-8 text-muted-foreground" />
                       )}
                     </div>
 
