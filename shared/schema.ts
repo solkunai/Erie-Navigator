@@ -147,6 +147,7 @@ export interface AutismProgram {
   website?: string;
   services: string[];
   accessibility: string[];
+  imageUrl?: string;
 }
 
 // Social group type
@@ -162,6 +163,7 @@ export interface SocialGroup {
   contactPhone?: string;
   website?: string;
   membershipFee?: string;
+  imageUrl?: string;
 }
 
 // Business categories

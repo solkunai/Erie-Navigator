@@ -399,7 +399,8 @@ export const restaurants: Restaurant[] = [
     description: "Authentic Mexican restaurant serving traditional dishes made with fresh ingredients and family recipes.",
     priceRange: "$$",
     rating: 4.5,
-    features: ["Dine-in", "Takeout"]
+    features: ["Dine-in", "Takeout"],
+    imageUrl: "/assets/Julius.jpg"
   },
   {
     id: "30",
@@ -412,7 +413,8 @@ export const restaurants: Restaurant[] = [
     description: "Latin cuisine featuring authentic empanadas and traditional dishes from across Latin America.",
     priceRange: "$$",
     rating: 4.5,
-    features: ["Dine-in", "Takeout", "Catering"]
+    features: ["Dine-in", "Takeout", "Catering"],
+    imageUrl: "/assets/empanissahs.jpg"
   },
   {
     id: "31",
@@ -425,7 +427,8 @@ export const restaurants: Restaurant[] = [
     description: "Local restaurant specializing in delicious cheese-centric dishes and comfort food favorites.",
     priceRange: "$$",
     rating: 4.4,
-    features: ["Dine-in", "Takeout"]
+    features: ["Dine-in", "Takeout"],
+    imageUrl: "/assets/cheeserie.jpg"
   },
   {
     id: "32",
@@ -438,7 +441,8 @@ export const restaurants: Restaurant[] = [
     description: "Charming bakery and cafe offering fresh-baked goods, artisan cakes, pastries, and light cafe fare.",
     priceRange: "$$",
     rating: 4.6,
-    features: ["Dine-in", "Takeout", "Custom Cakes", "Catering"]
+    features: ["Dine-in", "Takeout", "Custom Cakes", "Catering"],
+    imageUrl: "/assets/mainstreetcakery.jpg"
   },
   {
     id: "33",
@@ -451,7 +455,8 @@ export const restaurants: Restaurant[] = [
     description: "Craft meadery producing handcrafted meads and honey wines. Tasting room with a cozy atmosphere.",
     priceRange: "$$",
     rating: 4.7,
-    features: ["Tasting Room", "Tours", "Local Products"]
+    features: ["Tasting Room", "Tours", "Local Products"],
+    imageUrl: "/assets/ironstone.webp"
   }
 ];
 
@@ -1003,7 +1008,8 @@ export const autismPrograms: AutismProgram[] = [
     phone: "",
     website: "https://taylors-hope.org/",
     services: ["Community Support", "Charitable Programs", "Local Initiatives"],
-    accessibility: []
+    accessibility: [],
+    imageUrl: "/assets/taylorshope.jpg"
   },
   {
     id: "10",
@@ -1014,7 +1020,8 @@ export const autismPrograms: AutismProgram[] = [
     phone: "",
     website: "https://www.heberlesheartstrings.org/",
     services: ["Instrument Lending", "Music Education", "Community Outreach", "Youth Programs"],
-    accessibility: []
+    accessibility: [],
+    imageUrl: "/assets/heberles.jpg"
   },
   {
     id: "11",
@@ -1025,7 +1032,8 @@ export const autismPrograms: AutismProgram[] = [
     phone: "",
     website: "https://namierie.org/",
     services: ["Mental Health Support", "Education Programs", "Advocacy", "Family Support", "Support Groups"],
-    accessibility: []
+    accessibility: [],
+    imageUrl: "/assets/nami.jpg"
   }
 ];
 
@@ -1159,7 +1167,8 @@ export const socialGroups: SocialGroup[] = [
     meetingSchedule: "Regular painting events",
     location: "Various locations in Erie",
     website: "https://www.facebook.com/groups/668392443222569/user/100076898271397",
-    membershipFee: "Free"
+    membershipFee: "Free",
+    imageUrl: "/assets/goghparty.jpg"
   }
 ];
 
@@ -1352,7 +1361,8 @@ export const businesses: Business[] = [
     phone: "",
     website: "https://www.johngallagher.com/",
     description: "Professional wedding and special event DJ services. Creating memorable experiences with music for your special occasions.",
-    features: ["Wedding DJ", "Event Entertainment", "Special Events", "Professional Sound"]
+    features: ["Wedding DJ", "Event Entertainment", "Special Events", "Professional Sound"],
+    imageUrl: "/assets/johngallagher.jpg"
   },
   {
     id: "17",
@@ -1363,7 +1373,8 @@ export const businesses: Business[] = [
     phone: "",
     website: "https://www.metamorphosiscounseling.net/",
     description: "Professional mental health counseling services providing compassionate care and support for individuals and families.",
-    features: ["Mental Health", "Counseling", "Therapy", "Individual Sessions"]
+    features: ["Mental Health", "Counseling", "Therapy", "Individual Sessions"],
+    imageUrl: "/assets/metamorphosis.jpg"
   },
   {
     id: "18",
@@ -1374,7 +1385,8 @@ export const businesses: Business[] = [
     phone: "",
     website: "https://www.facebook.com/kdsplace814/",
     description: "Community event space featuring local books, arts, and cultural programming. A gathering place for Erie's creative community.",
-    features: ["Event Space", "Local Books", "Arts", "Community Events"]
+    features: ["Event Space", "Local Books", "Arts", "Community Events"],
+    imageUrl: "/assets/kdsplace.jpg"
   },
   {
     id: "19",
@@ -1386,7 +1398,7 @@ export const businesses: Business[] = [
     website: "https://www.facebook.com/groups/668392443222569/user/61579081396134/",
     description: "Yoga studio offering classes for all levels. Find your inner peace and physical wellness through guided yoga practice.",
     features: ["Yoga Classes", "All Levels", "Wellness", "Meditation"],
-    imageUrl: "https://i.imgur.com/RvBLppO.jpg"
+    imageUrl: "/assets/sacredenergyyoga.jpg"
   },
   {
     id: "20",
@@ -1397,7 +1409,8 @@ export const businesses: Business[] = [
     phone: "",
     website: "https://www.facebook.com/Weddingceremonybykarolina",
     description: "Professional wedding officiant services for beautiful and personalized wedding ceremonies in the Erie area.",
-    features: ["Wedding Officiant", "Custom Ceremonies", "Personalized Vows"]
+    features: ["Wedding Officiant", "Custom Ceremonies", "Personalized Vows"],
+    imageUrl: "/assets/karolinawed.jpg"
   },
   {
     id: "21",
@@ -1408,7 +1421,8 @@ export const businesses: Business[] = [
     phone: "",
     website: "https://www.kellerwilliamseriepa.com/",
     description: "Full-service real estate agency helping buyers and sellers navigate the Erie housing market with expertise and care.",
-    features: ["Real Estate", "Home Buying", "Home Selling", "Property Management"]
+    features: ["Real Estate", "Home Buying", "Home Selling", "Property Management"],
+    imageUrl: "/assets/kwrealty.jpg"
   },
   {
     id: "22",
@@ -1419,6 +1433,18 @@ export const businesses: Business[] = [
     phone: "",
     website: "https://calmpermjewelry.glossgenius.com/",
     description: "Custom jewelry studio specializing in unique, handcrafted pieces. Permanent jewelry and custom designs available.",
-    features: ["Custom Jewelry", "Handcrafted", "Permanent Jewelry", "Gift Items"]
+    features: ["Custom Jewelry", "Handcrafted", "Permanent Jewelry", "Gift Items"],
+    imageUrl: "/assets/calmcreations.jpg"
+  },
+  {
+    id: "23",
+    name: "LaRese Floral",
+    category: "Florist",
+    categories: ["Florist", "Gifts & Specialty"],
+    address: "Erie, PA",
+    phone: "",
+    description: "Local florist providing beautiful floral arrangements for all occasions - weddings, events, and everyday celebrations.",
+    features: ["Flowers", "Weddings", "Events", "Custom Arrangements"],
+    imageUrl: "/assets/laresefloral.jpg"
   }
 ];
