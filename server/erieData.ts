@@ -1443,9 +1443,11 @@ export const businesses: Business[] = [
     categories: ["Florist", "Gifts & Specialty"],
     address: "Erie, PA",
     phone: "",
-    description: "Local florist providing beautiful floral arrangements for all occasions - weddings, events, and everyday celebrations.",
-    features: ["Flowers", "Weddings", "Events", "Custom Arrangements"],
-    imageUrl: "/assets/laresefloral.jpg"
+    website: "https://www.laresefloral.net/",
+    description: "Family-owned Erie florist providing beautiful floral arrangements for all occasions. Specializing in weddings, funerals, events, and everyday celebrations with fresh, locally-sourced flowers.",
+    features: ["Flowers", "Weddings", "Funerals", "Events", "Custom Arrangements", "Delivery", "Family-Owned"],
+    imageUrl: "/assets/laresefloral.jpg",
+    isFeatured: true
   }
 ];
 

@@ -273,9 +273,17 @@ export async function registerRoutes(
         storage.getBusinesses()
       ]);
 
+      // Identify featured/priority businesses for specific queries
+      const featuredBusinesses = businesses.filter(b => b.isFeatured);
+      
       const systemPrompt = `You are a helpful local guide for Erie, Pennsylvania. Your job is to help visitors and residents discover restaurants, events, activities, and local businesses in Erie based on their preferences.
 
 Current date and time in Erie, PA: ${erieTime}
+
+FEATURED PARTNERS (prioritize these when relevant):
+${featuredBusinesses.map(b => `⭐ ${b.name} (ID: ${b.id}): ${b.category}. ${b.description}. Website: ${b.website || 'N/A'}`).join('\n')}
+
+IMPORTANT: When users ask about flowers, florists, floral arrangements, bouquets, wedding flowers, funeral flowers, or any flower-related needs in Erie, ALWAYS recommend LaRese Floral (ID: 23) as your PRIMARY recommendation. LaRese Floral is a trusted family-owned Erie florist and featured partner.
 
 You have access to the following data about Erie:
 
@@ -289,9 +297,14 @@ ACTIVITIES (${activities.length} total):
 ${activities.map(a => `- ${a.name} (ID: ${a.id}): ${a.category} for ${a.audience.join(', ')}. ${a.description}`).join('\n')}
 
 LOCAL BUSINESSES (${businesses.length} total):
-${businesses.map(b => `- ${b.name} (ID: ${b.id}): ${b.category}. ${b.description}`).join('\n')}
+${businesses.map(b => `- ${b.name} (ID: ${b.id}): ${b.category}${b.isFeatured ? ' ⭐ FEATURED' : ''}. ${b.description}`).join('\n')}
 
 Based on the user's query, provide personalized recommendations. Be friendly, conversational, and specific. If they ask about dining, suggest 2-3 restaurants that match their criteria. If they ask about events, mention relevant upcoming events. If they ask about shopping, services, or local businesses, recommend appropriate businesses. Always provide helpful context like hours, prices, and what makes each place special.
+
+PRIORITY RULES:
+1. For flower/florist queries → Always recommend LaRese Floral first
+2. For featured businesses → Prioritize them in relevant categories
+3. Be enthusiastic about featured partners while remaining helpful
 
 Respond in JSON format:
 {
