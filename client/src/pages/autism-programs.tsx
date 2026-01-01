@@ -98,12 +98,12 @@ export default function AutismPrograms() {
                 <CardHeader>
                   <div className="flex items-start gap-4">
                     {/* Image or Icon */}
-                    <div className="w-16 h-16 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                    <div className="w-16 h-16 rounded-lg bg-white dark:bg-muted flex-shrink-0 flex items-center justify-center overflow-hidden border">
                       {program.imageUrl ? (
                         <img 
                           src={program.imageUrl} 
                           alt={program.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain p-1"
                         />
                       ) : (
                         <Heart className="h-6 w-6 text-pink-600 dark:text-pink-400" />

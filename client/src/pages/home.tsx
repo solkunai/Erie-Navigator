@@ -121,12 +121,12 @@ export default function Home({ onOpenAI }: HomeProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredRestaurants.map((restaurant) => (
               <article key={restaurant.id} className="group cursor-pointer">
-                <div className="aspect-[4/3] bg-muted rounded-lg mb-4 overflow-hidden">
+                <div className="aspect-[4/3] bg-white dark:bg-muted rounded-lg mb-4 overflow-hidden border flex items-center justify-center">
                   {restaurant.imageUrl ? (
                     <img 
                       src={restaurant.imageUrl} 
                       alt={restaurant.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted to-muted/50">
@@ -182,12 +182,12 @@ export default function Home({ onOpenAI }: HomeProps) {
               <div className="grid sm:grid-cols-2 gap-4">
                 {featuredBusinesses.map((business) => (
                   <article key={business.id} className="flex gap-4 p-4 bg-background rounded-lg border hover:border-primary/50 transition-colors cursor-pointer group">
-                    <div className="w-16 h-16 rounded-md bg-muted flex-shrink-0 flex items-center justify-center overflow-hidden">
+                    <div className="w-16 h-16 rounded-md bg-white dark:bg-muted flex-shrink-0 flex items-center justify-center overflow-hidden border">
                       {business.imageUrl ? (
                         <img 
                           src={business.imageUrl} 
                           alt={business.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain p-1"
                         />
                       ) : (
                         <Building2 className="h-6 w-6 text-muted-foreground" />

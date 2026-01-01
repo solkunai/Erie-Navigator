@@ -203,12 +203,12 @@ export default function Businesses() {
                     className="flex gap-4 p-5 border rounded-lg hover:border-primary/30 transition-colors group"
                   >
                     {/* Image */}
-                    <div className="w-20 h-20 rounded-lg bg-muted flex-shrink-0 flex items-center justify-center overflow-hidden">
+                    <div className="w-20 h-20 rounded-lg bg-white dark:bg-muted flex-shrink-0 flex items-center justify-center overflow-hidden border">
                       {business.imageUrl ? (
                         <img 
                           src={business.imageUrl} 
                           alt={business.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain p-1"
                         />
                       ) : (
                         <Building2 className="h-8 w-8 text-muted-foreground" />
