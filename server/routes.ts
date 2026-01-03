@@ -1,16 +1,30 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import OpenAI from "openai";
 
-// the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
-// This is using Replit's AI Integrations service, which provides OpenAI-compatible API access without requiring your own API key.
-const openai = process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY
-  ? new OpenAI({
-      baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-      apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY
-    })
-  : null;
+// AI is disabled for now - set to true and add API key to enable
+const AI_ENABLED = false;
+
+// OpenAI client - only initialize if AI is enabled and API key exists
+let openai: any = null;
+
+if (AI_ENABLED) {
+  try {
+    const apiKey = process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY;
+    if (apiKey) {
+      // Dynamic import to prevent errors when no API key
+      const OpenAI = require("openai").default;
+      openai = new OpenAI({
+        baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+        apiKey: apiKey
+      });
+      console.log("OpenAI client initialized successfully");
+    }
+  } catch (error) {
+    console.log("OpenAI not configured - AI features disabled");
+    openai = null;
+  }
+}
 
 export async function registerRoutes(
   httpServer: Server,
