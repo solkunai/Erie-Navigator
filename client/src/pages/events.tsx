@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sheet";
 import { RealTimeClock } from "@/components/real-time-clock";
 import { events } from "@/lib/erieData";
-import { eventCategories, type EventCategory } from "@shared/schema";
+import { eventCategories, type EventCategory } from "@/types";
 
 export default function Events() {
   const [search, setSearch] = useState("");

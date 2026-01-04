@@ -15,7 +15,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { activities } from "@/lib/erieData";
-import { activityCategories, audienceTypes, type ActivityCategory, type AudienceType } from "@shared/schema";
+import { activityCategories, audienceTypes, type ActivityCategory, type AudienceType } from "@/types";
 
 const audienceIcons: Record<AudienceType, typeof Users> = {
   Kids: Baby,

@@ -1,0 +1,225 @@
+[
+  {
+    "id": "1",
+    "name": "Presque Isle State Park",
+    "category": "Nature",
+    "audience": [
+      "Kids",
+      "Adults",
+      "Family"
+    ],
+    "address": "301 Peninsula Dr, Erie, PA 16505",
+    "phone": "(814) 833-7424",
+    "website": "https://www.dcnr.pa.gov/StateParks/FindAPark/PresqueIsleStatePark",
+    "description": "Pennsylvania's most visited state park featuring 11 miles of sandy beaches, hiking trails, and stunning Lake Erie views.",
+    "hours": "5:00 AM - 11:00 PM",
+    "priceRange": "Free"
+  },
+  {
+    "id": "2",
+    "name": "ExpERIEnce Children's Museum",
+    "category": "Education",
+    "audience": [
+      "Kids",
+      "Family"
+    ],
+    "address": "420 French St, Erie, PA 16507",
+    "phone": "(814) 453-3743",
+    "website": "https://www.eriechildrensmuseum.org",
+    "description": "Interactive exhibits designed to inspire creativity and learning in children through hands-on play.",
+    "hours": "Tue-Sat 10:00 AM - 4:00 PM",
+    "priceRange": "$10"
+  },
+  {
+    "id": "3",
+    "name": "Erie Zoo",
+    "category": "Nature",
+    "audience": [
+      "Kids",
+      "Family"
+    ],
+    "address": "423 W 38th St, Erie, PA 16508",
+    "phone": "(814) 864-4091",
+    "website": "https://www.eriezoo.org",
+    "description": "Home to over 400 animals from around the world. Features a train ride, carousel, and seasonal attractions.",
+    "hours": "10:00 AM - 5:00 PM",
+    "priceRange": "$12-$14"
+  },
+  {
+    "id": "4",
+    "name": "Erie Maritime Museum & US Brig Niagara",
+    "category": "Arts & Culture",
+    "audience": [
+      "Adults",
+      "Family"
+    ],
+    "address": "150 E Front St, Erie, PA 16507",
+    "phone": "(814) 452-2744",
+    "website": "https://www.flagshipniagara.org",
+    "description": "Explore Erie's rich maritime history and tour the reconstructed US Brig Niagara, hero of the Battle of Lake Erie.",
+    "hours": "Thu-Sun 10:00 AM - 5:00 PM",
+    "priceRange": "$8-$10"
+  },
+  {
+    "id": "5",
+    "name": "Waldameer Park & Water World",
+    "category": "Entertainment",
+    "audience": [
+      "Kids",
+      "Adults",
+      "Family"
+    ],
+    "address": "220 Peninsula Dr, Erie, PA 16505",
+    "phone": "(814) 838-3591",
+    "website": "https://www.waldameer.com",
+    "description": "Classic amusement park with roller coasters, water slides, and family rides. Free admission, pay-per-ride available.",
+    "hours": "Seasonal (May-Sept)",
+    "priceRange": "Free-$34"
+  },
+  {
+    "id": "6",
+    "name": "Erie Art Museum",
+    "category": "Arts & Culture",
+    "audience": [
+      "Adults",
+      "Family"
+    ],
+    "address": "20 E 5th St, Erie, PA 16507",
+    "phone": "(814) 459-5477",
+    "website": "https://www.erieartmuseum.org",
+    "description": "Regional art museum featuring American and international art spanning 5,000 years of creative expression.",
+    "hours": "Thu-Sun 11:00 AM - 5:00 PM",
+    "priceRange": "$8"
+  },
+  {
+    "id": "7",
+    "name": "Tom Ridge Environmental Center",
+    "category": "Nature",
+    "audience": [
+      "Kids",
+      "Adults",
+      "Family"
+    ],
+    "address": "301 Peninsula Dr Suite 1, Erie, PA 16505",
+    "phone": "(814) 833-7424",
+    "description": "Free exhibits about Presque Isle's unique ecosystem, observation tower with panoramic views.",
+    "hours": "10:00 AM - 6:00 PM",
+    "priceRange": "Free"
+  },
+  {
+    "id": "8",
+    "name": "Peek'n Peak Resort",
+    "category": "Sports",
+    "audience": [
+      "Adults",
+      "Family"
+    ],
+    "address": "1405 Olde Rd, Clymer, NY 14724",
+    "phone": "(716) 355-4141",
+    "website": "https://www.pknpk.com",
+    "description": "Year-round resort offering skiing, snowboarding, golf, zip lining, and spa services.",
+    "hours": "Varies by season",
+    "priceRange": "$45-$85"
+  },
+  {
+    "id": "9",
+    "name": "Splash Lagoon Indoor Water Park",
+    "category": "Entertainment",
+    "audience": [
+      "Kids",
+      "Family"
+    ],
+    "address": "8091 Peach St, Erie, PA 16509",
+    "phone": "(814) 217-1111",
+    "website": "https://www.splashlagoon.com",
+    "description": "Indoor water park featuring slides, wave pools, and attractions for all ages. Perfect for year-round fun!",
+    "hours": "10:00 AM - 9:00 PM",
+    "priceRange": "$35-$50"
+  },
+  {
+    "id": "10",
+    "name": "Escape Game Erie",
+    "category": "Entertainment",
+    "audience": [
+      "Adults",
+      "Family"
+    ],
+    "address": "3003 W 12th St, Erie, PA 16505",
+    "phone": "(814) 315-9100",
+    "description": "Immersive escape room experiences with multiple themed rooms. Great for team building and family fun.",
+    "hours": "Tue-Sun 12:00 PM - 10:00 PM",
+    "priceRange": "$28-$35"
+  },
+  {
+    "id": "11",
+    "name": "Warner Theatre",
+    "category": "Arts & Culture",
+    "audience": [
+      "Adults",
+      "Family"
+    ],
+    "address": "811 State St, Erie, PA 16501",
+    "phone": "(814) 452-4857",
+    "website": "https://www.erieevents.com",
+    "description": "Historic 1931 movie palace now hosting concerts, Broadway shows, and special events.",
+    "hours": "Varies by event",
+    "priceRange": "Varies"
+  },
+  {
+    "id": "12",
+    "name": "Presque Isle Lighthouse",
+    "category": "Tours",
+    "audience": [
+      "Adults",
+      "Family"
+    ],
+    "address": "Presque Isle State Park, Erie, PA 16505",
+    "phone": "(814) 833-7424",
+    "description": "Historic lighthouse dating to 1873 offering tours and stunning views of Lake Erie.",
+    "hours": "Seasonal tours available",
+    "priceRange": "Free"
+  },
+  {
+    "id": "13",
+    "name": "Lake Erie Canopy Tours",
+    "category": "Outdoor",
+    "audience": [
+      "Adults",
+      "Family"
+    ],
+    "address": "5480 Rt 430, Bemus Point, NY 14712",
+    "phone": "(716) 720-9477",
+    "description": "Thrilling zipline adventure through the forest canopy with views of the lake region.",
+    "hours": "Seasonal",
+    "priceRange": "$65-$95"
+  },
+  {
+    "id": "14",
+    "name": "Millcreek Mall",
+    "category": "Shopping",
+    "audience": [
+      "Adults",
+      "Family"
+    ],
+    "address": "5800 Peach St, Erie, PA 16565",
+    "phone": "(814) 868-9000",
+    "website": "https://www.millcreekmall.net",
+    "description": "Region's largest shopping destination with over 150 stores, restaurants, and entertainment.",
+    "hours": "10:00 AM - 9:00 PM",
+    "priceRange": "Varies"
+  },
+  {
+    "id": "15",
+    "name": "Bicentennial Tower",
+    "category": "Tours",
+    "audience": [
+      "Adults",
+      "Family"
+    ],
+    "address": "1 State St, Erie, PA 16507",
+    "phone": "(814) 455-6055",
+    "description": "Observation tower on the bayfront offering 360-degree views of Erie, Presque Isle, and Lake Erie.",
+    "hours": "10:00 AM - 8:00 PM (Seasonal)",
+    "priceRange": "$4"
+  }
+]

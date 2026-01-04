@@ -1,0 +1,172 @@
+[
+  {
+    "id": "1",
+    "name": "Autism Society of Northwestern Pennsylvania",
+    "organization": "Autism Society NWPA",
+    "description": "Providing education, advocacy, and support services for individuals with autism and their families throughout Northwestern Pennsylvania.",
+    "address": "3340 Peach St, Erie, PA 16508",
+    "phone": "(814) 455-3540",
+    "email": "info@autismnwpa.org",
+    "website": "https://www.autismnwpa.org",
+    "services": [
+      "Support Groups",
+      "Educational Workshops",
+      "Advocacy",
+      "Resource Navigation",
+      "Family Events"
+    ],
+    "accessibility": [
+      "Sensory-Friendly Environment",
+      "Visual Supports",
+      "Trained Staff"
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Barber National Institute",
+    "organization": "Barber National Institute",
+    "description": "Comprehensive services for children and adults with autism including education, employment, and residential programs.",
+    "ageRange": "All ages",
+    "address": "100 Barber Pl, Erie, PA 16507",
+    "phone": "(814) 453-7661",
+    "website": "https://www.bfrce.org",
+    "services": [
+      "Early Intervention",
+      "Special Education",
+      "Adult Day Programs",
+      "Employment Services",
+      "Residential Services",
+      "Behavioral Health"
+    ],
+    "accessibility": [
+      "Wheelchair Accessible",
+      "Sensory Rooms",
+      "ABA Therapy"
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Achievement Center",
+    "organization": "The Achievement Center",
+    "description": "Providing therapy, education, and support services for children with developmental delays and disabilities.",
+    "ageRange": "Birth to 21 years",
+    "address": "4800 Zuck Rd, Erie, PA 16506",
+    "phone": "(814) 459-2755",
+    "website": "https://www.achievementctr.org",
+    "services": [
+      "Occupational Therapy",
+      "Speech Therapy",
+      "Physical Therapy",
+      "Social Skills Groups",
+      "Summer Programs"
+    ],
+    "accessibility": [
+      "Therapy Equipment",
+      "Sensory Integration",
+      "Individualized Plans"
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Autism Diagnostic Services - UPMC Children's",
+    "organization": "UPMC Children's Hospital",
+    "description": "Comprehensive diagnostic evaluations and ongoing care for children with autism spectrum disorders.",
+    "ageRange": "Children and Adolescents",
+    "address": "310 E 2nd St, Erie, PA 16507",
+    "phone": "(814) 877-8200",
+    "website": "https://www.chp.edu/our-services/autism",
+    "services": [
+      "Diagnostic Evaluations",
+      "Developmental Assessments",
+      "Care Coordination",
+      "Family Support"
+    ],
+    "accessibility": [
+      "Hospital Setting",
+      "Specialized Medical Team",
+      "Insurance Accepted"
+    ]
+  },
+  {
+    "id": "5",
+    "name": "GECAC Early Intervention",
+    "organization": "Greater Erie Community Action Committee",
+    "description": "Early intervention services for infants and toddlers with developmental delays or at risk for delays.",
+    "ageRange": "Birth to 3 years",
+    "address": "18 W 9th St, Erie, PA 16501",
+    "phone": "(814) 459-4581",
+    "website": "https://www.gecac.org",
+    "services": [
+      "In-Home Services",
+      "Family Training",
+      "Developmental Therapy",
+      "Service Coordination"
+    ],
+    "accessibility": [
+      "Home-Based Services",
+      "Free Services",
+      "Multilingual Support"
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Sarah Reed Children's Center",
+    "organization": "Sarah Reed Children's Center",
+    "description": "Mental health and autism services for children including residential treatment and outpatient programs.",
+    "ageRange": "5-18 years",
+    "address": "2445 W 34th St, Erie, PA 16506",
+    "phone": "(814) 838-1954",
+    "website": "https://www.sarahreed.org",
+    "services": [
+      "Residential Treatment",
+      "Outpatient Therapy",
+      "Crisis Services",
+      "School-Based Programs"
+    ],
+    "accessibility": [
+      "24/7 Support",
+      "Specialized Staff",
+      "Crisis Intervention"
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Sensory-Friendly Movie Events",
+    "organization": "Tinseltown Erie",
+    "description": "Regular sensory-friendly movie screenings with adjusted lighting, lower volume, and freedom to move around.",
+    "address": "1910 Rotunda Dr, Erie, PA 16509",
+    "phone": "(814) 866-0123",
+    "services": [
+      "Sensory-Friendly Screenings",
+      "Reduced Stimulation",
+      "Family-Friendly Environment"
+    ],
+    "accessibility": [
+      "Lights Dimmed",
+      "Lower Volume",
+      "Movement Allowed",
+      "Wheelchair Accessible"
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Autism-Friendly Swim Program",
+    "organization": "Erie Family YMCA",
+    "description": "Specialized swimming lessons for individuals with autism in a calm, supportive environment.",
+    "ageRange": "All ages",
+    "address": "31 W 10th St, Erie, PA 16501",
+    "phone": "(814) 452-3261",
+    "website": "https://www.ymcaerie.org",
+    "services": [
+      "Private Lessons",
+      "Small Group Classes",
+      "Sensory-Friendly Times",
+      "Trained Instructors"
+    ],
+    "accessibility": [
+      "Pool Accessibility",
+      "Quiet Hours",
+      "Visual Schedules"
+    ]
+  }
+]

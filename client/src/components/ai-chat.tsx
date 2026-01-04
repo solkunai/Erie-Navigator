@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import type { ChatMessage, Restaurant, Event } from "@shared/schema";
+import type { ChatMessage, Restaurant, Event } from "@/types";
 
 interface AIChatProps {
   isOpen: boolean;
@@ -54,24 +54,21 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/ai/recommend", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: userMessage.content }),
-      });
+      // AI is currently disabled - will be enabled in a future update
+      // const response = await fetch("/api/ai/recommend", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ query: userMessage.content }),
+      // });
 
-      if (!response.ok) {
-        throw new Error("Failed to get AI response");
-      }
-
-      const data = await response.json();
+      // Simulate a delay to make it feel realistic
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
       const assistantMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: data.message,
+        content: "🚧 **AI Assistant Coming Soon!**\n\nI'm currently being set up to help you discover the best of Erie, PA. In the meantime, you can browse our directory pages to find:\n\n• Restaurants by cuisine type\n• Upcoming events and activities\n• Family-friendly attractions\n• Community programs and social groups\n\nUse the navigation menu or search bar to explore!",
         timestamp: new Date(),
-        recommendations: data.recommendations,
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
@@ -79,7 +76,7 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: "I'm sorry, I couldn't process your request. Please try again.",
+        content: "I'm sorry, the AI assistant is not yet available. Please use the navigation menu to browse our directory.",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);

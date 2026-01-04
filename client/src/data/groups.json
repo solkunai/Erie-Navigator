@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "name": "Erie Young Professionals",
+    "category": "Professional Networking",
+    "description": "Networking group for professionals ages 21-40 focused on career development, community involvement, and social connections.",
+    "meetingSchedule": "Monthly networking events",
+    "location": "Various locations throughout Erie",
+    "contactEmail": "info@erieyps.org",
+    "website": "https://www.erieyps.org",
+    "membershipFee": "$50/year"
+  },
+  {
+    "id": "2",
+    "name": "Erie Running Club",
+    "category": "Sports & Fitness",
+    "description": "Community of runners of all skill levels meeting for group runs, training programs, and local race participation.",
+    "meetingSchedule": "Saturdays 8:00 AM, Tuesdays 6:00 PM",
+    "location": "Presque Isle State Park",
+    "contactEmail": "erierunners@gmail.com",
+    "membershipFee": "Free"
+  },
+  {
+    "id": "3",
+    "name": "Lake Erie Hiking Club",
+    "category": "Outdoor Recreation",
+    "description": "Explore the trails and natural beauty of the Lake Erie region with fellow outdoor enthusiasts.",
+    "meetingSchedule": "Weekly hikes on weekends",
+    "location": "Various trails in Erie County",
+    "website": "https://www.meetup.com/lake-erie-hiking-club",
+    "membershipFee": "Free"
+  },
+  {
+    "id": "4",
+    "name": "Erie Moms Group",
+    "category": "Parenting",
+    "description": "Support network for mothers in the Erie area featuring playdates, mom nights out, and family activities.",
+    "meetingSchedule": "Multiple weekly events",
+    "location": "Various family-friendly locations",
+    "contactEmail": "eriemomsgroup@gmail.com",
+    "membershipFee": "Free"
+  },
+  {
+    "id": "5",
+    "name": "Erie Board Game Enthusiasts",
+    "category": "Hobbies",
+    "description": "Weekly gatherings for board game lovers to play both classic and modern tabletop games.",
+    "meetingSchedule": "Wednesdays 6:00 PM",
+    "location": "Time Warp Games, 5865 Peach St",
+    "membershipFee": "Free"
+  },
+  {
+    "id": "6",
+    "name": "Erie Photography Club",
+    "category": "Arts & Creative",
+    "description": "Club for photographers of all skill levels to share work, learn techniques, and participate in photo walks.",
+    "meetingSchedule": "2nd Tuesday of each month",
+    "location": "Erie Art Museum",
+    "contactEmail": "eriephotoclub@gmail.com",
+    "membershipFee": "$25/year"
+  },
+  {
+    "id": "7",
+    "name": "Erie Rotary Club",
+    "category": "Service & Volunteer",
+    "description": "International service organization focused on community service, ethical standards, and goodwill.",
+    "meetingSchedule": "Thursdays 12:00 PM",
+    "location": "Sheraton Erie Bayfront Hotel",
+    "website": "https://www.erierotary.org",
+    "membershipFee": "Annual dues apply"
+  },
+  {
+    "id": "8",
+    "name": "Erie Writers' Workshop",
+    "category": "Arts & Creative",
+    "description": "Supportive community for writers of all genres to share work, receive feedback, and improve craft.",
+    "meetingSchedule": "1st and 3rd Saturdays 10:00 AM",
+    "location": "Blasco Memorial Library",
+    "contactEmail": "eriewriters@gmail.com",
+    "membershipFee": "Free"
+  },
+  {
+    "id": "9",
+    "name": "Erie Foodies",
+    "category": "Food & Dining",
+    "description": "Group of food enthusiasts exploring Erie's dining scene, hosting potlucks, and sharing culinary adventures.",
+    "meetingSchedule": "Monthly restaurant outings",
+    "location": "Various Erie restaurants",
+    "website": "https://www.meetup.com/erie-foodies",
+    "membershipFee": "Free"
+  },
+  {
+    "id": "10",
+    "name": "Erie Ski Club",
+    "category": "Sports & Fitness",
+    "description": "Winter sports enthusiasts organizing ski trips, lessons, and social events for members of all skill levels.",
+    "meetingSchedule": "Seasonal meetings and trips",
+    "location": "Peek'n Peak and other resorts",
+    "website": "https://www.erieskiclub.org",
+    "membershipFee": "$45/year"
+  },
+  {
+    "id": "11",
+    "name": "Single Parents of Erie",
+    "category": "Parenting",
+    "description": "Support and social group for single parents to connect, share experiences, and organize family activities.",
+    "meetingSchedule": "Bi-weekly gatherings",
+    "location": "Various family-friendly locations",
+    "contactEmail": "singleparentserie@gmail.com",
+    "membershipFee": "Free"
+  },
+  {
+    "id": "12",
+    "name": "Erie Garden Club",
+    "category": "Hobbies",
+    "description": "Gardening enthusiasts sharing knowledge, hosting plant sales, and beautifying Erie through community projects.",
+    "meetingSchedule": "3rd Wednesday of each month",
+    "location": "Frontier Park",
+    "contactPhone": "(814) 555-1234",
+    "membershipFee": "$20/year"
+  }
+]

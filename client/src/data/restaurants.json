@@ -1,0 +1,605 @@
+[
+  {
+    "id": "1",
+    "name": "El Canelo Mexican Restaurant",
+    "category": "Mexican",
+    "categories": [
+      "Mexican"
+    ],
+    "address": "2709 Parade St, Erie, PA 16504",
+    "phone": "(814) 453-6288",
+    "description": "Authentic Mexican cuisine with fresh ingredients and traditional recipes. Known for their flavorful tacos, enchiladas, and house-made salsas.",
+    "priceRange": "$$",
+    "rating": 4.5,
+    "hours": "11:00 AM - 9:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Delivery"
+    ],
+    "imageUrl": "/assets/el-canelo.png"
+  },
+  {
+    "id": "2",
+    "name": "Federal Hill Smokehouse",
+    "category": "BBQ",
+    "categories": [
+      "BBQ",
+      "American"
+    ],
+    "address": "2609 Peach St, Erie, PA 16508",
+    "phone": "(814) 920-4227",
+    "website": "https://www.federalhillsmokehouse.com",
+    "description": "Award-winning BBQ with slow-smoked meats, homemade sides, and craft beer selection. Dog-friendly patio available.",
+    "priceRange": "$$",
+    "rating": 4.7,
+    "hours": "11:00 AM - 9:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Pet Friendly",
+      "Outdoor Seating"
+    ],
+    "imageUrl": "/assets/federal-hill.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Bay House Oyster Bar & Restaurant",
+    "category": "Seafood",
+    "categories": [
+      "Seafood",
+      "Fine Dining"
+    ],
+    "address": "6 Sassafras Pier, Erie, PA 16507",
+    "phone": "(814) 920-9990",
+    "website": "https://www.bayhousepier6.com",
+    "description": "Erie's only fresh oyster bar offering stunning waterfront views, fresh seafood, and an exceptional dining experience.",
+    "priceRange": "$$$",
+    "rating": 4.8,
+    "hours": "4:00 PM - 10:00 PM",
+    "features": [
+      "Dine-in",
+      "Waterfront",
+      "Full Bar",
+      "Reservations"
+    ],
+    "imageUrl": "/assets/bay-house.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Pineapple Eddie Southern Bistro",
+    "category": "American",
+    "categories": [
+      "American",
+      "Fine Dining"
+    ],
+    "address": "1402 W 10th St, Erie, PA 16502",
+    "phone": "(814) 454-1010",
+    "description": "Southern-inspired cuisine with a creative twist. Upscale dining featuring locally sourced ingredients.",
+    "priceRange": "$$$",
+    "rating": 4.6,
+    "hours": "5:00 PM - 9:00 PM",
+    "features": [
+      "Dine-in",
+      "Full Bar",
+      "Reservations"
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Khao Thai",
+    "category": "Asian",
+    "categories": [
+      "Asian"
+    ],
+    "address": "36 N Park Row, Erie, PA 16501",
+    "phone": "(814) 454-4069",
+    "description": "Authentic Thai cuisine with fresh ingredients. Try their famous Pad Thai and curry dishes.",
+    "priceRange": "$$",
+    "rating": 4.4,
+    "hours": "11:00 AM - 9:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Vegetarian Options"
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Tandoori Hut",
+    "category": "Indian",
+    "categories": [
+      "Indian",
+      "Vegetarian"
+    ],
+    "address": "2060 Edinboro Rd, Erie, PA 16509",
+    "phone": "(814) 868-9070",
+    "description": "Traditional Indian cuisine with a variety of vegetarian and meat options. Known for their tandoori dishes and naan bread.",
+    "priceRange": "$$",
+    "rating": 4.3,
+    "hours": "11:30 AM - 9:30 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Lunch Buffet",
+      "Vegetarian Options"
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Sara's Diner",
+    "category": "American",
+    "categories": [
+      "American",
+      "Breakfast"
+    ],
+    "address": "25 Peninsula Dr, Erie, PA 16505",
+    "phone": "(814) 833-1957",
+    "website": "https://sarasandsallys.com",
+    "description": "Beloved seasonal stop at the entrance to Presque Isle State Park. Famous for Erie-made Smith hot dogs and orange vanilla twists.",
+    "priceRange": "$",
+    "rating": 4.5,
+    "hours": "11:00 AM - 8:00 PM (Seasonal)",
+    "features": [
+      "Takeout",
+      "Family Friendly",
+      "Ice Cream"
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Cloud 9 Wine Bar & Restaurant",
+    "category": "Fine Dining",
+    "categories": [
+      "Fine Dining",
+      "Mediterranean"
+    ],
+    "address": "25 E 10th St, Erie, PA 16501",
+    "phone": "(814) 870-9007",
+    "website": "https://cloud9erie.com",
+    "description": "French-inspired upscale dining with thoughtfully chosen wines paired with skillfully prepared dishes.",
+    "priceRange": "$$$$",
+    "rating": 4.7,
+    "hours": "5:00 PM - 10:00 PM",
+    "features": [
+      "Dine-in",
+      "Wine Bar",
+      "Reservations",
+      "Fine Dining"
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Bar Ronin",
+    "category": "Asian",
+    "categories": [
+      "Asian",
+      "American",
+      "Bar & Grill"
+    ],
+    "address": "501 State St, Erie, PA 16501",
+    "phone": "(814) 520-8495",
+    "website": "https://roninerie.com",
+    "description": "American-Japanese fusion with shareable plates and standout cocktails. A chef-driven hotspot in downtown Erie.",
+    "priceRange": "$$$",
+    "rating": 4.8,
+    "hours": "4:00 PM - 11:00 PM",
+    "features": [
+      "Dine-in",
+      "Full Bar",
+      "Cocktails",
+      "Late Night"
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Samurai Kitchen and Sushi",
+    "category": "Asian",
+    "categories": [
+      "Asian",
+      "Seafood"
+    ],
+    "address": "2767 W 12th St, Erie, PA 16505",
+    "phone": "(814) 836-0888",
+    "website": "https://www.samuraisushierie.com",
+    "description": "High-quality Japanese and Southeast Asian dishes with artful sushi rolls and vibrant entrees.",
+    "priceRange": "$$$",
+    "rating": 4.6,
+    "hours": "11:30 AM - 9:30 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Sushi Bar"
+    ]
+  },
+  {
+    "id": "11",
+    "name": "Valerio's Italian Restaurant",
+    "category": "Italian",
+    "categories": [
+      "Italian"
+    ],
+    "address": "544 W 18th St, Erie, PA 16502",
+    "phone": "(814) 452-4633",
+    "description": "Family-owned Italian restaurant serving homemade pasta, pizza, and classic Italian dishes since 1978.",
+    "priceRange": "$$",
+    "rating": 4.5,
+    "hours": "11:00 AM - 10:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Family Style"
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Shoreline Bar and Grille",
+    "category": "Bar & Grill",
+    "categories": [
+      "Bar & Grill",
+      "American",
+      "Seafood"
+    ],
+    "address": "3 Bayfront Connector, Erie, PA 16507",
+    "phone": "(814) 455-1449",
+    "description": "Waterfront dining with panoramic views of Presque Isle Bay. Casual American fare with fresh seafood.",
+    "priceRange": "$$",
+    "rating": 4.3,
+    "hours": "11:00 AM - 10:00 PM",
+    "features": [
+      "Dine-in",
+      "Waterfront",
+      "Outdoor Seating",
+      "Full Bar"
+    ]
+  },
+  {
+    "id": "13",
+    "name": "Julius Restaurant",
+    "category": "Mexican",
+    "categories": [
+      "Mexican"
+    ],
+    "address": "2835 W 26th St, Erie, PA 16506",
+    "phone": "(814) 835-3066",
+    "description": "Traditional Mexican cuisine with generous portions. Famous for their flan and authentic flavors.",
+    "priceRange": "$",
+    "rating": 4.4,
+    "hours": "10:00 AM - 9:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Family Friendly"
+    ]
+  },
+  {
+    "id": "14",
+    "name": "Ippa Pizza Napoletana",
+    "category": "Pizza",
+    "categories": [
+      "Pizza",
+      "Italian"
+    ],
+    "address": "1503 State St, Erie, PA 16501",
+    "phone": "(814) 459-4772",
+    "description": "Authentic Neapolitan-style pizza made with fresh dough and imported ingredients. Available on major delivery apps.",
+    "priceRange": "$$",
+    "rating": 4.6,
+    "hours": "11:00 AM - 9:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Delivery"
+    ]
+  },
+  {
+    "id": "15",
+    "name": "Sloppy Duck Saloon",
+    "category": "American",
+    "categories": [
+      "American",
+      "Seafood",
+      "Bar & Grill"
+    ],
+    "address": "726 W Bayfront Pkwy, Erie, PA 16507",
+    "phone": "(814) 459-3625",
+    "website": "https://www.sloppyducksaloon.com",
+    "description": "Waterfront favorite known for the crispiest fried walleye sandwich. Seasonal outdoor seating with bay views.",
+    "priceRange": "$$",
+    "rating": 4.5,
+    "hours": "11:00 AM - 10:00 PM (Seasonal)",
+    "features": [
+      "Dine-in",
+      "Waterfront",
+      "Full Bar",
+      "Outdoor Seating"
+    ]
+  },
+  {
+    "id": "16",
+    "name": "Lucky Louie's Beer and Wieners",
+    "category": "American",
+    "categories": [
+      "American",
+      "Fast Food"
+    ],
+    "address": "8552 Peach St, Erie, PA 16509",
+    "phone": "(814) 866-5464",
+    "website": "https://luckylouiesbeerandwieners.com",
+    "description": "Unhinged and laid-back vibe with outrageous hot dog topping combinations, craft brews, and yard games.",
+    "priceRange": "$",
+    "rating": 4.4,
+    "hours": "11:00 AM - 9:00 PM",
+    "features": [
+      "Dine-in",
+      "Outdoor Seating",
+      "Craft Beer",
+      "Family Friendly"
+    ],
+    "imageUrl": "/assets/lucky-louies.jpg"
+  },
+  {
+    "id": "17",
+    "name": "Bakery on 5th",
+    "category": "Cafe",
+    "categories": [
+      "Cafe",
+      "Breakfast"
+    ],
+    "address": "2608 Parade St, Erie, PA 16504",
+    "phone": "(814) 454-2255",
+    "description": "Artisan bakery known for oversized croissants and Turkish coffee. Perfect stop for pastries and coffee.",
+    "priceRange": "$",
+    "rating": 4.6,
+    "hours": "7:00 AM - 3:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Coffee",
+      "Pastries"
+    ]
+  },
+  {
+    "id": "18",
+    "name": "Quaker Steak & Lube",
+    "category": "American",
+    "categories": [
+      "American",
+      "Bar & Grill"
+    ],
+    "address": "7851 Peach St, Erie, PA 16509",
+    "phone": "(814) 868-7923",
+    "website": "https://thelube.com",
+    "description": "Motor-themed restaurant with famous wings and duckpin bowling. Fun for the whole family.",
+    "priceRange": "$$",
+    "rating": 4.2,
+    "hours": "11:00 AM - 11:00 PM",
+    "features": [
+      "Dine-in",
+      "Bowling",
+      "Full Bar",
+      "Family Friendly"
+    ]
+  },
+  {
+    "id": "19",
+    "name": "Two45 Waterfront Grille",
+    "category": "Fine Dining",
+    "categories": [
+      "Fine Dining",
+      "American",
+      "Seafood"
+    ],
+    "address": "55 W Bay Dr, Erie, PA 16507",
+    "phone": "(814) 454-2011",
+    "description": "Upscale dining inside the Sheraton Erie Bayfront Hotel with panoramic waterfront views and refined American cuisine.",
+    "priceRange": "$$$",
+    "rating": 4.5,
+    "hours": "6:30 AM - 10:00 PM",
+    "features": [
+      "Dine-in",
+      "Waterfront",
+      "Breakfast",
+      "Reservations"
+    ],
+    "imageUrl": "/assets/two45.jpg"
+  },
+  {
+    "id": "20",
+    "name": "Flagship City Food Hall",
+    "category": "American",
+    "categories": [
+      "American",
+      "Asian",
+      "Mexican"
+    ],
+    "address": "22 N Park Row, Erie, PA 16501",
+    "phone": "(814) 204-9022",
+    "website": "https://www.flagshipcitydistrict.com/foodhall",
+    "description": "Multiple local vendors under one roof offering diverse kid-friendly options and local favorites.",
+    "priceRange": "$$",
+    "rating": 4.3,
+    "hours": "11:00 AM - 8:00 PM",
+    "features": [
+      "Dine-in",
+      "Multiple Vendors",
+      "Family Friendly"
+    ]
+  },
+  {
+    "id": "21",
+    "name": "Roma's Italian Restaurant",
+    "category": "Italian",
+    "categories": [
+      "Italian",
+      "Pizza"
+    ],
+    "address": "2624 W 12th St, Erie, PA 16505",
+    "phone": "(814) 838-5130",
+    "description": "Family-owned Italian restaurant serving homemade pasta, pizza, and classic Italian dishes in a warm, welcoming atmosphere since 1978.",
+    "priceRange": "$$",
+    "rating": 4.5,
+    "hours": "11:00 AM - 10:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Family Owned",
+      "Homemade Pasta"
+    ]
+  },
+  {
+    "id": "22",
+    "name": "Colao's Ristorante",
+    "category": "Italian",
+    "categories": [
+      "Italian",
+      "Fine Dining"
+    ],
+    "address": "2826 Plum St, Erie, PA 16508",
+    "phone": "(814) 866-9621",
+    "website": "https://www.colaos.com",
+    "description": "Upscale Italian dining featuring traditional recipes passed down through generations. Known for exceptional wine selection and elegant atmosphere.",
+    "priceRange": "$$$",
+    "rating": 4.7,
+    "hours": "4:00 PM - 10:00 PM",
+    "features": [
+      "Dine-in",
+      "Reservations",
+      "Wine List",
+      "Fine Dining"
+    ],
+    "imageUrl": "/assets/colaos.webp"
+  },
+  {
+    "id": "23",
+    "name": "A. Francisco's",
+    "category": "Italian",
+    "categories": [
+      "Italian",
+      "Pizza"
+    ],
+    "address": "1501 State St, Erie, PA 16501",
+    "phone": "(814) 455-8700",
+    "description": "Downtown Erie Italian favorite serving authentic dishes, wood-fired pizzas, and house-made desserts in a cozy urban setting.",
+    "priceRange": "$$",
+    "rating": 4.4,
+    "hours": "11:00 AM - 9:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Wood-Fired Pizza",
+      "Downtown"
+    ]
+  },
+  {
+    "id": "24",
+    "name": "Falcone's Kitchen",
+    "category": "Italian",
+    "categories": [
+      "Italian",
+      "Comfort Food"
+    ],
+    "address": "2643 Myrtle St, Erie, PA 16508",
+    "phone": "(814) 459-5855",
+    "description": "Neighborhood Italian kitchen known for generous portions, family recipes, and a casual, friendly atmosphere. A local favorite for comfort food.",
+    "priceRange": "$$",
+    "rating": 4.3,
+    "hours": "11:00 AM - 9:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Family Recipes",
+      "Casual Dining"
+    ]
+  },
+  {
+    "id": "25",
+    "name": "Serafini's Trattoria",
+    "category": "Italian",
+    "categories": [
+      "Italian",
+      "Fine Dining"
+    ],
+    "address": "2642 W 8th St, Erie, PA 16505",
+    "phone": "(814) 833-3333",
+    "description": "Elegant trattoria offering refined Italian cuisine with fresh, seasonal ingredients. Features house-made pasta, seafood specialties, and an extensive wine list.",
+    "priceRange": "$$$",
+    "rating": 4.6,
+    "hours": "4:30 PM - 9:30 PM",
+    "features": [
+      "Dine-in",
+      "Reservations",
+      "Wine List",
+      "Seafood"
+    ],
+    "imageUrl": "/assets/serafinis.jpg"
+  },
+  {
+    "id": "26",
+    "name": "Oliver's Rooftop",
+    "category": "American",
+    "categories": [
+      "American",
+      "Bar & Grill",
+      "Fine Dining"
+    ],
+    "address": "301 French St, Erie, PA 16507",
+    "phone": "(814) 453-6454",
+    "description": "Erie's premier rooftop dining experience with stunning skyline views. Upscale American cuisine, craft cocktails, and an unforgettable atmosphere.",
+    "priceRange": "$$$",
+    "rating": 4.6,
+    "hours": "4:00 PM - 11:00 PM",
+    "features": [
+      "Dine-in",
+      "Rooftop",
+      "Full Bar",
+      "Reservations"
+    ],
+    "imageUrl": "/assets/olivers.jpeg"
+  },
+  {
+    "id": "27",
+    "name": "McGarrey's Oakwood Cafe",
+    "category": "American",
+    "categories": [
+      "American",
+      "Irish",
+      "Bar & Grill"
+    ],
+    "address": "1624 W 38th St, Erie, PA 16508",
+    "phone": "(814) 866-0552",
+    "website": "https://www.mcgarreys.com",
+    "description": "Erie institution since 1978 serving classic American and Irish pub fare. Known for their wings, burgers, and friendly neighborhood atmosphere.",
+    "priceRange": "$$",
+    "rating": 4.4,
+    "hours": "11:00 AM - 2:00 AM",
+    "features": [
+      "Dine-in",
+      "Full Bar",
+      "Late Night",
+      "Wings"
+    ],
+    "imageUrl": "/assets/mcgarreys.png"
+  },
+  {
+    "id": "28",
+    "name": "Torero's Authentic Mexican",
+    "category": "Mexican",
+    "categories": [
+      "Mexican"
+    ],
+    "address": "2620 W 8th St, Erie, PA 16505",
+    "phone": "(814) 833-0298",
+    "description": "Authentic Mexican cuisine featuring traditional recipes, fresh ingredients, and a festive atmosphere. Known for their sizzling fajitas and margaritas.",
+    "priceRange": "$$",
+    "rating": 4.3,
+    "hours": "11:00 AM - 10:00 PM",
+    "features": [
+      "Dine-in",
+      "Takeout",
+      "Full Bar",
+      "Family Friendly"
+    ],
+    "imageUrl": "/assets/toreros.png"
+  }
+]

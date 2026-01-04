@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { restaurants, } from "@/lib/erieData";
-import { restaurantCategories, type RestaurantCategory } from "@shared/schema";
+import { restaurantCategories, type RestaurantCategory } from "@/types";
 
 const priceRanges = ["$", "$$", "$$$", "$$$$"] as const;
 
