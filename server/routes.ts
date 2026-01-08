@@ -1,15 +1,18 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import OpenAI from "openai";
 import nodemailer from "nodemailer";
 
-// the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
-// This is using Replit's AI Integrations service, which provides OpenAI-compatible API access without requiring your own API key.
-const openai = new OpenAI({
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY
-});
+// Only initialize OpenAI if API keys are configured
+// This allows the app to run without AI features
+let openai: any = null;
+if (process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY) {
+  const OpenAI = require("openai").default;
+  openai = new OpenAI({
+    baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+    apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY
+  });
+}
 
 export async function registerRoutes(
   httpServer: Server,
@@ -393,8 +396,17 @@ Please review this submission and contact the submitter at ${email}.
   // AI Recommendation API
   app.post("/api/ai/recommend", async (req, res) => {
     try {
+      // Check if AI is configured
+      if (!openai) {
+        return res.status(503).json({
+          success: false,
+          error: "AI features are not currently available",
+          message: "The AI assistant is temporarily unavailable. Please browse our directory manually to find what you're looking for!"
+        });
+      }
+
       const { query } = req.body;
-      
+
       if (!query || typeof query !== "string") {
         return res.status(400).json({ success: false, error: "Query is required" });
       }
