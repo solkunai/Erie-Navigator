@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Search, Sparkles, Menu, MapPin } from "lucide-react";
+import { Search, Sparkles, Menu, MapPin, PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "./theme-toggle";
@@ -88,6 +88,18 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                 <Sparkles className="h-4 w-4" />
                 <span className="hidden xl:inline">Ask AI</span>
               </Button>
+
+              <Link href="/add-business">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="gap-2"
+                  data-testid="button-add-business"
+                >
+                  <PlusCircle className="h-4 w-4" />
+                  <span className="hidden xl:inline">Add Business</span>
+                </Button>
+              </Link>
             </div>
 
             <div className="hidden sm:block">
@@ -133,6 +145,19 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                     <Sparkles className="h-4 w-4" />
                     Ask AI Assistant
                   </Button>
+
+                  <SheetClose asChild>
+                    <Link href="/add-business">
+                      <Button
+                        variant="outline"
+                        className="gap-2 w-full"
+                        data-testid="button-mobile-add-business"
+                      >
+                        <PlusCircle className="h-4 w-4" />
+                        Add Your Business
+                      </Button>
+                    </Link>
+                  </SheetClose>
 
                   <nav className="flex flex-col gap-1">
                     {navLinks.map((link) => (

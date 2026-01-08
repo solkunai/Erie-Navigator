@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import OpenAI from "openai";
+import nodemailer from "nodemailer";
 
 // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
 // This is using Replit's AI Integrations service, which provides OpenAI-compatible API access without requiring your own API key.
@@ -173,6 +174,219 @@ export async function registerRoutes(
       res.json({ success: true, data: group });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch group" });
+    }
+  });
+
+  // Business Submission API with Email Notification
+  app.post("/api/submit-business", async (req, res) => {
+    try {
+      const {
+        listingType,
+        businessName,
+        category,
+        description,
+        address,
+        phone,
+        email,
+        website,
+        hours,
+        priceRange,
+        contactName,
+        additionalInfo,
+      } = req.body;
+
+      // Validate required fields
+      if (!listingType || !businessName || !description || !email) {
+        return res.status(400).json({
+          success: false,
+          error: "Missing required fields: listing type, business name, description, and email are required",
+        });
+      }
+
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        return res.status(400).json({
+          success: false,
+          error: "Please provide a valid email address",
+        });
+      }
+
+      // Format the listing type for display
+      const listingTypeLabels: Record<string, string> = {
+        restaurant: "Restaurant",
+        event: "Event",
+        activity: "Activity / Things to Do",
+        program: "Community Service / Program",
+        group: "Social Group",
+      };
+
+      // Create email content
+      const submissionDate = new Date().toLocaleString("en-US", {
+        timeZone: "America/New_York",
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+      });
+
+      const emailHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h1 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
+            New Business Submission - Discover Erie
+          </h1>
+
+          <p style="color: #666; font-size: 14px;">
+            Submitted on: ${submissionDate}
+          </p>
+
+          <h2 style="color: #333; margin-top: 24px;">Listing Details</h2>
+
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold; width: 35%;">Listing Type</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${listingTypeLabels[listingType] || listingType}</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Business Name</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${businessName}</td>
+            </tr>
+            ${category ? `
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Category</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${category}</td>
+            </tr>
+            ` : ""}
+            <tr>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Description</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${description}</td>
+            </tr>
+            ${address ? `
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Address</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${address}</td>
+            </tr>
+            ` : ""}
+            ${phone ? `
+            <tr>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Phone</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${phone}</td>
+            </tr>
+            ` : ""}
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Contact Email</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="mailto:${email}">${email}</a></td>
+            </tr>
+            ${website ? `
+            <tr>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Website</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="${website}">${website}</a></td>
+            </tr>
+            ` : ""}
+            ${hours ? `
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Hours</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${hours}</td>
+            </tr>
+            ` : ""}
+            ${priceRange ? `
+            <tr>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Price Range</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${priceRange}</td>
+            </tr>
+            ` : ""}
+            ${contactName ? `
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Contact Name</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${contactName}</td>
+            </tr>
+            ` : ""}
+            ${additionalInfo ? `
+            <tr>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Additional Info</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${additionalInfo}</td>
+            </tr>
+            ` : ""}
+          </table>
+
+          <div style="margin-top: 24px; padding: 16px; background: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0; color: #0369a1;">
+              <strong>Action Required:</strong> Review this submission and reply to the submitter at
+              <a href="mailto:${email}">${email}</a> once approved or if more information is needed.
+            </p>
+          </div>
+
+          <p style="color: #999; font-size: 12px; margin-top: 24px; border-top: 1px solid #e2e8f0; padding-top: 16px;">
+            This email was sent from the Discover Erie directory submission form.
+          </p>
+        </div>
+      `;
+
+      const emailText = `
+New Business Submission - Discover Erie
+========================================
+
+Submitted on: ${submissionDate}
+
+LISTING DETAILS
+---------------
+Listing Type: ${listingTypeLabels[listingType] || listingType}
+Business Name: ${businessName}
+${category ? `Category: ${category}` : ""}
+Description: ${description}
+${address ? `Address: ${address}` : ""}
+${phone ? `Phone: ${phone}` : ""}
+Contact Email: ${email}
+${website ? `Website: ${website}` : ""}
+${hours ? `Hours: ${hours}` : ""}
+${priceRange ? `Price Range: ${priceRange}` : ""}
+${contactName ? `Contact Name: ${contactName}` : ""}
+${additionalInfo ? `Additional Info: ${additionalInfo}` : ""}
+
+---
+Please review this submission and contact the submitter at ${email}.
+      `;
+
+      // Create transporter - using environment variables for SMTP configuration
+      // For Gmail: Use App Password (not regular password)
+      // Set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS in environment variables
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || "smtp.gmail.com",
+        port: parseInt(process.env.SMTP_PORT || "587"),
+        secure: process.env.SMTP_SECURE === "true", // true for 465, false for other ports
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      });
+
+      // Recipient email for submissions
+      const recipientEmail = process.env.SUBMISSION_EMAIL || "eriedirectory@gmail.com";
+
+      // Send email
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM || process.env.SMTP_USER || "noreply@discoverie.com",
+        to: recipientEmail,
+        replyTo: email, // So you can easily reply to the submitter
+        subject: `[Discover Erie] New ${listingTypeLabels[listingType] || listingType} Submission: ${businessName}`,
+        text: emailText,
+        html: emailHtml,
+      });
+
+      console.log(`Business submission email sent for: ${businessName}`);
+
+      res.json({
+        success: true,
+        message: "Your submission has been received. We'll review it and get back to you soon!",
+      });
+    } catch (error) {
+      console.error("Business submission error:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to submit your business listing. Please try again later.",
+      });
     }
   });
 
