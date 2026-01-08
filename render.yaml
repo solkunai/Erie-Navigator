@@ -2,7 +2,7 @@ services:
   - type: web
     name: erie-navigator
     runtime: node
-    buildCommand: npm install && npm run build
+    buildCommand: npm install --include=dev && npm run build
     startCommand: npm run start
     envVars:
       - key: NODE_ENV
@@ -19,9 +19,4 @@ services:
       - key: SMTP_PASS
         sync: false
       - key: SUBMISSION_EMAIL
-        sync: false
-      # AI configuration (optional)
-      - key: AI_INTEGRATIONS_OPENAI_BASE_URL
-        sync: false
-      - key: AI_INTEGRATIONS_OPENAI_API_KEY
         sync: false
