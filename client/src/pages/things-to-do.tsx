@@ -218,9 +218,9 @@ export default function ThingsToDo() {
                 </Button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 pb-4 -mx-4 px-4 scrollbar-hide">
                 {filteredActivities.map((activity) => (
-                  <Card key={activity.id} className="hover-elevate overflow-hidden" data-testid={`card-activity-${activity.id}`}>
+                  <Card key={activity.id} className="hover-elevate overflow-hidden flex-shrink-0 w-[280px] md:w-auto snap-start" data-testid={`card-activity-${activity.id}`}>
                     <div className="aspect-video bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-900/20 dark:to-teal-900/20 flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-background/80 flex items-center justify-center">

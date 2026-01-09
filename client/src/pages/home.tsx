@@ -170,9 +170,9 @@ export default function Home({ onOpenAI }: HomeProps) {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-4 -mx-4 px-4 scrollbar-hide">
             {featuredRestaurants.map((restaurant) => (
-              <Card key={restaurant.id} className="hover-elevate overflow-hidden" data-testid={`card-restaurant-${restaurant.id}`}>
+              <Card key={restaurant.id} className="hover-elevate overflow-hidden flex-shrink-0 w-[280px] md:w-auto snap-start" data-testid={`card-restaurant-${restaurant.id}`}>
                 <div className="aspect-video bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center rounded-t-lg overflow-hidden">
                   {restaurant.imageUrl ? (
                     <img 
@@ -219,9 +219,9 @@ export default function Home({ onOpenAI }: HomeProps) {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 gap-4 md:gap-6 pb-4 -mx-4 px-4 scrollbar-hide">
             {upcomingEvents.map((event) => (
-              <Card key={event.id} className="hover-elevate flex flex-col sm:flex-row" data-testid={`card-event-${event.id}`}>
+              <Card key={event.id} className="hover-elevate flex flex-col sm:flex-row flex-shrink-0 w-[320px] md:w-auto snap-start" data-testid={`card-event-${event.id}`}>
                 <div className="sm:w-32 flex-shrink-0 p-4 sm:p-0 sm:m-4 flex sm:flex-col items-center justify-center bg-primary/10 rounded-lg">
                   <div className="text-center">
                     <p className="text-sm font-medium text-primary">
@@ -267,9 +267,9 @@ export default function Home({ onOpenAI }: HomeProps) {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-4 -mx-4 px-4 scrollbar-hide">
             {popularActivities.map((activity) => (
-              <Card key={activity.id} className="hover-elevate" data-testid={`card-activity-${activity.id}`}>
+              <Card key={activity.id} className="hover-elevate flex-shrink-0 w-[280px] md:w-auto snap-start" data-testid={`card-activity-${activity.id}`}>
                 <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center rounded-t-lg">
                   <MapPin className="h-12 w-12 text-primary/40" />
                 </div>

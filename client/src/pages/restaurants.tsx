@@ -239,9 +239,9 @@ export default function Restaurants() {
                 </Button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 pb-4 -mx-4 px-4 scrollbar-hide">
                 {filteredRestaurants.map((restaurant) => (
-                  <Card key={restaurant.id} className="hover-elevate overflow-hidden" data-testid={`card-restaurant-${restaurant.id}`}>
+                  <Card key={restaurant.id} className="hover-elevate overflow-hidden flex-shrink-0 w-[280px] md:w-auto snap-start" data-testid={`card-restaurant-${restaurant.id}`}>
                     <div className="aspect-video bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-900/20 dark:to-red-900/20 flex items-center justify-center relative">
                       {restaurant.imageUrl ? (
                         <img 

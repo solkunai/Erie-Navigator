@@ -112,9 +112,9 @@ export default function SocialGroups() {
             </Button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-4 -mx-4 px-4 scrollbar-hide">
             {filteredGroups.map((group) => (
-              <Card key={group.id} className="hover-elevate flex flex-col" data-testid={`card-group-${group.id}`}>
+              <Card key={group.id} className="hover-elevate flex flex-col flex-shrink-0 w-[280px] md:w-auto snap-start" data-testid={`card-group-${group.id}`}>
                 <CardHeader>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center flex-shrink-0">
