@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Search, Sparkles, Menu, MapPin } from "lucide-react";
+import { Search, Sparkles, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "./theme-toggle";
@@ -41,7 +41,11 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
               className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-md p-1"
               data-testid="link-home"
             >
-              <MapPin className="h-6 w-6 text-primary" />
+              <img
+                src="/assets/helloerie.png"
+                alt="Hello Erie Logo"
+                className="h-10 w-10 object-contain"
+              />
               <span className="hidden sm:inline font-bold text-xl">Discover Erie</span>
               <span className="sm:hidden font-bold text-lg">Erie</span>
             </Link>
