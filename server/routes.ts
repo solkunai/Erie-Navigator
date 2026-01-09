@@ -7,11 +7,17 @@ import nodemailer from "nodemailer";
 // This allows the app to run without AI features
 let openai: any = null;
 if (process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY) {
-  const OpenAI = require("openai").default;
-  openai = new OpenAI({
-    baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-    apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY
-  });
+  try {
+    const OpenAI = require("openai").default;
+    openai = new OpenAI({
+      baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+      apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY
+    });
+    console.log("OpenAI client initialized successfully");
+  } catch (error) {
+    console.log("OpenAI not configured - AI features disabled");
+    openai = null;
+  }
 }
 
 export async function registerRoutes(
@@ -23,7 +29,7 @@ export async function registerRoutes(
     try {
       const { category, search } = req.query;
       let restaurants;
-      
+
       if (search && typeof search === "string") {
         restaurants = await storage.searchRestaurants(search);
       } else if (category && typeof category === "string") {
@@ -31,7 +37,7 @@ export async function registerRoutes(
       } else {
         restaurants = await storage.getRestaurants();
       }
-      
+
       res.json({ success: true, data: restaurants });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch restaurants" });
@@ -55,7 +61,7 @@ export async function registerRoutes(
     try {
       const { category, date, search } = req.query;
       let events;
-      
+
       if (search && typeof search === "string") {
         events = await storage.searchEvents(search);
       } else if (date && typeof date === "string") {
@@ -65,7 +71,7 @@ export async function registerRoutes(
       } else {
         events = await storage.getEvents();
       }
-      
+
       res.json({ success: true, data: events });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch events" });
@@ -89,7 +95,7 @@ export async function registerRoutes(
     try {
       const { category, audience, search } = req.query;
       let activities;
-      
+
       if (search && typeof search === "string") {
         activities = await storage.searchActivities(search);
       } else if (audience && typeof audience === "string") {
@@ -99,7 +105,7 @@ export async function registerRoutes(
       } else {
         activities = await storage.getActivities();
       }
-      
+
       res.json({ success: true, data: activities });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch activities" });
@@ -123,13 +129,13 @@ export async function registerRoutes(
     try {
       const { search } = req.query;
       let programs;
-      
+
       if (search && typeof search === "string") {
         programs = await storage.searchPrograms(search);
       } else {
         programs = await storage.getAutismPrograms();
       }
-      
+
       res.json({ success: true, data: programs });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch programs" });
@@ -153,7 +159,7 @@ export async function registerRoutes(
     try {
       const { category, search } = req.query;
       let groups;
-      
+
       if (search && typeof search === "string") {
         groups = await storage.searchGroups(search);
       } else if (category && typeof category === "string") {
@@ -161,7 +167,7 @@ export async function registerRoutes(
       } else {
         groups = await storage.getSocialGroups();
       }
-      
+
       res.json({ success: true, data: groups });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch groups" });
@@ -180,12 +186,43 @@ export async function registerRoutes(
     }
   });
 
+  // Businesses API
+  app.get("/api/businesses", async (req, res) => {
+    try {
+      const { category, search } = req.query;
+      let businesses;
+
+      if (search && typeof search === "string") {
+        businesses = await storage.searchBusinesses(search);
+      } else if (category && typeof category === "string") {
+        businesses = await storage.getBusinessesByCategory(category as any);
+      } else {
+        businesses = await storage.getBusinesses();
+      }
+
+      res.json({ success: true, data: businesses });
+    } catch (error) {
+      res.status(500).json({ success: false, error: "Failed to fetch businesses" });
+    }
+  });
+
+  app.get("/api/businesses/:id", async (req, res) => {
+    try {
+      const business = await storage.getBusinessById(req.params.id);
+      if (!business) {
+        return res.status(404).json({ success: false, error: "Business not found" });
+      }
+      res.json({ success: true, data: business });
+    } catch (error) {
+      res.status(500).json({ success: false, error: "Failed to fetch business" });
+    }
+  });
+
   // Business Submission API with Email Notification
   app.post("/api/submit-business", async (req, res) => {
     try {
       const {
-        listingType,
-        businessName,
+        name,
         category,
         description,
         address,
@@ -193,36 +230,28 @@ export async function registerRoutes(
         email,
         website,
         hours,
-        priceRange,
-        contactName,
-        additionalInfo,
+        features,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
       } = req.body;
 
       // Validate required fields
-      if (!listingType || !businessName || !description || !email) {
+      if (!name || !category || !description || !address || !ownerEmail) {
         return res.status(400).json({
           success: false,
-          error: "Missing required fields: listing type, business name, description, and email are required",
+          error: "Missing required fields: name, category, description, address, and your email are required",
         });
       }
 
       // Basic email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
+      if (!emailRegex.test(ownerEmail)) {
         return res.status(400).json({
           success: false,
           error: "Please provide a valid email address",
         });
       }
-
-      // Format the listing type for display
-      const listingTypeLabels: Record<string, string> = {
-        restaurant: "Restaurant",
-        event: "Event",
-        activity: "Activity / Things to Do",
-        program: "Community Service / Program",
-        group: "Social Group",
-      };
 
       // Create email content
       const submissionDate = new Date().toLocaleString("en-US", {
@@ -240,149 +269,112 @@ export async function registerRoutes(
           <h1 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
             New Business Submission - Discover Erie
           </h1>
+          <p style="color: #666; font-size: 14px;">Submitted on: ${submissionDate}</p>
 
-          <p style="color: #666; font-size: 14px;">
-            Submitted on: ${submissionDate}
-          </p>
-
-          <h2 style="color: #333; margin-top: 24px;">Listing Details</h2>
-
+          <h2 style="color: #333; margin-top: 24px;">Business Details</h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tr style="background: #f8fafc;">
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold; width: 35%;">Listing Type</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${listingTypeLabels[listingType] || listingType}</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Business Name</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${name}</td>
             </tr>
             <tr>
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Business Name</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${businessName}</td>
-            </tr>
-            ${category ? `
-            <tr style="background: #f8fafc;">
               <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Category</td>
               <td style="padding: 12px; border: 1px solid #e2e8f0;">${category}</td>
             </tr>
-            ` : ""}
-            <tr>
+            <tr style="background: #f8fafc;">
               <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Description</td>
               <td style="padding: 12px; border: 1px solid #e2e8f0;">${description}</td>
             </tr>
-            ${address ? `
-            <tr style="background: #f8fafc;">
+            <tr>
               <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Address</td>
               <td style="padding: 12px; border: 1px solid #e2e8f0;">${address}</td>
             </tr>
-            ` : ""}
-            ${phone ? `
-            <tr>
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Phone</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${phone}</td>
-            </tr>
-            ` : ""}
+            ${phone ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Phone</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${phone}</td></tr>` : ""}
+            ${email ? `<tr><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Business Email</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${email}</td></tr>` : ""}
+            ${website ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Website</td><td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="${website}">${website}</a></td></tr>` : ""}
+            ${hours ? `<tr><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Hours</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${hours}</td></tr>` : ""}
+            ${features && features.length > 0 ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Features</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${features.join(", ")}</td></tr>` : ""}
+          </table>
+
+          <h2 style="color: #333; margin-top: 24px;">Owner Contact Info</h2>
+          <table style="width: 100%; border-collapse: collapse;">
             <tr style="background: #f8fafc;">
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Contact Email</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="mailto:${email}">${email}</a></td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Name</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${ownerName || "Not provided"}</td>
             </tr>
-            ${website ? `
             <tr>
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Website</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="${website}">${website}</a></td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Email</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="mailto:${ownerEmail}">${ownerEmail}</a></td>
             </tr>
-            ` : ""}
-            ${hours ? `
-            <tr style="background: #f8fafc;">
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Hours</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${hours}</td>
-            </tr>
-            ` : ""}
-            ${priceRange ? `
-            <tr>
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Price Range</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${priceRange}</td>
-            </tr>
-            ` : ""}
-            ${contactName ? `
-            <tr style="background: #f8fafc;">
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Contact Name</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${contactName}</td>
-            </tr>
-            ` : ""}
-            ${additionalInfo ? `
-            <tr>
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Additional Info</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${additionalInfo}</td>
-            </tr>
-            ` : ""}
+            ${ownerPhone ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Phone</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${ownerPhone}</td></tr>` : ""}
           </table>
 
           <div style="margin-top: 24px; padding: 16px; background: #f0f9ff; border-radius: 8px;">
             <p style="margin: 0; color: #0369a1;">
-              <strong>Action Required:</strong> Review this submission and reply to the submitter at
-              <a href="mailto:${email}">${email}</a> once approved or if more information is needed.
+              <strong>Action Required:</strong> Review this submission and reply to <a href="mailto:${ownerEmail}">${ownerEmail}</a> once approved.
             </p>
           </div>
-
-          <p style="color: #999; font-size: 12px; margin-top: 24px; border-top: 1px solid #e2e8f0; padding-top: 16px;">
-            This email was sent from the Discover Erie directory submission form.
-          </p>
         </div>
       `;
 
       const emailText = `
 New Business Submission - Discover Erie
 ========================================
-
 Submitted on: ${submissionDate}
 
-LISTING DETAILS
----------------
-Listing Type: ${listingTypeLabels[listingType] || listingType}
-Business Name: ${businessName}
-${category ? `Category: ${category}` : ""}
+BUSINESS DETAILS
+----------------
+Business Name: ${name}
+Category: ${category}
 Description: ${description}
-${address ? `Address: ${address}` : ""}
+Address: ${address}
 ${phone ? `Phone: ${phone}` : ""}
-Contact Email: ${email}
+${email ? `Business Email: ${email}` : ""}
 ${website ? `Website: ${website}` : ""}
 ${hours ? `Hours: ${hours}` : ""}
-${priceRange ? `Price Range: ${priceRange}` : ""}
-${contactName ? `Contact Name: ${contactName}` : ""}
-${additionalInfo ? `Additional Info: ${additionalInfo}` : ""}
+${features && features.length > 0 ? `Features: ${features.join(", ")}` : ""}
+
+OWNER CONTACT INFO
+------------------
+Name: ${ownerName || "Not provided"}
+Email: ${ownerEmail}
+${ownerPhone ? `Phone: ${ownerPhone}` : ""}
 
 ---
-Please review this submission and contact the submitter at ${email}.
+Please review this submission and contact the owner at ${ownerEmail}.
       `;
 
-      // Create transporter - using environment variables for SMTP configuration
-      // For Gmail: Use App Password (not regular password)
-      // Set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS in environment variables
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || "smtp.gmail.com",
-        port: parseInt(process.env.SMTP_PORT || "587"),
-        secure: process.env.SMTP_SECURE === "true", // true for 465, false for other ports
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
+      // Only send email if SMTP is configured
+      if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+        const transporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST || "smtp.gmail.com",
+          port: parseInt(process.env.SMTP_PORT || "587"),
+          secure: process.env.SMTP_SECURE === "true",
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
+          },
+        });
 
-      // Recipient email for submissions
-      const recipientEmail = process.env.SUBMISSION_EMAIL || "eriedirectory@gmail.com";
+        const recipientEmail = process.env.SUBMISSION_EMAIL || "eriedirectory@gmail.com";
 
-      // Send email
-      await transporter.sendMail({
-        from: process.env.SMTP_FROM || process.env.SMTP_USER || "noreply@discoverie.com",
-        to: recipientEmail,
-        replyTo: email, // So you can easily reply to the submitter
-        subject: `[Discover Erie] New ${listingTypeLabels[listingType] || listingType} Submission: ${businessName}`,
-        text: emailText,
-        html: emailHtml,
-      });
+        await transporter.sendMail({
+          from: process.env.SMTP_FROM || process.env.SMTP_USER,
+          to: recipientEmail,
+          replyTo: ownerEmail,
+          subject: `[Discover Erie] New Business Submission: ${name}`,
+          text: emailText,
+          html: emailHtml,
+        });
 
-      console.log(`Business submission email sent for: ${businessName}`);
+        console.log(`Business submission email sent for: ${name}`);
+      } else {
+        console.log(`Business submission received (email not configured): ${name}`);
+      }
 
       res.json({
         success: true,
-        message: "Your submission has been received. We'll review it and get back to you soon!",
+        message: "Thank you! Your business has been submitted for review. We'll add it to the directory shortly.",
       });
     } catch (error) {
       console.error("Business submission error:", error);
@@ -413,7 +405,7 @@ Please review this submission and contact the submitter at ${email}.
 
       // Get current date/time in Erie timezone
       const now = new Date();
-      const erieTime = now.toLocaleString("en-US", { 
+      const erieTime = now.toLocaleString("en-US", {
         timeZone: "America/New_York",
         weekday: "long",
         year: "numeric",
@@ -473,16 +465,16 @@ Respond in JSON format:
       }
 
       const parsed = JSON.parse(content);
-      
+
       // Map IDs to full objects
       const recommendedRestaurants = parsed.recommendations?.restaurants
         ? restaurants.filter(r => parsed.recommendations.restaurants.includes(r.id))
         : [];
-      
+
       const recommendedEvents = parsed.recommendations?.events
         ? events.filter(e => parsed.recommendations.events.includes(e.id))
         : [];
-      
+
       const recommendedActivities = parsed.recommendations?.activities
         ? activities.filter(a => parsed.recommendations.activities.includes(a.id))
         : [];
@@ -498,8 +490,8 @@ Respond in JSON format:
       });
     } catch (error) {
       console.error("AI recommendation error:", error);
-      res.status(500).json({ 
-        success: false, 
+      res.status(500).json({
+        success: false,
         error: "Failed to generate recommendation",
         message: "I'm sorry, I couldn't process your request right now. Please try again."
       });

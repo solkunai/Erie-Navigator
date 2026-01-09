@@ -1,4 +1,4 @@
-import type { Restaurant, Event, Activity, AutismProgram, SocialGroup } from "@shared/schema";
+import type { Restaurant, Event, Activity, AutismProgram, SocialGroup, Business } from "@shared/schema";
 
 // Sample Erie, PA restaurant data
 export const restaurants: Restaurant[] = [
@@ -387,6 +387,76 @@ export const restaurants: Restaurant[] = [
     hours: "11:00 AM - 10:00 PM",
     features: ["Dine-in", "Takeout", "Full Bar", "Family Friendly"],
     imageUrl: "/assets/toreros.png"
+  },
+  {
+    id: "29",
+    name: "Julius",
+    category: "Mexican",
+    categories: ["Mexican"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://juliuserie.square.site/",
+    description: "Authentic Mexican restaurant serving traditional dishes made with fresh ingredients and family recipes.",
+    priceRange: "$$",
+    rating: 4.5,
+    features: ["Dine-in", "Takeout"],
+    imageUrl: "/assets/Julius.jpg"
+  },
+  {
+    id: "30",
+    name: "Empanissah's",
+    category: "Latin",
+    categories: ["Latin"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.facebook.com/profile.php?id=61561961867814",
+    description: "Latin cuisine featuring authentic empanadas and traditional dishes from across Latin America.",
+    priceRange: "$$",
+    rating: 4.5,
+    features: ["Dine-in", "Takeout", "Catering"],
+    imageUrl: "/assets/empanissahs.jpg"
+  },
+  {
+    id: "31",
+    name: "CheesErie",
+    category: "American",
+    categories: ["American", "Cafe"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.facebook.com/groups/1597285337222719/user/100070847396961",
+    description: "Local restaurant specializing in delicious cheese-centric dishes and comfort food favorites.",
+    priceRange: "$$",
+    rating: 4.4,
+    features: ["Dine-in", "Takeout"],
+    imageUrl: "/assets/cheeserie.jpg"
+  },
+  {
+    id: "32",
+    name: "Main Street Cakery Cafe",
+    category: "Cafe",
+    categories: ["Cafe", "Bakery", "Breakfast"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.mainstreetcakery.com/",
+    description: "Charming bakery and cafe offering fresh-baked goods, artisan cakes, pastries, and light cafe fare.",
+    priceRange: "$$",
+    rating: 4.6,
+    features: ["Dine-in", "Takeout", "Custom Cakes", "Catering"],
+    imageUrl: "/assets/mainstreetcakery.jpg"
+  },
+  {
+    id: "33",
+    name: "Iron Stone Meadery",
+    category: "Winery & Meadery",
+    categories: ["Winery & Meadery", "Bar & Grill"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.ironstonemeadery.com/",
+    description: "Craft meadery producing handcrafted meads and honey wines. Tasting room with a cozy atmosphere.",
+    priceRange: "$$",
+    rating: 4.7,
+    features: ["Tasting Room", "Tours", "Local Products"],
+    imageUrl: "/assets/ironstone.webp"
   }
 ];
 
@@ -928,6 +998,42 @@ export const autismPrograms: AutismProgram[] = [
     website: "https://www.ymcaerie.org",
     services: ["Private Lessons", "Small Group Classes", "Sensory-Friendly Times", "Trained Instructors"],
     accessibility: ["Pool Accessibility", "Quiet Hours", "Visual Schedules"]
+  },
+  {
+    id: "9",
+    name: "Taylor's Hope",
+    organization: "Taylor's Hope",
+    description: "Non-profit organization dedicated to supporting the Erie community through various charitable programs and initiatives.",
+    address: "Erie, PA",
+    phone: "",
+    website: "https://taylors-hope.org/",
+    services: ["Community Support", "Charitable Programs", "Local Initiatives"],
+    accessibility: [],
+    imageUrl: "/assets/taylorshope.jpg"
+  },
+  {
+    id: "10",
+    name: "Heberle's Heartstrings",
+    organization: "Heberle's Heartstrings",
+    description: "Non-profit providing musical instrument lending and music education resources to the Erie community. Making music accessible to all.",
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.heberlesheartstrings.org/",
+    services: ["Instrument Lending", "Music Education", "Community Outreach", "Youth Programs"],
+    accessibility: [],
+    imageUrl: "/assets/heberles.jpg"
+  },
+  {
+    id: "11",
+    name: "NAMI Erie",
+    organization: "National Alliance on Mental Illness - Erie Chapter",
+    description: "Non-profit organization providing mental health support, education, and advocacy for individuals and families affected by mental illness.",
+    address: "Erie, PA",
+    phone: "",
+    website: "https://namierie.org/",
+    services: ["Mental Health Support", "Education Programs", "Advocacy", "Family Support", "Support Groups"],
+    accessibility: [],
+    imageUrl: "/assets/nami.jpg"
   }
 ];
 
@@ -1052,5 +1158,295 @@ export const socialGroups: SocialGroup[] = [
     location: "Frontier Park",
     contactPhone: "(814) 555-1234",
     membershipFee: "$20/year"
+  },
+  {
+    id: "13",
+    name: "Gogh Party Erie",
+    category: "Arts & Creative",
+    description: "Community painting group bringing people together for fun, social painting events. No experience necessary - just come and create!",
+    meetingSchedule: "Regular painting events",
+    location: "Various locations in Erie",
+    website: "https://www.facebook.com/groups/668392443222569/user/100076898271397",
+    membershipFee: "Free",
+    imageUrl: "/assets/goghparty.jpg"
+  }
+];
+
+// Sample Erie, PA local business data
+export const businesses: Business[] = [
+  {
+    id: "1",
+    name: "Pointe Foure",
+    category: "Clothing & Fashion",
+    categories: ["Clothing & Fashion", "Gifts & Specialty"],
+    address: "2501 W 12th St, Erie, PA 16505",
+    phone: "(814) 838-6111",
+    website: "https://www.pointefoure.com",
+    description: "Upscale women's boutique featuring designer clothing, accessories, and gifts. Personalized styling services available.",
+    hours: "Mon-Sat 10:00 AM - 6:00 PM",
+    features: ["Boutique", "Designer Clothing", "Personal Styling", "Gifts"]
+  },
+  {
+    id: "2",
+    name: "Pressed Books & Coffee",
+    category: "Retail",
+    categories: ["Retail", "Entertainment"],
+    address: "1535 W 8th St, Erie, PA 16505",
+    phone: "(814) 520-8451",
+    website: "https://www.pressedbookscoffee.com",
+    description: "Independent bookstore and coffee shop with curated book selection, local art, and craft coffee drinks.",
+    hours: "Mon-Sat 8:00 AM - 8:00 PM, Sun 10:00 AM - 6:00 PM",
+    features: ["Bookstore", "Coffee Shop", "Local Art", "Events"]
+  },
+  {
+    id: "3",
+    name: "Glass Growers Gallery",
+    category: "Retail",
+    categories: ["Retail", "Gifts & Specialty"],
+    address: "10 E 5th St, Erie, PA 16507",
+    phone: "(814) 453-3758",
+    website: "https://www.glassgrowersgallery.com",
+    description: "Contemporary craft gallery featuring handmade jewelry, pottery, glass art, and unique gifts from American artists.",
+    hours: "Tue-Sat 10:00 AM - 5:00 PM",
+    features: ["Art Gallery", "Handmade Jewelry", "Pottery", "Gifts"]
+  },
+  {
+    id: "4",
+    name: "Presque Isle Printing",
+    category: "Professional Services",
+    categories: ["Professional Services"],
+    address: "2662 W 8th St, Erie, PA 16505",
+    phone: "(814) 833-9020",
+    website: "https://www.presqueisleprinting.com",
+    description: "Full-service print shop offering business cards, banners, signs, apparel printing, and promotional products.",
+    hours: "Mon-Fri 8:30 AM - 5:00 PM",
+    features: ["Printing", "Signs & Banners", "Apparel", "Promotional Items"]
+  },
+  {
+    id: "5",
+    name: "LECOM Health & Fitness Center",
+    category: "Fitness",
+    categories: ["Fitness", "Health & Wellness"],
+    address: "5401 Peach St, Erie, PA 16509",
+    phone: "(814) 868-1400",
+    website: "https://www.lecomwellness.com",
+    description: "State-of-the-art fitness facility with cardio and weight equipment, group classes, pool, and personal training.",
+    hours: "Mon-Fri 5:00 AM - 10:00 PM, Sat-Sun 7:00 AM - 7:00 PM",
+    features: ["Gym", "Pool", "Group Classes", "Personal Training"]
+  },
+  {
+    id: "6",
+    name: "Panache Salon & Spa",
+    category: "Beauty & Spa",
+    categories: ["Beauty & Spa"],
+    address: "5765 Peach St, Erie, PA 16509",
+    phone: "(814) 866-4247",
+    website: "https://www.panacheeriespa.com",
+    description: "Full-service salon and spa offering hair styling, coloring, facials, massages, and nail services.",
+    hours: "Tue-Thu 9:00 AM - 8:00 PM, Fri-Sat 9:00 AM - 5:00 PM",
+    features: ["Hair Salon", "Spa Services", "Nails", "Massage"]
+  },
+  {
+    id: "7",
+    name: "Dobbs Auto Center",
+    category: "Automotive",
+    categories: ["Automotive"],
+    address: "7200 Peach St, Erie, PA 16509",
+    phone: "(814) 866-5913",
+    description: "Family-owned auto repair shop providing honest, reliable service for all makes and models. ASE certified technicians.",
+    hours: "Mon-Fri 8:00 AM - 5:30 PM",
+    features: ["Auto Repair", "Oil Change", "Brakes", "ASE Certified"]
+  },
+  {
+    id: "8",
+    name: "Countryside Vet",
+    category: "Pet Services",
+    categories: ["Pet Services", "Health & Wellness"],
+    address: "10701 Wattsburg Rd, Erie, PA 16509",
+    phone: "(814) 825-7772",
+    website: "https://www.countrysidevet.com",
+    description: "Comprehensive veterinary care for cats, dogs, and small animals. Wellness exams, surgery, dental, and boarding services.",
+    hours: "Mon-Fri 8:00 AM - 6:00 PM, Sat 8:00 AM - 12:00 PM",
+    features: ["Veterinary Care", "Surgery", "Dental", "Boarding"]
+  },
+  {
+    id: "9",
+    name: "Potratz Floral Shop",
+    category: "Florist",
+    categories: ["Florist", "Gifts & Specialty"],
+    address: "2619 Peach St, Erie, PA 16508",
+    phone: "(814) 456-6467",
+    website: "https://www.potratzfloral.com",
+    description: "Family-owned florist since 1932 creating beautiful arrangements for weddings, events, and everyday occasions.",
+    hours: "Mon-Fri 9:00 AM - 5:00 PM, Sat 9:00 AM - 2:00 PM",
+    features: ["Flowers", "Weddings", "Events", "Delivery"]
+  },
+  {
+    id: "10",
+    name: "Blasco Memorial Library",
+    category: "Education",
+    categories: ["Education", "Entertainment"],
+    address: "160 E Front St, Erie, PA 16507",
+    phone: "(814) 451-6900",
+    website: "https://www.erielibrary.org",
+    description: "Erie's main public library offering books, media, computers, programs, and the renowned Idea Lab makerspace.",
+    hours: "Mon-Thu 9:00 AM - 8:00 PM, Fri-Sat 9:00 AM - 5:00 PM",
+    features: ["Library", "Makerspace", "Programs", "Free WiFi"]
+  },
+  {
+    id: "11",
+    name: "Whole Foods Co-op",
+    category: "Grocery & Market",
+    categories: ["Grocery & Market", "Health & Wellness"],
+    address: "1341 W 26th St, Erie, PA 16508",
+    phone: "(814) 456-0282",
+    website: "https://www.wfcerie.coop",
+    description: "Member-owned natural foods cooperative offering organic produce, bulk foods, local products, and health supplements.",
+    hours: "Mon-Sat 8:00 AM - 8:00 PM, Sun 10:00 AM - 6:00 PM",
+    features: ["Organic", "Local Products", "Bulk Foods", "Member-Owned"]
+  },
+  {
+    id: "12",
+    name: "Dramashop",
+    category: "Entertainment",
+    categories: ["Entertainment", "Education"],
+    address: "1001 State St #210, Erie, PA 16501",
+    phone: "(814) 580-8036",
+    website: "https://www.dramashop.org",
+    description: "Erie's premier destination for contemporary theater productions and acting classes for all ages.",
+    hours: "Box office opens 1 hour before shows",
+    features: ["Theater", "Acting Classes", "Live Performances", "Downtown"]
+  },
+  {
+    id: "13",
+    name: "Mazza Chautauqua Cellars",
+    category: "Retail",
+    categories: ["Retail", "Entertainment"],
+    address: "8398 W Lake Rd, Lake City, PA 16423",
+    phone: "(814) 725-5688",
+    website: "https://www.mazzawines.com",
+    description: "Award-winning winery offering tastings, tours, and a beautiful lakeside setting in Lake Erie Wine Country.",
+    hours: "Mon-Sat 10:00 AM - 5:00 PM, Sun 12:00 PM - 5:00 PM",
+    features: ["Wine Tasting", "Tours", "Event Space", "Lakeside"]
+  },
+  {
+    id: "14",
+    name: "Erie Insurance Arena Pro Shop",
+    category: "Retail",
+    categories: ["Retail", "Fitness"],
+    address: "809 French St, Erie, PA 16501",
+    phone: "(814) 452-4857",
+    description: "Official merchandise store for Erie Otters and arena events. Team jerseys, apparel, and memorabilia.",
+    hours: "Mon-Fri 10:00 AM - 5:00 PM, Event days extended",
+    features: ["Sports Merchandise", "Team Apparel", "Memorabilia"]
+  },
+  {
+    id: "15",
+    name: "Creative Machines",
+    category: "Professional Services",
+    categories: ["Professional Services", "Electronics"],
+    address: "1611 Peach St, Erie, PA 16501",
+    phone: "(814) 520-6045",
+    website: "https://www.creativemachines.com",
+    description: "Computer repair, IT services, and custom PC builds. Serving homes and businesses throughout Erie.",
+    hours: "Mon-Fri 9:00 AM - 5:00 PM",
+    features: ["Computer Repair", "IT Services", "Custom PCs", "Business Support"]
+  },
+  {
+    id: "16",
+    name: "John Gallagher DJ & Entertainment",
+    category: "Entertainment",
+    categories: ["Entertainment", "Professional Services"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.johngallagher.com/",
+    description: "Professional wedding and special event DJ services. Creating memorable experiences with music for your special occasions.",
+    features: ["Wedding DJ", "Event Entertainment", "Special Events", "Professional Sound"],
+    imageUrl: "/assets/johngallagher.jpg"
+  },
+  {
+    id: "17",
+    name: "Metamorphosis Counseling",
+    category: "Health & Wellness",
+    categories: ["Health & Wellness"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.metamorphosiscounseling.net/",
+    description: "Professional mental health counseling services providing compassionate care and support for individuals and families.",
+    features: ["Mental Health", "Counseling", "Therapy", "Individual Sessions"],
+    imageUrl: "/assets/metamorphosis.jpg"
+  },
+  {
+    id: "18",
+    name: "KD's Place Local Books & Arts",
+    category: "Entertainment",
+    categories: ["Entertainment", "Retail", "Education"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.facebook.com/kdsplace814/",
+    description: "Community event space featuring local books, arts, and cultural programming. A gathering place for Erie's creative community.",
+    features: ["Event Space", "Local Books", "Arts", "Community Events"],
+    imageUrl: "/assets/kdsplace.jpg"
+  },
+  {
+    id: "19",
+    name: "Sacred Energy Yoga",
+    category: "Fitness",
+    categories: ["Fitness", "Health & Wellness"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.facebook.com/groups/668392443222569/user/61579081396134/",
+    description: "Yoga studio offering classes for all levels. Find your inner peace and physical wellness through guided yoga practice.",
+    features: ["Yoga Classes", "All Levels", "Wellness", "Meditation"],
+    imageUrl: "/assets/sacredenergyyoga.jpg"
+  },
+  {
+    id: "20",
+    name: "Carolina - Erie Wedding Ceremonies",
+    category: "Professional Services",
+    categories: ["Professional Services"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.facebook.com/Weddingceremonybykarolina",
+    description: "Professional wedding officiant services for beautiful and personalized wedding ceremonies in the Erie area.",
+    features: ["Wedding Officiant", "Custom Ceremonies", "Personalized Vows"],
+    imageUrl: "/assets/karolinawed.jpg"
+  },
+  {
+    id: "21",
+    name: "Keller Williams Realty Erie",
+    category: "Real Estate",
+    categories: ["Real Estate", "Professional Services"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.kellerwilliamseriepa.com/",
+    description: "Full-service real estate agency helping buyers and sellers navigate the Erie housing market with expertise and care.",
+    features: ["Real Estate", "Home Buying", "Home Selling", "Property Management"],
+    imageUrl: "/assets/kwrealty.jpg"
+  },
+  {
+    id: "22",
+    name: "Calm Creations Jewelry",
+    category: "Retail",
+    categories: ["Retail", "Gifts & Specialty"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://calmpermjewelry.glossgenius.com/",
+    description: "Custom jewelry studio specializing in unique, handcrafted pieces. Permanent jewelry and custom designs available.",
+    features: ["Custom Jewelry", "Handcrafted", "Permanent Jewelry", "Gift Items"],
+    imageUrl: "/assets/calmcreations.jpg"
+  },
+  {
+    id: "23",
+    name: "LaRese Floral",
+    category: "Florist",
+    categories: ["Florist", "Gifts & Specialty"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://www.laresefloral.net/",
+    description: "Family-owned Erie florist providing beautiful floral arrangements for all occasions. Specializing in weddings, funerals, events, and everyday celebrations with fresh, locally-sourced flowers.",
+    features: ["Flowers", "Weddings", "Funerals", "Events", "Custom Arrangements", "Delivery", "Family-Owned"],
+    imageUrl: "/assets/laresefloral.jpg",
+    isFeatured: true
   }
 ];

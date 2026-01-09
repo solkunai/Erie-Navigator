@@ -4,17 +4,22 @@ import type {
   Activity, 
   AutismProgram, 
   SocialGroup,
+  Business,
+  BusinessSubmission,
   RestaurantCategory,
   EventCategory,
   ActivityCategory,
-  AudienceType
+  AudienceType,
+  BusinessCategory
 } from "@shared/schema";
 import { 
   restaurants as restaurantData, 
   events as eventData, 
   activities as activityData,
   autismPrograms as programData,
-  socialGroups as groupData
+  socialGroups as groupData,
+  businesses as businessData,
+  businessSubmissions as submissionData
 } from "./erieData";
 
 export interface IStorage {
@@ -48,6 +53,16 @@ export interface IStorage {
   getGroupById(id: string): Promise<SocialGroup | undefined>;
   getGroupsByCategory(category: string): Promise<SocialGroup[]>;
   searchGroups(query: string): Promise<SocialGroup[]>;
+
+  // Businesses
+  getBusinesses(): Promise<Business[]>;
+  getBusinessById(id: string): Promise<Business | undefined>;
+  getBusinessesByCategory(category: BusinessCategory): Promise<Business[]>;
+  searchBusinesses(query: string): Promise<Business[]>;
+  
+  // Business Submissions
+  addBusinessSubmission(submission: BusinessSubmission): Promise<void>;
+  getBusinessSubmissions(): Promise<BusinessSubmission[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -56,6 +71,8 @@ export class MemStorage implements IStorage {
   private activities: Activity[];
   private autismPrograms: AutismProgram[];
   private socialGroups: SocialGroup[];
+  private businesses: Business[];
+  private businessSubmissions: BusinessSubmission[];
 
   constructor() {
     this.restaurants = restaurantData;
@@ -63,6 +80,8 @@ export class MemStorage implements IStorage {
     this.activities = activityData;
     this.autismPrograms = programData;
     this.socialGroups = groupData;
+    this.businesses = businessData;
+    this.businessSubmissions = submissionData;
   }
 
   // Restaurants
@@ -180,6 +199,38 @@ export class MemStorage implements IStorage {
       g.description.toLowerCase().includes(q) ||
       g.category.toLowerCase().includes(q)
     );
+  }
+
+  // Businesses
+  async getBusinesses(): Promise<Business[]> {
+    return this.businesses;
+  }
+
+  async getBusinessById(id: string): Promise<Business | undefined> {
+    return this.businesses.find(b => b.id === id);
+  }
+
+  async getBusinessesByCategory(category: BusinessCategory): Promise<Business[]> {
+    return this.businesses.filter(b => b.categories.includes(category));
+  }
+
+  async searchBusinesses(query: string): Promise<Business[]> {
+    const q = query.toLowerCase();
+    return this.businesses.filter(b => 
+      b.name.toLowerCase().includes(q) ||
+      b.description.toLowerCase().includes(q) ||
+      b.category.toLowerCase().includes(q) ||
+      b.categories.some(c => c.toLowerCase().includes(q))
+    );
+  }
+
+  // Business Submissions
+  async addBusinessSubmission(submission: BusinessSubmission): Promise<void> {
+    this.businessSubmissions.push(submission);
+  }
+
+  async getBusinessSubmissions(): Promise<BusinessSubmission[]> {
+    return this.businessSubmissions;
   }
 }
 

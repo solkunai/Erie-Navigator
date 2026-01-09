@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { X, Send, Sparkles, Loader2 } from "lucide-react";
+import { X, Send, Sparkles, Loader2, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -10,6 +10,9 @@ interface AIChatProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+// Set to false to disable AI and show "Coming Soon" message
+const AI_ENABLED = false;
 
 const suggestedQueries = [
   "Mexican food tonight",
@@ -34,13 +37,13 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
   }, [messages]);
 
   useEffect(() => {
-    if (isOpen && textareaRef.current) {
+    if (isOpen && textareaRef.current && AI_ENABLED) {
       textareaRef.current.focus();
     }
   }, [isOpen]);
 
   const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
+    if (!AI_ENABLED || !input.trim() || isLoading) return;
 
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
@@ -89,6 +92,7 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
   };
 
   const handleSuggestionClick = (suggestion: string) => {
+    if (!AI_ENABLED) return;
     setInput(suggestion);
     textareaRef.current?.focus();
   };
@@ -108,6 +112,11 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
         <div className="flex items-center gap-2">
           <Sparkles className="h-5 w-5" />
           <h2 className="font-semibold">Erie AI Assistant</h2>
+          {!AI_ENABLED && (
+            <Badge variant="secondary" className="bg-primary-foreground/20 text-primary-foreground text-xs">
+              Coming Soon
+            </Badge>
+          )}
         </div>
         <Button
           variant="ghost"
@@ -121,7 +130,35 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
       </div>
 
       <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
-        {messages.length === 0 ? (
+        {!AI_ENABLED ? (
+          // Coming Soon Message
+          <div className="flex flex-col items-center justify-center h-full text-center px-6 py-12">
+            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+              <Clock className="h-8 w-8 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Coming Soon!</h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Our AI-powered assistant will help you discover the best restaurants, events, and activities in Erie, PA based on your preferences.
+            </p>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <p className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-primary" />
+                Personalized recommendations
+              </p>
+              <p className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-primary" />
+                Find hidden gems in Erie
+              </p>
+              <p className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-primary" />
+                Get answers to local questions
+              </p>
+            </div>
+            <p className="mt-8 text-xs text-muted-foreground">
+              In the meantime, explore our directory to find great local spots!
+            </p>
+          </div>
+        ) : messages.length === 0 ? (
           <div className="flex flex-col gap-4">
             <p className="text-muted-foreground text-center py-8">
               Hi! I can help you find restaurants, events, and activities in Erie, PA.
@@ -191,33 +228,35 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
         )}
       </ScrollArea>
 
-      <div className="p-4 border-t bg-background">
-        <div className="flex gap-2">
-          <Textarea
-            ref={textareaRef}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Ask about Erie restaurants, events, activities..."
-            className="resize-none min-h-[44px] max-h-32"
-            rows={1}
-            disabled={isLoading}
-            data-testid="input-ai-chat"
-          />
-          <Button
-            onClick={handleSend}
-            disabled={!input.trim() || isLoading}
-            size="icon"
-            data-testid="button-send-ai"
-          >
-            {isLoading ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              <Send className="h-4 w-4" />
-            )}
-          </Button>
+      {AI_ENABLED && (
+        <div className="p-4 border-t bg-background">
+          <div className="flex gap-2">
+            <Textarea
+              ref={textareaRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Ask about Erie restaurants, events, activities..."
+              className="resize-none min-h-[44px] max-h-32"
+              rows={1}
+              disabled={isLoading}
+              data-testid="input-ai-chat"
+            />
+            <Button
+              onClick={handleSend}
+              disabled={!input.trim() || isLoading}
+              size="icon"
+              data-testid="button-send-ai"
+            >
+              {isLoading ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <Send className="h-4 w-4" />
+              )}
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

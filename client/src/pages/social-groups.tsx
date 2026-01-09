@@ -117,12 +117,22 @@ export default function SocialGroups() {
               <Card key={group.id} className="hover-elevate flex flex-col" data-testid={`card-group-${group.id}`}>
                 <CardHeader>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center flex-shrink-0">
-                      <Users className="h-6 w-6 text-white" />
+                    <div className="w-14 h-14 rounded-lg bg-white dark:bg-muted flex items-center justify-center flex-shrink-0 overflow-hidden border">
+                      {group.imageUrl ? (
+                        <img 
+                          src={group.imageUrl} 
+                          alt={group.name}
+                          className="w-full h-full object-contain p-1"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center">
+                          <Users className="h-6 w-6 text-white" />
+                        </div>
+                      )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <CardTitle className="text-lg line-clamp-2">{group.name}</CardTitle>
-                      <Badge variant="secondary" size="sm" className="mt-2">
+                      <Badge variant="secondary" className="mt-2">
                         {group.category}
                       </Badge>
                     </div>
