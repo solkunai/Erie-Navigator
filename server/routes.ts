@@ -254,8 +254,24 @@ export async function registerRoutes(
   });
 
   // Business Submission API with Email Notification
-  app.post("/api/submit-business", upload.single('logo'), async (req, res) => {
+  app.post("/api/submit-business", (req, res, next) => {
+    // Multer error handling wrapper
+    upload.single('logo')(req, res, (err) => {
+      if (err) {
+        console.error("Multer error:", err);
+        return res.status(400).json({
+          success: false,
+          error: err.message || "File upload failed",
+        });
+      }
+      next();
+    });
+  }, async (req, res) => {
     try {
+      console.log("Business submission received");
+      console.log("Body:", Object.keys(req.body));
+      console.log("File:", req.file ? req.file.originalname : "No file");
+
       const {
         name,
         category,
@@ -271,10 +287,18 @@ export async function registerRoutes(
       } = req.body;
 
       // Parse features from JSON string (sent from FormData)
-      const features = req.body.features ? JSON.parse(req.body.features) : [];
+      let features = [];
+      try {
+        features = req.body.features ? JSON.parse(req.body.features) : [];
+      } catch (e) {
+        console.error("Error parsing features:", e);
+        features = [];
+      }
 
       // Get uploaded file info
       const logoFile = req.file;
+
+      console.log("Validating fields:", { name, category, description, address, ownerEmail });
 
       // Validate required fields
       if (!name || !category || !description || !address || !ownerEmail) {
@@ -366,10 +390,11 @@ export async function registerRoutes(
       `;
 
       const emailText = `
-New Business Submission - Discover Erie
+New Business Submission - Hello Erie
 ========================================
 Submitted on: ${submissionDate}
 
+${logoFile ? `UPLOADED LOGO: ${logoFile.originalname} (see attachment)\n` : ''}
 BUSINESS DETAILS
 ----------------
 Business Name: ${name}
@@ -437,11 +462,12 @@ Please review this submission and contact the owner at ${ownerEmail}.
         success: true,
         message: "Thank you! Your business has been submitted for review. We'll add it to the directory shortly.",
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Business submission error:", error);
+      console.error("Error stack:", error.stack);
       res.status(500).json({
         success: false,
-        error: "Failed to submit your business listing. Please try again later.",
+        error: error.message || "Failed to submit your business listing. Please try again later.",
       });
     }
   });
