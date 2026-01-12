@@ -135,9 +135,9 @@ export default function Home({ onOpenAI }: HomeProps) {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 pb-4 -mx-4 px-4 scrollbar-hide">
             {featuredRestaurants.map((restaurant) => (
-              <article key={restaurant.id} className="group cursor-pointer">
+              <article key={restaurant.id} className="group cursor-pointer flex-shrink-0 w-[280px] md:w-auto snap-start">
                 <div className="aspect-[4/3] bg-white dark:bg-muted rounded-lg mb-4 overflow-hidden border flex items-center justify-center">
                   {restaurant.imageUrl ? (
                     <img 
