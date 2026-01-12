@@ -2,9 +2,19 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+
+// Initialize Resend if API key is configured
+let resend: Resend | null = null;
+if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY.trim() !== '') {
+  resend = new Resend(process.env.RESEND_API_KEY);
+  console.log("✅ Resend email service initialized");
+} else {
+  console.log("ℹ️  Resend not configured - emails will use SMTP if configured");
+}
 
 // Configure multer for file uploads
 const uploadsDir = path.join(process.cwd(), "uploads");
@@ -417,16 +427,53 @@ ${ownerPhone ? `Phone: ${ownerPhone}` : ""}
 Please review this submission and contact the owner at ${ownerEmail}.
       `;
 
-      // Only send email if SMTP is properly configured with valid credentials
+      // Try to send email notification (Resend first, then SMTP fallback)
+      const recipientEmail = process.env.SUBMISSION_EMAIL || process.env.RESEND_FROM || "hello@helloerie.xyz";
+      let emailSent = false;
+
+      // Option 1: Try Resend (recommended)
+      if (resend && !emailSent) {
+        try {
+          console.log("📧 Attempting to send email via Resend...");
+
+          const emailPayload: any = {
+            from: process.env.RESEND_FROM || "Hello Erie <submissions@helloerie.xyz>",
+            to: recipientEmail,
+            reply_to: ownerEmail,
+            subject: `[Hello Erie] New Business Submission: ${name}`,
+            html: emailHtml,
+          };
+
+          // Add logo as attachment if uploaded
+          if (logoFile) {
+            const logoContent = fs.readFileSync(logoFile.path);
+            const logoBase64 = logoContent.toString('base64');
+            emailPayload.attachments = [
+              {
+                filename: logoFile.originalname,
+                content: logoBase64,
+              }
+            ];
+          }
+
+          await resend.emails.send(emailPayload);
+          console.log(`✅ Email sent successfully via Resend for: ${name}`);
+          emailSent = true;
+        } catch (emailError: any) {
+          console.error(`❌ Resend failed:`, emailError.message);
+        }
+      }
+
+      // Option 2: Fallback to SMTP if Resend didn't work
       const smtpConfigured =
         process.env.SMTP_USER &&
         process.env.SMTP_USER.trim() !== '' &&
         process.env.SMTP_PASS &&
         process.env.SMTP_PASS.trim() !== '';
 
-      if (smtpConfigured) {
+      if (!emailSent && smtpConfigured) {
         try {
-          console.log("Attempting to send email notification...");
+          console.log("📧 Attempting to send email via SMTP...");
 
           const transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST || "smtp.gmail.com",
@@ -436,12 +483,10 @@ Please review this submission and contact the owner at ${ownerEmail}.
               user: process.env.SMTP_USER,
               pass: process.env.SMTP_PASS,
             },
-            connectionTimeout: 10000, // 10 second connection timeout
-            greetingTimeout: 10000, // 10 second greeting timeout
-            socketTimeout: 10000, // 10 second socket timeout
+            connectionTimeout: 10000,
+            greetingTimeout: 10000,
+            socketTimeout: 10000,
           });
-
-          const recipientEmail = process.env.SUBMISSION_EMAIL || "eriedirectory@gmail.com";
 
           const mailOptions: any = {
             from: process.env.SMTP_FROM || process.env.SMTP_USER,
@@ -452,27 +497,28 @@ Please review this submission and contact the owner at ${ownerEmail}.
             html: emailHtml,
           };
 
-          // Add logo as attachment if uploaded
           if (logoFile) {
             mailOptions.attachments = [
               {
                 filename: logoFile.originalname,
                 path: logoFile.path,
-                cid: 'business-logo' // Same cid used in the HTML template
+                cid: 'business-logo'
               }
             ];
           }
 
           await transporter.sendMail(mailOptions);
-
-          console.log(`✅ Business submission email sent successfully for: ${name}`);
+          console.log(`✅ Email sent successfully via SMTP for: ${name}`);
+          emailSent = true;
         } catch (emailError: any) {
-          // Log email error but don't fail the submission
-          console.error(`❌ Failed to send email notification:`, emailError.message);
-          console.log(`⚠️  Business submission saved, but email notification failed for: ${name}`);
+          console.error(`❌ SMTP failed:`, emailError.message);
         }
-      } else {
-        console.log(`📝 Business submission received (email not configured): ${name}`);
+      }
+
+      // Log final status
+      if (!emailSent) {
+        console.log(`📝 Business submission received (no email service configured): ${name}`);
+        console.log(`💡 Tip: Add RESEND_API_KEY to environment variables to enable email notifications`);
       }
 
       res.json({
