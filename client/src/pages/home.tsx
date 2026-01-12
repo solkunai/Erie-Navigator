@@ -81,8 +81,8 @@ export default function Home({ onOpenAI }: HomeProps) {
             {/* Right: Hero Image */}
             <div className="relative hidden lg:block">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/assets/bayfront.JPG" 
+                <img
+                  src="/assets/bayfronterie.jpg"
                   alt="Erie Bayfront"
                   className="w-full h-full object-cover"
                 />
