@@ -1,4 +1,4 @@
-import type { Restaurant, Event, Activity, AutismProgram, SocialGroup, Business } from "@shared/schema";
+import type { Restaurant, Event, Activity, AutismProgram, SocialGroup, Business, BusinessSubmission } from "@shared/schema";
 
 // Sample Erie, PA restaurant data
 export const restaurants: Restaurant[] = [
@@ -1435,3 +1435,6 @@ export const businesses: Business[] = [
     isFeatured: true
   }
 ];
+
+// Business submissions array (for storing form submissions)
+export const businessSubmissions: BusinessSubmission[] = [];

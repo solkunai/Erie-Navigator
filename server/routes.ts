@@ -124,6 +124,73 @@ export async function registerRoutes(
     }
   });
 
+  // Event Management API - Analytics and Automation
+  // Note: These routes must come BEFORE /api/events/:id to avoid route conflicts
+  app.get("/api/events/analytics", async (req, res) => {
+    try {
+      const analytics = eventManager.getEventAnalytics();
+      res.json({
+        success: true,
+        data: analytics
+      });
+    } catch (error) {
+      console.error("Event analytics error:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to fetch event analytics"
+      });
+    }
+  });
+
+  // Get only upcoming events (filters out past events)
+  app.get("/api/events/upcoming", async (req, res) => {
+    try {
+      const { days } = req.query;
+      const allEvents = await storage.getEvents();
+
+      let upcomingEvents;
+      if (days && typeof days === "string") {
+        upcomingEvents = getUpcomingEvents(allEvents, parseInt(days));
+      } else {
+        upcomingEvents = filterUpcomingEvents(allEvents);
+      }
+
+      res.json({
+        success: true,
+        data: upcomingEvents
+      });
+    } catch (error) {
+      console.error("Upcoming events error:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to fetch upcoming events"
+      });
+    }
+  });
+
+  // Manually trigger event update task (for admin use)
+  app.post("/api/events/update", async (req, res) => {
+    try {
+      console.log("🔄 Manual event update triggered");
+
+      // Run the update task in the background
+      runEventUpdateTask().catch(error => {
+        console.error("Background event update failed:", error);
+      });
+
+      res.json({
+        success: true,
+        message: "Event update task started. Check server logs for progress."
+      });
+    } catch (error) {
+      console.error("Event update trigger error:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to trigger event update"
+      });
+    }
+  });
+
   app.get("/api/events/:id", async (req, res) => {
     try {
       const event = await storage.getEventById(req.params.id);
@@ -645,72 +712,6 @@ Respond in JSON format:
         success: false,
         error: "Failed to generate recommendation",
         message: "I'm sorry, I couldn't process your request right now. Please try again."
-      });
-    }
-  });
-
-  // Event Management API - Analytics and Automation
-  app.get("/api/events/analytics", async (req, res) => {
-    try {
-      const analytics = eventManager.getEventAnalytics();
-      res.json({
-        success: true,
-        data: analytics
-      });
-    } catch (error) {
-      console.error("Event analytics error:", error);
-      res.status(500).json({
-        success: false,
-        error: "Failed to fetch event analytics"
-      });
-    }
-  });
-
-  // Get only upcoming events (filters out past events)
-  app.get("/api/events/upcoming", async (req, res) => {
-    try {
-      const { days } = req.query;
-      const allEvents = await storage.getEvents();
-
-      let upcomingEvents;
-      if (days && typeof days === "string") {
-        upcomingEvents = getUpcomingEvents(allEvents, parseInt(days));
-      } else {
-        upcomingEvents = filterUpcomingEvents(allEvents);
-      }
-
-      res.json({
-        success: true,
-        data: upcomingEvents
-      });
-    } catch (error) {
-      console.error("Upcoming events error:", error);
-      res.status(500).json({
-        success: false,
-        error: "Failed to fetch upcoming events"
-      });
-    }
-  });
-
-  // Manually trigger event update task (for admin use)
-  app.post("/api/events/update", async (req, res) => {
-    try {
-      console.log("🔄 Manual event update triggered");
-
-      // Run the update task in the background
-      runEventUpdateTask().catch(error => {
-        console.error("Background event update failed:", error);
-      });
-
-      res.json({
-        success: true,
-        message: "Event update task started. Check server logs for progress."
-      });
-    } catch (error) {
-      console.error("Event update trigger error:", error);
-      res.status(500).json({
-        success: false,
-        error: "Failed to trigger event update"
       });
     }
   });
