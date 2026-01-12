@@ -1,14 +1,24 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import OpenAI from "openai";
+import nodemailer from "nodemailer";
 
-// the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
-// This is using Replit's AI Integrations service, which provides OpenAI-compatible API access without requiring your own API key.
-const openai = new OpenAI({
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY
-});
+// Only initialize OpenAI if API keys are configured
+// This allows the app to run without AI features
+let openai: any = null;
+if (process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY) {
+  try {
+    const OpenAI = require("openai").default;
+    openai = new OpenAI({
+      baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+      apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY
+    });
+    console.log("OpenAI client initialized successfully");
+  } catch (error) {
+    console.log("OpenAI not configured - AI features disabled");
+    openai = null;
+  }
+}
 
 export async function registerRoutes(
   httpServer: Server,
@@ -19,7 +29,7 @@ export async function registerRoutes(
     try {
       const { category, search } = req.query;
       let restaurants;
-      
+
       if (search && typeof search === "string") {
         restaurants = await storage.searchRestaurants(search);
       } else if (category && typeof category === "string") {
@@ -27,7 +37,7 @@ export async function registerRoutes(
       } else {
         restaurants = await storage.getRestaurants();
       }
-      
+
       res.json({ success: true, data: restaurants });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch restaurants" });
@@ -51,7 +61,7 @@ export async function registerRoutes(
     try {
       const { category, date, search } = req.query;
       let events;
-      
+
       if (search && typeof search === "string") {
         events = await storage.searchEvents(search);
       } else if (date && typeof date === "string") {
@@ -61,7 +71,7 @@ export async function registerRoutes(
       } else {
         events = await storage.getEvents();
       }
-      
+
       res.json({ success: true, data: events });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch events" });
@@ -85,7 +95,7 @@ export async function registerRoutes(
     try {
       const { category, audience, search } = req.query;
       let activities;
-      
+
       if (search && typeof search === "string") {
         activities = await storage.searchActivities(search);
       } else if (audience && typeof audience === "string") {
@@ -95,7 +105,7 @@ export async function registerRoutes(
       } else {
         activities = await storage.getActivities();
       }
-      
+
       res.json({ success: true, data: activities });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch activities" });
@@ -119,13 +129,13 @@ export async function registerRoutes(
     try {
       const { search } = req.query;
       let programs;
-      
+
       if (search && typeof search === "string") {
         programs = await storage.searchPrograms(search);
       } else {
         programs = await storage.getAutismPrograms();
       }
-      
+
       res.json({ success: true, data: programs });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch programs" });
@@ -149,7 +159,7 @@ export async function registerRoutes(
     try {
       const { category, search } = req.query;
       let groups;
-      
+
       if (search && typeof search === "string") {
         groups = await storage.searchGroups(search);
       } else if (category && typeof category === "string") {
@@ -157,7 +167,7 @@ export async function registerRoutes(
       } else {
         groups = await storage.getSocialGroups();
       }
-      
+
       res.json({ success: true, data: groups });
     } catch (error) {
       res.status(500).json({ success: false, error: "Failed to fetch groups" });
@@ -176,18 +186,226 @@ export async function registerRoutes(
     }
   });
 
+  // Businesses API
+  app.get("/api/businesses", async (req, res) => {
+    try {
+      const { category, search } = req.query;
+      let businesses;
+
+      if (search && typeof search === "string") {
+        businesses = await storage.searchBusinesses(search);
+      } else if (category && typeof category === "string") {
+        businesses = await storage.getBusinessesByCategory(category as any);
+      } else {
+        businesses = await storage.getBusinesses();
+      }
+
+      res.json({ success: true, data: businesses });
+    } catch (error) {
+      res.status(500).json({ success: false, error: "Failed to fetch businesses" });
+    }
+  });
+
+  app.get("/api/businesses/:id", async (req, res) => {
+    try {
+      const business = await storage.getBusinessById(req.params.id);
+      if (!business) {
+        return res.status(404).json({ success: false, error: "Business not found" });
+      }
+      res.json({ success: true, data: business });
+    } catch (error) {
+      res.status(500).json({ success: false, error: "Failed to fetch business" });
+    }
+  });
+
+  // Business Submission API with Email Notification
+  app.post("/api/submit-business", async (req, res) => {
+    try {
+      const {
+        name,
+        category,
+        description,
+        address,
+        phone,
+        email,
+        website,
+        hours,
+        features,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+      } = req.body;
+
+      // Validate required fields
+      if (!name || !category || !description || !address || !ownerEmail) {
+        return res.status(400).json({
+          success: false,
+          error: "Missing required fields: name, category, description, address, and your email are required",
+        });
+      }
+
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(ownerEmail)) {
+        return res.status(400).json({
+          success: false,
+          error: "Please provide a valid email address",
+        });
+      }
+
+      // Create email content
+      const submissionDate = new Date().toLocaleString("en-US", {
+        timeZone: "America/New_York",
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+      });
+
+      const emailHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h1 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
+            New Business Submission - Discover Erie
+          </h1>
+          <p style="color: #666; font-size: 14px;">Submitted on: ${submissionDate}</p>
+
+          <h2 style="color: #333; margin-top: 24px;">Business Details</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Business Name</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Category</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${category}</td>
+            </tr>
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Description</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${description}</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Address</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${address}</td>
+            </tr>
+            ${phone ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Phone</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${phone}</td></tr>` : ""}
+            ${email ? `<tr><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Business Email</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${email}</td></tr>` : ""}
+            ${website ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Website</td><td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="${website}">${website}</a></td></tr>` : ""}
+            ${hours ? `<tr><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Hours</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${hours}</td></tr>` : ""}
+            ${features && features.length > 0 ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Features</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${features.join(", ")}</td></tr>` : ""}
+          </table>
+
+          <h2 style="color: #333; margin-top: 24px;">Owner Contact Info</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background: #f8fafc;">
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Name</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${ownerName || "Not provided"}</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Email</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="mailto:${ownerEmail}">${ownerEmail}</a></td>
+            </tr>
+            ${ownerPhone ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Phone</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${ownerPhone}</td></tr>` : ""}
+          </table>
+
+          <div style="margin-top: 24px; padding: 16px; background: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0; color: #0369a1;">
+              <strong>Action Required:</strong> Review this submission and reply to <a href="mailto:${ownerEmail}">${ownerEmail}</a> once approved.
+            </p>
+          </div>
+        </div>
+      `;
+
+      const emailText = `
+New Business Submission - Discover Erie
+========================================
+Submitted on: ${submissionDate}
+
+BUSINESS DETAILS
+----------------
+Business Name: ${name}
+Category: ${category}
+Description: ${description}
+Address: ${address}
+${phone ? `Phone: ${phone}` : ""}
+${email ? `Business Email: ${email}` : ""}
+${website ? `Website: ${website}` : ""}
+${hours ? `Hours: ${hours}` : ""}
+${features && features.length > 0 ? `Features: ${features.join(", ")}` : ""}
+
+OWNER CONTACT INFO
+------------------
+Name: ${ownerName || "Not provided"}
+Email: ${ownerEmail}
+${ownerPhone ? `Phone: ${ownerPhone}` : ""}
+
+---
+Please review this submission and contact the owner at ${ownerEmail}.
+      `;
+
+      // Only send email if SMTP is configured
+      if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+        const transporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST || "smtp.gmail.com",
+          port: parseInt(process.env.SMTP_PORT || "587"),
+          secure: process.env.SMTP_SECURE === "true",
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
+          },
+        });
+
+        const recipientEmail = process.env.SUBMISSION_EMAIL || "eriedirectory@gmail.com";
+
+        await transporter.sendMail({
+          from: process.env.SMTP_FROM || process.env.SMTP_USER,
+          to: recipientEmail,
+          replyTo: ownerEmail,
+          subject: `[Discover Erie] New Business Submission: ${name}`,
+          text: emailText,
+          html: emailHtml,
+        });
+
+        console.log(`Business submission email sent for: ${name}`);
+      } else {
+        console.log(`Business submission received (email not configured): ${name}`);
+      }
+
+      res.json({
+        success: true,
+        message: "Thank you! Your business has been submitted for review. We'll add it to the directory shortly.",
+      });
+    } catch (error) {
+      console.error("Business submission error:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to submit your business listing. Please try again later.",
+      });
+    }
+  });
+
   // AI Recommendation API
   app.post("/api/ai/recommend", async (req, res) => {
     try {
+      // Check if AI is configured
+      if (!openai) {
+        return res.status(503).json({
+          success: false,
+          error: "AI features are not currently available",
+          message: "The AI assistant is temporarily unavailable. Please browse our directory manually to find what you're looking for!"
+        });
+      }
+
       const { query } = req.body;
-      
+
       if (!query || typeof query !== "string") {
         return res.status(400).json({ success: false, error: "Query is required" });
       }
 
       // Get current date/time in Erie timezone
       const now = new Date();
-      const erieTime = now.toLocaleString("en-US", { 
+      const erieTime = now.toLocaleString("en-US", {
         timeZone: "America/New_York",
         weekday: "long",
         year: "numeric",
@@ -247,16 +465,16 @@ Respond in JSON format:
       }
 
       const parsed = JSON.parse(content);
-      
+
       // Map IDs to full objects
       const recommendedRestaurants = parsed.recommendations?.restaurants
         ? restaurants.filter(r => parsed.recommendations.restaurants.includes(r.id))
         : [];
-      
+
       const recommendedEvents = parsed.recommendations?.events
         ? events.filter(e => parsed.recommendations.events.includes(e.id))
         : [];
-      
+
       const recommendedActivities = parsed.recommendations?.activities
         ? activities.filter(a => parsed.recommendations.activities.includes(a.id))
         : [];
@@ -272,8 +490,8 @@ Respond in JSON format:
       });
     } catch (error) {
       console.error("AI recommendation error:", error);
-      res.status(500).json({ 
-        success: false, 
+      res.status(500).json({
+        success: false,
         error: "Failed to generate recommendation",
         message: "I'm sorry, I couldn't process your request right now. Please try again."
       });

@@ -10,10 +10,13 @@ import { AIChat } from "@/components/ai-chat";
 import Home from "@/pages/home";
 import Explore from "@/pages/explore";
 import Restaurants from "@/pages/restaurants";
+import Businesses from "@/pages/businesses";
+import AddBusiness from "@/pages/add-business";
 import Events from "@/pages/events";
 import ThingsToDo from "@/pages/things-to-do";
 import AutismPrograms from "@/pages/autism-programs";
 import SocialGroups from "@/pages/social-groups";
+import AddBusiness from "@/pages/add-business";
 import NotFound from "@/pages/not-found";
 
 function Router({ onOpenAI }: { onOpenAI: () => void }) {
@@ -22,10 +25,13 @@ function Router({ onOpenAI }: { onOpenAI: () => void }) {
       <Route path="/" component={() => <Home onOpenAI={onOpenAI} />} />
       <Route path="/explore" component={Explore} />
       <Route path="/restaurants" component={Restaurants} />
+      <Route path="/businesses" component={Businesses} />
+      <Route path="/add-business" component={AddBusiness} />
       <Route path="/events" component={Events} />
       <Route path="/things-to-do" component={ThingsToDo} />
       <Route path="/autism-programs" component={AutismPrograms} />
       <Route path="/social-groups" component={SocialGroups} />
+      <Route path="/add-business" component={AddBusiness} />
       <Route component={NotFound} />
     </Switch>
   );

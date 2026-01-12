@@ -96,16 +96,32 @@ export default function AutismPrograms() {
             {filteredPrograms.map((program) => (
               <Card key={program.id} className="hover-elevate" data-testid={`card-program-${program.id}`}>
                 <CardHeader>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-xl mb-1">{program.name}</CardTitle>
-                      <p className="text-sm text-muted-foreground">{program.organization}</p>
+                  <div className="flex items-start gap-4">
+                    {/* Image or Icon */}
+                    <div className="w-16 h-16 rounded-lg bg-white dark:bg-muted flex-shrink-0 flex items-center justify-center overflow-hidden border">
+                      {program.imageUrl ? (
+                        <img 
+                          src={program.imageUrl} 
+                          alt={program.name}
+                          className="w-full h-full object-contain p-1"
+                        />
+                      ) : (
+                        <Heart className="h-6 w-6 text-pink-600 dark:text-pink-400" />
+                      )}
                     </div>
-                    {program.ageRange && (
-                      <Badge variant="secondary" size="sm">
-                        {program.ageRange}
-                      </Badge>
-                    )}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <CardTitle className="text-xl mb-1">{program.name}</CardTitle>
+                          <p className="text-sm text-muted-foreground">{program.organization}</p>
+                        </div>
+                        {program.ageRange && (
+                          <Badge variant="secondary" className="flex-shrink-0">
+                            {program.ageRange}
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </CardHeader>
                 <CardContent>
