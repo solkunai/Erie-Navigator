@@ -417,45 +417,62 @@ ${ownerPhone ? `Phone: ${ownerPhone}` : ""}
 Please review this submission and contact the owner at ${ownerEmail}.
       `;
 
-      // Only send email if SMTP is configured
-      if (process.env.SMTP_USER && process.env.SMTP_PASS) {
-        const transporter = nodemailer.createTransport({
-          host: process.env.SMTP_HOST || "smtp.gmail.com",
-          port: parseInt(process.env.SMTP_PORT || "587"),
-          secure: process.env.SMTP_SECURE === "true",
-          auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
-          },
-        });
+      // Only send email if SMTP is properly configured with valid credentials
+      const smtpConfigured =
+        process.env.SMTP_USER &&
+        process.env.SMTP_USER.trim() !== '' &&
+        process.env.SMTP_PASS &&
+        process.env.SMTP_PASS.trim() !== '';
 
-        const recipientEmail = process.env.SUBMISSION_EMAIL || "eriedirectory@gmail.com";
+      if (smtpConfigured) {
+        try {
+          console.log("Attempting to send email notification...");
 
-        const mailOptions: any = {
-          from: process.env.SMTP_FROM || process.env.SMTP_USER,
-          to: recipientEmail,
-          replyTo: ownerEmail,
-          subject: `[Hello Erie] New Business Submission: ${name}`,
-          text: emailText,
-          html: emailHtml,
-        };
+          const transporter = nodemailer.createTransport({
+            host: process.env.SMTP_HOST || "smtp.gmail.com",
+            port: parseInt(process.env.SMTP_PORT || "587"),
+            secure: process.env.SMTP_SECURE === "true",
+            auth: {
+              user: process.env.SMTP_USER,
+              pass: process.env.SMTP_PASS,
+            },
+            connectionTimeout: 10000, // 10 second connection timeout
+            greetingTimeout: 10000, // 10 second greeting timeout
+            socketTimeout: 10000, // 10 second socket timeout
+          });
 
-        // Add logo as attachment if uploaded
-        if (logoFile) {
-          mailOptions.attachments = [
-            {
-              filename: logoFile.originalname,
-              path: logoFile.path,
-              cid: 'business-logo' // Same cid used in the HTML template
-            }
-          ];
+          const recipientEmail = process.env.SUBMISSION_EMAIL || "eriedirectory@gmail.com";
+
+          const mailOptions: any = {
+            from: process.env.SMTP_FROM || process.env.SMTP_USER,
+            to: recipientEmail,
+            replyTo: ownerEmail,
+            subject: `[Hello Erie] New Business Submission: ${name}`,
+            text: emailText,
+            html: emailHtml,
+          };
+
+          // Add logo as attachment if uploaded
+          if (logoFile) {
+            mailOptions.attachments = [
+              {
+                filename: logoFile.originalname,
+                path: logoFile.path,
+                cid: 'business-logo' // Same cid used in the HTML template
+              }
+            ];
+          }
+
+          await transporter.sendMail(mailOptions);
+
+          console.log(`✅ Business submission email sent successfully for: ${name}`);
+        } catch (emailError: any) {
+          // Log email error but don't fail the submission
+          console.error(`❌ Failed to send email notification:`, emailError.message);
+          console.log(`⚠️  Business submission saved, but email notification failed for: ${name}`);
         }
-
-        await transporter.sendMail(mailOptions);
-
-        console.log(`Business submission email sent for: ${name}`);
       } else {
-        console.log(`Business submission received (email not configured): ${name}`);
+        console.log(`📝 Business submission received (email not configured): ${name}`);
       }
 
       res.json({
