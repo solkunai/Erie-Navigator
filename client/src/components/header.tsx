@@ -34,7 +34,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
         <div className="flex h-14 items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <img src="/assets/logo.png" alt="Hello Erie" className="h-8 w-8" />
+            <img src="/assets/logo.png" alt="Hello Erie" className="h-8 w-8 rounded-full object-cover" />
             <span className="font-serif text-lg">Discover Erie</span>
           </Link>
 
