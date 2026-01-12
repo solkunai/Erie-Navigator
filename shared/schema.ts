@@ -168,6 +168,8 @@ export interface SocialGroup {
 
 // Business categories
 export const businessCategories = [
+  "Restaurant",
+  "Independent/Pop-up",
   "Retail",
   "Health & Wellness",
   "Beauty & Spa",

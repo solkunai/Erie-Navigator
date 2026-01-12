@@ -57,10 +57,23 @@ export default function AddBusiness() {
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    
+
+    const isIndependentBusiness = formData.category === "Independent/Pop-up";
+
     if (!formData.name.trim()) newErrors.name = "Business name is required";
     if (!formData.category) newErrors.category = "Please select a category";
-    if (!formData.address.trim()) newErrors.address = "Address is required";
+
+    // Address is required for all except Independent/Pop-up businesses
+    if (!isIndependentBusiness && !formData.address.trim()) {
+      newErrors.address = "Address is required";
+    }
+
+    // For Independent/Pop-up businesses, require at least website OR business email
+    if (isIndependentBusiness && !formData.website.trim() && !formData.email.trim()) {
+      newErrors.website = "Website or business email is required for mobile/pop-up businesses";
+      newErrors.email = "Website or business email is required for mobile/pop-up businesses";
+    }
+
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
     if (!formData.description.trim()) newErrors.description = "Description is required";
     if (!formData.ownerName.trim()) newErrors.ownerName = "Your name is required";
@@ -69,7 +82,7 @@ export default function AddBusiness() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.ownerEmail)) {
       newErrors.ownerEmail = "Please enter a valid email address";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -297,14 +310,19 @@ export default function AddBusiness() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="address">Address *</Label>
+                      <Label htmlFor="address">
+                        Address {formData.category !== "Independent/Pop-up" ? "*" : "(optional)"}
+                      </Label>
                       <Input
                         id="address"
-                        placeholder="123 Main St, Erie, PA 16501"
+                        placeholder={formData.category === "Independent/Pop-up" ? "Physical address (if applicable)" : "123 Main St, Erie, PA 16501"}
                         value={formData.address}
                         onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                         className={errors.address ? "border-red-500" : ""}
                       />
+                      {formData.category === "Independent/Pop-up" && !errors.address && (
+                        <p className="text-xs text-muted-foreground">For mobile/pop-up businesses, include website or social media below</p>
+                      )}
                       {errors.address && <p className="text-sm text-red-500">{errors.address}</p>}
                     </div>
 
