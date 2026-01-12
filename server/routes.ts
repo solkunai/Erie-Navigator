@@ -2,6 +2,41 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import nodemailer from "nodemailer";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
+
+// Configure multer for file uploads
+const uploadsDir = path.join(process.cwd(), "uploads");
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, uploadsDir);
+    },
+    filename: (req, file, cb) => {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+      cb(null, uniqueSuffix + path.extname(file.originalname));
+    }
+  }),
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5MB limit
+  },
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = /jpeg|jpg|png|gif|webp/;
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = allowedTypes.test(file.mimetype);
+
+    if (extname && mimetype) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only image files are allowed (JPEG, PNG, GIF, WebP)'));
+    }
+  }
+});
 
 // Only initialize OpenAI if API keys are configured
 // This allows the app to run without AI features
@@ -219,7 +254,7 @@ export async function registerRoutes(
   });
 
   // Business Submission API with Email Notification
-  app.post("/api/submit-business", async (req, res) => {
+  app.post("/api/submit-business", upload.single('logo'), async (req, res) => {
     try {
       const {
         name,
@@ -230,11 +265,16 @@ export async function registerRoutes(
         email,
         website,
         hours,
-        features,
         ownerName,
         ownerEmail,
         ownerPhone,
       } = req.body;
+
+      // Parse features from JSON string (sent from FormData)
+      const features = req.body.features ? JSON.parse(req.body.features) : [];
+
+      // Get uploaded file info
+      const logoFile = req.file;
 
       // Validate required fields
       if (!name || !category || !description || !address || !ownerEmail) {
@@ -267,9 +307,17 @@ export async function registerRoutes(
       const emailHtml = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
-            New Business Submission - Discover Erie
+            New Business Submission - Hello Erie
           </h1>
           <p style="color: #666; font-size: 14px;">Submitted on: ${submissionDate}</p>
+
+          ${logoFile ? `
+          <div style="margin: 24px 0; padding: 16px; background: #f8fafc; border-radius: 8px; text-align: center;">
+            <h3 style="color: #333; margin: 0 0 12px 0;">Uploaded Logo/Image</h3>
+            <img src="cid:business-logo" alt="Business Logo" style="max-width: 200px; max-height: 200px; border-radius: 8px; border: 1px solid #e2e8f0;" />
+            <p style="color: #666; font-size: 12px; margin: 8px 0 0 0;">File: ${logoFile.originalname}</p>
+          </div>
+          ` : ''}
 
           <h2 style="color: #333; margin-top: 24px;">Business Details</h2>
           <table style="width: 100%; border-collapse: collapse;">
@@ -358,14 +406,27 @@ Please review this submission and contact the owner at ${ownerEmail}.
 
         const recipientEmail = process.env.SUBMISSION_EMAIL || "eriedirectory@gmail.com";
 
-        await transporter.sendMail({
+        const mailOptions: any = {
           from: process.env.SMTP_FROM || process.env.SMTP_USER,
           to: recipientEmail,
           replyTo: ownerEmail,
-          subject: `[Discover Erie] New Business Submission: ${name}`,
+          subject: `[Hello Erie] New Business Submission: ${name}`,
           text: emailText,
           html: emailHtml,
-        });
+        };
+
+        // Add logo as attachment if uploaded
+        if (logoFile) {
+          mailOptions.attachments = [
+            {
+              filename: logoFile.originalname,
+              path: logoFile.path,
+              cid: 'business-logo' // Same cid used in the HTML template
+            }
+          ];
+        }
+
+        await transporter.sendMail(mailOptions);
 
         console.log(`Business submission email sent for: ${name}`);
       } else {

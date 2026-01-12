@@ -50,6 +50,7 @@ export default function AddBusiness() {
     ownerName: "",
     ownerEmail: "",
     ownerPhone: "",
+    logo: null as File | null,
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -86,16 +87,29 @@ export default function AddBusiness() {
     }
 
     setIsSubmitting(true);
-    
+
     try {
+      // Create FormData for file upload
+      const submitData = new FormData();
+
+      // Append all form fields
+      Object.keys(formData).forEach((key) => {
+        if (key === 'logo') {
+          if (formData.logo) {
+            submitData.append('logo', formData.logo);
+          }
+        } else if (key === 'features') {
+          submitData.append('features', JSON.stringify(formData.features));
+        } else {
+          submitData.append(key, (formData as any)[key]);
+        }
+      });
+
       const response = await fetch("/api/submit-business", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: submitData, // Send as FormData, not JSON
       });
-      
+
       const data = await response.json();
       
       if (data.success) {
@@ -237,6 +251,42 @@ export default function AddBusiness() {
                       rows={4}
                     />
                     {errors.description && <p className="text-sm text-red-500">{errors.description}</p>}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="logo">Business Logo or Image (optional)</Label>
+                    <div className="border-2 border-dashed rounded-lg p-6 text-center hover:border-primary/50 transition-colors">
+                      <Input
+                        id="logo"
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            // Check file size (max 5MB)
+                            if (file.size > 5 * 1024 * 1024) {
+                              toast({
+                                title: "File too large",
+                                description: "Please select an image under 5MB",
+                                variant: "destructive",
+                              });
+                              e.target.value = '';
+                              return;
+                            }
+                            setFormData({ ...formData, logo: file });
+                          }
+                        }}
+                        className="cursor-pointer"
+                      />
+                      {formData.logo && (
+                        <p className="text-sm text-muted-foreground mt-2">
+                          Selected: {formData.logo.name}
+                        </p>
+                      )}
+                      <p className="text-xs text-muted-foreground mt-2">
+                        Upload your business logo or a representative image (PNG, JPG, or GIF - max 5MB)
+                      </p>
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
