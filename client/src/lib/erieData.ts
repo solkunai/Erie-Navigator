@@ -15,7 +15,7 @@ export const restaurants: Restaurant[] = [
     rating: 4.5,
     hours: "11:00 AM - 8:00 PM (Seasonal)",
     features: ["Takeout", "Family Friendly", "Ice Cream"],
-    imageUrl: "/assets/saras-s.png"
+    imageUrl: "/assets/sara-s.jpg"
   },
   {
     id: "2",
