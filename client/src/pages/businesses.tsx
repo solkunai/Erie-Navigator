@@ -68,7 +68,7 @@ export default function Businesses() {
               />
               <Label
                 htmlFor={`category-${category}`}
-                className="text-sm cursor-pointer font-medium"
+                className="text-sm cursor-pointer font-medium text-gray-700 hover:text-[#3A96CB] transition-colors"
               >
                 {category}
               </Label>

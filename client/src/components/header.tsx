@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Search, Sparkles, Menu, Plus, User } from "lucide-react";
+import { Search, Sparkles, Menu, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -86,11 +86,6 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                 Explore
               </Button>
             </Link>
-
-            {/* User Button */}
-            <button className="w-10 h-10 rounded-full bg-[#FFD700] border-2 border-black flex items-center justify-center hover:scale-105 transition-transform">
-              <User className="h-5 w-5 text-black" />
-            </button>
 
             {/* Mobile Menu */}
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>

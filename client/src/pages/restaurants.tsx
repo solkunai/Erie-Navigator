@@ -81,7 +81,7 @@ export default function Restaurants() {
               />
               <Label
                 htmlFor={`category-${category}`}
-                className="text-sm cursor-pointer font-medium"
+                className="text-sm cursor-pointer font-medium text-gray-700 hover:text-[#FF851A] transition-colors"
               >
                 {category}
               </Label>
@@ -104,7 +104,7 @@ export default function Restaurants() {
               />
               <Label
                 htmlFor={`price-${price}`}
-                className="text-sm cursor-pointer font-medium"
+                className="text-sm cursor-pointer font-medium text-gray-700 hover:text-[#FF851A] transition-colors"
               >
                 {price} {price === "$" && "(Budget)"}
                 {price === "$$" && "(Moderate)"}

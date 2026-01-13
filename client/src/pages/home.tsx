@@ -220,11 +220,13 @@ export default function Home({ onOpenAI }: HomeProps) {
                       </Badge>
 
                       {restaurant.imageUrl ? (
-                        <img
-                          src={restaurant.imageUrl}
-                          alt={restaurant.name}
-                          className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300"
-                        />
+                        <div className="w-full h-full flex items-center justify-center p-2">
+                          <img
+                            src={restaurant.imageUrl}
+                            alt={restaurant.name}
+                            className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#FF851A]/20 to-[#FFD700]/20">
                           <span className="text-5xl font-black text-[#FF851A]/30">{restaurant.name.charAt(0)}</span>
