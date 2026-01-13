@@ -1444,7 +1444,7 @@ export const businesses: Business[] = [
     website: "https://argyllabbeyestate.com/",
     description: "Elegant wedding venue estate offering beautiful settings for your special day.",
     features: ["Wedding Venue", "Event Space", "Outdoor Ceremonies", "Receptions"],
-    imageUrl: "/assets/argyll_abbey.jpg"
+    imageUrl: "/assets/argyll_abbey.jpeg"
   }
 ];
 
