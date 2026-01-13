@@ -32,13 +32,15 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-[#FF851A] rounded-lg flex items-center justify-center border-2 border-black hover:scale-105 transition-transform">
-              <span className="text-white font-bold text-xl">H</span>
-            </div>
+          <Link href="/" className="flex items-center gap-3">
+            <img
+              src="/assets/helloerie-final.png"
+              alt="Hello Erie Logo"
+              className="w-10 h-10 object-contain hover:scale-105 transition-transform"
+            />
             <div className="hidden sm:flex items-center gap-2">
-              <span className="font-bold text-lg">HELLO ERIE</span>
-              <span className="text-gray-400">/</span>
+              <span className="font-black text-lg text-gray-900">HELLO ERIE</span>
+              <span className="text-gray-600">/</span>
               <span className="text-[#FF851A] font-bold text-sm">navigator</span>
             </div>
           </Link>
@@ -101,11 +103,13 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
               <SheetContent side="right" className="w-72 border-l-4 border-black bg-[#FCF4F8]">
                 <div className="flex flex-col gap-6 py-6">
                   {/* Mobile Logo */}
-                  <div className="flex items-center gap-2 pb-4 border-b-2 border-black">
-                    <div className="w-10 h-10 bg-[#FF851A] rounded-lg flex items-center justify-center border-2 border-black">
-                      <span className="text-white font-bold text-xl">H</span>
-                    </div>
-                    <span className="font-bold text-lg">HELLO ERIE</span>
+                  <div className="flex items-center gap-3 pb-4 border-b-2 border-black">
+                    <img
+                      src="/assets/helloerie-final.png"
+                      alt="Hello Erie Logo"
+                      className="w-10 h-10 object-contain"
+                    />
+                    <span className="font-black text-lg text-gray-900">HELLO ERIE</span>
                   </div>
 
                   {/* Mobile Search */}

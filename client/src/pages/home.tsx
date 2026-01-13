@@ -343,11 +343,13 @@ export default function Home({ onOpenAI }: HomeProps) {
         <footer className="py-12 bg-white border-t-4 border-black">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-[#FF851A] flex items-center justify-center border-2 border-black transform -rotate-12">
-                  <span className="text-white font-bold text-xl">H</span>
-                </div>
-                <span className="font-black text-xl">HELLO ERIE © 2024</span>
+              <div className="flex items-center gap-3">
+                <img
+                  src="/assets/helloerie-final.png"
+                  alt="Hello Erie Logo"
+                  className="w-10 h-10 object-contain transform -rotate-12"
+                />
+                <span className="font-black text-xl text-gray-900">HELLO ERIE © 2024</span>
               </div>
               <nav className="flex flex-wrap justify-center gap-6 text-sm font-bold">
                 <Link href="/restaurants" className="hover:text-[#FF851A] transition-colors">GRUB</Link>
