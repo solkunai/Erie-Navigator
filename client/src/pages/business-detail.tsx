@@ -88,7 +88,7 @@ export default function BusinessDetail() {
                         <Badge
                           key={cat}
                           variant="outline"
-                          className="border-2 border-black rounded-sm font-medium"
+                          className="border-2 border-black rounded-sm font-bold text-gray-900"
                         >
                           {cat}
                         </Badge>
@@ -106,7 +106,7 @@ export default function BusinessDetail() {
                         <Badge
                           key={feature}
                           variant="outline"
-                          className="border-2 border-black rounded-sm bg-[#3A96CB]/20 font-medium"
+                          className="border-2 border-black rounded-sm bg-[#3A96CB]/20 font-bold text-gray-900"
                         >
                           {feature}
                         </Badge>
