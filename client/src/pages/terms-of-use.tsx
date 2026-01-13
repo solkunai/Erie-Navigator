@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { ArrowLeft, FileText, Shield, Scale } from "lucide-react";
 
 export default function TermsOfUse() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#FCF4F8] relative overflow-hidden">
       {/* Dotted Background Pattern */}
