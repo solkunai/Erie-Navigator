@@ -7,6 +7,39 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import { eventManager, runEventUpdateTask, filterUpcomingEvents, getUpcomingEvents } from "./utils/eventManager";
+import validator from "validator";
+import rateLimit from "express-rate-limit";
+
+// Security: HTML escape function to prevent XSS attacks in emails
+function escapeHtml(text: string): string {
+  if (!text) return '';
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.toString().replace(/[&<>"']/g, m => map[m]);
+}
+
+// Security: Sanitize string input (trim and limit length)
+function sanitizeString(text: string, maxLength: number = 500): string {
+  if (!text) return '';
+  return text.toString().trim().slice(0, maxLength);
+}
+
+// Rate limiter for business submissions (prevent spam)
+const businessSubmissionLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 5, // 5 submissions per hour per IP
+  message: {
+    success: false,
+    error: "Too many submissions. Please try again in an hour."
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 // Initialize Resend if API key is configured
 let resend: Resend | null = null;
@@ -332,7 +365,7 @@ export async function registerRoutes(
   });
 
   // Business Submission API with Email Notification
-  app.post("/api/submit-business", (req, res, next) => {
+  app.post("/api/submit-business", businessSubmissionLimiter, (req, res, next) => {
     // Multer error handling wrapper
     upload.single('logo')(req, res, (err) => {
       if (err) {
@@ -350,24 +383,25 @@ export async function registerRoutes(
       console.log("Body:", Object.keys(req.body));
       console.log("File:", req.file ? req.file.originalname : "No file");
 
-      const {
-        name,
-        category,
-        description,
-        address,
-        phone,
-        email,
-        website,
-        hours,
-        ownerName,
-        ownerEmail,
-        ownerPhone,
-      } = req.body;
+      // Sanitize all input fields
+      const name = sanitizeString(req.body.name, 100);
+      const category = sanitizeString(req.body.category, 50);
+      const description = sanitizeString(req.body.description, 1000);
+      const address = sanitizeString(req.body.address, 200);
+      const phone = sanitizeString(req.body.phone, 20);
+      const email = sanitizeString(req.body.email, 100);
+      const website = sanitizeString(req.body.website, 200);
+      const hours = sanitizeString(req.body.hours, 200);
+      const ownerName = sanitizeString(req.body.ownerName, 100);
+      const ownerEmail = sanitizeString(req.body.ownerEmail, 100);
+      const ownerPhone = sanitizeString(req.body.ownerPhone, 20);
 
       // Parse features from JSON string (sent from FormData)
-      let features = [];
+      let features: string[] = [];
       try {
         features = req.body.features ? JSON.parse(req.body.features) : [];
+        // Sanitize each feature
+        features = features.map(f => sanitizeString(f, 50)).filter(f => f.length > 0);
       } catch (e) {
         console.error("Error parsing features:", e);
         features = [];
@@ -386,12 +420,42 @@ export async function registerRoutes(
         });
       }
 
-      // Basic email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(ownerEmail)) {
+      // Enhanced validation using validator library
+      if (!validator.isEmail(ownerEmail)) {
         return res.status(400).json({
           success: false,
           error: "Please provide a valid email address",
+        });
+      }
+
+      // Validate optional email
+      if (email && !validator.isEmail(email)) {
+        return res.status(400).json({
+          success: false,
+          error: "Please provide a valid business email address",
+        });
+      }
+
+      // Validate website URL if provided
+      if (website && !validator.isURL(website, { require_protocol: false })) {
+        return res.status(400).json({
+          success: false,
+          error: "Please provide a valid website URL",
+        });
+      }
+
+      // Validate length limits
+      if (name.length < 2) {
+        return res.status(400).json({
+          success: false,
+          error: "Business name must be at least 2 characters",
+        });
+      }
+
+      if (description.length < 10) {
+        return res.status(400).json({
+          success: false,
+          error: "Description must be at least 10 characters",
         });
       }
 
@@ -417,7 +481,7 @@ export async function registerRoutes(
           <div style="margin: 24px 0; padding: 16px; background: #f8fafc; border-radius: 8px; text-align: center;">
             <h3 style="color: #333; margin: 0 0 12px 0;">Uploaded Logo/Image</h3>
             <img src="cid:business-logo" alt="Business Logo" style="max-width: 200px; max-height: 200px; border-radius: 8px; border: 1px solid #e2e8f0;" />
-            <p style="color: #666; font-size: 12px; margin: 8px 0 0 0;">File: ${logoFile.originalname}</p>
+            <p style="color: #666; font-size: 12px; margin: 8px 0 0 0;">File: ${escapeHtml(logoFile.originalname)}</p>
           </div>
           ` : ''}
 
@@ -425,43 +489,43 @@ export async function registerRoutes(
           <table style="width: 100%; border-collapse: collapse;">
             <tr style="background: #f8fafc;">
               <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Business Name</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${name}</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${escapeHtml(name)}</td>
             </tr>
             <tr>
               <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Category</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${category}</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${escapeHtml(category)}</td>
             </tr>
             <tr style="background: #f8fafc;">
               <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Description</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${description}</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${escapeHtml(description)}</td>
             </tr>
             <tr>
               <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Address</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${address}</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${escapeHtml(address)}</td>
             </tr>
-            ${phone ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Phone</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${phone}</td></tr>` : ""}
-            ${email ? `<tr><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Business Email</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${email}</td></tr>` : ""}
-            ${website ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Website</td><td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="${website}">${website}</a></td></tr>` : ""}
-            ${hours ? `<tr><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Hours</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${hours}</td></tr>` : ""}
-            ${features && features.length > 0 ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Features</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${features.join(", ")}</td></tr>` : ""}
+            ${phone ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Phone</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${escapeHtml(phone)}</td></tr>` : ""}
+            ${email ? `<tr><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Business Email</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${escapeHtml(email)}</td></tr>` : ""}
+            ${website ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Website</td><td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="${escapeHtml(website)}">${escapeHtml(website)}</a></td></tr>` : ""}
+            ${hours ? `<tr><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Hours</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${escapeHtml(hours)}</td></tr>` : ""}
+            ${features && features.length > 0 ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Features</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${features.map(f => escapeHtml(f)).join(", ")}</td></tr>` : ""}
           </table>
 
           <h2 style="color: #333; margin-top: 24px;">Owner Contact Info</h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tr style="background: #f8fafc;">
               <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Name</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${ownerName || "Not provided"}</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;">${escapeHtml(ownerName || "Not provided")}</td>
             </tr>
             <tr>
               <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Email</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="mailto:${ownerEmail}">${ownerEmail}</a></td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0;"><a href="mailto:${escapeHtml(ownerEmail)}">${escapeHtml(ownerEmail)}</a></td>
             </tr>
-            ${ownerPhone ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Phone</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${ownerPhone}</td></tr>` : ""}
+            ${ownerPhone ? `<tr style="background: #f8fafc;"><td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Phone</td><td style="padding: 12px; border: 1px solid #e2e8f0;">${escapeHtml(ownerPhone)}</td></tr>` : ""}
           </table>
 
           <div style="margin-top: 24px; padding: 16px; background: #f0f9ff; border-radius: 8px;">
             <p style="margin: 0; color: #0369a1;">
-              <strong>Action Required:</strong> Review this submission and reply to <a href="mailto:${ownerEmail}">${ownerEmail}</a> once approved.
+              <strong>Action Required:</strong> Review this submission and reply to <a href="mailto:${escapeHtml(ownerEmail)}">${escapeHtml(ownerEmail)}</a> once approved.
             </p>
           </div>
         </div>
