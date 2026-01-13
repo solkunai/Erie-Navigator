@@ -265,11 +265,11 @@ export default function Restaurants() {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                   {filteredRestaurants.map((restaurant, index) => (
-                    <Card
-                      key={restaurant.id}
-                      className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden"
-                      data-testid={`card-restaurant-${restaurant.id}`}
-                    >
+                    <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`}>
+                      <Card
+                        className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer"
+                        data-testid={`card-restaurant-${restaurant.id}`}
+                      >
                       {/* Image with Badge */}
                       <div className="relative aspect-[4/3] bg-gradient-to-br from-[#FF851A]/10 to-[#FFD700]/10 overflow-hidden">
                         {restaurant.imageUrl ? (
@@ -370,6 +370,7 @@ export default function Restaurants() {
                         )}
                       </CardContent>
                     </Card>
+                    </Link>
                   ))}
                 </div>
               )}

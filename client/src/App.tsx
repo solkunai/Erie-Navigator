@@ -11,10 +11,13 @@ import Home from "@/pages/home";
 import Explore from "@/pages/explore";
 import SearchResults from "@/pages/search-results";
 import Restaurants from "@/pages/restaurants";
+import RestaurantDetail from "@/pages/restaurant-detail";
 import Businesses from "@/pages/businesses";
+import BusinessDetail from "@/pages/business-detail";
 import AddBusiness from "@/pages/add-business";
 import Events from "@/pages/events";
 import ThingsToDo from "@/pages/things-to-do";
+import ActivityDetail from "@/pages/activity-detail";
 import AutismPrograms from "@/pages/autism-programs";
 import SocialGroups from "@/pages/social-groups";
 import UIKit from "@/pages/ui-kit";
@@ -29,10 +32,13 @@ function Router({ onOpenAI }: { onOpenAI: () => void }) {
       <Route path="/" component={() => <Home onOpenAI={onOpenAI} />} />
       <Route path="/explore" component={Explore} />
       <Route path="/search" component={SearchResults} />
+      <Route path="/restaurants/:id" component={RestaurantDetail} />
       <Route path="/restaurants" component={Restaurants} />
+      <Route path="/businesses/:id" component={BusinessDetail} />
       <Route path="/businesses" component={Businesses} />
       <Route path="/add-business" component={AddBusiness} />
       <Route path="/events" component={Events} />
+      <Route path="/things-to-do/:id" component={ActivityDetail} />
       <Route path="/things-to-do" component={ThingsToDo} />
       <Route path="/autism-programs" component={AutismPrograms} />
       <Route path="/social-groups" component={SocialGroups} />

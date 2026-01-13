@@ -79,18 +79,18 @@ export default function Home({ onOpenAI }: HomeProps) {
                 </div>
 
                 {/* Stats */}
-                <div className="flex flex-wrap gap-8 text-sm">
-                  <div>
+                <div className="flex flex-wrap gap-4">
+                  <div className="bg-white border-2 border-black rounded-sm shadow-[3px_3px_0px_0px_rgba(35,24,15,1)] px-6 py-4">
                     <p className="text-4xl font-black text-black">{restaurants.length}+</p>
-                    <p className="text-[#3A96CB] font-bold">Eats</p>
+                    <p className="text-[#FF851A] font-bold text-sm uppercase">Eats</p>
                   </div>
-                  <div>
+                  <div className="bg-white border-2 border-black rounded-sm shadow-[3px_3px_0px_0px_rgba(35,24,15,1)] px-6 py-4">
                     <p className="text-4xl font-black text-black">{businesses.length}+</p>
-                    <p className="text-[#3A96CB] font-bold">Makers</p>
+                    <p className="text-[#3A96CB] font-bold text-sm uppercase">Businesses</p>
                   </div>
-                  <div>
+                  <div className="bg-white border-2 border-black rounded-sm shadow-[3px_3px_0px_0px_rgba(35,24,15,1)] px-6 py-4">
                     <p className="text-4xl font-black text-black">{activities.length}+</p>
-                    <p className="text-[#3A96CB] font-bold">Trails</p>
+                    <p className="text-[#8E44AD] font-bold text-sm uppercase">Chill Spots</p>
                   </div>
                 </div>
               </div>

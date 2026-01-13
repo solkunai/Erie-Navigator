@@ -18,7 +18,7 @@ export default function SearchResults() {
   }, [query]);
 
   // Fetch events and activities
-  const { data: eventsData = [] } = useQuery({
+  const { data: eventsResponse } = useQuery({
     queryKey: ["/api/events"],
     queryFn: async () => {
       const response = await fetch("/api/events");
@@ -27,7 +27,7 @@ export default function SearchResults() {
     },
   });
 
-  const { data: activitiesData = [] } = useQuery({
+  const { data: activitiesResponse } = useQuery({
     queryKey: ["/api/activities"],
     queryFn: async () => {
       const response = await fetch("/api/activities");
@@ -35,6 +35,9 @@ export default function SearchResults() {
       return response.json();
     },
   });
+
+  const eventsData = eventsResponse?.data || [];
+  const activitiesData = activitiesResponse?.data || [];
 
   // Search across all data sources
   const searchResults = useMemo(() => {
