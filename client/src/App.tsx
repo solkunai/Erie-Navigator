@@ -17,6 +17,9 @@ import ThingsToDo from "@/pages/things-to-do";
 import AutismPrograms from "@/pages/autism-programs";
 import SocialGroups from "@/pages/social-groups";
 import UIKit from "@/pages/ui-kit";
+import PrivacyPolicy from "@/pages/privacy-policy";
+import CookiePolicy from "@/pages/cookie-policy";
+import TermsOfUse from "@/pages/terms-of-use";
 import NotFound from "@/pages/not-found";
 
 function Router({ onOpenAI }: { onOpenAI: () => void }) {
@@ -32,6 +35,9 @@ function Router({ onOpenAI }: { onOpenAI: () => void }) {
       <Route path="/autism-programs" component={AutismPrograms} />
       <Route path="/social-groups" component={SocialGroups} />
       <Route path="/ui-kit" component={UIKit} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/cookie-policy" component={CookiePolicy} />
+      <Route path="/terms-of-use" component={TermsOfUse} />
       <Route component={NotFound} />
     </Switch>
   );
