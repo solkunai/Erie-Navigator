@@ -278,8 +278,8 @@ export default function Restaurants() {
                               />
                             </div>
                             {/* Rating Badge */}
-                            <Badge className="absolute top-3 right-3 z-20 bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-sm px-2 py-1 hover:bg-[#FFD700] flex items-center gap-1">
-                              <Star className="h-3 w-3 fill-black" />
+                            <Badge className="absolute top-3 right-3 z-20 bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-1.5 py-0.5 hover:bg-[#FFD700] inline-flex items-center gap-0.5 w-auto">
+                              <Star className="h-2.5 w-2.5 fill-black" />
                               {restaurant.rating}
                             </Badge>
 
@@ -294,8 +294,8 @@ export default function Restaurants() {
                               <span className="text-6xl font-black text-[#FF851A]/30">{restaurant.name.charAt(0)}</span>
                             </div>
                             {/* Rating Badge */}
-                            <Badge className="absolute top-3 right-3 z-20 bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-sm px-2 py-1 hover:bg-[#FFD700] flex items-center gap-1">
-                              <Star className="h-3 w-3 fill-black" />
+                            <Badge className="absolute top-3 right-3 z-20 bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-1.5 py-0.5 hover:bg-[#FFD700] inline-flex items-center gap-0.5 w-auto">
+                              <Star className="h-2.5 w-2.5 fill-black" />
                               {restaurant.rating}
                             </Badge>
 

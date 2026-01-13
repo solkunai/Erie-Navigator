@@ -348,7 +348,7 @@ export default function Home({ onOpenAI }: HomeProps) {
                   alt="Hello Erie Logo"
                   className="w-16 h-16 object-contain transform -rotate-12"
                 />
-                <span className="font-black text-xl text-gray-900">HELLO ERIE © 2024</span>
+                <span className="font-black text-xl text-gray-900">HELLO ERIE © 2026</span>
               </div>
               <nav className="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-900">
                 <Link href="/restaurants" className="hover:text-[#FF851A] transition-colors">GRUB</Link>

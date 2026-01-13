@@ -38,8 +38,8 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
               alt="Hello Erie Logo"
               className="w-16 h-16 object-contain hover:scale-105 transition-transform"
             />
-            <div className="hidden sm:flex items-center gap-2">
-              <span className="font-black text-xl text-gray-900">HELLO ERIE</span>
+            <div className="flex items-center gap-2">
+              <span className="font-black text-lg sm:text-xl text-gray-900">HELLO ERIE</span>
             </div>
           </Link>
 
@@ -95,7 +95,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                   size="icon"
                   className="lg:hidden h-10 w-10 border-2 border-black rounded-sm hover:bg-[#FFD700]/20"
                 >
-                  <Menu className="h-5 w-5" />
+                  <Menu className="h-5 w-5 text-gray-900" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-72 border-l-4 border-black bg-[#FCF4F8]">
