@@ -16,7 +16,7 @@ import Events from "@/pages/events";
 import ThingsToDo from "@/pages/things-to-do";
 import AutismPrograms from "@/pages/autism-programs";
 import SocialGroups from "@/pages/social-groups";
-import AddBusiness from "@/pages/add-business";
+import UIKit from "@/pages/ui-kit";
 import NotFound from "@/pages/not-found";
 
 function Router({ onOpenAI }: { onOpenAI: () => void }) {
@@ -31,7 +31,7 @@ function Router({ onOpenAI }: { onOpenAI: () => void }) {
       <Route path="/things-to-do" component={ThingsToDo} />
       <Route path="/autism-programs" component={AutismPrograms} />
       <Route path="/social-groups" component={SocialGroups} />
-      <Route path="/add-business" component={AddBusiness} />
+      <Route path="/ui-kit" component={UIKit} />
       <Route component={NotFound} />
     </Switch>
   );
