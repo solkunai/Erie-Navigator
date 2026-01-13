@@ -1423,7 +1423,7 @@ export const businesses: Business[] = [
   },
   {
     id: "23",
-    name: "LaRese Floral",
+    name: "Larese Floral",
     category: "Florist",
     categories: ["Florist", "Gifts & Specialty"],
     address: "Erie, PA",
@@ -1433,6 +1433,18 @@ export const businesses: Business[] = [
     features: ["Flowers", "Weddings", "Funerals", "Events", "Custom Arrangements", "Delivery", "Family-Owned"],
     imageUrl: "/assets/laresefloral.jpg",
     isFeatured: true
+  },
+  {
+    id: "24",
+    name: "Argyll Abbey",
+    category: "Wedding Venue",
+    categories: ["Wedding Venue"],
+    address: "Erie, PA",
+    phone: "",
+    website: "https://argyllabbeyestate.com/",
+    description: "Elegant wedding venue estate offering beautiful settings for your special day.",
+    features: ["Wedding Venue", "Event Space", "Outdoor Ceremonies", "Receptions"],
+    imageUrl: "/assets/argyll_abbey.jpg"
   }
 ];
 

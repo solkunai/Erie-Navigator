@@ -24,8 +24,22 @@ interface HeaderProps {
 }
 
 export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleSearch = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (searchQuery && searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setMobileMenuOpen(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white border-b-2 border-black">
@@ -67,9 +81,11 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                 <Input
                   type="search"
                   placeholder="Find the vibe..."
-                  className="pl-9 w-56 h-10 text-sm border-2 border-black rounded-sm bg-[#FFD700]/20 focus:ring-2 focus:ring-[#FF851A] focus:border-[#FF851A] focus:bg-white"
+                  className="pl-9 w-56 h-10 text-sm border-2 border-black rounded-sm bg-[#FFD700]/20 focus:ring-2 focus:ring-[#FF851A] focus:border-[#FF851A] focus:bg-white text-gray-900"
+                  style={{ color: '#111827' }}
                   value={searchQuery}
                   onChange={(e) => onSearchChange?.(e.target.value)}
+                  onKeyPress={handleKeyPress}
                 />
               </div>
             </div>
@@ -125,9 +141,11 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                     <Input
                       type="search"
                       placeholder="Find the vibe..."
-                      className="pl-9 border-2 border-black rounded-sm bg-[#FFD700]/20 focus:bg-white"
+                      className="pl-9 border-2 border-black rounded-sm bg-[#FFD700]/20 focus:bg-white text-gray-900"
+                      style={{ color: '#111827' }}
                       value={searchQuery}
                       onChange={(e) => onSearchChange?.(e.target.value)}
+                      onKeyPress={handleKeyPress}
                     />
                   </div>
 

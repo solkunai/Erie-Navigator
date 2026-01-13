@@ -9,6 +9,7 @@ import { Header } from "@/components/header";
 import { AIChat } from "@/components/ai-chat";
 import Home from "@/pages/home";
 import Explore from "@/pages/explore";
+import SearchResults from "@/pages/search-results";
 import Restaurants from "@/pages/restaurants";
 import Businesses from "@/pages/businesses";
 import AddBusiness from "@/pages/add-business";
@@ -27,6 +28,7 @@ function Router({ onOpenAI }: { onOpenAI: () => void }) {
     <Switch>
       <Route path="/" component={() => <Home onOpenAI={onOpenAI} />} />
       <Route path="/explore" component={Explore} />
+      <Route path="/search" component={SearchResults} />
       <Route path="/restaurants" component={Restaurants} />
       <Route path="/businesses" component={Businesses} />
       <Route path="/add-business" component={AddBusiness} />
