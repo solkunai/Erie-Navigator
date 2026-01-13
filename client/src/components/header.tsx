@@ -32,15 +32,13 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-1">
+          <Link href="/" className="flex items-center">
             <img
               src="/assets/helloeriefinallogo.png"
               alt="Hello Erie Logo"
-              className="w-16 h-16 object-contain hover:scale-105 transition-transform"
+              className="w-16 h-16 object-contain hover:scale-105 transition-transform -mr-2"
             />
-            <div className="flex items-center">
-              <span className="font-black text-lg sm:text-xl text-gray-900">HELLO ERIE</span>
-            </div>
+            <span className="font-black text-lg sm:text-xl text-gray-900">HELLO ERIE</span>
           </Link>
 
           {/* Desktop Navigation */}
