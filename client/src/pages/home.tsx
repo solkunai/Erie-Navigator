@@ -205,25 +205,25 @@ export default function Home({ onOpenAI }: HomeProps) {
                 <article key={restaurant.id} className="group cursor-pointer">
                   {/* Polaroid-style Card */}
                   <div
-                    className="bg-white p-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mb-3"
+                    className="bg-white p-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mb-3 relative"
                     style={{ transform: `rotate(${index % 2 === 0 ? '1deg' : '-1deg'})` }}
                   >
-                    {/* Badge Overlay */}
-                    <Badge
-                      className={`absolute top-2 right-2 z-10 border-2 border-black rounded-sm font-bold text-xs ${
-                        index === 0 ? 'bg-[#FFD700] text-black hover:bg-[#FFD700]' :
-                        'bg-[#FF851A] text-white hover:bg-[#FF851A]'
-                      }`}
-                    >
-                      {index === 0 ? 'TOP TIER' : index === 1 ? 'SECRET' : index === 2 ? 'POSH' : 'VIBES'}
-                    </Badge>
-
                     <div className="aspect-[4/3] bg-white rounded-sm mb-3 overflow-hidden relative">
+                      {/* Badge Overlay */}
+                      <Badge
+                        className={`absolute top-2 right-2 z-10 border-2 border-black rounded-sm font-bold text-xs shadow-sm ${
+                          index === 0 ? 'bg-[#FFD700] text-black hover:bg-[#FFD700]' :
+                          'bg-[#FF851A] text-white hover:bg-[#FF851A]'
+                        }`}
+                      >
+                        {index === 0 ? 'TOP TIER' : index === 1 ? 'SECRET' : index === 2 ? 'POSH' : 'VIBES'}
+                      </Badge>
+
                       {restaurant.imageUrl ? (
                         <img
                           src={restaurant.imageUrl}
                           alt={restaurant.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#FF851A]/20 to-[#FFD700]/20">
