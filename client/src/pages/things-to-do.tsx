@@ -338,6 +338,44 @@ export default function ThingsToDo() {
             </main>
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="py-12 bg-white border-t-4 border-black">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
+              <div className="flex items-center gap-3">
+                <img
+                  src="/assets/helloeriefinallogo.png"
+                  alt="Hello Erie Logo"
+                  className="w-16 h-16 object-contain transform -rotate-12"
+                />
+                <span className="font-black text-xl text-gray-900">HELLO ERIE © 2026</span>
+              </div>
+              <nav className="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-900">
+                <Link href="/restaurants" className="hover:text-[#FF851A] transition-colors">GRUB</Link>
+                <Link href="/businesses" className="hover:text-[#3A96CB] transition-colors">SHOPS</Link>
+                <Link href="/events" className="hover:text-[#FFD700] transition-colors">EVENTS</Link>
+                <Link href="/things-to-do" className="hover:text-[#FF851A] transition-colors">CHILL SPOTS</Link>
+              </nav>
+            </div>
+            {/* Policy Links */}
+            <div className="border-t-2 border-gray-200 pt-4">
+              <nav className="flex flex-wrap justify-center gap-4 text-xs font-bold text-gray-600">
+                <Link href="/privacy-policy" className="hover:text-[#3A96CB] transition-colors">
+                  Privacy Policy
+                </Link>
+                <span className="text-gray-400">•</span>
+                <Link href="/cookie-policy" className="hover:text-[#3A96CB] transition-colors">
+                  Cookie Policy
+                </Link>
+                <span className="text-gray-400">•</span>
+                <Link href="/terms-of-use" className="hover:text-[#3A96CB] transition-colors">
+                  Terms of Use
+                </Link>
+              </nav>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   );
