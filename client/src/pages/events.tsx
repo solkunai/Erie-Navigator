@@ -399,7 +399,7 @@ export default function Events() {
                             {event.description}
                           </p>
 
-                          <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
+                          <div className="flex flex-wrap gap-4 text-sm text-gray-900 mb-4">
                             <div className="flex items-center gap-2">
                               <Clock className="h-4 w-4 text-[#3A96CB]" />
                               <span className="font-medium">{event.time}{event.endTime && ` - ${event.endTime}`}</span>

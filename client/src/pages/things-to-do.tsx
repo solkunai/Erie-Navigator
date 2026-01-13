@@ -177,7 +177,7 @@ export default function ThingsToDo() {
             <TabsList className="flex-wrap h-auto gap-2 bg-white border-4 border-black rounded-sm p-2 shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]" data-testid="tabs-audience">
               <TabsTrigger
                 value="All"
-                className="gap-2 data-[state=active]:bg-[#FF851A] data-[state=active]:text-white border-2 border-black rounded-sm font-bold"
+                className="gap-2 text-gray-900 data-[state=active]:bg-[#FF851A] data-[state=active]:text-white border-2 border-black rounded-sm font-bold"
                 data-testid="tab-all"
               >
                 <Users className="h-4 w-4" />
@@ -189,7 +189,7 @@ export default function ThingsToDo() {
                   <TabsTrigger
                     key={audience}
                     value={audience}
-                    className="gap-2 data-[state=active]:bg-[#FF851A] data-[state=active]:text-white border-2 border-black rounded-sm font-bold"
+                    className="gap-2 text-gray-900 data-[state=active]:bg-[#FF851A] data-[state=active]:text-white border-2 border-black rounded-sm font-bold"
                     data-testid={`tab-${audience.toLowerCase()}`}
                   >
                     <Icon className="h-4 w-4" />
