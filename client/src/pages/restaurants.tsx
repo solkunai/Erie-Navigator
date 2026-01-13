@@ -46,22 +46,24 @@ export default function Restaurants() {
   };
 
   const filteredRestaurants = useMemo(() => {
-    return restaurants.filter((restaurant) => {
-      const matchesSearch =
-        search === "" ||
-        restaurant.name.toLowerCase().includes(search.toLowerCase()) ||
-        restaurant.description.toLowerCase().includes(search.toLowerCase()) ||
-        restaurant.category.toLowerCase().includes(search.toLowerCase());
+    return restaurants
+      .filter((restaurant) => {
+        const matchesSearch =
+          search === "" ||
+          restaurant.name.toLowerCase().includes(search.toLowerCase()) ||
+          restaurant.description.toLowerCase().includes(search.toLowerCase()) ||
+          restaurant.category.toLowerCase().includes(search.toLowerCase());
 
-      const matchesCategory =
-        selectedCategories.length === 0 ||
-        selectedCategories.some((cat) => restaurant.categories.includes(cat));
+        const matchesCategory =
+          selectedCategories.length === 0 ||
+          selectedCategories.some((cat) => restaurant.categories.includes(cat));
 
-      const matchesPrice =
-        selectedPrices.length === 0 || selectedPrices.includes(restaurant.priceRange);
+        const matchesPrice =
+          selectedPrices.length === 0 || selectedPrices.includes(restaurant.priceRange);
 
-      return matchesSearch && matchesCategory && matchesPrice;
-    });
+        return matchesSearch && matchesCategory && matchesPrice;
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
   }, [search, selectedCategories, selectedPrices]);
 
   const hasActiveFilters = selectedCategories.length > 0 || selectedPrices.length > 0 || search !== "";
@@ -389,7 +391,7 @@ export default function Restaurants() {
               </div>
               <nav className="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-900">
                 <Link href="/restaurants" className="hover:text-[#FF851A] transition-colors">GRUB</Link>
-                <Link href="/businesses" className="hover:text-[#3A96CB] transition-colors">SHOPS</Link>
+                <Link href="/businesses" className="hover:text-[#3A96CB] transition-colors">BUSINESS</Link>
                 <Link href="/events" className="hover:text-[#FFD700] transition-colors">EVENTS</Link>
                 <Link href="/things-to-do" className="hover:text-[#FF851A] transition-colors">CHILL SPOTS</Link>
               </nav>

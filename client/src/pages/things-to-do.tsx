@@ -45,20 +45,22 @@ export default function ThingsToDo() {
   };
 
   const filteredActivities = useMemo(() => {
-    return activities.filter((activity) => {
-      const matchesSearch =
-        search === "" ||
-        activity.name.toLowerCase().includes(search.toLowerCase()) ||
-        activity.description.toLowerCase().includes(search.toLowerCase());
+    return activities
+      .filter((activity) => {
+        const matchesSearch =
+          search === "" ||
+          activity.name.toLowerCase().includes(search.toLowerCase()) ||
+          activity.description.toLowerCase().includes(search.toLowerCase());
 
-      const matchesCategory =
-        selectedCategories.length === 0 || selectedCategories.includes(activity.category);
+        const matchesCategory =
+          selectedCategories.length === 0 || selectedCategories.includes(activity.category);
 
-      const matchesAudience =
-        selectedAudience === "All" || activity.audience.includes(selectedAudience);
+        const matchesAudience =
+          selectedAudience === "All" || activity.audience.includes(selectedAudience);
 
-      return matchesSearch && matchesCategory && matchesAudience;
-    });
+        return matchesSearch && matchesCategory && matchesAudience;
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
   }, [search, selectedCategories, selectedAudience]);
 
   const hasActiveFilters = selectedCategories.length > 0 || selectedAudience !== "All" || search !== "";
@@ -355,7 +357,7 @@ export default function ThingsToDo() {
               </div>
               <nav className="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-900">
                 <Link href="/restaurants" className="hover:text-[#FF851A] transition-colors">GRUB</Link>
-                <Link href="/businesses" className="hover:text-[#3A96CB] transition-colors">SHOPS</Link>
+                <Link href="/businesses" className="hover:text-[#3A96CB] transition-colors">BUSINESS</Link>
                 <Link href="/events" className="hover:text-[#FFD700] transition-colors">EVENTS</Link>
                 <Link href="/things-to-do" className="hover:text-[#FF851A] transition-colors">CHILL SPOTS</Link>
               </nav>

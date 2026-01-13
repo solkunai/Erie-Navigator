@@ -446,7 +446,7 @@ export default function Events() {
               </div>
               <nav className="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-900">
                 <Link href="/restaurants" className="hover:text-[#FF851A] transition-colors">GRUB</Link>
-                <Link href="/businesses" className="hover:text-[#3A96CB] transition-colors">SHOPS</Link>
+                <Link href="/businesses" className="hover:text-[#3A96CB] transition-colors">BUSINESS</Link>
                 <Link href="/events" className="hover:text-[#FFD700] transition-colors">EVENTS</Link>
                 <Link href="/things-to-do" className="hover:text-[#FF851A] transition-colors">CHILL SPOTS</Link>
               </nav>

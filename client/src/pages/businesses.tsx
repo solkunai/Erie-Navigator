@@ -36,19 +36,21 @@ export default function Businesses() {
   };
 
   const filteredBusinesses = useMemo(() => {
-    return businesses.filter((business) => {
-      const matchesSearch =
-        search === "" ||
-        business.name.toLowerCase().includes(search.toLowerCase()) ||
-        business.description.toLowerCase().includes(search.toLowerCase()) ||
-        business.category.toLowerCase().includes(search.toLowerCase());
+    return businesses
+      .filter((business) => {
+        const matchesSearch =
+          search === "" ||
+          business.name.toLowerCase().includes(search.toLowerCase()) ||
+          business.description.toLowerCase().includes(search.toLowerCase()) ||
+          business.category.toLowerCase().includes(search.toLowerCase());
 
-      const matchesCategory =
-        selectedCategories.length === 0 ||
-        selectedCategories.some((cat) => business.categories.includes(cat));
+        const matchesCategory =
+          selectedCategories.length === 0 ||
+          selectedCategories.some((cat) => business.categories.includes(cat));
 
-      return matchesSearch && matchesCategory;
-    });
+        return matchesSearch && matchesCategory;
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
   }, [search, selectedCategories]);
 
   const hasActiveFilters = selectedCategories.length > 0 || search !== "";
@@ -322,7 +324,7 @@ export default function Businesses() {
               </div>
               <nav className="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-900">
                 <Link href="/restaurants" className="hover:text-[#FF851A] transition-colors">GRUB</Link>
-                <Link href="/businesses" className="hover:text-[#3A96CB] transition-colors">SHOPS</Link>
+                <Link href="/businesses" className="hover:text-[#3A96CB] transition-colors">BUSINESS</Link>
                 <Link href="/events" className="hover:text-[#FFD700] transition-colors">EVENTS</Link>
                 <Link href="/things-to-do" className="hover:text-[#FF851A] transition-colors">CHILL SPOTS</Link>
               </nav>

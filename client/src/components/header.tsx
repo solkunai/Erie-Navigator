@@ -12,7 +12,7 @@ import {
 
 const navLinks = [
   { href: "/restaurants", label: "GRUB" },
-  { href: "/businesses", label: "SHOPS" },
+  { href: "/businesses", label: "BUSINESS" },
   { href: "/events", label: "EVENTS" },
   { href: "/things-to-do", label: "CHILL SPOTS" },
 ];
