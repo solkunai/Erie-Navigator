@@ -255,7 +255,6 @@ export default function ThingsToDo() {
                       key={activity.id}
                       className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden"
                       data-testid={`card-activity-${activity.id}`}
-                      style={{ transform: `rotate(${index % 6 === 0 ? '0.3deg' : index % 6 === 1 ? '-0.3deg' : index % 6 === 2 ? '0.5deg' : index % 6 === 3 ? '-0.5deg' : index % 6 === 4 ? '0.3deg' : '-0.3deg'})` }}
                     >
                       {/* Hero Image Section */}
                       <div className="relative aspect-video bg-gradient-to-br from-[#FF851A]/20 to-[#FFD700]/20 flex items-center justify-center border-b-4 border-black">

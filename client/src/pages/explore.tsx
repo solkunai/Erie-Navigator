@@ -100,8 +100,7 @@ export default function Explore() {
                   className="h-full cursor-pointer border-4 border-black rounded-2xl shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:shadow-[8px_8px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden group"
                   data-testid={`card-category-${category.title.toLowerCase().replace(/\s+/g, '-')}`}
                   style={{
-                    backgroundColor: category.color,
-                    transform: `rotate(${index % 6 === 0 ? '0.5deg' : index % 6 === 1 ? '-0.5deg' : index % 6 === 2 ? '0.3deg' : index % 6 === 3 ? '-0.3deg' : index % 6 === 4 ? '0.5deg' : '-0.5deg'})`
+                    backgroundColor: category.color
                   }}
                 >
                   <div className="p-8">

@@ -265,30 +265,46 @@ export default function Restaurants() {
                       key={restaurant.id}
                       className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden"
                       data-testid={`card-restaurant-${restaurant.id}`}
-                      style={{ transform: `rotate(${index % 6 === 0 ? '0.3deg' : index % 6 === 1 ? '-0.3deg' : index % 6 === 2 ? '0.5deg' : index % 6 === 3 ? '-0.5deg' : index % 6 === 4 ? '0.3deg' : '-0.3deg'})` }}
                     >
                       {/* Image with Badge */}
-                      <div className="relative aspect-[4/3] bg-gradient-to-br from-[#FF851A]/10 to-[#FFD700]/10 flex items-center justify-center overflow-hidden">
+                      <div className="relative aspect-[4/3] bg-gradient-to-br from-[#FF851A]/10 to-[#FFD700]/10 overflow-hidden">
                         {restaurant.imageUrl ? (
-                          <img
-                            src={restaurant.imageUrl}
-                            alt={restaurant.name}
-                            className="w-full h-full object-cover"
-                          />
+                          <>
+                            <div className="absolute inset-0 flex items-center justify-center p-4">
+                              <img
+                                src={restaurant.imageUrl}
+                                alt={restaurant.name}
+                                className="max-w-full max-h-full object-contain"
+                              />
+                            </div>
+                            {/* Rating Badge */}
+                            <Badge className="absolute top-3 right-3 z-20 bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-sm px-2 py-1 hover:bg-[#FFD700] flex items-center gap-1">
+                              <Star className="h-3 w-3 fill-black" />
+                              {restaurant.rating}
+                            </Badge>
+
+                            {/* Category Badge */}
+                            <Badge className="absolute top-3 left-3 z-20 bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A]">
+                              {restaurant.category}
+                            </Badge>
+                          </>
                         ) : (
-                          <span className="text-6xl font-black text-[#FF851A]/30">{restaurant.name.charAt(0)}</span>
+                          <>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="text-6xl font-black text-[#FF851A]/30">{restaurant.name.charAt(0)}</span>
+                            </div>
+                            {/* Rating Badge */}
+                            <Badge className="absolute top-3 right-3 z-20 bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-sm px-2 py-1 hover:bg-[#FFD700] flex items-center gap-1">
+                              <Star className="h-3 w-3 fill-black" />
+                              {restaurant.rating}
+                            </Badge>
+
+                            {/* Category Badge */}
+                            <Badge className="absolute top-3 left-3 z-20 bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A]">
+                              {restaurant.category}
+                            </Badge>
+                          </>
                         )}
-
-                        {/* Rating Badge */}
-                        <Badge className="absolute top-3 right-3 bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-sm px-2 py-1 hover:bg-[#FFD700] flex items-center gap-1">
-                          <Star className="h-3 w-3 fill-black" />
-                          {restaurant.rating}
-                        </Badge>
-
-                        {/* Category Badge */}
-                        <Badge className="absolute top-3 left-3 bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A]">
-                          {restaurant.category}
-                        </Badge>
                       </div>
 
                       <CardContent className="p-5">

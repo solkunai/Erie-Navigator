@@ -234,7 +234,7 @@ export default function Events() {
                   >
                     <ChevronLeft className="h-5 w-5 text-black" />
                   </Button>
-                  <h3 className="font-black text-lg">{formatMonthYear(currentMonth)}</h3>
+                  <h3 className="font-black text-lg text-gray-900">{formatMonthYear(currentMonth)}</h3>
                   <Button
                     onClick={nextMonth}
                     className="h-10 w-10 p-0 bg-[#FFD700] hover:bg-[#ffe44d] border-2 border-black rounded-sm"
@@ -303,7 +303,7 @@ export default function Events() {
               </Card>
 
               <div className="hidden lg:block bg-white p-6 rounded-xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
-                <h2 className="font-black mb-6 flex items-center gap-2 text-xl">
+                <h2 className="font-black mb-6 flex items-center gap-2 text-xl text-gray-900">
                   <Filter className="h-5 w-5 text-[#3A96CB]" />
                   Filters
                 </h2>

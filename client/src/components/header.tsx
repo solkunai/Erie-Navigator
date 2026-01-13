@@ -34,14 +34,12 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <img
-              src="/assets/helloerie-final.png"
+              src="/assets/helloeriefinallogo.png"
               alt="Hello Erie Logo"
-              className="w-10 h-10 object-contain hover:scale-105 transition-transform"
+              className="w-16 h-16 object-contain hover:scale-105 transition-transform"
             />
             <div className="hidden sm:flex items-center gap-2">
-              <span className="font-black text-lg text-gray-900">HELLO ERIE</span>
-              <span className="text-gray-600">/</span>
-              <span className="text-[#FF851A] font-bold text-sm">navigator</span>
+              <span className="font-black text-xl text-gray-900">HELLO ERIE</span>
             </div>
           </Link>
 
@@ -67,11 +65,11 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
             {/* Search - Desktop */}
             <div className="hidden md:block">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-700" />
                 <Input
                   type="search"
                   placeholder="Find the vibe..."
-                  className="pl-9 w-56 h-10 text-sm border-2 border-black rounded-sm focus:ring-2 focus:ring-[#FF851A] focus:border-[#FF851A]"
+                  className="pl-9 w-56 h-10 text-sm border-2 border-black rounded-sm bg-[#FFD700]/20 focus:ring-2 focus:ring-[#FF851A] focus:border-[#FF851A] focus:bg-white"
                   value={searchQuery}
                   onChange={(e) => onSearchChange?.(e.target.value)}
                 />
@@ -105,20 +103,20 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                   {/* Mobile Logo */}
                   <div className="flex items-center gap-3 pb-4 border-b-2 border-black">
                     <img
-                      src="/assets/helloerie-final.png"
+                      src="/assets/helloeriefinallogo.png"
                       alt="Hello Erie Logo"
-                      className="w-10 h-10 object-contain"
+                      className="w-12 h-12 object-contain"
                     />
-                    <span className="font-black text-lg text-gray-900">HELLO ERIE</span>
+                    <span className="font-black text-xl text-gray-900">HELLO ERIE</span>
                   </div>
 
                   {/* Mobile Search */}
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-700" />
                     <Input
                       type="search"
                       placeholder="Find the vibe..."
-                      className="pl-9 border-2 border-black rounded-sm"
+                      className="pl-9 border-2 border-black rounded-sm bg-[#FFD700]/20 focus:bg-white"
                       value={searchQuery}
                       onChange={(e) => onSearchChange?.(e.target.value)}
                     />
