@@ -35,7 +35,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSearch();
     }
@@ -85,7 +85,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                   style={{ color: '#111827' }}
                   value={searchQuery}
                   onChange={(e) => onSearchChange?.(e.target.value)}
-                  onKeyPress={handleKeyPress}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
             </div>
@@ -145,7 +145,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                       style={{ color: '#111827' }}
                       value={searchQuery}
                       onChange={(e) => onSearchChange?.(e.target.value)}
-                      onKeyPress={handleKeyPress}
+                      onKeyDown={handleKeyDown}
                     />
                   </div>
 
