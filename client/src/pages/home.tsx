@@ -205,13 +205,13 @@ export default function Home({ onOpenAI }: HomeProps) {
                 <article key={restaurant.id} className="group cursor-pointer">
                   {/* Polaroid-style Card */}
                   <div
-                    className="bg-white p-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mb-3 relative"
-                    style={{ transform: `rotate(${index % 2 === 0 ? '1deg' : '-1deg'})` }}
+                    className="bg-white p-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mb-3"
+                    style={{ transform: `rotate(${index % 4 === 0 ? '0.5deg' : index % 4 === 1 ? '-0.5deg' : index % 4 === 2 ? '1deg' : '-1deg'})` }}
                   >
                     <div className="aspect-[4/3] bg-white rounded-sm mb-3 overflow-hidden relative">
-                      {/* Badge Overlay */}
+                      {/* Badge Overlay - positioned inside image container */}
                       <Badge
-                        className={`absolute top-2 right-2 z-10 border-2 border-black rounded-sm font-bold text-xs shadow-sm ${
+                        className={`absolute top-2 right-2 z-20 border-2 border-black rounded-sm font-bold text-xs shadow-md ${
                           index === 0 ? 'bg-[#FFD700] text-black hover:bg-[#FFD700]' :
                           'bg-[#FF851A] text-white hover:bg-[#FF851A]'
                         }`}
@@ -220,15 +220,15 @@ export default function Home({ onOpenAI }: HomeProps) {
                       </Badge>
 
                       {restaurant.imageUrl ? (
-                        <div className="w-full h-full flex items-center justify-center p-2">
+                        <div className="absolute inset-0 flex items-center justify-center p-3">
                           <img
                             src={restaurant.imageUrl}
                             alt={restaurant.name}
-                            className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                            className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300"
                           />
                         </div>
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#FF851A]/20 to-[#FFD700]/20">
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#FF851A]/20 to-[#FFD700]/20">
                           <span className="text-5xl font-black text-[#FF851A]/30">{restaurant.name.charAt(0)}</span>
                         </div>
                       )}
@@ -237,7 +237,7 @@ export default function Home({ onOpenAI }: HomeProps) {
                       <p className="text-sm font-bold uppercase tracking-wide text-[#FF851A]">
                         {restaurant.category} • {restaurant.priceRange}
                       </p>
-                      <h3 className="font-bold text-lg text-black">{restaurant.name}</h3>
+                      <h3 className="font-bold text-lg text-gray-900">{restaurant.name}</h3>
                     </div>
                   </div>
                 </article>

@@ -265,7 +265,7 @@ export default function Restaurants() {
                       key={restaurant.id}
                       className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden"
                       data-testid={`card-restaurant-${restaurant.id}`}
-                      style={{ transform: `rotate(${index % 3 === 0 ? '0.5deg' : index % 3 === 1 ? '-0.5deg' : '0deg'})` }}
+                      style={{ transform: `rotate(${index % 6 === 0 ? '0.3deg' : index % 6 === 1 ? '-0.3deg' : index % 6 === 2 ? '0.5deg' : index % 6 === 3 ? '-0.5deg' : index % 6 === 4 ? '0.3deg' : '-0.3deg'})` }}
                     >
                       {/* Image with Badge */}
                       <div className="relative aspect-[4/3] bg-gradient-to-br from-[#FF851A]/10 to-[#FFD700]/10 flex items-center justify-center overflow-hidden">
@@ -293,7 +293,7 @@ export default function Restaurants() {
 
                       <CardContent className="p-5">
                         <div className="flex items-start justify-between gap-2 mb-3">
-                          <h3 className="font-black text-xl line-clamp-1">{restaurant.name}</h3>
+                          <h3 className="font-black text-xl line-clamp-1 text-gray-900">{restaurant.name}</h3>
                           <Badge className="bg-black text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-black flex-shrink-0">
                             {restaurant.priceRange}
                           </Badge>

@@ -379,7 +379,7 @@ export default function Events() {
 
                         <CardContent className="flex-1 p-6">
                           <div className="flex items-start justify-between gap-4 mb-3">
-                            <h3 className="font-black text-xl">{event.title}</h3>
+                            <h3 className="font-black text-xl text-gray-900">{event.title}</h3>
                             <div className="flex gap-2 flex-shrink-0">
                               {event.isFree ? (
                                 <Badge className="bg-[#4ade80] text-black border-2 border-black rounded-sm font-bold hover:bg-[#4ade80]">Free</Badge>

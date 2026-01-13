@@ -242,7 +242,7 @@ export default function Businesses() {
                               <Badge className="bg-[#3A96CB] text-white border-2 border-black rounded-sm font-bold text-xs mb-2 hover:bg-[#3A96CB]">
                                 {business.category}
                               </Badge>
-                              <h3 className="font-black text-xl group-hover:text-[#3A96CB] transition-colors">
+                              <h3 className="font-black text-xl text-gray-900 group-hover:text-[#3A96CB] transition-colors">
                                 {business.name}
                               </h3>
                             </div>

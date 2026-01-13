@@ -101,7 +101,7 @@ export default function Explore() {
                   data-testid={`card-category-${category.title.toLowerCase().replace(/\s+/g, '-')}`}
                   style={{
                     backgroundColor: category.color,
-                    transform: `rotate(${index % 3 === 0 ? '1deg' : index % 3 === 1 ? '-1deg' : '0deg'})`
+                    transform: `rotate(${index % 6 === 0 ? '0.5deg' : index % 6 === 1 ? '-0.5deg' : index % 6 === 2 ? '0.3deg' : index % 6 === 3 ? '-0.3deg' : index % 6 === 4 ? '0.5deg' : '-0.5deg'})`
                   }}
                 >
                   <div className="p-8">
