@@ -208,16 +208,6 @@ export default function Home({ onOpenAI }: HomeProps) {
                     className="bg-white p-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mb-3 h-full"
                   >
                     <div className="aspect-[4/3] bg-white rounded-sm mb-3 overflow-hidden relative">
-                      {/* Top Badge */}
-                      <Badge
-                        className={`absolute top-3 right-3 z-20 border-2 border-black rounded-sm font-bold text-xs px-2 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
-                          index === 0 ? 'bg-[#FFD700] text-black hover:bg-[#FFD700]' :
-                          'bg-[#FF851A] text-white hover:bg-[#FF851A]'
-                        }`}
-                      >
-                        {index === 0 ? 'TOP TIER' : index === 1 ? 'SECRET' : index === 2 ? 'POSH' : 'VIBES'}
-                      </Badge>
-
                       {restaurant.imageUrl ? (
                         <div className="absolute inset-0 flex items-center justify-center p-3">
                           <img
