@@ -213,7 +213,7 @@ export default function AddBusiness() {
         <div className="bg-[#FFD700] border-b-4 border-black py-12 md:py-16">
           <div className="container mx-auto px-4 md:px-6">
             <Link href="/businesses">
-              <button className="mb-6 flex items-center gap-2 px-4 py-2 bg-white border-4 border-black rounded-sm font-bold shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+              <button className="mb-6 flex items-center gap-2 px-4 py-2 bg-white border-4 border-black rounded-sm font-bold text-gray-900 shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
                 <ArrowLeft className="w-5 h-5" />
                 BACK TO BUSINESSES
               </button>
@@ -254,7 +254,7 @@ export default function AddBusiness() {
                       placeholder="e.g., Joe's Coffee Shop"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className={`border-2 border-black rounded-sm font-medium h-12 ${errors.name ? "border-red-500" : ""}`}
+                      className={`border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.name ? "border-red-500" : ""}`}
                     />
                     {errors.name && <p className="text-sm text-red-500 font-bold">{errors.name}</p>}
                   </div>
@@ -265,7 +265,7 @@ export default function AddBusiness() {
                       value={formData.category}
                       onValueChange={(value) => setFormData({ ...formData, category: value as BusinessCategory })}
                     >
-                      <SelectTrigger className={`border-2 border-black rounded-sm font-medium h-12 ${errors.category ? "border-red-500" : ""}`}>
+                      <SelectTrigger className={`border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.category ? "border-red-500" : ""}`}>
                         <SelectValue placeholder="Select a category" />
                       </SelectTrigger>
                       <SelectContent className="border-2 border-black rounded-sm">
@@ -286,7 +286,7 @@ export default function AddBusiness() {
                       placeholder="Tell customers what makes your business special..."
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      className={`border-2 border-black rounded-sm font-medium ${errors.description ? "border-red-500" : ""}`}
+                      className={`border-2 border-black rounded-sm font-medium bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.description ? "border-red-500" : ""}`}
                       rows={4}
                     />
                     {errors.description && <p className="text-sm text-red-500 font-bold">{errors.description}</p>}
@@ -371,7 +371,7 @@ export default function AddBusiness() {
                         placeholder="info@yourbusiness.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="border-2 border-black rounded-sm font-medium h-12"
+                        className="border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
                       />
                     </div>
 
@@ -382,7 +382,7 @@ export default function AddBusiness() {
                         placeholder="https://www.yourbusiness.com"
                         value={formData.website}
                         onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-                        className="border-2 border-black rounded-sm font-medium h-12"
+                        className="border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
                       />
                     </div>
                   </div>
@@ -394,7 +394,7 @@ export default function AddBusiness() {
                       placeholder="e.g., Mon-Fri 9AM-5PM, Sat 10AM-3PM"
                       value={formData.hours}
                       onChange={(e) => setFormData({ ...formData, hours: e.target.value })}
-                      className="border-2 border-black rounded-sm font-medium h-12"
+                      className="border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
                     />
                   </div>
                 </div>
@@ -470,7 +470,7 @@ export default function AddBusiness() {
                       placeholder="(814) 555-1234"
                       value={formData.ownerPhone}
                       onChange={(e) => setFormData({ ...formData, ownerPhone: e.target.value })}
-                      className="border-2 border-black rounded-sm font-medium h-12"
+                      className="border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
                     />
                   </div>
                 </div>
