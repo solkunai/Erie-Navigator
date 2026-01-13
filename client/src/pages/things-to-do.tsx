@@ -255,11 +255,11 @@ export default function ThingsToDo() {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                   {filteredActivities.map((activity, index) => (
-                    <Card
-                      key={activity.id}
-                      className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden"
-                      data-testid={`card-activity-${activity.id}`}
-                    >
+                    <Link key={activity.id} href={`/things-to-do/${activity.id}`}>
+                      <Card
+                        className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer"
+                        data-testid={`card-activity-${activity.id}`}
+                      >
                       {/* Hero Image Section */}
                       <div className="relative aspect-video bg-gradient-to-br from-[#FF851A]/20 to-[#FFD700]/20 flex items-center justify-center border-b-4 border-black">
                         <div className="w-20 h-20 rounded-full bg-white border-4 border-black flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]">
@@ -336,6 +336,7 @@ export default function ThingsToDo() {
                         )}
                       </CardContent>
                     </Card>
+                    </Link>
                   ))}
                 </div>
               )}

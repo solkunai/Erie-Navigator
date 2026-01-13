@@ -220,10 +220,10 @@ export default function Businesses() {
               ) : (
                 <div className="grid gap-4">
                   {filteredBusinesses.map((business) => (
-                    <Card
-                      key={business.id}
-                      className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all p-6 group"
-                    >
+                    <Link key={business.id} href={`/businesses/${business.id}`}>
+                      <Card
+                        className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all p-6 group cursor-pointer"
+                      >
                       <div className="flex gap-6">
                         {/* Image */}
                         <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-[#3A96CB]/10 to-[#FFD700]/10 flex-shrink-0 flex items-center justify-center overflow-hidden border-4 border-black shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]">
@@ -303,6 +303,7 @@ export default function Businesses() {
                         </div>
                       </div>
                     </Card>
+                    </Link>
                   ))}
                 </div>
               )}
