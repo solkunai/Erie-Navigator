@@ -1,8 +1,7 @@
 import { Link, useLocation } from "wouter";
-import { Search, Sparkles, Menu, MapPin, Plus } from "lucide-react";
+import { Search, Sparkles, Menu, Plus, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ThemeToggle } from "./theme-toggle";
 import { useState } from "react";
 import {
   Sheet,
@@ -12,10 +11,10 @@ import {
 } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "/restaurants", label: "Restaurants" },
-  { href: "/businesses", label: "Businesses" },
-  { href: "/events", label: "Events" },
-  { href: "/things-to-do", label: "Things to Do" },
+  { href: "/restaurants", label: "GRUB" },
+  { href: "/businesses", label: "SHOPS" },
+  { href: "/events", label: "EVENTS" },
+  { href: "/things-to-do", label: "CHILL SPOTS" },
 ];
 
 interface HeaderProps {
@@ -29,13 +28,19 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4">
-        <div className="flex h-14 items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 w-full bg-white border-b-2 border-black">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-1.5">
-            <img src="/assets/logo.png" alt="Hello Erie" className="h-8 w-8 rounded-full object-cover" />
-            <span className="font-serif text-lg">Hello Erie</span>
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-[#FF851A] rounded-lg flex items-center justify-center border-2 border-black hover:scale-105 transition-transform">
+              <span className="text-white font-bold text-xl">H</span>
+            </div>
+            <div className="hidden sm:flex items-center gap-2">
+              <span className="font-bold text-lg">HELLO ERIE</span>
+              <span className="text-gray-400">/</span>
+              <span className="text-[#FF851A] font-bold text-sm">navigator</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -44,10 +49,10 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 text-sm transition-colors ${
+                className={`px-4 py-2 text-sm font-bold transition-all rounded-sm ${
                   location === link.href
-                    ? "text-foreground font-medium"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-[#FF851A] text-white"
+                    : "text-gray-700 hover:text-[#FF851A] hover:bg-[#FFD700]/20"
                 }`}
               >
                 {link.label}
@@ -60,69 +65,76 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
             {/* Search - Desktop */}
             <div className="hidden md:block">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                 <Input
                   type="search"
-                  placeholder="Search..."
-                  className="pl-9 w-48 h-9 text-sm"
+                  placeholder="Find the vibe..."
+                  className="pl-9 w-56 h-10 text-sm border-2 border-black rounded-sm focus:ring-2 focus:ring-[#FF851A] focus:border-[#FF851A]"
                   value={searchQuery}
                   onChange={(e) => onSearchChange?.(e.target.value)}
                 />
               </div>
             </div>
 
-            {/* Add Business - Desktop */}
-            <Link href="/add-business" className="hidden lg:block">
-              <Button variant="outline" size="sm" className="h-9">
-                <Plus className="h-4 w-4 mr-1" />
-                Add Business
+            {/* Explore Button - Desktop */}
+            <Link href="/explore" className="hidden lg:block">
+              <Button
+                size="sm"
+                className="h-10 bg-[#3A96CB] hover:bg-[#4da8db] text-white font-bold border-2 border-black rounded-sm shadow-[2px_2px_0px_0px_rgba(35,24,15,1)] hover:shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all"
+              >
+                <Sparkles className="h-4 w-4 mr-1" />
+                Explore
               </Button>
             </Link>
 
-            {/* AI Button - Desktop */}
-            <Button
-              variant="default"
-              size="sm"
-              onClick={onOpenAI}
-              className="hidden md:flex h-9"
-            >
-              <Sparkles className="h-4 w-4 mr-1" />
-              Ask AI
-            </Button>
-
-            <ThemeToggle />
+            {/* User Button */}
+            <button className="w-10 h-10 rounded-full bg-[#FFD700] border-2 border-black flex items-center justify-center hover:scale-105 transition-transform">
+              <User className="h-5 w-5 text-black" />
+            </button>
 
             {/* Mobile Menu */}
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="lg:hidden h-9 w-9">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="lg:hidden h-10 w-10 border-2 border-black rounded-sm hover:bg-[#FFD700]/20"
+                >
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-72">
+              <SheetContent side="right" className="w-72 border-l-4 border-black bg-[#FCF4F8]">
                 <div className="flex flex-col gap-6 py-6">
+                  {/* Mobile Logo */}
+                  <div className="flex items-center gap-2 pb-4 border-b-2 border-black">
+                    <div className="w-10 h-10 bg-[#FF851A] rounded-lg flex items-center justify-center border-2 border-black">
+                      <span className="text-white font-bold text-xl">H</span>
+                    </div>
+                    <span className="font-bold text-lg">HELLO ERIE</span>
+                  </div>
+
                   {/* Mobile Search */}
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                     <Input
                       type="search"
-                      placeholder="Search..."
-                      className="pl-9"
+                      placeholder="Find the vibe..."
+                      className="pl-9 border-2 border-black rounded-sm"
                       value={searchQuery}
                       onChange={(e) => onSearchChange?.(e.target.value)}
                     />
                   </div>
 
                   {/* Mobile Navigation */}
-                  <nav className="flex flex-col gap-1">
+                  <nav className="flex flex-col gap-2">
                     {navLinks.map((link) => (
                       <SheetClose key={link.href} asChild>
                         <Link
                           href={link.href}
-                          className={`px-3 py-3 text-sm rounded-md transition-colors ${
+                          className={`px-4 py-3 text-sm font-bold rounded-sm transition-all border-2 border-black ${
                             location === link.href
-                              ? "bg-muted text-foreground font-medium"
-                              : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                              ? "bg-[#FF851A] text-white shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]"
+                              : "bg-white text-gray-700 hover:bg-[#FFD700]"
                           }`}
                         >
                           {link.label}
@@ -131,26 +143,29 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                     ))}
                   </nav>
 
-                  <div className="border-t pt-4 space-y-3">
+                  <div className="border-t-2 border-black pt-4 space-y-3">
                     <SheetClose asChild>
-                      <Link href="/add-business" className="block">
-                        <Button variant="outline" className="w-full justify-start">
-                          <Plus className="h-4 w-4 mr-2" />
-                          Add Your Business
+                      <Link href="/explore" className="block">
+                        <Button
+                          className="w-full justify-start bg-[#3A96CB] hover:bg-[#4da8db] text-white font-bold border-2 border-black rounded-sm shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]"
+                        >
+                          <Sparkles className="h-4 w-4 mr-2" />
+                          Explore Erie
                         </Button>
                       </Link>
                     </SheetClose>
 
-                    <Button
-                      onClick={() => {
-                        onOpenAI?.();
-                        setMobileMenuOpen(false);
-                      }}
-                      className="w-full justify-start"
-                    >
-                      <Sparkles className="h-4 w-4 mr-2" />
-                      Ask AI Assistant
-                    </Button>
+                    <SheetClose asChild>
+                      <Link href="/add-business" className="block">
+                        <Button
+                          variant="outline"
+                          className="w-full justify-start bg-white border-2 border-black font-bold hover:bg-[#FFD700]/20"
+                        >
+                          <Plus className="h-4 w-4 mr-2" />
+                          Add Business
+                        </Button>
+                      </Link>
+                    </SheetClose>
                   </div>
                 </div>
               </SheetContent>
