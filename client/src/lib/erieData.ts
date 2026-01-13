@@ -4,17 +4,18 @@ import type { Restaurant, Event, Activity, AutismProgram, SocialGroup, Business 
 export const restaurants: Restaurant[] = [
   {
     id: "1",
-    name: "El Canelo Mexican Restaurant",
-    category: "Mexican",
-    categories: ["Mexican"],
-    address: "2709 Parade St, Erie, PA 16504",
-    phone: "(814) 453-6288",
-    description: "Authentic Mexican cuisine with fresh ingredients and traditional recipes. Known for their flavorful tacos, enchiladas, and house-made salsas.",
-    priceRange: "$$",
+    name: "Sara's Diner",
+    category: "American",
+    categories: ["American", "Breakfast"],
+    address: "25 Peninsula Dr, Erie, PA 16505",
+    phone: "(814) 833-1957",
+    website: "https://sarasandsallys.com",
+    description: "Beloved seasonal stop at the entrance to Presque Isle State Park. Famous for Erie-made Smith hot dogs and orange vanilla twists.",
+    priceRange: "$",
     rating: 4.5,
-    hours: "11:00 AM - 9:00 PM",
-    features: ["Dine-in", "Takeout", "Delivery"],
-    imageUrl: "/assets/el-canelo.png"
+    hours: "11:00 AM - 8:00 PM (Seasonal)",
+    features: ["Takeout", "Family Friendly", "Ice Cream"],
+    imageUrl: "/assets/saras-s.png"
   },
   {
     id: "2",
@@ -48,16 +49,17 @@ export const restaurants: Restaurant[] = [
   },
   {
     id: "4",
-    name: "Pineapple Eddie Southern Bistro",
+    name: "Oliver's Rooftop",
     category: "American",
-    categories: ["American", "Fine Dining"],
-    address: "1402 W 10th St, Erie, PA 16502",
-    phone: "(814) 454-1010",
-    description: "Southern-inspired cuisine with a creative twist. Upscale dining featuring locally sourced ingredients.",
+    categories: ["American", "Bar & Grill", "Fine Dining"],
+    address: "301 French St, Erie, PA 16507",
+    phone: "(814) 453-6454",
+    description: "Erie's premier rooftop dining experience with stunning skyline views. Upscale American cuisine, craft cocktails, and an unforgettable atmosphere.",
     priceRange: "$$$",
     rating: 4.6,
-    hours: "5:00 PM - 9:00 PM",
-    features: ["Dine-in", "Full Bar", "Reservations"]
+    hours: "4:00 PM - 11:00 PM",
+    features: ["Dine-in", "Rooftop", "Full Bar", "Reservations"],
+    imageUrl: "/assets/olivers.jpeg"
   },
   {
     id: "5",
@@ -87,17 +89,17 @@ export const restaurants: Restaurant[] = [
   },
   {
     id: "7",
-    name: "Sara's Diner",
-    category: "American",
-    categories: ["American", "Breakfast"],
-    address: "25 Peninsula Dr, Erie, PA 16505",
-    phone: "(814) 833-1957",
-    website: "https://sarasandsallys.com",
-    description: "Beloved seasonal stop at the entrance to Presque Isle State Park. Famous for Erie-made Smith hot dogs and orange vanilla twists.",
-    priceRange: "$",
+    name: "El Canelo Mexican Restaurant",
+    category: "Mexican",
+    categories: ["Mexican"],
+    address: "2709 Parade St, Erie, PA 16504",
+    phone: "(814) 453-6288",
+    description: "Authentic Mexican cuisine with fresh ingredients and traditional recipes. Known for their flavorful tacos, enchiladas, and house-made salsas.",
+    priceRange: "$$",
     rating: 4.5,
-    hours: "11:00 AM - 8:00 PM (Seasonal)",
-    features: ["Takeout", "Family Friendly", "Ice Cream"]
+    hours: "11:00 AM - 9:00 PM",
+    features: ["Dine-in", "Takeout", "Delivery"],
+    imageUrl: "/assets/el-canelo.png"
   },
   {
     id: "8",
@@ -347,17 +349,16 @@ export const restaurants: Restaurant[] = [
   },
   {
     id: "26",
-    name: "Oliver's Rooftop",
+    name: "Pineapple Eddie Southern Bistro",
     category: "American",
-    categories: ["American", "Bar & Grill", "Fine Dining"],
-    address: "301 French St, Erie, PA 16507",
-    phone: "(814) 453-6454",
-    description: "Erie's premier rooftop dining experience with stunning skyline views. Upscale American cuisine, craft cocktails, and an unforgettable atmosphere.",
+    categories: ["American", "Fine Dining"],
+    address: "1402 W 10th St, Erie, PA 16502",
+    phone: "(814) 454-1010",
+    description: "Southern-inspired cuisine with a creative twist. Upscale dining featuring locally sourced ingredients.",
     priceRange: "$$$",
     rating: 4.6,
-    hours: "4:00 PM - 11:00 PM",
-    features: ["Dine-in", "Rooftop", "Full Bar", "Reservations"],
-    imageUrl: "/assets/olivers.jpeg"
+    hours: "5:00 PM - 9:00 PM",
+    features: ["Dine-in", "Full Bar", "Reservations"]
   },
   {
     id: "27",

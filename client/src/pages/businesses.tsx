@@ -131,7 +131,7 @@ export default function Businesses() {
                 <Input
                   type="search"
                   placeholder="Find local shops..."
-                  className="pl-10 h-12 border-2 border-black rounded-sm focus:ring-2 focus:ring-black font-medium bg-white"
+                  className="pl-10 h-12 border-2 border-black rounded-sm focus:ring-2 focus:ring-black font-medium bg-white text-gray-900"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />

@@ -57,7 +57,7 @@ export default function AutismPrograms() {
               <Input
                 type="search"
                 placeholder="Search programs, services..."
-                className="pl-10 h-12 border-2 border-black rounded-sm focus:ring-2 focus:ring-black font-medium bg-white"
+                className="pl-10 h-12 border-2 border-black rounded-sm focus:ring-2 focus:ring-black font-medium bg-white text-gray-900"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 data-testid="input-search-programs"
