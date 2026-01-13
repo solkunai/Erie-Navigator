@@ -200,7 +200,7 @@ export default function ThingsToDo() {
             {/* Desktop Filters Sidebar */}
             <aside className="hidden lg:block w-72 flex-shrink-0">
               <div className="sticky top-24 bg-white p-6 rounded-xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
-                <h2 className="font-black mb-6 flex items-center gap-2 text-xl">
+                <h2 className="font-black mb-6 flex items-center gap-2 text-xl text-gray-900">
                   <Filter className="h-5 w-5 text-[#FF851A]" />
                   Filters
                 </h2>

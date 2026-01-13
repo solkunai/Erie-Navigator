@@ -1019,6 +1019,18 @@ export const autismPrograms: AutismProgram[] = [
     services: ["Mental Health Support", "Education Programs", "Advocacy", "Family Support", "Support Groups"],
     accessibility: [],
     imageUrl: "/assets/nami.jpg"
+  },
+  {
+    id: "12",
+    name: "KaleidAScope, Inc.",
+    organization: "KaleidAScope, Inc. (KAS)",
+    description: "Private non-profit 501(C)(3) providing Knowledge, Advocacy and Support for individuals on the Autism Spectrum and those with intellectual and developmental disabilities (IDD). Focuses on maximizing potential, independence, and community integration.",
+    ageRange: "School age through adulthood",
+    address: "337 W 10th St, Erie, PA 16502",
+    phone: "(814) 824-4515",
+    website: "https://www.kaserieinc.org",
+    services: ["Individual Therapy", "Family Therapy", "Group Therapy", "Social Skills Groups", "Community Inclusion", "Behavior Support", "Employment Support", "PA Adult Autism Waiver", "ADOS Administration", "ABA Therapy"],
+    accessibility: ["Licensed Clinicians", "Insurance Accepted", "Waiver Services", "Community-Based Support"]
   }
 ];
 

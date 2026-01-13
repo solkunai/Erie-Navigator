@@ -32,13 +32,13 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-1">
             <img
               src="/assets/helloeriefinallogo.png"
               alt="Hello Erie Logo"
               className="w-16 h-16 object-contain hover:scale-105 transition-transform"
             />
-            <div className="flex items-center gap-2">
+            <div className="flex items-center">
               <span className="font-black text-lg sm:text-xl text-gray-900">HELLO ERIE</span>
             </div>
           </Link>
@@ -84,6 +84,17 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
               >
                 <Sparkles className="h-4 w-4 mr-1" />
                 Explore
+              </Button>
+            </Link>
+
+            {/* Add Business Button - Desktop */}
+            <Link href="/add-business" className="hidden lg:block">
+              <Button
+                size="sm"
+                className="h-10 bg-[#FFD700] hover:bg-[#FFD700]/80 text-black font-bold border-2 border-black rounded-sm shadow-[2px_2px_0px_0px_rgba(35,24,15,1)] hover:shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all"
+              >
+                <Plus className="h-4 w-4 mr-1" />
+                Add Business
               </Button>
             </Link>
 
@@ -155,8 +166,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                     <SheetClose asChild>
                       <Link href="/add-business" className="block">
                         <Button
-                          variant="outline"
-                          className="w-full justify-start bg-white border-2 border-black font-bold hover:bg-[#FFD700]/20"
+                          className="w-full justify-start bg-[#FFD700] hover:bg-[#FFD700]/80 text-black font-bold border-2 border-black rounded-sm shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]"
                         >
                           <Plus className="h-4 w-4 mr-2" />
                           Add Business

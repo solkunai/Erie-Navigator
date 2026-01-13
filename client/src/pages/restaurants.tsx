@@ -277,32 +277,32 @@ export default function Restaurants() {
                                 className="max-w-full max-h-full object-contain"
                               />
                             </div>
-                            {/* Rating Badge */}
-                            <Badge className="absolute top-3 right-3 z-20 bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-1.5 py-0.5 hover:bg-[#FFD700] inline-flex items-center gap-0.5 w-auto">
-                              <Star className="h-2.5 w-2.5 fill-black" />
-                              {restaurant.rating}
-                            </Badge>
-
-                            {/* Category Badge */}
-                            <Badge className="absolute top-3 left-3 z-20 bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A]">
-                              {restaurant.category}
-                            </Badge>
+                            {/* Badges Stacked */}
+                            <div className="absolute top-3 right-3 z-20 flex flex-col gap-2">
+                              <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-1.5 py-0.5 hover:bg-[#FFD700] inline-flex items-center gap-0.5 w-auto">
+                                <Star className="h-2.5 w-2.5 fill-black" />
+                                {restaurant.rating}
+                              </Badge>
+                              <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A]">
+                                {restaurant.category}
+                              </Badge>
+                            </div>
                           </>
                         ) : (
                           <>
                             <div className="absolute inset-0 flex items-center justify-center">
                               <span className="text-6xl font-black text-[#FF851A]/30">{restaurant.name.charAt(0)}</span>
                             </div>
-                            {/* Rating Badge */}
-                            <Badge className="absolute top-3 right-3 z-20 bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-1.5 py-0.5 hover:bg-[#FFD700] inline-flex items-center gap-0.5 w-auto">
-                              <Star className="h-2.5 w-2.5 fill-black" />
-                              {restaurant.rating}
-                            </Badge>
-
-                            {/* Category Badge */}
-                            <Badge className="absolute top-3 left-3 z-20 bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A]">
-                              {restaurant.category}
-                            </Badge>
+                            {/* Badges Stacked */}
+                            <div className="absolute top-3 right-3 z-20 flex flex-col gap-2">
+                              <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-1.5 py-0.5 hover:bg-[#FFD700] inline-flex items-center gap-0.5 w-auto">
+                                <Star className="h-2.5 w-2.5 fill-black" />
+                                {restaurant.rating}
+                              </Badge>
+                              <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A]">
+                                {restaurant.category}
+                              </Badge>
+                            </div>
                           </>
                         )}
                       </div>
