@@ -208,9 +208,9 @@ export default function Home({ onOpenAI }: HomeProps) {
                     className="bg-white p-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mb-3 h-full"
                   >
                     <div className="aspect-[4/3] bg-white rounded-sm mb-3 overflow-hidden relative">
-                      {/* Badge Overlay - positioned inside image container */}
+                      {/* Top Badge */}
                       <Badge
-                        className={`absolute top-2 right-2 z-20 border-2 border-black rounded-sm font-bold text-xs shadow-md ${
+                        className={`absolute top-3 right-3 z-20 border-2 border-black rounded-sm font-bold text-xs px-2 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
                           index === 0 ? 'bg-[#FFD700] text-black hover:bg-[#FFD700]' :
                           'bg-[#FF851A] text-white hover:bg-[#FF851A]'
                         }`}
@@ -231,11 +231,18 @@ export default function Home({ onOpenAI }: HomeProps) {
                           <span className="text-5xl font-black text-[#FF851A]/30">{restaurant.name.charAt(0)}</span>
                         </div>
                       )}
+
+                      {/* Bottom Badges - Category and Price */}
+                      <div className="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between gap-2">
+                        <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase">
+                          {restaurant.category}
+                        </Badge>
+                        <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FFD700] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                          {restaurant.priceRange}
+                        </Badge>
+                      </div>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-sm font-bold uppercase tracking-wide text-[#FF851A]">
-                        {restaurant.category} • {restaurant.priceRange}
-                      </p>
                       <h3 className="font-bold text-lg text-gray-900">{restaurant.name}</h3>
                     </div>
                   </div>
