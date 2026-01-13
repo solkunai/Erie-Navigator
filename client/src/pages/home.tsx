@@ -205,8 +205,7 @@ export default function Home({ onOpenAI }: HomeProps) {
                 <article key={restaurant.id} className="group cursor-pointer">
                   {/* Polaroid-style Card */}
                   <div
-                    className="bg-white p-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mb-3"
-                    style={{ transform: `rotate(${index % 4 === 0 ? '0.5deg' : index % 4 === 1 ? '-0.5deg' : index % 4 === 2 ? '1deg' : '-1deg'})` }}
+                    className="bg-white p-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mb-3 h-full"
                   >
                     <div className="aspect-[4/3] bg-white rounded-sm mb-3 overflow-hidden relative">
                       {/* Badge Overlay - positioned inside image container */}
@@ -307,7 +306,7 @@ export default function Home({ onOpenAI }: HomeProps) {
                           </Badge>
                         )}
                       </div>
-                      <h3 className="font-bold text-xl mb-2 group-hover:text-[#3A96CB] transition-colors">{event.title}</h3>
+                      <h3 className="font-black text-xl mb-2 text-gray-900 group-hover:text-[#3A96CB] transition-colors">{event.title}</h3>
                       <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
                         <span className="flex items-center gap-2">
                           <Clock className="h-4 w-4 text-[#3A96CB]" />
@@ -345,13 +344,13 @@ export default function Home({ onOpenAI }: HomeProps) {
             <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
               <div className="flex items-center gap-3">
                 <img
-                  src="/assets/helloerie-final.png"
+                  src="/assets/helloeriefinallogo.png"
                   alt="Hello Erie Logo"
-                  className="w-10 h-10 object-contain transform -rotate-12"
+                  className="w-16 h-16 object-contain transform -rotate-12"
                 />
                 <span className="font-black text-xl text-gray-900">HELLO ERIE © 2024</span>
               </div>
-              <nav className="flex flex-wrap justify-center gap-6 text-sm font-bold">
+              <nav className="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-900">
                 <Link href="/restaurants" className="hover:text-[#FF851A] transition-colors">GRUB</Link>
                 <Link href="/businesses" className="hover:text-[#3A96CB] transition-colors">SHOPS</Link>
                 <Link href="/events" className="hover:text-[#FFD700] transition-colors">EVENTS</Link>

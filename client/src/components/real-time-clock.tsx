@@ -38,7 +38,7 @@ export function RealTimeClock() {
   };
 
   return (
-    <div 
+    <div
       className="relative overflow-visible rounded-md bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 px-4 py-2 shadow-sm"
       data-testid="realtime-clock"
     >
@@ -48,17 +48,17 @@ export function RealTimeClock() {
         </div>
         <div className="flex flex-col">
           <div className="flex items-baseline gap-1">
-            <span className="text-xl font-bold tabular-nums tracking-tight" data-testid="text-current-time">
+            <span className="text-xl font-bold tabular-nums tracking-tight text-gray-900" data-testid="text-current-time">
               {formatTime(time)}
             </span>
             <span className="text-xs font-medium text-primary tabular-nums">
               :{formatSeconds(time)}
             </span>
           </div>
-          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <div className="flex items-center gap-1.5 text-xs text-gray-700">
             <MapPin className="h-3 w-3" />
             <span data-testid="text-current-date">Erie, PA</span>
-            <span className="text-muted-foreground/50">|</span>
+            <span className="text-gray-500">|</span>
             <span>{formatDate(time)}</span>
           </div>
         </div>

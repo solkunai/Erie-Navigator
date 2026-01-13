@@ -32,7 +32,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-2">
             <img
               src="/assets/helloeriefinallogo.png"
               alt="Hello Erie Logo"
@@ -101,7 +101,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
               <SheetContent side="right" className="w-72 border-l-4 border-black bg-[#FCF4F8]">
                 <div className="flex flex-col gap-6 py-6">
                   {/* Mobile Logo */}
-                  <div className="flex items-center gap-3 pb-4 border-b-2 border-black">
+                  <div className="flex items-center gap-2 pb-4 border-b-2 border-black">
                     <img
                       src="/assets/helloeriefinallogo.png"
                       alt="Hello Erie Logo"
