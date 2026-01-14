@@ -263,8 +263,8 @@ export default function Restaurants() {
                   </Button>
                 </div>
               ) : (
-                {/* Mobile: Horizontal Scroll, Desktop: Grid */}
                 <div className="md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-6">
+                  {/* Mobile: Horizontal Scroll */}
                   <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
                     {filteredRestaurants.map((restaurant, index) => (
                       <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`} className="flex-none w-[85vw] snap-start">
