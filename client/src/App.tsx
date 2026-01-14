@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import { AIChat } from "@/components/ai-chat";
+import { CookieConsent } from "@/components/cookie-consent";
 import Home from "@/pages/home";
 import Explore from "@/pages/explore";
 import SearchResults from "@/pages/search-results";
@@ -76,6 +77,7 @@ function App() {
             <AIChat isOpen={isAIChatOpen} onClose={closeAI} />
           </div>
           <Toaster />
+          <CookieConsent />
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>
