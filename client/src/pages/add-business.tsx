@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Building2, CheckCircle2, Loader2, Upload } from "lucide-react";
+import { ArrowLeft, Building2, CheckCircle2, Loader2, Upload, Plus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -46,6 +46,7 @@ export default function AddBusiness() {
     description: "",
     hours: "",
     features: [] as string[],
+    socialMedia: [] as Array<{ platform: string; url: string }>,
     ownerName: "",
     ownerEmail: "",
     ownerPhone: "",
@@ -110,8 +111,8 @@ export default function AddBusiness() {
           if (formData.logo) {
             submitData.append('logo', formData.logo);
           }
-        } else if (key === 'features') {
-          submitData.append('features', JSON.stringify(formData.features));
+        } else if (key === 'features' || key === 'socialMedia') {
+          submitData.append(key, JSON.stringify((formData as any)[key]));
         } else {
           submitData.append(key, (formData as any)[key]);
         }
@@ -150,6 +151,29 @@ export default function AddBusiness() {
       features: prev.features.includes(feature)
         ? prev.features.filter((f) => f !== feature)
         : [...prev.features, feature],
+    }));
+  };
+
+  const addSocialMedia = () => {
+    setFormData((prev) => ({
+      ...prev,
+      socialMedia: [...prev.socialMedia, { platform: "", url: "" }],
+    }));
+  };
+
+  const removeSocialMedia = (index: number) => {
+    setFormData((prev) => ({
+      ...prev,
+      socialMedia: prev.socialMedia.filter((_, i) => i !== index),
+    }));
+  };
+
+  const updateSocialMedia = (index: number, field: 'platform' | 'url', value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      socialMedia: prev.socialMedia.map((social, i) =>
+        i === index ? { ...social, [field]: value } : social
+      ),
     }));
   };
 
@@ -390,6 +414,71 @@ export default function AddBusiness() {
                       onChange={(e) => setFormData({ ...formData, hours: e.target.value })}
                       className="border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
                     />
+                  </div>
+
+                  {/* Social Media */}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <Label className="font-bold text-gray-900">Social Media (optional)</Label>
+                      <Button
+                        type="button"
+                        onClick={addSocialMedia}
+                        className="gap-2 h-9 px-3 bg-[#3A96CB] hover:bg-[#4da8db] text-white font-bold border-2 border-black rounded-sm shadow-[2px_2px_0px_0px_rgba(35,24,15,1)] hover:shadow-[3px_3px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all"
+                      >
+                        <Plus className="h-4 w-4" />
+                        Add Social Media
+                      </Button>
+                    </div>
+
+                    {formData.socialMedia.length > 0 && (
+                      <div className="space-y-3">
+                        {formData.socialMedia.map((social, index) => (
+                          <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-3 p-4 bg-[#FCF4F8] border-2 border-black rounded-sm">
+                            <div className="space-y-2">
+                              <Label className="text-sm font-bold text-gray-900">Platform</Label>
+                              <Select
+                                value={social.platform}
+                                onValueChange={(value) => updateSocialMedia(index, 'platform', value)}
+                              >
+                                <SelectTrigger className="border-2 border-black rounded-sm font-medium h-10 bg-white text-gray-900">
+                                  <SelectValue placeholder="Select platform" />
+                                </SelectTrigger>
+                                <SelectContent className="border-2 border-black rounded-sm">
+                                  <SelectItem value="Facebook">Facebook</SelectItem>
+                                  <SelectItem value="Instagram">Instagram</SelectItem>
+                                  <SelectItem value="Twitter">Twitter</SelectItem>
+                                  <SelectItem value="LinkedIn">LinkedIn</SelectItem>
+                                  <SelectItem value="TikTok">TikTok</SelectItem>
+                                  <SelectItem value="YouTube">YouTube</SelectItem>
+                                  <SelectItem value="Other">Other</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <Label className="text-sm font-bold text-gray-900">URL</Label>
+                                <Button
+                                  type="button"
+                                  onClick={() => removeSocialMedia(index)}
+                                  variant="ghost"
+                                  size="sm"
+                                  className="h-8 w-8 p-0 hover:bg-red-100"
+                                >
+                                  <X className="h-4 w-4 text-red-600" />
+                                </Button>
+                              </div>
+                              <Input
+                                placeholder="https://..."
+                                value={social.url}
+                                onChange={(e) => updateSocialMedia(index, 'url', e.target.value)}
+                                className="border-2 border-black rounded-sm font-medium h-10 bg-white text-gray-900 focus:ring-2 focus:ring-[#FFD700]"
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
 
