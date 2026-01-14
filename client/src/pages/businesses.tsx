@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Sheet,
   SheetContent,
@@ -224,86 +224,83 @@ export default function Businesses() {
                     {filteredBusinesses.map((business) => (
                       <Link key={business.id} href={`/businesses/${business.id}`} className="flex-none w-[70%] snap-start">
                         <Card
-                          className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all p-6 group cursor-pointer h-full"
+                          className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer h-full"
                         >
-                      <div className="flex gap-6">
-                        {/* Image */}
-                        <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-[#3A96CB]/10 to-[#FFD700]/10 flex-shrink-0 flex items-center justify-center overflow-hidden border-4 border-black shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]">
-                          {business.imageUrl ? (
-                            <img
-                              src={business.imageUrl}
-                              alt={business.name}
-                              className="w-full h-full object-contain p-2"
-                            />
-                          ) : (
-                            <Building2 className="h-10 w-10 text-[#3A96CB]" />
+                      {/* Image */}
+                      <div className="relative aspect-[4/3] bg-gradient-to-br from-[#3A96CB]/10 to-[#FFD700]/10 flex items-center justify-center border-b-4 border-black">
+                        {business.imageUrl ? (
+                          <img
+                            src={business.imageUrl}
+                            alt={business.name}
+                            className="w-32 h-32 object-contain"
+                          />
+                        ) : (
+                          <Building2 className="h-16 w-16 text-[#3A96CB]" />
+                        )}
+                        <Badge className="absolute top-3 right-3 bg-[#3A96CB] text-white border-2 border-black rounded-sm font-bold text-xs hover:bg-[#3A96CB]">
+                          {business.category}
+                        </Badge>
+                      </div>
+
+                      <CardContent className="p-5">
+                        <div className="flex items-start justify-between gap-2 mb-3">
+                          <h3 className="font-black text-xl line-clamp-2 text-gray-900">{business.name}</h3>
+                          {business.website && (
+                            <a
+                              href={business.website}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-shrink-0 p-2 bg-[#3A96CB]/10 border-2 border-[#3A96CB] rounded-sm hover:bg-[#3A96CB]/20 transition-colors"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <ExternalLink className="h-4 w-4 text-[#3A96CB]" />
+                            </a>
                           )}
                         </div>
 
-                        {/* Content */}
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between gap-4 mb-2">
-                            <div className="min-w-0 flex-1">
-                              <Badge className="bg-[#3A96CB] text-white border-2 border-black rounded-sm font-bold text-xs mb-2 hover:bg-[#3A96CB]">
-                                {business.category}
-                              </Badge>
-                              <h3 className="font-black text-xl text-gray-900 group-hover:text-[#3A96CB] transition-colors line-clamp-2">
-                                {business.name}
-                              </h3>
-                            </div>
-                            {business.website && (
-                              <a
-                                href={business.website}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex-shrink-0 p-2 bg-[#3A96CB]/10 border-2 border-[#3A96CB] rounded-sm hover:bg-[#3A96CB]/20 transition-colors"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <ExternalLink className="h-4 w-4 text-[#3A96CB]" />
-                              </a>
-                            )}
+                        <p className="text-sm text-gray-700 line-clamp-2 mb-4 font-medium">
+                          {business.description}
+                        </p>
+
+                        <div className="space-y-2 text-sm text-gray-600 mb-4">
+                          <div className="flex items-start gap-2">
+                            <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5 text-[#FF851A]" />
+                            <span className="line-clamp-1 font-medium">{business.address}</span>
                           </div>
 
-                          <p className="text-sm text-gray-700 mt-2 line-clamp-2 font-medium">
-                            {business.description}
-                          </p>
-
-                          <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
-                            <span className="flex items-center gap-2 min-w-0">
-                              <MapPin className="h-4 w-4 flex-shrink-0 text-[#FF851A]" />
-                              <span className="truncate font-medium">{business.address}</span>
-                            </span>
-                            <span className="flex items-center gap-2 min-w-0">
+                          {business.phone && (
+                            <div className="flex items-center gap-2">
                               <Phone className="h-4 w-4 flex-shrink-0 text-[#3A96CB]" />
                               <span className="font-medium truncate">{business.phone}</span>
-                            </span>
-                            {business.hours && (
-                              <span className="flex items-center gap-2 min-w-0">
-                                <Clock className="h-4 w-4 flex-shrink-0 text-[#FFD700]" />
-                                <span className="truncate font-medium">{business.hours}</span>
-                              </span>
-                            )}
-                          </div>
+                            </div>
+                          )}
 
-                          {business.features.length > 0 && (
-                            <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t-2 border-black">
-                              {business.features.slice(0, 4).map((feature) => (
-                                <Badge
-                                  key={feature}
-                                  className="bg-white text-black border-2 border-black rounded-full text-xs font-bold hover:bg-[#FFD700] transition-colors"
-                                >
-                                  {feature}
-                                </Badge>
-                              ))}
-                              {business.features.length > 4 && (
-                                <Badge className="bg-white text-black border-2 border-black rounded-full text-xs font-bold">
-                                  +{business.features.length - 4} more
-                                </Badge>
-                              )}
+                          {business.hours && (
+                            <div className="flex items-center gap-2">
+                              <Clock className="h-4 w-4 flex-shrink-0 text-[#FFD700]" />
+                              <span className="font-medium truncate">{business.hours}</span>
                             </div>
                           )}
                         </div>
-                      </div>
+
+                        {business.features.length > 0 && (
+                          <div className="flex flex-wrap gap-2 pt-4 border-t-2 border-black">
+                            {business.features.slice(0, 3).map((feature) => (
+                              <Badge
+                                key={feature}
+                                className="bg-white text-black border-2 border-black rounded-full text-xs font-bold hover:bg-[#FFD700] transition-colors"
+                              >
+                                {feature}
+                              </Badge>
+                            ))}
+                            {business.features.length > 3 && (
+                              <Badge className="bg-white text-black border-2 border-black rounded-full text-xs font-bold">
+                                +{business.features.length - 3}
+                              </Badge>
+                            )}
+                          </div>
+                        )}
+                      </CardContent>
                     </Card>
                     </Link>
                   ))}
