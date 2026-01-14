@@ -227,17 +227,19 @@ export default function Businesses() {
                           className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer h-full"
                         >
                       {/* Image */}
-                      <div className="relative aspect-[4/3] bg-gradient-to-br from-[#3A96CB]/10 to-[#FFD700]/10 flex items-center justify-center border-b-4 border-black">
-                        {business.imageUrl ? (
-                          <img
-                            src={business.imageUrl}
-                            alt={business.name}
-                            className="w-32 h-32 object-contain"
-                          />
-                        ) : (
-                          <Building2 className="h-16 w-16 text-[#3A96CB]" />
-                        )}
-                        <Badge className="absolute top-3 right-3 bg-[#3A96CB] text-white border-2 border-black rounded-sm font-bold text-xs hover:bg-[#3A96CB]">
+                      <div className="relative aspect-[4/3] bg-gradient-to-br from-[#3A96CB]/10 to-[#FFD700]/10 border-b-4 border-black">
+                        <div className="absolute inset-0 flex items-center justify-center p-4">
+                          {business.imageUrl ? (
+                            <img
+                              src={business.imageUrl}
+                              alt={business.name}
+                              className="max-w-full max-h-full object-contain"
+                            />
+                          ) : (
+                            <Building2 className="h-16 w-16 text-[#3A96CB]" />
+                          )}
+                        </div>
+                        <Badge className="absolute top-3 right-3 z-10 bg-[#3A96CB] text-white border-2 border-black rounded-sm font-bold text-xs hover:bg-[#3A96CB]">
                           {business.category}
                         </Badge>
                       </div>
