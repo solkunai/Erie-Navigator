@@ -59,7 +59,7 @@ app.use((req, res, next) => {
   if (!req.cookies.csrf_token) {
     const csrfToken = crypto.randomBytes(32).toString("hex");
     res.cookie("csrf_token", csrfToken, {
-      httpOnly: true,
+      httpOnly: false, // Must be false so JavaScript can read it for Double-Submit Cookie pattern
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       maxAge: 3600000, // 1 hour
