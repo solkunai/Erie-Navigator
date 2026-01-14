@@ -218,11 +218,11 @@ export default function Businesses() {
                   </Button>
                 </div>
               ) : (
-                <div className="overflow-x-hidden -mx-4 md:mx-0">
+                <>
                   {/* Mobile: Horizontal Scroll, Desktop: Vertical Stack */}
-                  <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide px-4">
+                  <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
                     {filteredBusinesses.map((business) => (
-                      <Link key={business.id} href={`/businesses/${business.id}`} className="flex-none w-[calc(85vw-2rem)] snap-start">
+                      <Link key={business.id} href={`/businesses/${business.id}`} className="flex-none w-[90%] max-w-[400px] snap-start">
                         <Card
                           className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all p-6 group cursor-pointer h-full"
                         >
@@ -398,7 +398,7 @@ export default function Businesses() {
                       </Link>
                     ))}
                   </div>
-                </div>
+                </>
               )}
             </main>
           </div>
