@@ -600,11 +600,12 @@ export const events: Event[] = [
     date: "2025-12-22",
     time: "6:00 PM",
     endTime: "9:00 PM",
-    venue: "Erie Insurance Arena",
-    address: "809 French St, Erie, PA 16501",
+    venue: "Downtown Erie Community Skating Rink",
+    address: "Downtown Erie, PA",
     description: "Bring the whole family for a fun evening of ice skating. Skate rentals available.",
     price: "$8",
-    isFree: false
+    isFree: false,
+    ticketUrl: "https://www.eriedowntown.com/events/skate"
   },
   {
     id: "13",
@@ -705,7 +706,8 @@ export const events: Event[] = [
     address: "1033 State St, Erie, PA 16501",
     description: "Enjoy an evening of live jazz in an intimate speakeasy atmosphere. Craft cocktails available.",
     price: "$10",
-    isFree: false
+    isFree: false,
+    ticketUrl: "https://www.room33.bar/"
   }
 ];
 

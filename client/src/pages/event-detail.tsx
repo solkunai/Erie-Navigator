@@ -218,7 +218,7 @@ export default function EventDetail() {
                   >
                     <Button
                       variant="outline"
-                      className="w-full border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all font-bold"
+                      className="w-full bg-white text-gray-900 border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all font-bold"
                     >
                       <MapPin className="h-4 w-4 mr-2" />
                       View on Map
