@@ -1180,33 +1180,10 @@ export const businesses: Business[] = [
     categories: ["Beauty & Spa"],
     address: "5765 Peach St, Erie, PA 16509",
     phone: "(814) 866-4247",
-    website: "https://www.panacheeriespa.com",
+    website: "https://www.panacheerie.com/",
     description: "Full-service salon and spa offering hair styling, coloring, facials, massages, and nail services.",
     hours: "Tue-Thu 9:00 AM - 8:00 PM, Fri-Sat 9:00 AM - 5:00 PM",
     features: ["Hair Salon", "Spa Services", "Nails", "Massage"]
-  },
-  {
-    id: "7",
-    name: "Dobbs Auto Center",
-    category: "Automotive",
-    categories: ["Automotive"],
-    address: "7200 Peach St, Erie, PA 16509",
-    phone: "(814) 866-5913",
-    description: "Family-owned auto repair shop providing honest, reliable service for all makes and models. ASE certified technicians.",
-    hours: "Mon-Fri 8:00 AM - 5:30 PM",
-    features: ["Auto Repair", "Oil Change", "Brakes", "ASE Certified"]
-  },
-  {
-    id: "8",
-    name: "Countryside Vet",
-    category: "Pet Services",
-    categories: ["Pet Services", "Health & Wellness"],
-    address: "10701 Wattsburg Rd, Erie, PA 16509",
-    phone: "(814) 825-7772",
-    website: "https://www.countrysidevet.com",
-    description: "Comprehensive veterinary care for cats, dogs, and small animals. Wellness exams, surgery, dental, and boarding services.",
-    hours: "Mon-Fri 8:00 AM - 6:00 PM, Sat 8:00 AM - 12:00 PM",
-    features: ["Veterinary Care", "Surgery", "Dental", "Boarding"]
   },
   {
     id: "9",
@@ -1281,15 +1258,15 @@ export const businesses: Business[] = [
   },
   {
     id: "15",
-    name: "Creative Machines",
+    name: "Creative Imprint Systems",
     category: "Professional Services",
-    categories: ["Professional Services", "Electronics"],
-    address: "1611 Peach St, Erie, PA 16501",
+    categories: ["Professional Services", "Printing"],
+    address: "2670 West 11th Street, Erie, PA 16505",
     phone: "(814) 520-6045",
-    website: "https://www.creativemachines.com",
-    description: "Computer repair, IT services, and custom PC builds. Serving homes and businesses throughout Erie.",
+    website: "https://www.creativeimprintsystems.com/",
+    description: "Professional printing and imprint services for businesses and individuals throughout Erie.",
     hours: "Mon-Fri 9:00 AM - 5:00 PM",
-    features: ["Computer Repair", "IT Services", "Custom PCs", "Business Support"]
+    features: ["Printing Services", "Custom Imprints", "Business Services", "Design"]
   },
   {
     id: "16",
