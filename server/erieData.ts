@@ -61,15 +61,16 @@ export const restaurants: Restaurant[] = [
   },
   {
     id: "5",
-    name: "Khao Thai",
+    name: "Thai Taste Cuisine",
     category: "Asian",
-    categories: ["Asian"],
-    address: "36 N Park Row, Erie, PA 16501",
+    categories: ["Asian", "Thai"],
+    address: "35 Peninsula Dr, Erie, PA 16505",
     phone: "(814) 454-4069",
+    website: "https://www.thaitasteerie.com/",
     description: "Authentic Thai cuisine with fresh ingredients. Try their famous Pad Thai and curry dishes.",
     priceRange: "$$",
     rating: 4.4,
-    hours: "11:00 AM - 9:00 PM",
+    hours: "11:00 AM - 9:30 PM",
     features: ["Dine-in", "Takeout", "Vegetarian Options"]
   },
   {
@@ -77,7 +78,7 @@ export const restaurants: Restaurant[] = [
     name: "Tandoori Hut",
     category: "Indian",
     categories: ["Indian", "Vegetarian"],
-    address: "2060 Edinboro Rd, Erie, PA 16509",
+    address: "2605 Washington Ave, Erie, PA 16508",
     phone: "(814) 868-9070",
     description: "Traditional Indian cuisine with a variety of vegetarian and meat options. Known for their tandoori dishes and naan bread.",
     priceRange: "$$",
@@ -166,19 +167,6 @@ export const restaurants: Restaurant[] = [
     rating: 4.3,
     hours: "11:00 AM - 10:00 PM",
     features: ["Dine-in", "Waterfront", "Outdoor Seating", "Full Bar", "Sunset Views"]
-  },
-  {
-    id: "13",
-    name: "Julius Restaurant",
-    category: "Mexican",
-    categories: ["Mexican"],
-    address: "2835 W 26th St, Erie, PA 16506",
-    phone: "(814) 835-3066",
-    description: "Traditional Mexican cuisine with generous portions. Famous for their flan and authentic flavors.",
-    priceRange: "$",
-    rating: 4.4,
-    hours: "10:00 AM - 9:00 PM",
-    features: ["Dine-in", "Takeout", "Family Friendly"]
   },
   {
     id: "14",
