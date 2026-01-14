@@ -50,9 +50,9 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
             <img
               src="/assets/helloeriefinallogo.png"
               alt="Hello Erie Logo"
-              className="w-16 h-16 object-contain hover:scale-105 transition-transform -mr-2"
+              className="w-12 h-12 sm:w-16 sm:h-16 object-contain hover:scale-105 transition-transform -mr-1 sm:-mr-2"
             />
-            <span className="font-black text-lg sm:text-xl text-gray-900">HELLO ERIE</span>
+            <span className="font-black text-sm sm:text-lg md:text-xl text-gray-900">HELLO ERIE</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -73,7 +73,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
           </nav>
 
           {/* Right Side Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             {/* Search - Desktop */}
             <div className="hidden md:block">
               <div className="relative">
@@ -112,6 +112,28 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
               </Button>
             </Link>
 
+            {/* Explore Button - Mobile */}
+            <Link href="/explore" className="lg:hidden">
+              <Button
+                size="sm"
+                className="h-9 px-2 sm:px-3 bg-[#3A96CB] hover:bg-[#4da8db] text-white font-bold border-2 border-black rounded-sm shadow-[2px_2px_0px_0px_rgba(35,24,15,1)] text-xs"
+              >
+                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 sm:mr-1" />
+                <span className="hidden sm:inline">Explore</span>
+              </Button>
+            </Link>
+
+            {/* Add Business Button - Mobile */}
+            <Link href="/add-business" className="lg:hidden">
+              <Button
+                size="sm"
+                className="h-9 px-2 sm:px-3 bg-[#FFD700] hover:bg-[#FFD700]/80 text-black font-bold border-2 border-black rounded-sm shadow-[2px_2px_0px_0px_rgba(35,24,15,1)] text-xs"
+              >
+                <Plus className="h-3 w-3 sm:h-4 sm:w-4 sm:mr-1" />
+                <span className="hidden sm:inline">Add</span>
+              </Button>
+            </Link>
+
             {/* Mobile Menu */}
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -146,6 +168,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                       value={searchQuery}
                       onChange={(e) => onSearchChange?.(e.target.value)}
                       onKeyDown={handleKeyDown}
+                      autoFocus={false}
                     />
                   </div>
 
