@@ -228,7 +228,10 @@ export default function Businesses() {
                         >
                       {/* Image */}
                       <div className="relative aspect-[4/3] bg-gradient-to-br from-[#3A96CB]/10 to-[#FFD700]/10 border-b-4 border-black">
-                        <div className="absolute inset-0 flex items-center justify-center p-4">
+                        <Badge className="absolute top-3 right-3 z-30 bg-[#3A96CB] text-white border-2 border-black rounded-sm font-bold text-xs hover:bg-[#3A96CB] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                          {business.category}
+                        </Badge>
+                        <div className="absolute inset-0 flex items-center justify-center p-6 z-10">
                           {business.imageUrl ? (
                             <img
                               src={business.imageUrl}
@@ -239,9 +242,6 @@ export default function Businesses() {
                             <Building2 className="h-16 w-16 text-[#3A96CB]" />
                           )}
                         </div>
-                        <Badge className="absolute top-3 right-3 z-10 bg-[#3A96CB] text-white border-2 border-black rounded-sm font-bold text-xs hover:bg-[#3A96CB]">
-                          {business.category}
-                        </Badge>
                       </div>
 
                       <CardContent className="p-5">
