@@ -446,7 +446,7 @@ export default function AddBusiness() {
                                 <SelectContent className="border-2 border-black rounded-sm">
                                   <SelectItem value="Facebook">Facebook</SelectItem>
                                   <SelectItem value="Instagram">Instagram</SelectItem>
-                                  <SelectItem value="Twitter">Twitter</SelectItem>
+                                  <SelectItem value="X (Formerly Twitter)">X (Formerly Twitter)</SelectItem>
                                   <SelectItem value="LinkedIn">LinkedIn</SelectItem>
                                   <SelectItem value="TikTok">TikTok</SelectItem>
                                   <SelectItem value="YouTube">YouTube</SelectItem>
