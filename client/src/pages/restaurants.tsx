@@ -263,13 +263,15 @@ export default function Restaurants() {
                   </Button>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {filteredRestaurants.map((restaurant, index) => (
-                    <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`}>
-                      <Card
-                        className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer"
-                        data-testid={`card-restaurant-${restaurant.id}`}
-                      >
+                {/* Mobile: Horizontal Scroll, Desktop: Grid */}
+                <div className="md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-6">
+                  <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+                    {filteredRestaurants.map((restaurant, index) => (
+                      <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`} className="flex-none w-[85vw] snap-start">
+                        <Card
+                          className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer h-full"
+                          data-testid={`card-restaurant-${restaurant.id}`}
+                        >
                       {/* Image with Badge */}
                       <div className="relative aspect-[4/3] bg-gradient-to-br from-[#FF851A]/10 to-[#FFD700]/10 overflow-hidden">
                         {restaurant.imageUrl ? (
@@ -372,6 +374,119 @@ export default function Restaurants() {
                     </Card>
                     </Link>
                   ))}
+                  </div>
+
+                  {/* Desktop: Grid Layout */}
+                  <div className="hidden md:contents">
+                    {filteredRestaurants.map((restaurant, index) => (
+                      <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`}>
+                        <Card
+                          className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer"
+                          data-testid={`card-restaurant-${restaurant.id}`}
+                        >
+                        {/* Image with Badge */}
+                        <div className="relative aspect-[4/3] bg-gradient-to-br from-[#FF851A]/10 to-[#FFD700]/10 overflow-hidden">
+                          {restaurant.imageUrl ? (
+                            <>
+                              <div className="absolute inset-0 flex items-center justify-center p-4">
+                                <img
+                                  src={restaurant.imageUrl}
+                                  alt={restaurant.name}
+                                  className="max-w-full max-h-full object-contain"
+                                />
+                              </div>
+                              {/* Badges Stacked */}
+                              <div className="absolute top-3 right-3 z-20 flex flex-col gap-2">
+                                <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-1.5 py-0.5 hover:bg-[#FFD700] inline-flex items-center gap-0.5 w-auto">
+                                  <Star className="h-2.5 w-2.5 fill-black" />
+                                  {restaurant.rating}
+                                </Badge>
+                                <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A]">
+                                  {restaurant.category}
+                                </Badge>
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <span className="text-6xl font-black text-[#FF851A]/30">{restaurant.name.charAt(0)}</span>
+                              </div>
+                              {/* Badges Stacked */}
+                              <div className="absolute top-3 right-3 z-20 flex flex-col gap-2">
+                                <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-1.5 py-0.5 hover:bg-[#FFD700] inline-flex items-center gap-0.5 w-auto">
+                                  <Star className="h-2.5 w-2.5 fill-black" />
+                                  {restaurant.rating}
+                                </Badge>
+                                <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A]">
+                                  {restaurant.category}
+                                </Badge>
+                              </div>
+                            </>
+                          )}
+                        </div>
+
+                        <CardContent className="p-5">
+                          <div className="flex items-start justify-between gap-2 mb-3">
+                            <h3 className="font-black text-xl line-clamp-1 text-gray-900">{restaurant.name}</h3>
+                            <Badge className="bg-black text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-black flex-shrink-0">
+                              {restaurant.priceRange}
+                            </Badge>
+                          </div>
+
+                          <p className="text-sm text-gray-700 line-clamp-2 mb-4 font-medium">
+                            {restaurant.description}
+                          </p>
+
+                          <div className="space-y-2 text-sm text-gray-600 mb-4">
+                            <div className="flex items-start gap-2">
+                              <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5 text-[#FF851A]" />
+                              <span className="line-clamp-1 font-medium">{restaurant.address}</span>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              <Phone className="h-4 w-4 flex-shrink-0 text-[#3A96CB]" />
+                              <span className="font-medium">{restaurant.phone}</span>
+                            </div>
+
+                            {restaurant.hours && (
+                              <div className="flex items-center gap-2">
+                                <Clock className="h-4 w-4 flex-shrink-0 text-[#FFD700]" />
+                                <span className="font-medium">{restaurant.hours}</span>
+                              </div>
+                            )}
+                          </div>
+
+                          {restaurant.features.length > 0 && (
+                            <div className="flex flex-wrap gap-2 mb-4 pt-4 border-t-2 border-black">
+                              {restaurant.features.slice(0, 3).map((feature) => (
+                                <Badge key={feature} className="bg-white text-black border-2 border-black rounded-full text-xs font-bold hover:bg-[#FFD700] transition-colors">
+                                  {feature}
+                                </Badge>
+                              ))}
+                              {restaurant.features.length > 3 && (
+                                <Badge className="bg-white text-black border-2 border-black rounded-full text-xs font-bold">
+                                  +{restaurant.features.length - 3}
+                                </Badge>
+                              )}
+                            </div>
+                          )}
+
+                          {restaurant.website && (
+                            <a
+                              href={restaurant.website}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2 text-sm font-bold text-[#FF851A] hover:text-[#ff9d3d] bg-[#FF851A]/10 border-2 border-[#FF851A] rounded-sm py-2 px-4 hover:bg-[#FF851A]/20 transition-all"
+                            >
+                              Visit Website
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                          )}
+                        </CardContent>
+                      </Card>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </main>

@@ -253,13 +253,15 @@ export default function ThingsToDo() {
                   </Button>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {filteredActivities.map((activity, index) => (
-                    <Link key={activity.id} href={`/things-to-do/${activity.id}`}>
-                      <Card
-                        className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer"
-                        data-testid={`card-activity-${activity.id}`}
-                      >
+                {/* Mobile: Horizontal Scroll, Desktop: Grid */}
+                <div className="md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-6">
+                  <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+                    {filteredActivities.map((activity, index) => (
+                      <Link key={activity.id} href={`/things-to-do/${activity.id}`} className="flex-none w-[85vw] snap-start">
+                        <Card
+                          className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer h-full"
+                          data-testid={`card-activity-${activity.id}`}
+                        >
                       {/* Hero Image Section */}
                       <div className="relative aspect-video bg-gradient-to-br from-[#FF851A]/20 to-[#FFD700]/20 flex items-center justify-center border-b-4 border-black">
                         <div className="w-20 h-20 rounded-full bg-white border-4 border-black flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]">
@@ -338,6 +340,95 @@ export default function ThingsToDo() {
                     </Card>
                     </Link>
                   ))}
+                  </div>
+
+                  {/* Desktop: Grid Layout */}
+                  <div className="hidden md:contents">
+                    {filteredActivities.map((activity, index) => (
+                      <Link key={activity.id} href={`/things-to-do/${activity.id}`}>
+                        <Card
+                          className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer"
+                          data-testid={`card-activity-${activity.id}`}
+                        >
+                        {/* Hero Image Section */}
+                        <div className="relative aspect-video bg-gradient-to-br from-[#FF851A]/20 to-[#FFD700]/20 flex items-center justify-center border-b-4 border-black">
+                          <div className="w-20 h-20 rounded-full bg-white border-4 border-black flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]">
+                            <Waves className="h-10 w-10 text-[#FF851A]" />
+                          </div>
+                          {/* Category Badge */}
+                          <Badge className="absolute top-3 left-3 bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs hover:bg-[#FF851A]">
+                            {activity.category}
+                          </Badge>
+                        </div>
+
+                        <CardContent className="p-5">
+                          <h3 className="font-black text-xl mb-3 text-gray-900">{activity.name}</h3>
+
+                          {/* Audience Badges */}
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {activity.audience.map((aud) => {
+                              const Icon = audienceIcons[aud];
+                              return (
+                                <Badge
+                                  key={aud}
+                                  className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs hover:bg-[#FFD700] flex items-center gap-1"
+                                >
+                                  <Icon className="h-3 w-3" />
+                                  {aud}
+                                </Badge>
+                              );
+                            })}
+                          </div>
+
+                          <p className="text-sm text-gray-700 line-clamp-2 mb-4 font-medium">
+                            {activity.description}
+                          </p>
+
+                          <div className="space-y-2 text-sm text-gray-600">
+                            <div className="flex items-start gap-2">
+                              <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5 text-[#FF851A]" />
+                              <span className="line-clamp-1 font-medium">{activity.address}</span>
+                            </div>
+
+                            {activity.hours && (
+                              <div className="flex items-center gap-2">
+                                <Clock className="h-4 w-4 flex-shrink-0 text-[#3A96CB]" />
+                                <span className="font-medium">{activity.hours}</span>
+                              </div>
+                            )}
+
+                            {activity.phone && (
+                              <div className="flex items-center gap-2">
+                                <Phone className="h-4 w-4 flex-shrink-0 text-[#FFD700]" />
+                                <span className="font-medium">{activity.phone}</span>
+                              </div>
+                            )}
+
+                            {activity.priceRange && (
+                              <div className="mt-3">
+                                <Badge className="bg-black text-white border-2 border-black rounded-sm font-bold text-xs hover:bg-black">
+                                  {activity.priceRange}
+                                </Badge>
+                              </div>
+                            )}
+                          </div>
+
+                          {activity.website && (
+                            <a
+                              href={activity.website}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="mt-4 flex items-center justify-center gap-2 text-sm font-bold text-[#FF851A] hover:text-[#ff9d3d] bg-[#FF851A]/10 border-2 border-[#FF851A] rounded-sm py-2 px-4 hover:bg-[#FF851A]/20 transition-all"
+                            >
+                              Visit Website
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                          )}
+                        </CardContent>
+                      </Card>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </main>

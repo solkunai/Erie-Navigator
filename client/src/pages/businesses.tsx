@@ -218,12 +218,14 @@ export default function Businesses() {
                   </Button>
                 </div>
               ) : (
-                <div className="grid gap-4">
-                  {filteredBusinesses.map((business) => (
-                    <Link key={business.id} href={`/businesses/${business.id}`}>
-                      <Card
-                        className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all p-6 group cursor-pointer"
-                      >
+                {/* Mobile: Horizontal Scroll, Desktop: Vertical Stack */}
+                <>
+                  <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+                    {filteredBusinesses.map((business) => (
+                      <Link key={business.id} href={`/businesses/${business.id}`} className="flex-none w-[85vw] snap-start">
+                        <Card
+                          className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all p-6 group cursor-pointer h-full"
+                        >
                       <div className="flex gap-6">
                         {/* Image */}
                         <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-[#3A96CB]/10 to-[#FFD700]/10 flex-shrink-0 flex items-center justify-center overflow-hidden border-4 border-black shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]">
@@ -305,7 +307,98 @@ export default function Businesses() {
                     </Card>
                     </Link>
                   ))}
-                </div>
+                  </div>
+
+                  {/* Desktop: Vertical Stack */}
+                  <div className="hidden md:grid md:gap-4">
+                    {filteredBusinesses.map((business) => (
+                      <Link key={business.id} href={`/businesses/${business.id}`}>
+                        <Card
+                          className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all p-6 group cursor-pointer"
+                        >
+                        <div className="flex gap-6">
+                          {/* Image */}
+                          <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-[#3A96CB]/10 to-[#FFD700]/10 flex-shrink-0 flex items-center justify-center overflow-hidden border-4 border-black shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]">
+                            {business.imageUrl ? (
+                              <img
+                                src={business.imageUrl}
+                                alt={business.name}
+                                className="w-full h-full object-contain p-2"
+                              />
+                            ) : (
+                              <Building2 className="h-10 w-10 text-[#3A96CB]" />
+                            )}
+                          </div>
+
+                          {/* Content */}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-start justify-between gap-4 mb-2">
+                              <div>
+                                <Badge className="bg-[#3A96CB] text-white border-2 border-black rounded-sm font-bold text-xs mb-2 hover:bg-[#3A96CB]">
+                                  {business.category}
+                                </Badge>
+                                <h3 className="font-black text-xl text-gray-900 group-hover:text-[#3A96CB] transition-colors">
+                                  {business.name}
+                                </h3>
+                              </div>
+                              {business.website && (
+                                <a
+                                  href={business.website}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex-shrink-0 p-2 bg-[#3A96CB]/10 border-2 border-[#3A96CB] rounded-sm hover:bg-[#3A96CB]/20 transition-colors"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <ExternalLink className="h-4 w-4 text-[#3A96CB]" />
+                                </a>
+                              )}
+                            </div>
+
+                            <p className="text-sm text-gray-700 mt-2 line-clamp-2 font-medium">
+                              {business.description}
+                            </p>
+
+                            <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
+                              <span className="flex items-center gap-2">
+                                <MapPin className="h-4 w-4 text-[#FF851A]" />
+                                <span className="truncate max-w-[250px] font-medium">{business.address}</span>
+                              </span>
+                              <span className="flex items-center gap-2">
+                                <Phone className="h-4 w-4 text-[#3A96CB]" />
+                                <span className="font-medium">{business.phone}</span>
+                              </span>
+                              {business.hours && (
+                                <span className="flex items-center gap-2">
+                                  <Clock className="h-4 w-4 text-[#FFD700]" />
+                                  <span className="truncate max-w-[180px] font-medium">{business.hours}</span>
+                                </span>
+                              )}
+                            </div>
+
+                            {business.features.length > 0 && (
+                              <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t-2 border-black">
+                                {business.features.slice(0, 4).map((feature) => (
+                                  <Badge
+                                    key={feature}
+                                    className="bg-white text-black border-2 border-black rounded-full text-xs font-bold hover:bg-[#FFD700] transition-colors"
+                                  >
+                                    {feature}
+                                  </Badge>
+                                ))}
+                                {business.features.length > 4 && (
+                                  <Badge className="bg-white text-black border-2 border-black rounded-full text-xs font-bold">
+                                    +{business.features.length - 4} more
+                                  </Badge>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </Card>
+                      </Link>
+                    ))}
+                  </div>
+                </>
               )}
             </main>
           </div>
