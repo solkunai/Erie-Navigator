@@ -36,7 +36,7 @@ export default function CookiePolicy() {
               <h1 className="font-black text-4xl md:text-5xl text-gray-900 mb-2">
                 Cookie Policy
               </h1>
-              <p className="text-gray-700 font-bold">Last Updated: January 12, 2026</p>
+              <p className="text-gray-700 font-bold">Last Updated: January 14, 2026</p>
             </div>
           </div>
 
@@ -65,39 +65,54 @@ export default function CookiePolicy() {
           {/* Section: Types of Cookies We Use */}
           <section className="mb-8">
             <div className="bg-[#FFD700] border-4 border-black px-4 py-2 inline-block mb-4 shadow-[3px_3px_0px_0px_rgba(35,24,15,1)]">
-              <h2 className="font-black text-2xl text-gray-900">Types of Cookies We Use</h2>
+              <h2 className="font-black text-2xl text-gray-900">Cookies & Local Storage Currently Used</h2>
             </div>
             <ul className="list-none space-y-4">
               <li className="bg-[#FCF4F8] border-4 border-black p-4 shadow-[3px_3px_0px_0px_rgba(35,24,15,1)]">
-                <h3 className="font-black text-lg text-gray-900 mb-2">Essential Cookies</h3>
-                <p className="text-gray-800">
-                  Necessary for the Site to function (e.g., navigation, form submissions).
-                  These cannot be disabled.
+                <h3 className="font-black text-lg text-gray-900 mb-2">Essential Security Cookie</h3>
+                <p className="text-gray-800 mb-2">
+                  <strong>Cookie Name:</strong> <code className="bg-gray-200 px-2 py-1 rounded">csrf_token</code>
                 </p>
+                <p className="text-gray-800 mb-2">
+                  <strong>Purpose:</strong> Protects form submissions from Cross-Site Request Forgery (CSRF) attacks.
+                  This is a critical security measure that prevents malicious websites from submitting forms on your behalf.
+                </p>
+                <p className="text-gray-800 mb-2">
+                  <strong>Duration:</strong> 1 hour
+                </p>
+                <p className="text-gray-800">
+                  <strong>Type:</strong> First-party, HttpOnly (cannot be accessed by JavaScript), SameSite: Strict
+                </p>
+                <div className="mt-3 bg-[#FFD700] border-2 border-black p-3 rounded-sm">
+                  <p className="text-gray-900 font-bold text-sm">
+                    ⚠️ This cookie is essential and cannot be disabled. Blocking it will prevent form submissions
+                    (like adding a business) from working properly.
+                  </p>
+                </div>
               </li>
               <li className="bg-[#FCF4F8] border-4 border-black p-4 shadow-[3px_3px_0px_0px_rgba(35,24,15,1)]">
-                <h3 className="font-black text-lg text-gray-900 mb-2">Analytics/Performance Cookies</h3>
-                <p className="text-gray-800">
-                  Help us understand how visitors use the Site (e.g., via Google Analytics or similar tools).
-                  These collect anonymous data like page views and session duration.
+                <h3 className="font-black text-lg text-gray-900 mb-2">User Preferences (Not a Cookie)</h3>
+                <p className="text-gray-800 mb-2">
+                  <strong>Storage Name:</strong> <code className="bg-gray-200 px-2 py-1 rounded">cookie-consent</code>
                 </p>
-              </li>
-              <li className="bg-[#FCF4F8] border-4 border-black p-4 shadow-[3px_3px_0px_0px_rgba(35,24,15,1)]">
-                <h3 className="font-black text-lg text-gray-900 mb-2">Functional Cookies (if applicable)</h3>
+                <p className="text-gray-800 mb-2">
+                  <strong>Purpose:</strong> Remembers whether you accepted or denied cookies on our consent banner.
+                  This is stored in your browser's local storage, NOT as a cookie, so it never leaves your device.
+                </p>
                 <p className="text-gray-800">
-                  Remember preferences for a better experience.
+                  <strong>Duration:</strong> Permanent (until you clear your browser data)
                 </p>
               </li>
             </ul>
           </section>
 
-          {/* Info Box */}
-          <div className="bg-[#FF851A] border-4 border-black p-6 mb-8 shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+          {/* Future Cookies Notice */}
+          <div className="bg-[#3A96CB] border-4 border-black p-6 mb-8 shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+            <h3 className="font-black text-xl text-white mb-3">Future Analytics & Performance</h3>
             <p className="text-white leading-relaxed font-bold">
-              We primarily use first-party cookies and may use third-party services (e.g., Google Analytics)
-              that set their own cookies. These may be considered "sharing" under CCPA if they involve
-              cross-context behavioral advertising — you can opt-out via the "Do Not Sell or Share My
-              Personal Information" link in our footer (if implemented) or browser settings.
+              We do NOT currently use any analytics, tracking, or advertising cookies. In the future, we may implement
+              analytics tools (like Google Analytics) to understand how visitors use the Site. If we do, we will
+              update this policy and obtain your consent before activating any such cookies.
             </p>
           </div>
 
@@ -121,17 +136,11 @@ export default function CookiePolicy() {
             <div className="bg-[#FF851A] border-4 border-black px-4 py-2 inline-block mb-4 shadow-[3px_3px_0px_0px_rgba(35,24,15,1)]">
               <h2 className="font-black text-2xl text-white">Third-Party Cookies</h2>
             </div>
-            <p className="text-gray-800 leading-relaxed mb-4">
-              For more on third-party cookies (e.g., Google), review their policies:
+            <p className="text-gray-800 leading-relaxed font-bold">
+              We do NOT currently use any third-party cookies from external services like Google Analytics,
+              Facebook, or advertising networks. All cookies used on this Site are set directly by Hello Erie
+              (first-party cookies).
             </p>
-            <a
-              href="https://policies.google.com/technologies/cookies"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-white border-4 border-black rounded-sm font-bold text-[#3A96CB] shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-            >
-              Google Cookie Policy →
-            </a>
           </section>
 
           {/* Section: Contact */}
