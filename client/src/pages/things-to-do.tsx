@@ -257,7 +257,7 @@ export default function ThingsToDo() {
                   {/* Mobile: Horizontal Scroll */}
                   <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
                     {filteredActivities.map((activity, index) => (
-                      <Link key={activity.id} href={`/things-to-do/${activity.id}`} className="flex-none w-[85%] snap-start">
+                      <Link key={activity.id} href={`/things-to-do/${activity.id}`} className="flex-none w-[85vw] snap-start">
                         <Card
                           className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer h-full"
                           data-testid={`card-activity-${activity.id}`}
