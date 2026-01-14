@@ -202,41 +202,43 @@ export default function Home({ onOpenAI }: HomeProps) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {featuredRestaurants.map((restaurant, index) => (
-                <article key={restaurant.id} className="group cursor-pointer">
-                  {/* Polaroid-style Card */}
-                  <div
-                    className="bg-white p-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mb-3 h-full"
-                  >
-                    <div className="aspect-[4/3] bg-white rounded-sm mb-3 overflow-hidden relative">
-                      {restaurant.imageUrl ? (
-                        <div className="absolute inset-0 flex items-center justify-center p-3">
-                          <img
-                            src={restaurant.imageUrl}
-                            alt={restaurant.name}
-                            className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300"
-                          />
-                        </div>
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#FF851A]/20 to-[#FFD700]/20">
-                          <span className="text-5xl font-black text-[#FF851A]/30">{restaurant.name.charAt(0)}</span>
-                        </div>
-                      )}
+                <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`}>
+                  <article className="group cursor-pointer">
+                    {/* Polaroid-style Card */}
+                    <div
+                      className="bg-white p-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mb-3 h-full"
+                    >
+                      <div className="aspect-[4/3] bg-white rounded-sm mb-3 overflow-hidden relative">
+                        {restaurant.imageUrl ? (
+                          <div className="absolute inset-0 flex items-center justify-center p-3">
+                            <img
+                              src={restaurant.imageUrl}
+                              alt={restaurant.name}
+                              className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                            />
+                          </div>
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#FF851A]/20 to-[#FFD700]/20">
+                            <span className="text-5xl font-black text-[#FF851A]/30">{restaurant.name.charAt(0)}</span>
+                          </div>
+                        )}
 
-                      {/* Bottom Badges - Category and Price */}
-                      <div className="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between gap-2">
-                        <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase">
-                          {restaurant.category}
-                        </Badge>
-                        <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FFD700] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                          {restaurant.priceRange}
-                        </Badge>
+                        {/* Bottom Badges - Category and Price */}
+                        <div className="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between gap-2">
+                          <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FF851A] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase">
+                            {restaurant.category}
+                          </Badge>
+                          <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-2 py-1 hover:bg-[#FFD700] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                            {restaurant.priceRange}
+                          </Badge>
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <h3 className="font-bold text-lg text-gray-900">{restaurant.name}</h3>
                       </div>
                     </div>
-                    <div className="space-y-1">
-                      <h3 className="font-bold text-lg text-gray-900">{restaurant.name}</h3>
-                    </div>
-                  </div>
-                </article>
+                  </article>
+                </Link>
               ))}
             </div>
 
