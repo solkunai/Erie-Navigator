@@ -59,7 +59,7 @@ app.use((req, res, next) => {
   if (!req.cookies.csrf_token) {
     const csrfToken = crypto.randomBytes(32).toString("hex");
     res.cookie("csrf_token", csrfToken, {
-      httpOnly: false, // Must be false so JavaScript can read it for Double-Submit Cookie pattern
+      httpOnly: true, // Secure: prevents JavaScript access (exempt endpoints don't need JS to read this)
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       maxAge: 3600000, // 1 hour
@@ -71,7 +71,7 @@ app.use((req, res, next) => {
 // CSRF validation for POST, PUT, DELETE, PATCH requests
 app.use((req, res, next) => {
   const unsafeMethods = ["POST", "PUT", "DELETE", "PATCH"];
-  const exemptPaths = ["/api/ai/recommend"]; // Add paths that don't need CSRF (e.g., public APIs)
+  const exemptPaths = ["/api/ai/recommend", "/api/submit-business"]; // Add paths that don't need CSRF (e.g., public APIs, rate-limited endpoints)
 
   if (unsafeMethods.includes(req.method) && !exemptPaths.includes(req.path)) {
     const cookieToken = req.cookies.csrf_token;
