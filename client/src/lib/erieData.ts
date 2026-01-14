@@ -163,11 +163,11 @@ export const restaurants: Restaurant[] = [
     categories: ["Bar & Grill", "American", "Seafood"],
     address: "3 Bayfront Connector, Erie, PA 16507",
     phone: "(814) 455-1449",
-    description: "Waterfront dining with panoramic views of Presque Isle Bay. Casual American fare with fresh seafood.",
+    description: "Bayfront hotel restaurant offering stunning sunset views with food and drinks. Waterfront dining with panoramic views of Presque Isle Bay. Casual American fare with fresh seafood.",
     priceRange: "$$",
     rating: 4.3,
     hours: "11:00 AM - 10:00 PM",
-    features: ["Dine-in", "Waterfront", "Outdoor Seating", "Full Bar"]
+    features: ["Dine-in", "Waterfront", "Outdoor Seating", "Full Bar", "Sunset Views"]
   },
   {
     id: "13",
@@ -765,13 +765,81 @@ export const activities: Activity[] = [
   {
     id: "15",
     name: "Bicentennial Tower",
-    category: "Tours",
+    category: "Scenic Views",
     audience: ["Adults", "Family"],
     address: "1 State St, Erie, PA 16507",
     phone: "(814) 455-6055",
-    description: "Observation tower on the bayfront offering 360-degree views of Erie, Presque Isle, and Lake Erie.",
+    description: "Observation tower offering panoramic sunset views from 187 feet up. Perfect for capturing breathtaking scenes over the bay and city with unobstructed 360-degree views of Erie, Presque Isle, and Lake Erie.",
     hours: "10:00 AM - 8:00 PM (Seasonal)",
     priceRange: "$4"
+  },
+  {
+    id: "16",
+    name: "Sunset Point at Presque Isle",
+    category: "Scenic Views",
+    audience: ["Adults", "Family", "Kids"],
+    address: "Presque Isle State Park, Erie, PA 16505",
+    phone: "(814) 833-7424",
+    website: "https://www.dcnr.pa.gov/StateParks/FindAPark/PresqueIsleStatePark",
+    description: "Considered the most photogenic spot in Erie with unparalleled sunset views over Lake Erie. This iconic location offers pristine beach access and stunning natural scenery.",
+    hours: "5:00 AM - 11:00 PM",
+    priceRange: "Free"
+  },
+  {
+    id: "17",
+    name: "Lighthouse Beach at Presque Isle",
+    category: "Scenic Views",
+    audience: ["Adults", "Family", "Kids"],
+    address: "Presque Isle State Park, Erie, PA 16505",
+    phone: "(814) 833-7424",
+    website: "https://www.dcnr.pa.gov/StateParks/FindAPark/PresqueIsleStatePark",
+    description: "Tranquil sunset spot within Presque Isle offering peaceful lake views and sandy shoreline. Perfect for unobstructed sunset photography and evening beach walks.",
+    hours: "5:00 AM - 11:00 PM",
+    priceRange: "Free"
+  },
+  {
+    id: "18",
+    name: "Waterworks Beach at Presque Isle",
+    category: "Scenic Views",
+    audience: ["Adults", "Family", "Kids"],
+    address: "Presque Isle State Park, Erie, PA 16505",
+    phone: "(814) 833-7424",
+    website: "https://www.dcnr.pa.gov/StateParks/FindAPark/PresqueIsleStatePark",
+    description: "Great option within the park for tranquil sunset settings and unobstructed lake views. Popular spot for families and photographers seeking stunning evening scenes.",
+    hours: "5:00 AM - 11:00 PM",
+    priceRange: "Free"
+  },
+  {
+    id: "19",
+    name: "Erie Bluffs State Park",
+    category: "Scenic Views",
+    audience: ["Adults", "Family"],
+    address: "11100 W Lake Rd, Lake City, PA 16423",
+    phone: "(814) 833-0351",
+    website: "https://www.dcnr.pa.gov/StateParks/FindAPark/ErieBluffsStatePark",
+    description: "One of the great sunset spots in Erie, featuring dramatic bluff views overlooking Lake Erie. Offers elevated perspectives and natural beauty for sunset enthusiasts.",
+    hours: "Sunrise to Sunset",
+    priceRange: "Free"
+  },
+  {
+    id: "20",
+    name: "Walnut Creek Access",
+    category: "Scenic Views",
+    audience: ["Adults", "Family"],
+    address: "Walnut Creek Access, Erie, PA",
+    description: "Scenic waterfront access point offering spectacular sunset views over Lake Erie. A hidden gem for those seeking peaceful evening vistas away from crowds.",
+    hours: "Dawn to Dusk",
+    priceRange: "Free"
+  },
+  {
+    id: "21",
+    name: "Dobbins Landing",
+    category: "Scenic Views",
+    audience: ["Adults", "Family", "Kids"],
+    address: "State St, Erie, PA 16507",
+    description: "The area around the Bicentennial Tower provides ground-level sunset views of the bay. Popular waterfront destination for evening strolls and sunset watching with nearby amenities.",
+    hours: "Open 24 hours",
+    priceRange: "Free"
   }
 ];
 
