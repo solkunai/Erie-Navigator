@@ -248,7 +248,7 @@ export default function AddBusiness() {
                       placeholder="e.g., Joe's Coffee Shop"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className={`border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.name ? "border-red-500" : ""}`}
+                      className={`border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.name ? "border-red-500" : ""}`}
                     />
                     {errors.name && <p className="text-sm text-red-500 font-bold">{errors.name}</p>}
                   </div>
@@ -259,7 +259,7 @@ export default function AddBusiness() {
                       value={formData.category}
                       onValueChange={(value) => setFormData({ ...formData, category: value as BusinessCategory })}
                     >
-                      <SelectTrigger className={`border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.category ? "border-red-500" : ""}`}>
+                      <SelectTrigger className={`border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.category ? "border-red-500" : ""}`}>
                         <SelectValue placeholder="Select a category" />
                       </SelectTrigger>
                       <SelectContent className="border-2 border-black rounded-sm">
@@ -280,7 +280,7 @@ export default function AddBusiness() {
                       placeholder="Tell customers what makes your business special..."
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      className={`border-2 border-black rounded-sm font-medium bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.description ? "border-red-500" : ""}`}
+                      className={`border-2 border-black rounded-sm font-medium bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.description ? "border-red-500" : ""}`}
                       rows={4}
                     />
                     {errors.description && <p className="text-sm text-red-500 font-bold">{errors.description}</p>}
@@ -335,7 +335,7 @@ export default function AddBusiness() {
                         placeholder={formData.category === "Independent/Pop-up" ? "Physical address (if applicable)" : "123 Main St, Erie, PA 16501"}
                         value={formData.address}
                         onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                        className={`border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.address ? "border-red-500" : ""}`}
+                        className={`border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.address ? "border-red-500" : ""}`}
                       />
                       {formData.category === "Independent/Pop-up" && !errors.address && (
                         <p className="text-xs text-gray-600 font-medium">For mobile/pop-up businesses, include website or social media below</p>
@@ -350,7 +350,7 @@ export default function AddBusiness() {
                         placeholder="(814) 555-1234"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className={`border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.phone ? "border-red-500" : ""}`}
+                        className={`border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.phone ? "border-red-500" : ""}`}
                       />
                       {errors.phone && <p className="text-sm text-red-500 font-bold">{errors.phone}</p>}
                     </div>
@@ -365,7 +365,7 @@ export default function AddBusiness() {
                         placeholder="info@yourbusiness.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
+                        className="border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
                       />
                     </div>
 
@@ -376,7 +376,7 @@ export default function AddBusiness() {
                         placeholder="https://www.yourbusiness.com"
                         value={formData.website}
                         onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-                        className="border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
+                        className="border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
                       />
                     </div>
                   </div>
@@ -388,7 +388,7 @@ export default function AddBusiness() {
                       placeholder="e.g., Mon-Fri 9AM-5PM, Sat 10AM-3PM"
                       value={formData.hours}
                       onChange={(e) => setFormData({ ...formData, hours: e.target.value })}
-                      className="border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
+                      className="border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
                     />
                   </div>
                 </div>
@@ -438,7 +438,7 @@ export default function AddBusiness() {
                         placeholder="John Smith"
                         value={formData.ownerName}
                         onChange={(e) => setFormData({ ...formData, ownerName: e.target.value })}
-                        className={`border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.ownerName ? "border-red-500" : ""}`}
+                        className={`border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.ownerName ? "border-red-500" : ""}`}
                       />
                       {errors.ownerName && <p className="text-sm text-red-500 font-bold">{errors.ownerName}</p>}
                     </div>
@@ -451,7 +451,7 @@ export default function AddBusiness() {
                         placeholder="you@email.com"
                         value={formData.ownerEmail}
                         onChange={(e) => setFormData({ ...formData, ownerEmail: e.target.value })}
-                        className={`border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.ownerEmail ? "border-red-500" : ""}`}
+                        className={`border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black ${errors.ownerEmail ? "border-red-500" : ""}`}
                       />
                       {errors.ownerEmail && <p className="text-sm text-red-500 font-bold">{errors.ownerEmail}</p>}
                     </div>
@@ -464,7 +464,7 @@ export default function AddBusiness() {
                       placeholder="(814) 555-1234"
                       value={formData.ownerPhone}
                       onChange={(e) => setFormData({ ...formData, ownerPhone: e.target.value })}
-                      className="border-2 border-black rounded-sm font-medium h-12 bg-white focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
+                      className="border-2 border-black rounded-sm font-medium h-12 bg-white text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FFD700] focus:border-black"
                     />
                   </div>
                 </div>
