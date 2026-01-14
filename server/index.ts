@@ -1,4 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
+import helmet from "helmet";
+import cookieParser from "cookie-parser";
+import crypto from "crypto";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
@@ -12,6 +15,31 @@ declare module "http" {
   }
 }
 
+// Security: Helmet middleware for security headers
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // Required for Vite dev mode
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", "data:", "https:", "blob:"],
+        connectSrc: ["'self'"],
+        fontSrc: ["'self'", "data:"],
+        objectSrc: ["'none'"],
+        mediaSrc: ["'self'"],
+        frameSrc: ["'none'"],
+      },
+    },
+    crossOriginEmbedderPolicy: false, // Allow embedding images from other origins
+    hsts: {
+      maxAge: 31536000, // 1 year
+      includeSubDomains: true,
+      preload: true,
+    },
+  })
+);
+
 app.use(
   express.json({
     verify: (req, _res, buf) => {
@@ -21,6 +49,42 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+// Security: CSRF Protection middleware (Double-Submit Cookie Pattern)
+// Generate and validate CSRF tokens for state-changing operations
+app.use((req, res, next) => {
+  // Generate CSRF token if not present
+  if (!req.cookies.csrf_token) {
+    const csrfToken = crypto.randomBytes(32).toString("hex");
+    res.cookie("csrf_token", csrfToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 3600000, // 1 hour
+    });
+  }
+  next();
+});
+
+// CSRF validation for POST, PUT, DELETE, PATCH requests
+app.use((req, res, next) => {
+  const unsafeMethods = ["POST", "PUT", "DELETE", "PATCH"];
+  const exemptPaths = ["/api/ai/recommend"]; // Add paths that don't need CSRF (e.g., public APIs)
+
+  if (unsafeMethods.includes(req.method) && !exemptPaths.includes(req.path)) {
+    const cookieToken = req.cookies.csrf_token;
+    const headerToken = req.headers["x-csrf-token"];
+
+    if (!cookieToken || !headerToken || cookieToken !== headerToken) {
+      return res.status(403).json({
+        success: false,
+        error: "Invalid CSRF token",
+      });
+    }
+  }
+  next();
+});
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
@@ -48,7 +112,10 @@ app.use((req, res, next) => {
     const duration = Date.now() - start;
     if (path.startsWith("/api")) {
       let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
+
+      // Security: Only log response details in development, not in production
+      // to avoid exposing sensitive error details
+      if (process.env.NODE_ENV === "development" && capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
 
@@ -67,7 +134,14 @@ app.use((req, res, next) => {
     const message = err.message || "Internal Server Error";
 
     res.status(status).json({ message });
-    throw err;
+
+    // Security: Only log full error stack in development
+    if (process.env.NODE_ENV === "development") {
+      console.error("Error details:", err);
+    } else {
+      // In production, only log the error message to avoid exposing sensitive stack traces
+      console.error(`Error: ${status} - ${message}`);
+    }
   });
 
   // importantly only setup vite in development and after

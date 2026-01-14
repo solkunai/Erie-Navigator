@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import type { ChatMessage, Restaurant, Event } from "@shared/schema";
+import { getCsrfHeaders } from "@/lib/csrf";
 
 interface AIChatProps {
   isOpen: boolean;
@@ -59,7 +60,10 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
     try {
       const response = await fetch("/api/ai/recommend", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...getCsrfHeaders(),
+        },
         body: JSON.stringify({ query: userMessage.content }),
       });
 

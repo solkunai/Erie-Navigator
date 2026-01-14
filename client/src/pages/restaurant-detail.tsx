@@ -69,12 +69,6 @@ export default function RestaurantDetail() {
                   <Badge className="bg-[#FFD700] text-black border-2 border-black hover:bg-[#FFD700] font-bold">
                     {restaurant.priceRange}
                   </Badge>
-                  {restaurant.isFeatured && (
-                    <Badge className="bg-[#3A96CB] text-white border-2 border-black hover:bg-[#3A96CB] font-bold">
-                      <Star className="h-3 w-3 mr-1" />
-                      Featured
-                    </Badge>
-                  )}
                 </div>
 
                 <h2 className="text-2xl font-black text-gray-900 mb-3">About</h2>
