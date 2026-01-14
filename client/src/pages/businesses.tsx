@@ -179,7 +179,7 @@ export default function Businesses() {
             </aside>
 
             {/* Main Content */}
-            <main className="flex-1">
+            <main className="flex-1 min-w-0">
               <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
                 <p className="text-gray-700 font-bold">
                   Showing <span className="text-[#3A96CB]">{filteredBusinesses.length}</span> businesses
@@ -218,7 +218,7 @@ export default function Businesses() {
                   </Button>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <>
                   {/* Mobile: Horizontal Scroll */}
                   <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
                     {filteredBusinesses.map((business) => (
@@ -398,7 +398,7 @@ export default function Businesses() {
                       </Link>
                     ))}
                   </div>
-                </div>
+                </>
               )}
             </main>
           </div>
