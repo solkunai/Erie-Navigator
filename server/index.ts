@@ -16,12 +16,13 @@ declare module "http" {
 }
 
 // Security: Helmet middleware for security headers
+// More permissive in development, strict in production
 app.use(
   helmet({
-    contentSecurityPolicy: {
+    contentSecurityPolicy: process.env.NODE_ENV === "production" ? {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // Required for Vite dev mode
+        scriptSrc: ["'self'", "'unsafe-inline'"],
         styleSrc: ["'self'", "'unsafe-inline'"],
         imgSrc: ["'self'", "data:", "https:", "blob:"],
         connectSrc: ["'self'"],
@@ -30,13 +31,13 @@ app.use(
         mediaSrc: ["'self'"],
         frameSrc: ["'none'"],
       },
-    },
-    crossOriginEmbedderPolicy: false, // Allow embedding images from other origins
-    hsts: {
+    } : false, // Disable CSP in development to avoid blocking Vite HMR
+    crossOriginEmbedderPolicy: false,
+    hsts: process.env.NODE_ENV === "production" ? {
       maxAge: 31536000, // 1 year
       includeSubDomains: true,
       preload: true,
-    },
+    } : false, // Disable HSTS in development (doesn't work with localhost)
   })
 );
 

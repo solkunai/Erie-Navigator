@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useLocation, Link } from "wouter";
-import { Search, MapPin, Calendar, ExternalLink, ArrowLeft } from "lucide-react";
+import { Search, MapPin, Calendar, ExternalLink, ArrowLeft, Loader2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ export default function SearchResults() {
   }, [query]);
 
   // Fetch events and activities
-  const { data: eventsResponse } = useQuery({
+  const { data: eventsResponse, isLoading: eventsLoading } = useQuery({
     queryKey: ["/api/events"],
     queryFn: async () => {
       const response = await fetch("/api/events");
@@ -27,7 +27,7 @@ export default function SearchResults() {
     },
   });
 
-  const { data: activitiesResponse } = useQuery({
+  const { data: activitiesResponse, isLoading: activitiesLoading } = useQuery({
     queryKey: ["/api/activities"],
     queryFn: async () => {
       const response = await fetch("/api/activities");
@@ -38,6 +38,7 @@ export default function SearchResults() {
 
   const eventsData = eventsResponse?.data || [];
   const activitiesData = activitiesResponse?.data || [];
+  const isLoading = eventsLoading || activitiesLoading;
 
   // Search across all data sources
   const searchResults = useMemo(() => {
@@ -70,8 +71,9 @@ export default function SearchResults() {
     );
 
     const matchEvents = eventsData.filter((item: any) =>
-      item.name.toLowerCase().includes(lowerQuery) ||
-      item.description.toLowerCase().includes(lowerQuery) ||
+      (item.title && item.title.toLowerCase().includes(lowerQuery)) ||
+      (item.name && item.name.toLowerCase().includes(lowerQuery)) ||
+      (item.description && item.description.toLowerCase().includes(lowerQuery)) ||
       (item.category && item.category.toLowerCase().includes(lowerQuery))
     );
 
@@ -122,6 +124,21 @@ export default function SearchResults() {
           </div>
         </div>
 
+        {/* Loading State */}
+        {isLoading && searchQuery.trim() && (
+          <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+            <CardContent className="py-12 text-center">
+              <Loader2 className="h-12 w-12 mx-auto text-[#FF851A] animate-spin mb-4" />
+              <h2 className="text-xl font-bold text-gray-900 mb-2">
+                Searching...
+              </h2>
+              <p className="text-gray-600">
+                Finding the best matches for "{searchQuery}"
+              </p>
+            </CardContent>
+          </Card>
+        )}
+
         {/* No Query State */}
         {!searchQuery.trim() && (
           <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
@@ -138,7 +155,7 @@ export default function SearchResults() {
         )}
 
         {/* No Results State */}
-        {searchQuery.trim() && totalResults === 0 && (
+        {!isLoading && searchQuery.trim() && totalResults === 0 && (
           <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
             <CardContent className="py-12 text-center">
               <Search className="h-12 w-12 mx-auto text-gray-400 mb-4" />
@@ -153,7 +170,7 @@ export default function SearchResults() {
         )}
 
         {/* Results Sections */}
-        {searchQuery.trim() && totalResults > 0 && (
+        {!isLoading && searchQuery.trim() && totalResults > 0 && (
           <div className="space-y-8">
             {/* Restaurants */}
             {searchResults.restaurants.length > 0 && (
@@ -290,7 +307,7 @@ export default function SearchResults() {
                       <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer h-full">
                         <CardContent className="p-4">
                           <h3 className="font-bold text-lg text-gray-900 mb-2">
-                            {event.name}
+                            {event.title || event.name}
                           </h3>
                           <p className="text-sm text-gray-600 mb-3 line-clamp-2">
                             {event.description}
@@ -301,10 +318,10 @@ export default function SearchResults() {
                               <span>{new Date(event.date).toLocaleDateString()}</span>
                             </div>
                           )}
-                          {event.location && (
+                          {(event.location || event.venue) && (
                             <div className="flex items-start gap-2 text-xs text-gray-600">
                               <MapPin className="h-3 w-3 mt-0.5 flex-shrink-0" />
-                              <span>{event.location}</span>
+                              <span>{event.location || event.venue}</span>
                             </div>
                           )}
                         </CardContent>
