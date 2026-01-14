@@ -358,11 +358,11 @@ export default function Events() {
               ) : (
                 <div className="space-y-4">
                   {filteredEvents.map((event) => (
-                    <Card
-                      key={event.id}
-                      className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden"
-                      data-testid={`card-event-${event.id}`}
-                    >
+                    <Link key={event.id} href={`/events/${event.id}`}>
+                      <Card
+                        className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer"
+                        data-testid={`card-event-${event.id}`}
+                      >
                       <div className="flex flex-col sm:flex-row">
                         {/* Date Badge */}
                         <div className="sm:w-32 flex-shrink-0 p-6 flex sm:flex-col items-center justify-center bg-[#3A96CB] border-b-4 sm:border-b-0 sm:border-r-4 border-black">
@@ -415,6 +415,7 @@ export default function Events() {
                               href={event.ticketUrl}
                               target="_blank"
                               rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
                               className="inline-flex items-center justify-center gap-2 text-sm font-bold text-white bg-[#3A96CB] hover:bg-[#4da8db] border-2 border-black rounded-sm py-2 px-4 shadow-[2px_2px_0px_0px_rgba(35,24,15,1)] hover:shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all"
                             >
                               <Ticket className="h-4 w-4" />
@@ -425,6 +426,7 @@ export default function Events() {
                         </CardContent>
                       </div>
                     </Card>
+                    </Link>
                   ))}
                 </div>
               )}

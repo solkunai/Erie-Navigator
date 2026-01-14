@@ -303,7 +303,7 @@ export default function SearchResults() {
                 </h2>
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {searchResults.events.map((event: any) => (
-                    <Link key={event.id} href="/events">
+                    <Link key={event.id} href={`/events/${event.id}`}>
                       <Card className="bg-white border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer h-full">
                         <CardContent className="p-4">
                           <h3 className="font-bold text-lg text-gray-900 mb-2">

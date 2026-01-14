@@ -16,6 +16,7 @@ import Businesses from "@/pages/businesses";
 import BusinessDetail from "@/pages/business-detail";
 import AddBusiness from "@/pages/add-business";
 import Events from "@/pages/events";
+import EventDetail from "@/pages/event-detail";
 import ThingsToDo from "@/pages/things-to-do";
 import ActivityDetail from "@/pages/activity-detail";
 import AutismPrograms from "@/pages/autism-programs";
@@ -37,6 +38,7 @@ function Router({ onOpenAI }: { onOpenAI: () => void }) {
       <Route path="/businesses/:id" component={BusinessDetail} />
       <Route path="/businesses" component={Businesses} />
       <Route path="/add-business" component={AddBusiness} />
+      <Route path="/events/:id" component={EventDetail} />
       <Route path="/events" component={Events} />
       <Route path="/things-to-do/:id" component={ActivityDetail} />
       <Route path="/things-to-do" component={ThingsToDo} />
