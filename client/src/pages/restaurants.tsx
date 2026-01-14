@@ -263,11 +263,12 @@ export default function Restaurants() {
                   </Button>
                 </div>
               ) : (
-                <div className="md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-6">
-                  {/* Mobile: Horizontal Scroll */}
-                  <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
-                    {filteredRestaurants.map((restaurant, index) => (
-                      <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`} className="flex-none w-[85vw] snap-start">
+                <div className="overflow-x-hidden -mx-4 md:mx-0">
+                  <div className="md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-6">
+                    {/* Mobile: Horizontal Scroll */}
+                    <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide px-4">
+                      {filteredRestaurants.map((restaurant, index) => (
+                        <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`} className="flex-none w-[85vw] snap-start">
                         <Card
                           className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer h-full"
                           data-testid={`card-restaurant-${restaurant.id}`}
@@ -486,6 +487,7 @@ export default function Restaurants() {
                       </Card>
                       </Link>
                     ))}
+                  </div>
                   </div>
                 </div>
               )}
