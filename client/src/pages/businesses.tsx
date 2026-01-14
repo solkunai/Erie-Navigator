@@ -222,7 +222,7 @@ export default function Businesses() {
                   {/* Mobile: Horizontal Scroll */}
                   <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
                     {filteredBusinesses.map((business) => (
-                      <Link key={business.id} href={`/businesses/${business.id}`} className="flex-none w-[90%] max-w-[400px] snap-start">
+                      <Link key={business.id} href={`/businesses/${business.id}`} className="flex-none w-[70%] snap-start">
                         <Card
                           className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all p-6 group cursor-pointer h-full"
                         >
@@ -247,7 +247,7 @@ export default function Businesses() {
                               <Badge className="bg-[#3A96CB] text-white border-2 border-black rounded-sm font-bold text-xs mb-2 hover:bg-[#3A96CB]">
                                 {business.category}
                               </Badge>
-                              <h3 className="font-black text-xl text-gray-900 group-hover:text-[#3A96CB] transition-colors">
+                              <h3 className="font-black text-xl text-gray-900 group-hover:text-[#3A96CB] transition-colors line-clamp-2">
                                 {business.name}
                               </h3>
                             </div>

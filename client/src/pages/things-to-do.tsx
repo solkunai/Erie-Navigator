@@ -213,7 +213,7 @@ export default function ThingsToDo() {
             </aside>
 
             {/* Main Content */}
-            <main className="flex-1">
+            <main className="flex-1 min-w-0">
               <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
                 <p className="text-gray-700 font-bold" data-testid="text-activity-results-count">
                   Showing <span className="text-[#FF851A]">{filteredActivities.length}</span> of {activities.length} activities
@@ -257,7 +257,7 @@ export default function ThingsToDo() {
                   {/* Mobile: Horizontal Scroll */}
                   <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
                     {filteredActivities.map((activity, index) => (
-                      <Link key={activity.id} href={`/things-to-do/${activity.id}`} className="flex-none w-[90%] max-w-[400px] snap-start">
+                      <Link key={activity.id} href={`/things-to-do/${activity.id}`} className="flex-none w-[70%] snap-start">
                         <Card
                           className="bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all overflow-hidden cursor-pointer h-full"
                           data-testid={`card-activity-${activity.id}`}
@@ -274,7 +274,7 @@ export default function ThingsToDo() {
                       </div>
 
                       <CardContent className="p-5">
-                        <h3 className="font-black text-xl mb-3 text-gray-900">{activity.name}</h3>
+                        <h3 className="font-black text-xl mb-3 text-gray-900 line-clamp-2">{activity.name}</h3>
 
                         {/* Audience Badges */}
                         <div className="flex flex-wrap gap-2 mb-3">
@@ -305,14 +305,14 @@ export default function ThingsToDo() {
                           {activity.hours && (
                             <div className="flex items-center gap-2">
                               <Clock className="h-4 w-4 flex-shrink-0 text-[#3A96CB]" />
-                              <span className="font-medium">{activity.hours}</span>
+                              <span className="font-medium truncate">{activity.hours}</span>
                             </div>
                           )}
 
                           {activity.phone && (
                             <div className="flex items-center gap-2">
                               <Phone className="h-4 w-4 flex-shrink-0 text-[#FFD700]" />
-                              <span className="font-medium">{activity.phone}</span>
+                              <span className="font-medium truncate">{activity.phone}</span>
                             </div>
                           )}
 
