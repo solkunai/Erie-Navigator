@@ -410,7 +410,7 @@ export async function registerRoutes(
       // Get uploaded file info
       const logoFile = req.file;
 
-      console.log("Validating fields:", { name, category, description, address, ownerEmail });
+      console.log("Validating fields:", { name, category, description, address });
 
       // Validate required fields
       if (!name || !category || !description || !address || !ownerEmail) {
@@ -658,8 +658,7 @@ Please review this submission and contact the owner at ${ownerEmail}.
         message: "Thank you! Your business has been submitted for review. We'll add it to the directory shortly.",
       });
     } catch (error: any) {
-      console.error("Business submission error:", error);
-      console.error("Error stack:", error.stack);
+      console.error("Business submission error:", error.message);
       res.status(500).json({
         success: false,
         error: error.message || "Failed to submit your business listing. Please try again later.",
