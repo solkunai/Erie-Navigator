@@ -126,7 +126,7 @@ export default function SearchResults() {
 
         {/* Loading State */}
         {isLoading && searchQuery.trim() && (
-          <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+          <Card className="bg-white border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
             <CardContent className="py-12 text-center">
               <Loader2 className="h-12 w-12 mx-auto text-[#FF851A] animate-spin mb-4" />
               <h2 className="text-xl font-bold text-gray-900 mb-2">
@@ -141,7 +141,7 @@ export default function SearchResults() {
 
         {/* No Query State */}
         {!searchQuery.trim() && (
-          <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+          <Card className="bg-white border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
             <CardContent className="py-12 text-center">
               <Search className="h-12 w-12 mx-auto text-gray-400 mb-4" />
               <h2 className="text-xl font-bold text-gray-900 mb-2">
@@ -156,7 +156,7 @@ export default function SearchResults() {
 
         {/* No Results State */}
         {!isLoading && searchQuery.trim() && totalResults === 0 && (
-          <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+          <Card className="bg-white border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
             <CardContent className="py-12 text-center">
               <Search className="h-12 w-12 mx-auto text-gray-400 mb-4" />
               <h2 className="text-xl font-bold text-gray-900 mb-2">
@@ -183,8 +183,8 @@ export default function SearchResults() {
                 </h2>
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {searchResults.restaurants.map((restaurant) => (
-                    <Link key={restaurant.id} href="/restaurants">
-                      <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer h-full">
+                    <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`}>
+                      <Card className="bg-white border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer h-full">
                         <CardContent className="p-4">
                           <h3 className="font-bold text-lg text-gray-900 mb-2">
                             {restaurant.name}
@@ -193,10 +193,10 @@ export default function SearchResults() {
                             {restaurant.description}
                           </p>
                           <div className="flex flex-wrap gap-2 mb-3">
-                            <Badge className="bg-[#FF851A] text-white border border-black hover:bg-[#FF851A]">
+                            <Badge className="bg-[#FF851A] text-white border-2 border-black hover:bg-[#FF851A] font-bold">
                               {restaurant.category}
                             </Badge>
-                            <Badge className="bg-[#FFD700] text-black border border-black hover:bg-[#FFD700]">
+                            <Badge className="bg-[#FFD700] text-black border-2 border-black hover:bg-[#FFD700] font-bold">
                               {restaurant.priceRange}
                             </Badge>
                           </div>
@@ -225,8 +225,8 @@ export default function SearchResults() {
                 </h2>
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {searchResults.businesses.map((business) => (
-                    <Link key={business.id} href="/businesses">
-                      <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer h-full">
+                    <Link key={business.id} href={`/businesses/${business.id}`}>
+                      <Card className="bg-white border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer h-full">
                         <CardContent className="p-4">
                           <h3 className="font-bold text-lg text-gray-900 mb-2">
                             {business.name}
@@ -235,7 +235,7 @@ export default function SearchResults() {
                             {business.description}
                           </p>
                           <div className="flex flex-wrap gap-2 mb-3">
-                            <Badge className="bg-[#3A96CB] text-white border border-black hover:bg-[#3A96CB]">
+                            <Badge className="bg-[#3A96CB] text-white border-2 border-black hover:bg-[#3A96CB] font-bold">
                               {business.category}
                             </Badge>
                           </div>
@@ -264,8 +264,8 @@ export default function SearchResults() {
                 </h2>
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {searchResults.activities.map((activity: any) => (
-                    <Link key={activity.id} href="/things-to-do">
-                      <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer h-full">
+                    <Link key={activity.id} href={`/things-to-do/${activity.id}`}>
+                      <Card className="bg-white border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer h-full">
                         <CardContent className="p-4">
                           <h3 className="font-bold text-lg text-gray-900 mb-2">
                             {activity.name}
@@ -274,7 +274,7 @@ export default function SearchResults() {
                             {activity.description}
                           </p>
                           <div className="flex flex-wrap gap-2 mb-3">
-                            <Badge className="bg-[#8E44AD] text-white border border-black hover:bg-[#8E44AD]">
+                            <Badge className="bg-[#8E44AD] text-white border-2 border-black hover:bg-[#8E44AD] font-bold">
                               {activity.category}
                             </Badge>
                           </div>
@@ -304,7 +304,7 @@ export default function SearchResults() {
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {searchResults.events.map((event: any) => (
                     <Link key={event.id} href="/events">
-                      <Card className="border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer h-full">
+                      <Card className="bg-white border-2 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] hover:shadow-[6px_6px_0px_0px_rgba(35,24,15,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer h-full">
                         <CardContent className="p-4">
                           <h3 className="font-bold text-lg text-gray-900 mb-2">
                             {event.title || event.name}
