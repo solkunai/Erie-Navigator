@@ -243,7 +243,7 @@ export default function Businesses() {
                         {/* Content */}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between gap-4 mb-2">
-                            <div>
+                            <div className="min-w-0 flex-1">
                               <Badge className="bg-[#3A96CB] text-white border-2 border-black rounded-sm font-bold text-xs mb-2 hover:bg-[#3A96CB]">
                                 {business.category}
                               </Badge>
@@ -269,18 +269,18 @@ export default function Businesses() {
                           </p>
 
                           <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
-                            <span className="flex items-center gap-2">
-                              <MapPin className="h-4 w-4 text-[#FF851A]" />
-                              <span className="truncate max-w-[250px] font-medium">{business.address}</span>
+                            <span className="flex items-center gap-2 min-w-0">
+                              <MapPin className="h-4 w-4 flex-shrink-0 text-[#FF851A]" />
+                              <span className="truncate font-medium">{business.address}</span>
                             </span>
-                            <span className="flex items-center gap-2">
-                              <Phone className="h-4 w-4 text-[#3A96CB]" />
-                              <span className="font-medium">{business.phone}</span>
+                            <span className="flex items-center gap-2 min-w-0">
+                              <Phone className="h-4 w-4 flex-shrink-0 text-[#3A96CB]" />
+                              <span className="font-medium truncate">{business.phone}</span>
                             </span>
                             {business.hours && (
-                              <span className="flex items-center gap-2">
-                                <Clock className="h-4 w-4 text-[#FFD700]" />
-                                <span className="truncate max-w-[180px] font-medium">{business.hours}</span>
+                              <span className="flex items-center gap-2 min-w-0">
+                                <Clock className="h-4 w-4 flex-shrink-0 text-[#FFD700]" />
+                                <span className="truncate font-medium">{business.hours}</span>
                               </span>
                             )}
                           </div>
