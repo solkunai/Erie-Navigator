@@ -218,8 +218,8 @@ export default function Businesses() {
                   </Button>
                 </div>
               ) : (
-                {/* Mobile: Horizontal Scroll, Desktop: Vertical Stack */}
                 <>
+                  {/* Mobile: Horizontal Scroll, Desktop: Vertical Stack */}
                   <div className="flex md:hidden overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
                     {filteredBusinesses.map((business) => (
                       <Link key={business.id} href={`/businesses/${business.id}`} className="flex-none w-[85vw] snap-start">
