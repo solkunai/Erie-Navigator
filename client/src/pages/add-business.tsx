@@ -118,18 +118,13 @@ export default function AddBusiness() {
         }
       });
 
-      console.log("Submitting business form...");
-
       const response = await fetch("/api/submit-business", {
         method: "POST",
         headers: getCsrfHeaders(),
         body: submitData, // Send as FormData, not JSON
       });
 
-      console.log("Response status:", response.status);
-
       const data = await response.json();
-      console.log("Response data:", data);
 
       if (data.success) {
         setIsSubmitted(true);
@@ -141,7 +136,6 @@ export default function AddBusiness() {
         throw new Error(data.error || "Failed to submit");
       }
     } catch (error: any) {
-      console.error("Submission error:", error);
       toast({
         title: "Submission failed",
         description: error.message || "There was an error submitting your business. Please try again.",
