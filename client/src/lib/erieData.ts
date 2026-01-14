@@ -916,7 +916,7 @@ export const autismPrograms: AutismProgram[] = [
     address: "337 W 10th St, Erie, PA 16502",
     phone: "(814) 824-4515",
     website: "https://www.kaserieinc.org",
-    services: ["Individual Therapy", "Family Therapy", "Group Therapy", "Social Skills Groups", "Community Inclusion", "Behavior Support", "Employment Support", "PA Adult Autism Waiver", "ADOS Administration", "ABA Therapy"],
+    services: ["Individual Therapy", "Family Therapy", "Group Therapy", "Social Skills Groups", "Community Inclusion", "Behavior Support", "Employment Support", "PA Adult Autism Waiver", "ABA Therapy"],
     accessibility: ["Licensed Clinicians", "Insurance Accepted", "Waiver Services", "Community-Based Support"]
   }
 ];
@@ -1338,7 +1338,7 @@ export const businesses: Business[] = [
     name: "Argyll Abbey",
     category: "Wedding Venue",
     categories: ["Wedding Venue"],
-    address: "Erie, PA",
+    address: "3854 Wheelertown Rd, Waterford, PA 16441",
     phone: "",
     website: "https://argyllabbeyestate.com/",
     description: "Elegant wedding venue estate offering beautiful settings for your special day.",
