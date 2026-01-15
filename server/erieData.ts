@@ -1302,9 +1302,9 @@ export const businesses: Business[] = [
     name: "Sacred Energy Yoga",
     category: "Fitness",
     categories: ["Fitness", "Health & Wellness"],
-    address: "Erie, PA",
-    phone: "",
-    website: "https://www.facebook.com/groups/668392443222569/user/61579081396134/",
+    address: "1915 E 38th St, Erie, PA 16504",
+    phone: "(814) 397-3203",
+    website: "https://www.sacredenergy-erie.com/?utm_campaign=13372038574010842921&utm_medium=wix_google_business_profile&utm_source=google",
     description: "Yoga studio offering classes for all levels. Find your inner peace and physical wellness through guided yoga practice.",
     features: ["Yoga Classes", "All Levels", "Wellness", "Meditation"],
     imageUrl: "/assets/sacredenergyyoga.jpg"
