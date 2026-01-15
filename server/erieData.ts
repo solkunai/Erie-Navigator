@@ -322,16 +322,17 @@ export const restaurants: Restaurant[] = [
   },
   {
     id: "25",
-    name: "Serafini's Restaurant W 12th",
+    name: "Serafini's Trattoria",
     category: "Italian",
-    categories: ["Italian", "Fine Dining"],
-    address: "2642 W 12th St, Erie, PA 16505",
-    phone: "(814) 838-8111",
-    description: "Elegant trattoria offering refined Italian cuisine with fresh, seasonal ingredients. Features house-made pasta, seafood specialties, and an extensive wine list. Note: This location may be closed.",
-    priceRange: "$$$",
-    rating: 4.6,
-    hours: "4:30 PM - 9:30 PM",
-    features: ["Dine-in", "Reservations", "Wine List", "Seafood"],
+    categories: ["Italian"],
+    address: "417 State St, Erie, PA 16501",
+    phone: "(814) 310-8576",
+    website: "https://eatserafinis.com",
+    description: "Authentic Italian family cuisine cherished for generations. Featuring beloved classics including renowned spaghetti with meat sauce and mouthwatering meatballs in the historic Cashier House building.",
+    priceRange: "$$",
+    rating: 4.0,
+    hours: "Tue-Wed 11:00 AM - 3:00 PM, Thu 11:00 AM - 3:00 PM, Fri 11:00 AM - 2:30 PM & 4:00 PM - 10:00 PM, Sat 4:00 PM - 10:00 PM, Sun 3:00 PM - 8:00 PM",
+    features: ["Dine-in", "Family Recipes", "Historic Location"],
     imageUrl: "/assets/serafinis.jpg"
   },
   {
@@ -449,20 +450,6 @@ export const restaurants: Restaurant[] = [
     hours: "Sat 1:00 PM - 8:00 PM (Closed Mon-Fri, Sun)",
     features: ["Tasting Room", "Tours", "Local Products"],
     imageUrl: "/assets/ironstone.webp"
-  },
-  {
-    id: "34",
-    name: "Serafini's Trattoria",
-    category: "Italian",
-    categories: ["Italian"],
-    address: "417 State St, Erie, PA 16501",
-    phone: "(814) 310-8576",
-    website: "https://eatserafinis.com",
-    description: "Authentic Italian family cuisine cherished for generations. Featuring beloved classics including renowned spaghetti with meat sauce and mouthwatering meatballs in the historic Cashier House building.",
-    priceRange: "$$",
-    rating: 4.0,
-    hours: "Tue-Wed 11:00 AM - 3:00 PM, Thu 11:00 AM - 3:00 PM, Fri 11:00 AM - 2:30 PM & 4:00 PM - 10:00 PM, Sat 4:00 PM - 10:00 PM, Sun 3:00 PM - 8:00 PM",
-    features: ["Dine-in", "Family Recipes", "Historic Location"]
   }
 ];
 
