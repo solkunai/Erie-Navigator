@@ -1417,7 +1417,7 @@ export const businesses: Business[] = [
     category: "Photography",
     categories: ["Photography", "Portraits", "Weddings"],
     address: "Erie, PA",
-    phone: "(814) 304-6600",
+    phone: "",
     email: "kamalahopephoto@gmail.com",
     website: "https://kamalahopephoto.mypixieset.com/",
     description: "Portrait + Wedding + Boudoir Photographer serving Erie, PA and beyond!",
