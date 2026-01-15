@@ -1396,9 +1396,8 @@ export const businesses: Business[] = [
     hours: "7:00 AM - 11:00 PM (Daily)", 
     features: ["Estate Cleanouts", "Hoarding Solutions", "Appliance Removal", "Furniture Removal", "Demolition", "Free Estimates", "Licensed & Insured", "Eco-Friendly Disposal"],
     imageUrl: "/assets/haulpros.jpeg"
-   }, //
-  
-  ];  //
+   }, 
+   ];  
  
 // Business submissions array (for storing form submissions)
 export const businessSubmissions: BusinessSubmission[] = [];
