@@ -1377,7 +1377,7 @@ export const businesses: Business[] = [
     category: "Wedding Venue",
     categories: ["Wedding Venue"],
     address: "3854 Wheelertown Rd, Waterford, PA 16441",
-    phone: "",
+    phone: "(814) 529-2950",
     website: "https://argyllabbeyestate.com/",
     description: "Elegant wedding venue estate offering beautiful settings for your special day.",
     features: ["Wedding Venue", "Event Space", "Outdoor Ceremonies", "Receptions"],
