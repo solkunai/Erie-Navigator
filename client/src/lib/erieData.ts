@@ -1464,4 +1464,5 @@ export const businesses: Business[] = [
     features: ["Family Friendly", "Pet Friendly", "Accepts Credit Cards"],
     imageUrl: "/assets/rupp-limo.jpg" 
    },
+  ];
   
