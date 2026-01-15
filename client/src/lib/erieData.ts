@@ -1382,5 +1382,18 @@ export const businesses: Business[] = [
     description: "Elegant wedding venue estate offering beautiful settings for your special day.",
     features: ["Wedding Venue", "Event Space", "Outdoor Ceremonies", "Receptions"],
     imageUrl: "/assets/argyll_abbey.jpeg"
+  },
+  {
+    id: "25",
+    name: "WhiteRaven Gifts & Specialties",
+    category: "Gifts & Specialty",
+    categories: ["Gifts & Specialty", "Retail"],
+    address: "2890 Copperleaf Drive, Erie, PA 16509",
+    phone: "",
+    website: "",
+    description: "Nested within IronStone Meadery - Erie, PA. Step beyond the ordinary into WhiteRaven Gifts & Specialties, a handcrafted ritual boutique offering jewelry, altar tools, art, and sacred relics inspired by Norse, Indigenous, and ancestral traditions. Every piece is infused with story, symbolism, and intention--designed to support grief, transformation, and personal ritual. Whether you're seeking a talisman for protection, or a gift that speaks to the soul, WhiteRaven is your sanctuary for the sacred and strange. Located inside IronStone Meadery, explore the back room and discover the magic waiting within.",
+    hours: "Fri 4:00 PM - 8:00 PM, Sat 1:00 PM - 8:00 PM",
+    features: ["Wheelchair Accessible", "Parking Available", "Accepts Credit Cards", "Walk-ins Welcome", "Curbside Pickup", "Handcrafted Items", "Unique Gifts"],
+    imageUrl: "/assets/whiteraven.jpg"
   }
 ];
