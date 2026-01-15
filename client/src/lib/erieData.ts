@@ -1241,14 +1241,14 @@ export const businesses: Business[] = [
   },
   {
     id: "13",
-    name: "Mazza Chautauqua Cellars",
-    category: "Retail",
-    categories: ["Retail", "Entertainment"],
-    address: "8398 W Lake Rd, Lake City, PA 16423",
-    phone: "(814) 725-5688",
-    website: "https://www.mazzawines.com",
+    name: "Mazza Vineyards",
+    category: "Winery",
+    categories: ["Winery" "Retail", "Entertainment"],
+    address: "11815 E Lake Rd, North East, PA 16428",
+    phone: "(814) 725-8695",
+    website: "https://enjoymazza.com/",
     description: "Award-winning winery offering tastings, tours, and a beautiful lakeside setting in Lake Erie Wine Country.",
-    hours: "Mon-Sat 10:00 AM - 5:00 PM, Sun 12:00 PM - 5:00 PM",
+    hours: "Mon-Sat 9:00 AM - 5:30 PM, Sun 12:00 PM - 4:30 PM",
     features: ["Wine Tasting", "Tours", "Event Space", "Lakeside"]
   },
   {
