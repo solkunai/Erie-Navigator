@@ -1397,8 +1397,8 @@ export const businesses: Business[] = [
     features: ["Estate Cleanouts", "Hoarding Solutions", "Appliance Removal", "Furniture Removal", "Demolition", "Free Estimates", "Licensed & Insured", "Eco-Friendly Disposal"],
     imageUrl: "/assets/haulpros.jpeg",
     isFeatured: true
-   }, 
-   ];  
+   }
+ ];  
  
 // Business submissions array (for storing form submissions)
 export const businessSubmissions: BusinessSubmission[] = [];
