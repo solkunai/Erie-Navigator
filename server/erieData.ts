@@ -1383,7 +1383,7 @@ export const businesses: Business[] = [
     features: ["Wheelchair Accessible", "Parking Available", "Accepts Credit Cards", "Walk-ins Welcome", "Curbside Pickup", "Handcrafted Items", "Unique Gifts"],
     imageUrl: "/assets/whiteraven.jpg"
   },
-  {;
+  {
     id: "26", 
     name: "HaulPros",
     category: "Home Services",
