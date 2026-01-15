@@ -1121,14 +1121,14 @@ export const socialGroups: SocialGroup[] = [
 export const businesses: Business[] = [
   {
     id: "1",
-    name: "Pointe Foure",
+    name: "Dollhouse Pointe Foure",
     category: "Clothing & Fashion",
     categories: ["Clothing & Fashion", "Gifts & Specialty"],
-    address: "2501 W 12th St, Erie, PA 16505",
-    phone: "(814) 838-6111",
+    address: "423 State St, Erie, PA 16501",
+    phone: "(814) 580-6786",
     website: "https://www.pointefoure.com",
     description: "Upscale women's boutique featuring designer clothing, accessories, and gifts. Personalized styling services available.",
-    hours: "Mon-Sat 10:00 AM - 6:00 PM",
+    hours: "Mon-Sat 12:00 PM - 6:00 PM",
     features: ["Boutique", "Designer Clothing", "Personal Styling", "Gifts"]
   },
   {
