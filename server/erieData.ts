@@ -1183,11 +1183,11 @@ export const businesses: Business[] = [
     name: "Potratz Floral Shop",
     category: "Florist",
     categories: ["Florist", "Gifts & Specialty"],
-    address: "2619 Peach St, Erie, PA 16508",
-    phone: "(814) 456-6467",
+    address: "1418 Buffalo Rd, Erie, PA 16503",
+    phone: " (814) 454-1549",
     website: "https://www.potratzfloral.com",
     description: "Family-owned florist since 1932 creating beautiful arrangements for weddings, events, and everyday occasions.",
-    hours: "Mon-Fri 9:00 AM - 5:00 PM, Sat 9:00 AM - 2:00 PM",
+    hours: "Mon-Fri 9:00 AM - 4:00 PM, Sat 9:00 AM - 3:00 PM",
     features: ["Flowers", "Weddings", "Events", "Delivery"]
   },
   {
