@@ -1137,10 +1137,10 @@ export const businesses: Business[] = [
     category: "Retail",
     categories: ["Retail", "Entertainment"],
     address: "1535 W 8th St, Erie, PA 16505",
-    phone: "(814) 520-8451",
-    website: "https://www.pressedbookscoffee.com",
+    phone: " (814) 314-2827",
+    website: "https://www.pressedbooks.com/",
     description: "Independent bookstore and coffee shop with curated book selection, local art, and craft coffee drinks.",
-    hours: "Mon-Sat 8:00 AM - 8:00 PM, Sun 10:00 AM - 6:00 PM",
+    hours: "Mon-Fri 8:00 AM - 6:00 PM, Sun 9:00 AM - 3:00 PM",
     features: ["Bookstore", "Coffee Shop", "Local Art", "Events"]
   },
   {
