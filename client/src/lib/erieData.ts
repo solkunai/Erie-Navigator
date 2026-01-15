@@ -1417,7 +1417,7 @@ export const businesses: Business[] = [
     category: "Gifts & Specialty",
     categories: ["Gifts & Specialty", "Handmade"],
     address: "Erie, PA 16509",
-    phone: "(814) 602-5752",
+    phone: "",
     email: "thepytz@yahoo.com",
     website: "https://tmascc.com",
     description: "Homemade wreaths, swags, centerpieces and much more. Veteran owned private small business. Crafting wreaths for your front door and more!",
