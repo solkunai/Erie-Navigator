@@ -1395,6 +1395,7 @@ export const businesses: Business[] = [
     description: "HaulPros LLC is Erie’s trusted junk removal and cleanout team. We specialize in estate cleanouts, hoarding situations, moving cleanouts, and large-scale junk removal. Whether it’s furniture, appliances, or construction debris, we handle every job quickly, safely, and professionally. We hold ourselves to the highest standards—ensuring every project is done thoroughly, respectfully, and with care. At HaulPros, we’re more than junk removal—we’re problem solvers dedicated to making your life easier.",
     hours: "7:00 AM - 11:00 PM (Daily)", 
     features: ["Estate Cleanouts", "Hoarding Solutions", "Appliance Removal", "Furniture Removal", "Demolition", "Free Estimates", "Licensed & Insured", "Eco-Friendly Disposal"],
+    imageUrl: "/assets/haulpros.jpeg"
   
  
   
