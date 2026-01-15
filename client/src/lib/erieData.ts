@@ -1395,5 +1395,21 @@ export const businesses: Business[] = [
     hours: "Fri 4:00 PM - 8:00 PM, Sat 1:00 PM - 8:00 PM",
     features: ["Wheelchair Accessible", "Parking Available", "Accepts Credit Cards", "Walk-ins Welcome", "Curbside Pickup", "Handcrafted Items", "Unique Gifts"],
     imageUrl: "/assets/whiteraven.jpg"
-  }
-];
+  },
+  {
+     id: "26", 
+    name: "HaulPros",
+    category: "Professional Services",
+    categories: ["Professional Services", "Junk Removal", "Cleanouts"],
+    address: "2942 Harvest Bend, Erie, PA 16506",
+    phone: "(814) 882-3116",
+    website: "https://www.thehaulpros.com",
+    email: "service@thehaulpros.com",
+    description: "HaulPros LLC is Erie’s trusted junk removal and cleanout team. We specialize in estate cleanouts, hoarding situations, moving cleanouts, and large-scale junk removal. Whether it’s furniture, appliances, or construction debris, we handle every job quickly, safely, and professionally. We hold ourselves to the highest standards—ensuring every project is done thoroughly, respectfully, and with care. At HaulPros, we’re more than junk removal—we’re problem solvers dedicated to making your life easier.",
+    hours: "7:00 AM - 11:00 PM (Daily)", 
+    features: ["Estate Cleanouts", "Hoarding Solutions", "Appliance Removal", "Furniture Removal", "Demolition", "Free Estimates", "Licensed & Insured", "Eco-Friendly Disposal"],
+    imageUrl: "/assets/haulpros.jpeg",
+    isFeatured: true
+   }
+ ];  
+
