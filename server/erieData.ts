@@ -111,7 +111,7 @@ export const restaurants: Restaurant[] = [
     description: "French-inspired upscale dining with thoughtfully chosen wines paired with skillfully prepared dishes.",
     priceRange: "$$$$",
     rating: 4.7,
-    hours: "5:00 PM - 10:00 PM",
+    hours: "Sun-Mon Closed, Tue-Thu 4:00 PM - 10:00 PM, Fri-Sat 4:00 PM - 12:00 AM",
     features: ["Dine-in", "Wine Bar", "Reservations", "Fine Dining"]
   },
   {
@@ -119,13 +119,13 @@ export const restaurants: Restaurant[] = [
     name: "Bar Ronin",
     category: "Asian",
     categories: ["Asian", "American", "Bar & Grill"],
-    address: "501 State St, Erie, PA 16501",
-    phone: "(814) 520-8495",
+    address: "948 W Erie Plaza Dr, Erie, PA 16505",
+    phone: "(814) 920-4100",
     website: "https://roninerie.com",
     description: "American-Japanese fusion with shareable plates and standout cocktails. A chef-driven hotspot in downtown Erie.",
     priceRange: "$$$",
     rating: 4.8,
-    hours: "4:00 PM - 11:00 PM",
+    hours: "Mon Closed, Tue-Thu 5:00 PM - 10:00 PM, Fri-Sat 5:00 PM - 12:00 AM",
     features: ["Dine-in", "Full Bar", "Cocktails", "Late Night"]
   },
   {
@@ -134,12 +134,12 @@ export const restaurants: Restaurant[] = [
     category: "Asian",
     categories: ["Asian", "Seafood"],
     address: "2767 W 12th St, Erie, PA 16505",
-    phone: "(814) 836-0888",
+    phone: "(814) 833-0293",
     website: "https://www.samuraisushierie.com",
     description: "High-quality Japanese and Southeast Asian dishes with artful sushi rolls and vibrant entrees.",
     priceRange: "$$$",
     rating: 4.6,
-    hours: "11:30 AM - 9:30 PM",
+    hours: "Mon Closed, Tue-Thu 11:30 AM-2:30 PM & 4:00-9:00 PM, Fri 11:30 AM-2:30 PM & 4:00-10:00 PM, Sat 11:30 AM-10:00 PM, Sun Closed",
     features: ["Dine-in", "Takeout", "Sushi Bar"]
   },
   {
