@@ -1209,9 +1209,9 @@ export const businesses: Business[] = [
     categories: ["Grocery & Market", "Health & Wellness"],
     address: "1341 W 26th St, Erie, PA 16508",
     phone: "(814) 456-0282",
-    website: "https://www.wfcerie.coop",
+    website: "https://eriefood.coop/home",
     description: "Member-owned natural foods cooperative offering organic produce, bulk foods, local products, and health supplements.",
-    hours: "Mon-Sat 8:00 AM - 8:00 PM, Sun 10:00 AM - 6:00 PM",
+    hours: "Mon-Sat 8:00 AM - 8:00 PM, Sun 10:00 AM - 8:00 PM",
     features: ["Organic", "Local Products", "Bulk Foods", "Member-Owned"]
   },
   {
