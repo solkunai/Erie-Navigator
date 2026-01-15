@@ -400,11 +400,11 @@ export const restaurants: Restaurant[] = [
     category: "Latin",
     categories: ["Latin"],
     address: "38 North Park Row, Erie, PA 16501",
-    phone: "",
+    phone: "(814) 616-0110",
     website: "https://www.facebook.com/profile.php?id=61561961867814",
     description: "Latin cuisine featuring authentic empanadas and traditional dishes from across Latin America.",
     priceRange: "$$",
-    rating: 4.5,
+    rating: 5.0,
     features: ["Dine-in", "Takeout", "Catering"],
     imageUrl: "/assets/empanissahs.jpg"
   },
