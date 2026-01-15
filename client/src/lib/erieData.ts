@@ -1121,7 +1121,7 @@ export const socialGroups: SocialGroup[] = [
 export const businesses: Business[] = [
   {
     id: "1",
-    name: "Dollhouse Pointe Foure",
+    name: "Dollhouse at Pointe Foure",
     category: "Clothing & Fashion",
     categories: ["Clothing & Fashion", "Gifts & Specialty"],
     address: "423 State St, Erie, PA 16501",
