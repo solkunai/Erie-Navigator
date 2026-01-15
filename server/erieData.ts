@@ -1399,7 +1399,6 @@ export const businesses: Business[] = [
     isFeatured: true
    }, 
    {
-     {
      id: "27",
     name: "T-Ma's Crafty Creations",
     category: "Gifts & Specialty",
@@ -1452,7 +1451,7 @@ export const businesses: Business[] = [
     features: ["Family Friendly", "Pet Friendly", "Accepts Credit Cards"],
     imageUrl: "/assets/rupp-limo.jpg" 
    },
- 
+  ];
  
 // Business submissions array (for storing form submissions)
 export const businessSubmissions: BusinessSubmission[] = [];
