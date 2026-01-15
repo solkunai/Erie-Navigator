@@ -17,6 +17,12 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    // NEW: Remove console logs in production builds only
+    esbuild: {
+      drop: ["console"],  // Drops console.log, console.info, console.debug, etc.
+      // If you want to keep console.error/warn for crash debugging:
+      // drop: ["console.log", "console.info", "console.debug"]
+    },
   },
   server: {
     fs: {
