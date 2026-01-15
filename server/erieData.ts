@@ -1144,12 +1144,12 @@ export const businesses: Business[] = [
   },
   {
     id: "4",
-    name: "Presque Isle Printing",
+    name: "Emerald Printing",
     category: "Professional Services",
     categories: ["Professional Services"],
-    address: "2662 W 8th St, Erie, PA 16505",
-    phone: "(814) 833-9020",
-    website: "https://www.presqueisleprinting.com",
+    address: "3212 Cherry St, Erie, PA 16508",
+    phone: "(814) 899-6959",
+    website: "https://www.emeraldprinting.net/",
     description: "Full-service print shop offering business cards, banners, signs, apparel printing, and promotional products.",
     hours: "Mon-Fri 8:30 AM - 5:00 PM",
     features: ["Printing", "Signs & Banners", "Apparel", "Promotional Items"]
