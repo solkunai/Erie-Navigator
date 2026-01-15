@@ -1243,7 +1243,7 @@ export const businesses: Business[] = [
     id: "13",
     name: "Mazza Vineyards",
     category: "Winery",
-    categories: ["Winery" "Retail", "Entertainment"],
+    categories: ["Winery", "Retail", "Entertainment"],
     address: "11815 E Lake Rd, North East, PA 16428",
     phone: "(814) 725-8695",
     website: "https://enjoymazza.com/",
