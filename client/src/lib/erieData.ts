@@ -1410,6 +1410,58 @@ export const businesses: Business[] = [
     features: ["Estate Cleanouts", "Hoarding Solutions", "Appliance Removal", "Furniture Removal", "Demolition", "Free Estimates", "Licensed & Insured", "Eco-Friendly Disposal"],
     imageUrl: "/assets/haulpros.jpeg",
     isFeatured: true
-   }
- ];  
-
+   },
+   {
+     id: "27",
+    name: "T-Ma's Crafty Creations",
+    category: "Gifts & Specialty",
+    categories: ["Gifts & Specialty", "Handmade"],
+    address: "Erie, PA 16509",
+    phone: "(814) 602-5752",
+    email: "thepytz@yahoo.com",
+    website: "https://tmascc.com",
+    description: "Homemade wreaths, swags, centerpieces and much more. Veteran owned private small business. Crafting wreaths for your front door and more!",
+    features: ["Online Ordering", "Veteran Owned", "Handmade"],
+    imageUrl: "/assets/tmas-crafty.jpg"
+   },
+   {
+     id: "28",
+    name: "Kamala Hope Photography",
+    category: "Photography",
+    categories: ["Photography", "Portraits", "Weddings"],
+    address: "Erie, PA",
+    phone: "(814) 304-6600",
+    email: "kamalahopephoto@gmail.com",
+    website: "https://kamalahopephoto.mypixieset.com/",
+    description: "Portrait + Wedding + Boudoir Photographer serving Erie, PA and beyond!",
+    features: ["Family Friendly", "Pet Friendly", "Appointments Available", "Gift Cards", "Accepts Credit Cards"],
+    imageUrl: "/assets/kamala-hope.jpg"
+   },
+   {
+     id: "29",
+    name: "Pink or Blue 4D Ultrasound Studio",
+    category: "Health & Wellness",
+    categories: ["Health & Wellness", "Ultrasound", "Pregnancy Services"],
+    address: "2340 W Grandview Blvd, Erie, PA",
+    phone: "(814) 580-9164",
+    email: "pinkorblue4d@gmail.com",
+    website: "https://pinkorblue4d.wixsite.com/erie",
+    description: "We are a unique ultrasound studio, catering to families who are expecting a child. We create bonding and keepsakes. Our goal is to support and enhance your pregnancy with elective sonograms from 6 weeks until birth. NO Dr order needed. All family and friends can join in on your appointment with us. We take our time to get the best pictures possible and support mother through questions and concerns. This is a truly unique experience tailored to your specific family's needs and wants, fulfilling expectations. We also offer gender reveal at 6 weeks!",
+    hours: "By appointment",
+    features: ["Free WiFi", "Wheelchair Accessible", "Parking Available", "Accepts Credit Cards", "Family Friendly", "Appointments Available", "Gift Cards"],
+    imageUrl: "/assets/pink-or-blue.jpg" 
+   },
+   {
+     id: "30",
+    name: "Rupp Limousine",
+    category: "Professional Services",
+    categories: ["Professional Services", "Transportation", "Limousine"],
+    address: "303 East 32nd Street, Erie, PA",
+    phone: "(814) 504-1712",
+    email: "kim@rupplimo.com",
+    website: "https://rupplimo.com",
+    description: "Rupp Limousine is a family-owned and operated limousine company serving Erie, PA since 1954. We’ve been voted the best limo service by Erie’s Choice for 20 out of 22 years. Our fleet includes vehicles of all sizes, ranging from a Lincoln Town Car to a 26-passenger party bus and anything in between.",
+    features: ["Family Friendly", "Pet Friendly", "Accepts Credit Cards"],
+    imageUrl: "/assets/rupp-limo.jpg" 
+   },
+  
