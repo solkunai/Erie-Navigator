@@ -1115,7 +1115,7 @@ export const businesses: Business[] = [
     phone: "(814) 580-6786",
     website: "https://www.pointefoure.com",
     description: "Upscale women's boutique featuring designer clothing, accessories, and gifts. Personalized styling services available.",
-    hours: "Mon-Sat 12:00 PM - 6:00 PM", "Sun 11:00 AM - 3:00 PM",
+    hours: "Mon-Sat 12:00 PM - 6:00 PM, "Sun 11:00 AM - 3:00 PM",
     features: ["Boutique", "Designer Clothing", "Personal Styling", "Gifts"]
   },
   {
