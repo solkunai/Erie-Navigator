@@ -1382,8 +1382,8 @@ export const businesses: Business[] = [
     hours: "Fri 4:00 PM - 8:00 PM, Sat 1:00 PM - 8:00 PM",
     features: ["Wheelchair Accessible", "Parking Available", "Accepts Credit Cards", "Walk-ins Welcome", "Curbside Pickup", "Handcrafted Items", "Unique Gifts"],
     imageUrl: "/assets/whiteraven.jpg"
-  }
-];
+  },
+  {;
     id: "26", 
     name: "HaulPros",
     category: "Home Services",
