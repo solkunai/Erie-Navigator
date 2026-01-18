@@ -22,6 +22,10 @@ export default defineConfig({
       compress: {
         drop_console: true, // Remove all console.* calls
         drop_debugger: true, // Remove debugger statements
+        pure_funcs: ["console.log", "console.info", "console.debug", "console.trace"], // Explicitly remove these console methods
+      },
+      format: {
+        comments: false, // Remove all comments
       },
     },
   },
