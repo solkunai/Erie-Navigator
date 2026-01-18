@@ -1,6 +1,7 @@
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
-import { rm, readFile } from "fs/promises";
+import { rm, readFile, writeFile } from "fs/promises";
+import { minify } from "terser";
 
 // server deps to bundle to reduce openat(2) syscalls
 // which helps cold start times
@@ -46,6 +47,7 @@ async function buildAll() {
   ];
   const externals = allDeps.filter((dep) => !allowlist.includes(dep));
 
+  // Build server bundle with esbuild (without minification)
   await esbuild({
     entryPoints: ["server/index.ts"],
     platform: "node",
@@ -55,10 +57,29 @@ async function buildAll() {
     define: {
       "process.env.NODE_ENV": '"production"',
     },
-    minify: true,
+    minify: false, // We'll use terser for minification
     external: externals,
     logLevel: "info",
   });
+
+  // Minify with terser and remove console logs
+  console.log("minifying server bundle with terser...");
+  const serverCode = await readFile("dist/index.cjs", "utf-8");
+  const minified = await minify(serverCode, {
+    compress: {
+      drop_console: true, // Remove all console.* calls
+      drop_debugger: true, // Remove debugger statements
+    },
+    format: {
+      comments: false, // Remove comments
+    },
+  });
+
+  if (minified.code) {
+    await writeFile("dist/index.cjs", minified.code);
+  } else {
+    throw new Error("Terser minification failed");
+  }
 }
 
 buildAll().catch((err) => {
