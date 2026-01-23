@@ -14,8 +14,37 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { FadeCarousel, type CarouselSlide } from "@/components/ui/fade-carousel";
 import { businesses } from "@/lib/erieData";
 import { businessCategories, type BusinessCategory } from "@shared/schema";
+
+// Placeholder slides for the Businesses page carousel - replace with actual business images later
+const businessCarouselSlides: CarouselSlide[] = [
+  {
+    id: "biz-1",
+    imageUrl: undefined,
+    caption: "Glass Growers Gallery",
+    placeholderColor: "bg-gradient-to-br from-[#3A96CB]/50 to-[#87CEEB]/50",
+  },
+  {
+    id: "biz-2",
+    imageUrl: undefined,
+    caption: "Pressed Bookstore",
+    placeholderColor: "bg-gradient-to-br from-[#8B4513]/50 to-[#DEB887]/50",
+  },
+  {
+    id: "biz-3",
+    imageUrl: undefined,
+    caption: "Erie Art Museum Store",
+    placeholderColor: "bg-gradient-to-br from-[#8E44AD]/50 to-[#BB8FCE]/50",
+  },
+  {
+    id: "biz-4",
+    imageUrl: undefined,
+    caption: "Romolo Chocolates",
+    placeholderColor: "bg-gradient-to-br from-[#5D4037]/50 to-[#8D6E63]/50",
+  },
+];
 
 export default function Businesses() {
   const [search, setSearch] = useState("");
@@ -105,18 +134,29 @@ export default function Businesses() {
       {/* Content */}
       <div className="relative">
         {/* Hero Section */}
-        <div className="bg-[#3A96CB] border-b-4 border-black py-12 md:py-16">
+        <div className="bg-[#3A96CB] border-b-4 border-black py-8 md:py-12">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-6">
+            {/* Carousel */}
+            <div className="mb-6 max-w-2xl mx-auto md:mx-0">
+              <div className="bg-white p-3 md:p-4 border-4 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+                <FadeCarousel
+                  slides={businessCarouselSlides}
+                  autoPlayInterval={4000}
+                  aspectRatio="16/9"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-4">
               <div>
-                <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-4 hover:bg-[#FFD700]">
+                <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-3 hover:bg-[#FFD700]">
                   SHOP LOCAL
                 </Badge>
-                <h1 className="text-5xl md:text-6xl font-black mb-4 leading-none text-white italic">
+                <h1 className="text-4xl md:text-5xl font-black mb-3 leading-none text-white italic">
                   The Shops
                 </h1>
-                <p className="text-white text-lg max-w-2xl font-medium">
-                  Local makers and unique treasures you won't find on Amazon. Support Erie's small businesses!
+                <p className="text-white text-base md:text-lg max-w-2xl font-medium">
+                  Local makers and unique treasures. Support Erie's small businesses!
                 </p>
               </div>
               <Link href="/add-business">

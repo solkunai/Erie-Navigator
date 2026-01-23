@@ -15,7 +15,35 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { FadeCarousel, type CarouselSlide } from "@/components/ui/fade-carousel";
 import { restaurants, events, activities, businesses } from "@/lib/erieData";
+
+// Placeholder slides for the homepage carousel - replace with actual images later
+const homepageCarouselSlides: CarouselSlide[] = [
+  {
+    id: "home-1",
+    imageUrl: "/assets/bayfronterie.jpg",
+    caption: "Golden Hour at the Pier",
+  },
+  {
+    id: "home-2",
+    imageUrl: undefined,
+    caption: "Sunset at Dobbins Landing",
+    placeholderColor: "bg-gradient-to-br from-[#FF851A]/40 to-[#FFD700]/40",
+  },
+  {
+    id: "home-3",
+    imageUrl: undefined,
+    caption: "Presque Isle Beach",
+    placeholderColor: "bg-gradient-to-br from-[#3A96CB]/40 to-[#87CEEB]/40",
+  },
+  {
+    id: "home-4",
+    imageUrl: undefined,
+    caption: "Erie Maritime Museum",
+    placeholderColor: "bg-gradient-to-br from-[#8E44AD]/40 to-[#3A96CB]/40",
+  },
+];
 
 interface HomeProps {
   onOpenAI: () => void;
@@ -95,20 +123,17 @@ export default function Home({ onOpenAI }: HomeProps) {
                 </div>
               </div>
 
-              {/* Right: Polaroid Image Card */}
+              {/* Right: Carousel Card */}
               <div className="relative hidden lg:flex justify-center items-center">
-                {/* Polaroid Card */}
-                <div className="bg-white p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(35,24,15,1)] transform rotate-2 hover:rotate-3 transition-transform">
-                  <div className="aspect-[4/3] bg-gradient-to-b from-[#87CEEB] to-[#F5DEB3] rounded-sm mb-4 overflow-hidden">
-                    <img
-                      src="/assets/bayfronterie.jpg"
-                      alt="Erie Bayfront"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <p className="text-sm font-bold text-center text-[#FF851A]">Golden hour at the Pier</p>
+                {/* Polaroid-style Carousel Card */}
+                <div className="bg-white p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(35,24,15,1)] transform rotate-2 hover:rotate-1 transition-transform w-full max-w-md">
+                  <FadeCarousel
+                    slides={homepageCarouselSlides}
+                    autoPlayInterval={4000}
+                    aspectRatio="4/3"
+                  />
                 </div>
-                {/* Warning Pressure Tag */}
+                {/* Trending Tag */}
                 <div className="absolute bottom-8 -right-4 bg-[#FF851A] text-white px-4 py-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(35,24,15,1)] transform rotate-6">
                   <div className="flex items-center gap-2">
                     <Waves className="h-4 w-4" />

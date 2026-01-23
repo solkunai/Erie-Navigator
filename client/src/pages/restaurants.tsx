@@ -14,8 +14,37 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { FadeCarousel, type CarouselSlide } from "@/components/ui/fade-carousel";
 import { restaurants } from "@/lib/erieData";
 import { restaurantCategories, type RestaurantCategory } from "@shared/schema";
+
+// Placeholder slides for the Grub page carousel - replace with actual food/restaurant images later
+const grubCarouselSlides: CarouselSlide[] = [
+  {
+    id: "grub-1",
+    imageUrl: undefined,
+    caption: "Pineapple Eddie's",
+    placeholderColor: "bg-gradient-to-br from-[#FF851A]/50 to-[#FFD700]/50",
+  },
+  {
+    id: "grub-2",
+    imageUrl: undefined,
+    caption: "The Brewerie at Union Station",
+    placeholderColor: "bg-gradient-to-br from-[#8B4513]/50 to-[#D2691E]/50",
+  },
+  {
+    id: "grub-3",
+    imageUrl: undefined,
+    caption: "Sara's Restaurant",
+    placeholderColor: "bg-gradient-to-br from-[#DC143C]/50 to-[#FF6347]/50",
+  },
+  {
+    id: "grub-4",
+    imageUrl: undefined,
+    caption: "Mi Scuzi Italian Grill",
+    placeholderColor: "bg-gradient-to-br from-[#228B22]/50 to-[#90EE90]/50",
+  },
+];
 
 const priceRanges = ["$", "$$", "$$$", "$$$$"] as const;
 
@@ -146,16 +175,27 @@ export default function Restaurants() {
       {/* Content */}
       <div className="relative">
         {/* Hero Section */}
-        <div className="bg-[#FFD700] border-b-4 border-black py-12 md:py-16">
+        <div className="bg-[#FFD700] border-b-4 border-black py-8 md:py-12">
           <div className="container mx-auto px-4 md:px-6">
-            <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-4 hover:bg-[#FF851A]">
-              42 SPOTS & COUNTING
+            {/* Carousel */}
+            <div className="mb-6 max-w-2xl mx-auto md:mx-0">
+              <div className="bg-white p-3 md:p-4 border-4 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+                <FadeCarousel
+                  slides={grubCarouselSlides}
+                  autoPlayInterval={4000}
+                  aspectRatio="16/9"
+                />
+              </div>
+            </div>
+
+            <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-3 hover:bg-[#FF851A]">
+              {restaurants.length} SPOTS & COUNTING
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-black mb-4 leading-none" data-testid="text-page-title">
+            <h1 className="text-4xl md:text-5xl font-black mb-3 leading-none" data-testid="text-page-title">
               <span className="italic text-black">The Grub</span>
             </h1>
-            <p className="text-black text-lg mb-6 max-w-2xl font-medium">
-              Burgers, tacos, and fine dining for when you're hangry. Discover Erie's diverse dining scene.
+            <p className="text-black text-base md:text-lg mb-4 max-w-2xl font-medium">
+              Burgers, tacos, and fine dining for when you're hangry.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 max-w-2xl">

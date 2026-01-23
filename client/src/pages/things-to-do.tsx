@@ -15,8 +15,37 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { FadeCarousel, type CarouselSlide } from "@/components/ui/fade-carousel";
 import { activities } from "@/lib/erieData";
 import { activityCategories, audienceTypes, type ActivityCategory, type AudienceType } from "@shared/schema";
+
+// Placeholder slides for the Chill Spots page carousel - replace with actual activity images later
+const chillSpotsCarouselSlides: CarouselSlide[] = [
+  {
+    id: "chill-1",
+    imageUrl: undefined,
+    caption: "Presque Isle State Park",
+    placeholderColor: "bg-gradient-to-br from-[#3A96CB]/50 to-[#87CEEB]/50",
+  },
+  {
+    id: "chill-2",
+    imageUrl: undefined,
+    caption: "Erie Zoo",
+    placeholderColor: "bg-gradient-to-br from-[#228B22]/50 to-[#90EE90]/50",
+  },
+  {
+    id: "chill-3",
+    imageUrl: undefined,
+    caption: "Waldameer Water World",
+    placeholderColor: "bg-gradient-to-br from-[#FF851A]/50 to-[#FFD700]/50",
+  },
+  {
+    id: "chill-4",
+    imageUrl: undefined,
+    caption: "Erie Maritime Museum",
+    placeholderColor: "bg-gradient-to-br from-[#8E44AD]/50 to-[#BB8FCE]/50",
+  },
+];
 
 const audienceIcons: Record<AudienceType, typeof Users> = {
   Kids: Baby,
@@ -117,16 +146,27 @@ export default function ThingsToDo() {
       {/* Content */}
       <div className="relative">
         {/* Hero Section */}
-        <div className="bg-[#FF851A] border-b-4 border-black py-12 md:py-16">
+        <div className="bg-[#FF851A] border-b-4 border-black py-8 md:py-12">
           <div className="container mx-auto px-4 md:px-6">
-            <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-4 hover:bg-[#FFD700]">
+            {/* Carousel */}
+            <div className="mb-6 max-w-2xl mx-auto md:mx-0">
+              <div className="bg-white p-3 md:p-4 border-4 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+                <FadeCarousel
+                  slides={chillSpotsCarouselSlides}
+                  autoPlayInterval={4000}
+                  aspectRatio="16/9"
+                />
+              </div>
+            </div>
+
+            <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-3 hover:bg-[#FFD700]">
               EXPLORE ERIE
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-black mb-4 leading-none text-white italic" data-testid="text-things-to-do-title">
+            <h1 className="text-4xl md:text-5xl font-black mb-3 leading-none text-white italic" data-testid="text-things-to-do-title">
               Chill Spots
             </h1>
-            <p className="text-white text-lg max-w-2xl font-medium mb-6">
-              Parks, beaches, and quiet nooks for a mental reset. Explore attractions and experiences for every age!
+            <p className="text-white text-base md:text-lg max-w-2xl font-medium mb-4">
+              Parks, beaches, and quiet nooks for a mental reset.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 max-w-2xl">
