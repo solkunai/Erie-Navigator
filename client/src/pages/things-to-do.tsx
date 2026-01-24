@@ -19,31 +19,27 @@ import { FadeCarousel, type CarouselSlide } from "@/components/ui/fade-carousel"
 import { activities } from "@/lib/erieData";
 import { activityCategories, audienceTypes, type ActivityCategory, type AudienceType } from "@shared/schema";
 
-// Placeholder slides for the Chill Spots page carousel - replace with actual activity images later
+// Featured activity slides for the Chill Spots page carousel
 const chillSpotsCarouselSlides: CarouselSlide[] = [
   {
     id: "chill-1",
-    imageUrl: undefined,
+    imageUrl: "/assets/presque-isle-park.jpg",
     caption: "Presque Isle State Park",
-    placeholderColor: "bg-gradient-to-br from-[#3A96CB]/50 to-[#87CEEB]/50",
   },
   {
     id: "chill-2",
-    imageUrl: undefined,
-    caption: "Erie Zoo",
-    placeholderColor: "bg-gradient-to-br from-[#228B22]/50 to-[#90EE90]/50",
+    imageUrl: "/assets/waldameer-park-fun.jpg",
+    caption: "Waldameer Park",
   },
   {
     id: "chill-3",
-    imageUrl: undefined,
-    caption: "Waldameer Water World",
-    placeholderColor: "bg-gradient-to-br from-[#FF851A]/50 to-[#FFD700]/50",
+    imageUrl: "/assets/bicentennial-tower.jpeg",
+    caption: "Bicentennial Tower",
   },
   {
     id: "chill-4",
-    imageUrl: undefined,
-    caption: "Erie Maritime Museum",
-    placeholderColor: "bg-gradient-to-br from-[#8E44AD]/50 to-[#BB8FCE]/50",
+    imageUrl: "/assets/erie-art.jpg",
+    caption: "Erie Art Museum",
   },
 ];
 

@@ -617,7 +617,8 @@ export const activities: Activity[] = [
     website: "https://www.dcnr.pa.gov/StateParks/FindAPark/PresqueIsleStatePark",
     description: "Pennsylvania's most visited state park featuring 11 miles of sandy beaches, hiking trails, and stunning Lake Erie views.",
     hours: "5:00 AM - 11:00 PM",
-    priceRange: "Free"
+    priceRange: "Free",
+    imageUrl: "/assets/presque-isle-park.jpg"
   },
   {
     id: "2",
@@ -665,7 +666,8 @@ export const activities: Activity[] = [
     website: "https://www.waldameer.com",
     description: "Classic amusement park with roller coasters, water slides, and family rides. Free admission, pay-per-ride available.",
     hours: "Seasonal (May-Sept)",
-    priceRange: "Free-$34"
+    priceRange: "Free-$34",
+    imageUrl: "/assets/waldameer-park-fun.jpg"
   },
   {
     id: "6",
@@ -677,7 +679,8 @@ export const activities: Activity[] = [
     website: "https://www.erieartmuseum.org",
     description: "Regional art museum featuring American and international art spanning 5,000 years of creative expression.",
     hours: "Thu-Sun 11:00 AM - 5:00 PM",
-    priceRange: "$8"
+    priceRange: "$8",
+    imageUrl: "/assets/erie-art.jpg"
   },
   {
     id: "7",
@@ -780,7 +783,8 @@ export const activities: Activity[] = [
     phone: "(814) 455-6055",
     description: "Observation tower offering panoramic sunset views from 187 feet up. Perfect for capturing breathtaking scenes over the bay and city with unobstructed 360-degree views of Erie, Presque Isle, and Lake Erie.",
     hours: "10:00 AM - 8:00 PM (Seasonal)",
-    priceRange: "$4"
+    priceRange: "$4",
+    imageUrl: "/assets/bicentennial-tower.jpeg"
   },
   {
     id: "16",
