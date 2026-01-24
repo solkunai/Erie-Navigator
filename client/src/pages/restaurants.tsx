@@ -37,7 +37,7 @@ const grubCarouselSlides: CarouselSlide[] = [
   },
   {
     id: "grub-4",
-    imageUrl: "/assets/empanissahs-food.jpg",
+    imageUrl: "/assets/empannisahas-food.jpg",
     caption: "Empanissah's",
   },
 ];
