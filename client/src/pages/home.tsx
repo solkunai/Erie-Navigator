@@ -83,7 +83,7 @@ export default function Home({ onOpenAI }: HomeProps) {
                 <p className="text-gray-700 text-lg mb-8 max-w-xl leading-relaxed">
                   Toss out the boring guidebooks. We're your neighbor's favorites, the hidden beach paths, and the best sunset spots in town.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Link href="/restaurants">
                     <Button
                       size="lg"
@@ -101,6 +101,17 @@ export default function Home({ onOpenAI }: HomeProps) {
                       Just Browsing
                     </Button>
                   </Link>
+                </div>
+
+                {/* Mobile Carousel - shown only on mobile/tablet */}
+                <div className="mb-8 lg:hidden">
+                  <div className="bg-white p-3 border-4 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+                    <FadeCarousel
+                      slides={homepageCarouselSlides}
+                      autoPlayInterval={4000}
+                      aspectRatio="16/9"
+                    />
+                  </div>
                 </div>
 
                 {/* Stats */}
