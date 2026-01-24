@@ -18,7 +18,7 @@ import { Card } from "@/components/ui/card";
 import { FadeCarousel, type CarouselSlide } from "@/components/ui/fade-carousel";
 import { restaurants, events, activities, businesses } from "@/lib/erieData";
 
-// Placeholder slides for the homepage carousel - replace with actual images later
+// Featured slides for the homepage carousel
 const homepageCarouselSlides: CarouselSlide[] = [
   {
     id: "home-1",
@@ -27,21 +27,18 @@ const homepageCarouselSlides: CarouselSlide[] = [
   },
   {
     id: "home-2",
-    imageUrl: undefined,
-    caption: "Sunset at Dobbins Landing",
-    placeholderColor: "bg-gradient-to-br from-[#FF851A]/40 to-[#FFD700]/40",
+    imageUrl: "/assets/presque-isle-beach.jpg",
+    caption: "Presque Isle Beach, one of Erie's wonders",
   },
   {
     id: "home-3",
-    imageUrl: undefined,
-    caption: "Presque Isle Beach",
-    placeholderColor: "bg-gradient-to-br from-[#3A96CB]/40 to-[#87CEEB]/40",
+    imageUrl: "/assets/erie-sign1.jpeg",
+    caption: "The Erie sign over looking the stunning peninsula",
   },
   {
     id: "home-4",
-    imageUrl: undefined,
-    caption: "Erie Maritime Museum",
-    placeholderColor: "bg-gradient-to-br from-[#8E44AD]/40 to-[#3A96CB]/40",
+    imageUrl: "/assets/brig-niagara-erie.jpeg",
+    caption: "The Brig Niagara at Maritime Museum",
   },
 ];
 
