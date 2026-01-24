@@ -18,31 +18,27 @@ import { FadeCarousel, type CarouselSlide } from "@/components/ui/fade-carousel"
 import { restaurants } from "@/lib/erieData";
 import { restaurantCategories, type RestaurantCategory } from "@shared/schema";
 
-// Placeholder slides for the Grub page carousel - replace with actual food/restaurant images later
+// Featured restaurant slides for the Grub page carousel
 const grubCarouselSlides: CarouselSlide[] = [
   {
     id: "grub-1",
-    imageUrl: undefined,
-    caption: "Pineapple Eddie's",
-    placeholderColor: "bg-gradient-to-br from-[#FF851A]/50 to-[#FFD700]/50",
+    imageUrl: "/assets/bromans-foods.jpg",
+    caption: "Bro Man's Sammiches",
   },
   {
     id: "grub-2",
-    imageUrl: undefined,
-    caption: "The Brewerie at Union Station",
-    placeholderColor: "bg-gradient-to-br from-[#8B4513]/50 to-[#D2691E]/50",
+    imageUrl: "/assets/romas-food.jpg",
+    caption: "Roma's Italian Kitchen",
   },
   {
     id: "grub-3",
-    imageUrl: undefined,
-    caption: "Sara's Restaurant",
-    placeholderColor: "bg-gradient-to-br from-[#DC143C]/50 to-[#FF6347]/50",
+    imageUrl: "/assets/saras-food-erie.jpg",
+    caption: "Sara's Diner",
   },
   {
     id: "grub-4",
-    imageUrl: undefined,
-    caption: "Mi Scuzi Italian Grill",
-    placeholderColor: "bg-gradient-to-br from-[#228B22]/50 to-[#90EE90]/50",
+    imageUrl: "/assets/empanissahs-food.jpg",
+    caption: "Empanissah's",
   },
 ];
 

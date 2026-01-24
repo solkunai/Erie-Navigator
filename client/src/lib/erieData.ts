@@ -451,6 +451,36 @@ export const restaurants: Restaurant[] = [
     hours: "Sat 1:00 PM - 8:00 PM (Closed Mon-Fri, Sun)",
     features: ["Tasting Room", "Tours", "Local Products"],
     imageUrl: "/assets/ironstone.webp"
+  },
+  {
+    id: "34",
+    name: "Bro Man's Sammiches - Peach St",
+    category: "American",
+    categories: ["American", "Mexican"],
+    address: "8228 Peach St, Erie, PA 16509",
+    phone: "(814) 480-9119",
+    website: "https://www.bromanssammiches.com/",
+    description: "Erie's best burger joint! Local treasure specializing in incredible birria tacos and gourmet burgers. Located inside the Gulf gas station.",
+    priceRange: "$",
+    rating: 4.9,
+    hours: "Tue-Thu 11 AM - 7 PM, Fri 11 AM - 8 PM, Sat 11 AM - 3 PM, Sun-Mon Closed",
+    features: ["Dine-in", "Takeout", "Birria Tacos", "Burgers"],
+    imageUrl: "/assets/bromans-logo.jpg"
+  },
+  {
+    id: "35",
+    name: "Bro Man's Sammiches - Glenwood",
+    category: "American",
+    categories: ["American", "Mexican"],
+    address: "2614 Glenwood Park Ave, Erie, PA 16508",
+    phone: "(814) 315-1237",
+    website: "https://www.bromanssammiches.com/",
+    description: "Erie's best burger joint! Local treasure specializing in incredible birria tacos and gourmet burgers.",
+    priceRange: "$",
+    rating: 4.9,
+    hours: "Tue-Thu 11 AM - 7 PM, Fri 11 AM - 8 PM, Sat 11 AM - 8 PM, Sun-Mon Closed",
+    features: ["Dine-in", "Takeout", "Birria Tacos", "Burgers"],
+    imageUrl: "/assets/bromans-logo.jpg"
   }
 ];
 
