@@ -460,13 +460,28 @@ export default function Businesses() {
         <footer className="py-12 bg-white border-t-4 border-black">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
-              <div className="flex items-center gap-3">
-                <img
-                  src="/assets/helloeriefinallogo.png"
-                  alt="Hello Erie Logo"
-                  className="w-16 h-16 object-contain transform -rotate-12"
-                />
-                <span className="font-black text-xl text-gray-900">HELLO ERIE © 2026</span>
+              <div className="flex flex-col items-center md:items-start gap-2">
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/assets/helloeriefinallogo.png"
+                    alt="Hello Erie Logo"
+                    className="w-16 h-16 object-contain transform -rotate-12"
+                  />
+                  <span className="font-black text-xl text-gray-900">HELLO ERIE © 2026</span>
+                </div>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61586551713542"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+                >
+                  <img
+                    src="/assets/facebook.jpg"
+                    alt="Facebook"
+                    className="w-6 h-6 rounded"
+                  />
+                  <span className="text-sm font-bold text-[#1877F2]">Follow us on Facebook</span>
+                </a>
               </div>
               <nav className="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-900">
                 <Link href="/restaurants" className="hover:text-[#FF851A] transition-colors">GRUB</Link>
