@@ -148,9 +148,9 @@ export default function ThingsToDo() {
         {/* Hero Section */}
         <div className="bg-[#FF851A] border-b-4 border-black py-8 md:py-12">
           <div className="container mx-auto px-4 md:px-6">
-            {/* Carousel */}
-            <div className="mb-6 max-w-2xl mx-auto md:mx-0">
-              <div className="bg-white p-3 md:p-4 border-4 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+            {/* Mobile Carousel - shown only on mobile */}
+            <div className="mb-6 lg:hidden">
+              <div className="bg-white p-3 border-4 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
                 <FadeCarousel
                   slides={chillSpotsCarouselSlides}
                   autoPlayInterval={4000}
@@ -159,54 +159,71 @@ export default function ThingsToDo() {
               </div>
             </div>
 
-            <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-3 hover:bg-[#FFD700]">
-              EXPLORE ERIE
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-black mb-3 leading-none text-white italic" data-testid="text-things-to-do-title">
-              Chill Spots
-            </h1>
-            <p className="text-white text-base md:text-lg max-w-2xl font-medium mb-4">
-              Parks, beaches, and quiet nooks for a mental reset.
-            </p>
+            {/* Desktop: Two-column layout */}
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Left: Text Content */}
+              <div>
+                <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-3 hover:bg-[#FFD700]">
+                  EXPLORE ERIE
+                </Badge>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-3 leading-none text-white italic" data-testid="text-things-to-do-title">
+                  Chill Spots
+                </h1>
+                <p className="text-white text-base md:text-lg font-medium mb-4">
+                  Parks, beaches, and quiet nooks for a mental reset.
+                </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 max-w-2xl">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500" />
-                <Input
-                  type="search"
-                  placeholder="Find your escape..."
-                  className="pl-10 h-12 border-2 border-black rounded-sm focus:ring-2 focus:ring-black font-medium bg-white text-gray-900 placeholder:text-gray-500"
-                  style={{ color: '#111827' }}
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  data-testid="input-search-activities"
-                />
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="relative flex-1">
+                    <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500" />
+                    <Input
+                      type="search"
+                      placeholder="Find your escape..."
+                      className="pl-10 h-12 border-2 border-black rounded-sm focus:ring-2 focus:ring-black font-medium bg-white text-gray-900 placeholder:text-gray-500"
+                      style={{ color: '#111827' }}
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      data-testid="input-search-activities"
+                    />
+                  </div>
+
+                  <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
+                    <SheetTrigger asChild>
+                      <Button
+                        className="lg:hidden gap-2 h-12 bg-white hover:bg-gray-50 text-black font-bold border-2 border-black rounded-sm shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]"
+                        data-testid="button-mobile-activity-filters"
+                      >
+                        <Filter className="h-4 w-4" />
+                        Filters
+                        {hasActiveFilters && (
+                          <Badge className="bg-[#FF851A] text-white border-0 ml-1">
+                            {selectedCategories.length + (selectedAudience !== "All" ? 1 : 0)}
+                          </Badge>
+                        )}
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent side="left" className="w-80 bg-[#FCF4F8] border-l-4 border-black">
+                      <SheetHeader>
+                        <SheetTitle className="font-black text-2xl">Filter Activities</SheetTitle>
+                      </SheetHeader>
+                      <div className="mt-6">
+                        <FilterContent />
+                      </div>
+                    </SheetContent>
+                  </Sheet>
+                </div>
               </div>
 
-              <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
-                <SheetTrigger asChild>
-                  <Button
-                    className="lg:hidden gap-2 h-12 bg-white hover:bg-gray-50 text-black font-bold border-2 border-black rounded-sm shadow-[2px_2px_0px_0px_rgba(35,24,15,1)]"
-                    data-testid="button-mobile-activity-filters"
-                  >
-                    <Filter className="h-4 w-4" />
-                    Filters
-                    {hasActiveFilters && (
-                      <Badge className="bg-[#FF851A] text-white border-0 ml-1">
-                        {selectedCategories.length + (selectedAudience !== "All" ? 1 : 0)}
-                      </Badge>
-                    )}
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="left" className="w-80 bg-[#FCF4F8] border-l-4 border-black">
-                  <SheetHeader>
-                    <SheetTitle className="font-black text-2xl">Filter Activities</SheetTitle>
-                  </SheetHeader>
-                  <div className="mt-6">
-                    <FilterContent />
-                  </div>
-                </SheetContent>
-              </Sheet>
+              {/* Right: Desktop Carousel */}
+              <div className="hidden lg:block">
+                <div className="bg-white p-4 border-4 border-black rounded-sm shadow-[6px_6px_0px_0px_rgba(35,24,15,1)]">
+                  <FadeCarousel
+                    slides={chillSpotsCarouselSlides}
+                    autoPlayInterval={4000}
+                    aspectRatio="16/9"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

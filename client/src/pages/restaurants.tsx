@@ -177,9 +177,9 @@ export default function Restaurants() {
         {/* Hero Section */}
         <div className="bg-[#FFD700] border-b-4 border-black py-8 md:py-12">
           <div className="container mx-auto px-4 md:px-6">
-            {/* Carousel */}
-            <div className="mb-6 max-w-2xl mx-auto md:mx-0">
-              <div className="bg-white p-3 md:p-4 border-4 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
+            {/* Mobile Carousel - shown only on mobile */}
+            <div className="mb-6 lg:hidden">
+              <div className="bg-white p-3 border-4 border-black rounded-sm shadow-[4px_4px_0px_0px_rgba(35,24,15,1)]">
                 <FadeCarousel
                   slides={grubCarouselSlides}
                   autoPlayInterval={4000}
@@ -188,17 +188,21 @@ export default function Restaurants() {
               </div>
             </div>
 
-            <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-3 hover:bg-[#FF851A]">
-              {restaurants.length} SPOTS & COUNTING
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-black mb-3 leading-none" data-testid="text-page-title">
-              <span className="italic text-black">The Grub</span>
-            </h1>
-            <p className="text-black text-base md:text-lg mb-4 max-w-2xl font-medium">
-              Burgers, tacos, and fine dining for when you're hangry.
-            </p>
+            {/* Desktop: Two-column layout */}
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Left: Text Content */}
+              <div>
+                <Badge className="bg-[#FF851A] text-white border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-3 hover:bg-[#FF851A]">
+                  {restaurants.length} SPOTS & COUNTING
+                </Badge>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-3 leading-none" data-testid="text-page-title">
+                  <span className="italic text-black">The Grub</span>
+                </h1>
+                <p className="text-black text-base md:text-lg mb-4 font-medium">
+                  Burgers, tacos, and fine dining for when you're hangry.
+                </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 max-w-2xl">
+                <div className="flex flex-col sm:flex-row gap-4">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500" />
                 <Input
@@ -236,6 +240,19 @@ export default function Restaurants() {
                   </div>
                 </SheetContent>
               </Sheet>
+                </div>
+              </div>
+
+              {/* Right: Desktop Carousel */}
+              <div className="hidden lg:block">
+                <div className="bg-white p-4 border-4 border-black rounded-sm shadow-[6px_6px_0px_0px_rgba(35,24,15,1)]">
+                  <FadeCarousel
+                    slides={grubCarouselSlides}
+                    autoPlayInterval={4000}
+                    aspectRatio="16/9"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
