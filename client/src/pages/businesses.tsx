@@ -18,31 +18,27 @@ import { FadeCarousel, type CarouselSlide } from "@/components/ui/fade-carousel"
 import { businesses } from "@/lib/erieData";
 import { businessCategories, type BusinessCategory } from "@shared/schema";
 
-// Placeholder slides for the Businesses page carousel - replace with actual business images later
+// Featured business slides for the Businesses page carousel
 const businessCarouselSlides: CarouselSlide[] = [
   {
     id: "biz-1",
-    imageUrl: undefined,
-    caption: "Glass Growers Gallery",
-    placeholderColor: "bg-gradient-to-br from-[#3A96CB]/50 to-[#87CEEB]/50",
+    imageUrl: "/assets/larese-floral-cr.jpg",
+    caption: "Larese Floral Design",
   },
   {
     id: "biz-2",
-    imageUrl: undefined,
-    caption: "Pressed Bookstore",
-    placeholderColor: "bg-gradient-to-br from-[#8B4513]/50 to-[#DEB887]/50",
+    imageUrl: "/assets/pressed-erie-books.jpg",
+    caption: "Pressed Books",
   },
   {
     id: "biz-3",
-    imageUrl: undefined,
-    caption: "Erie Art Museum Store",
-    placeholderColor: "bg-gradient-to-br from-[#8E44AD]/50 to-[#BB8FCE]/50",
+    imageUrl: "/assets/romolos-erie-cndy.jpg",
+    caption: "Romolo Chocolates",
   },
   {
     id: "biz-4",
-    imageUrl: undefined,
-    caption: "Romolo Chocolates",
-    placeholderColor: "bg-gradient-to-br from-[#5D4037]/50 to-[#8D6E63]/50",
+    imageUrl: "/assets/mazza-winery-wines.jpg",
+    caption: "Mazza Winery",
   },
 ];
 
