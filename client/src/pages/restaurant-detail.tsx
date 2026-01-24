@@ -127,7 +127,7 @@ export default function RestaurantDetail() {
                     <MapPin className="h-5 w-5 text-[#FF851A] mt-1 flex-shrink-0" />
                     <div>
                       <p className="font-bold text-sm text-gray-900">Address</p>
-                      <p className="text-gray-700">{restaurant.address}</p>
+                      <p className="text-gray-700 whitespace-pre-line">{restaurant.address}</p>
                     </div>
                   </div>
                 )}
@@ -137,12 +137,7 @@ export default function RestaurantDetail() {
                     <Phone className="h-5 w-5 text-[#3A96CB] mt-1 flex-shrink-0" />
                     <div>
                       <p className="font-bold text-sm text-gray-900">Phone</p>
-                      <a
-                        href={`tel:${restaurant.phone}`}
-                        className="text-[#3A96CB] hover:underline"
-                      >
-                        {restaurant.phone}
-                      </a>
+                      <p className="text-[#3A96CB] whitespace-pre-line">{restaurant.phone}</p>
                     </div>
                   </div>
                 )}
