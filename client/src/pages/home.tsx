@@ -69,8 +69,8 @@ export default function Home({ onOpenAI }: HomeProps) {
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left: Text Content */}
-              <div className="relative z-10">
-                <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-6 hover:bg-[#FFD700]">
+              <div className="relative z-10 text-center lg:text-left">
+                <Badge className="bg-[#FFD700] text-black border-2 border-black rounded-sm font-bold text-xs px-3 py-1 mb-6 hover:bg-[#FFD700] inline-block">
                   Local-made & Lake-side
                 </Badge>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-none">
@@ -80,10 +80,10 @@ export default function Home({ onOpenAI }: HomeProps) {
                   <br />
                   <span className="text-[#FF851A] italic">in Erie?</span>
                 </h1>
-                <p className="text-gray-700 text-lg mb-8 max-w-xl leading-relaxed">
+                <p className="text-gray-700 text-lg mb-8 max-w-xl leading-relaxed mx-auto lg:mx-0">
                   Toss out the boring guidebooks. We're your neighbor's favorites, the hidden beach paths, and the best sunset spots in town.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
                   <Link href="/restaurants">
                     <Button
                       size="lg"
@@ -115,7 +115,7 @@ export default function Home({ onOpenAI }: HomeProps) {
                 </div>
 
                 {/* Stats */}
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                   <div className="bg-white border-2 border-black rounded-sm shadow-[3px_3px_0px_0px_rgba(35,24,15,1)] px-6 py-4">
                     <p className="text-4xl font-black text-black">{restaurants.length}+</p>
                     <p className="text-[#FF851A] font-bold text-sm uppercase">Eats</p>
