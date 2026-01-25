@@ -216,7 +216,7 @@ export default function ActivityDetail() {
                 <img
                   src="/assets/helloeriefinallogo.png"
                   alt="Hello Erie Logo"
-                  className="w-8 h-8 object-contain"
+                  className="w-10 h-10 object-contain"
                 />
                 <span className="font-black text-xl text-gray-900">HELLO ERIE © 2026</span>
               </div>
