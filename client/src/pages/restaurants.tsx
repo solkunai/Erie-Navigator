@@ -553,7 +553,7 @@ export default function Restaurants() {
               <div className="flex flex-col items-center md:items-start gap-3">
                 <div className="flex items-center gap-2">
                   <img
-                    src="/assets/helloerie-final.png"
+                    src="/assets/hello-erie-final-logo.jpg"
                     alt="Hello Erie Logo"
                     className="w-8 h-8 object-contain"
                   />
