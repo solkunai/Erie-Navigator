@@ -50,7 +50,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
             <img
               src="/assets/hello-erie-final-logo.jpg"
               alt="Hello Erie Logo"
-              className="w-12 h-12 sm:w-16 sm:h-16 object-contain hover:scale-105 transition-transform -mr-1 sm:-mr-2"
+              className="w-12 h-12 sm:w-16 sm:h-16 object-contain hover:scale-105 transition-transform mr-2"
             />
             <span className="font-black text-sm sm:text-lg md:text-xl text-gray-900">HELLO ERIE</span>
           </Link>
