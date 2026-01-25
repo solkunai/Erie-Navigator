@@ -48,7 +48,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img
-              src="/assets/helloeriefinallogo.png"
+              src="/assets/hello-erie-final-logo.jpg"
               alt="Hello Erie Logo"
               className="w-12 h-12 sm:w-16 sm:h-16 object-contain hover:scale-105 transition-transform -mr-1 sm:-mr-2"
             />
@@ -150,7 +150,7 @@ export function Header({ onOpenAI, searchQuery, onSearchChange }: HeaderProps) {
                   {/* Mobile Logo */}
                   <div className="flex items-center gap-2 pb-4 border-b-2 border-black">
                     <img
-                      src="/assets/helloeriefinallogo.png"
+                      src="/assets/hello-erie-final-logo.jpg"
                       alt="Hello Erie Logo"
                       className="w-12 h-12 object-contain"
                     />
