@@ -377,9 +377,9 @@ export default function Home({ onOpenAI }: HomeProps) {
               <div className="flex flex-col items-center md:items-start gap-3">
                 <div className="flex items-center gap-2">
                   <img
-                    src="/assets/helloeriefinallogo.png"
+                    src="/assets/helloerie-final.png"
                     alt="Hello Erie Logo"
-                    className="w-10 h-10 object-contain"
+                    className="w-8 h-8 object-contain"
                   />
                   <span className="font-black text-xl text-gray-900">HELLO ERIE © 2026</span>
                 </div>
